@@ -167,13 +167,7 @@
 				$("#work-form-div").append("<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\" style=\"text-align:center;\" id=\"work-"+counter_s.toString()+"\"><div class=\"remove col-lg-1 col-md-1 col-sm-1 col-xs-1\"onClick=\"removeline(this)\">x</div><input class=\"col-lg-8 col-md-8 col-sm-8 col-xs-8 work-description-input\" id=\"work-description-input-1\"><input class=\"col-lg-2 col-md-2 col-sm-2 col-xs-2 work-time-input\" id=\"work-time-input-1\"></div>");
 			}
 			function removeline(obj){
-				var objid=obj.parentNode.id.toString();
-				// alert(obj.parentNode.id);
-				var myobjp=document.getElementById(objid);
-				// alert(myobjp.className);
-				myobjp.remove("#"+objid);
-				//$("#work-form-div").remove("#"+obj.parentNode.id);
-				//$("#description-form-div").remove(obj.parentNode);
+				obj.parentNode.parentNode.removeChild(obj.parentNode);
 			}
 
 			</script>
