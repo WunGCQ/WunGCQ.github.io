@@ -86,10 +86,16 @@
         margin-top: 10px;
        /* margin-top:50%;*/
     }
+    .remove-phone:active{
+        background-color:#f60; 
+    }
     .remove-phone img{
         width: 13px;
         margin: auto;
         text-align: center;
+    }
+    .remove-phone img:active{
+        border: 2px solid #fff;
     }
 }
 
