@@ -369,13 +369,13 @@
 			function s_phone() {
 				counter_s_phone++;
 				// body...
-				$("#work-form-div-phone").append("<div class=\"row visible-xs contain-phone-textarea\" id=\"work-phone-"+counter_s_phone.toString()+"\"><div class=\"col-xs-1\"><div class=\"remove-phone\" onClick=\"removeline_phone(\'work-phone-"+counter_s_phone.toString()+"\')\"><span onClick=\"removeline_phone(\'work-phone-"+counter_s_phone.toString()+"\')\" >X</span></div></div><div class=\"col-xs-7\" ><textarea type=\"text\" class=\"form-control work-description-input\"  id=\"work-description-input-phone-"+counter_s_phone.toString()+"\"></textarea></div><div class=\"col-xs-4\"><input type=\"text\" class=\"form-control work-time-input\" id=\"work-time-input-phone-"+counter_s_phone.toString()+"\"></div></div>");
+				$("#work-form-div-phone").append("<div class=\"row visible-xs contain-phone-textarea\" id=\"work-phone-"+counter_s_phone.toString()+"\"><button class=\" btn remove-phone pull-left\" onClick=\"removeline_phone(\'work-phone-"+counter_s_phone.toString()+"\')\">X</button><div class=\"col-xs-7\" ><textarea type=\"text\" class=\"form-control work-description-input\"  id=\"work-description-input-phone-"+counter_s_phone.toString()+"\"></textarea></div><div class=\"col-xs-4\"><input type=\"text\" class=\"form-control work-time-input\" id=\"work-time-input-phone-"+counter_s_phone.toString()+"\"></div></div>");
 			}
 
 			function t_phone() {
 				// body...
 				counter_t_phone++;
-				$("#description-form-div-phone").append("<div class=\"row visible-xs contain-phone-textarea\" id=\"description-phone-"+counter_t_phone.toString()+"\"><div class=\"col-xs-1\"><div class=\"remove-phone\" onClick=\"removeline_phone(\'description-phone-"+counter_t_phone.toString()+"\')\"><span onClick=\"removeline_phone(\'description-phone-"+counter_t_phone.toString()+"\')\">X</span></div></div><div class=\"col-xs-5\" ><textarea class=\"form-control description-input\" id=\"description-input-phone-"+counter_t_phone.toString()+"\"></textarea></div><div class=\"col-xs-3\"><textarea class=\"form-control count-input\" id=\"count-input-phone-"+counter_t_phone.toString()+"\"></textarea></div><div class=\"col-xs-3\"><textarea  class=\"form-control pedmere-input\" id=\"jedmere-input-phone-"+counter_t_phone.toString()+"\"></textarea></div></div>");
+				$("#description-form-div-phone").append("<div class=\"row visible-xs contain-phone-textarea\" id=\"description-phone-"+counter_t_phone.toString()+"\"><button class=\"pull-left btn remove-phone\" onClick=\"removeline_phone(\'description-phone-"+counter_t_phone.toString()+"\')\">X</button><div class=\"col-xs-5\" ><textarea class=\"form-control description-input\" id=\"description-input-phone-"+counter_t_phone.toString()+"\"></textarea></div><div class=\"col-xs-3\"><textarea class=\"form-control count-input\" id=\"count-input-phone-"+counter_t_phone.toString()+"\"></textarea></div><div class=\"col-xs-3\"><textarea  class=\"form-control pedmere-input\" id=\"jedmere-input-phone-"+counter_t_phone.toString()+"\"></textarea></div></div>");
 			}
 
 			function removeline_phone(id){

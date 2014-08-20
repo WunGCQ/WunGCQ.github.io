@@ -43,7 +43,7 @@
         padding-right: 2%;
     }
 
-    button{
+    .view-work-order-btn,.commit-btn{
         min-width: 160px;
     }
     .contain-phone{
@@ -74,7 +74,8 @@
         background-color:#369; 
     }
     .remove-phone{
-        width: 100%;
+        color: #fff !important;
+        min-width: 20px !important;
         height: 100%;
         margin: auto;
         text-align: center;
@@ -84,10 +85,12 @@
         padding: 4px 0px 6px 0px;
         cursor: pointer;
         margin-top: 15px;
+        margin-right: 2px;
         height: 20px;
         line-height: 12px;
        /* margin-top:50%;*/
     }
+
     
 }
 
