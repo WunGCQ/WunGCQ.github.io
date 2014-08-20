@@ -379,7 +379,8 @@
 
 			function removeline_phone(objs){
 				try{
-					objs.parentNode.parentNode.remove(objs.parentNode);
+					alert(objs.parentNode.className);
+					objs.parentNode.parentNode.parentNode.removeChild(objs.parentNode.parentNode);
 				}
 				catch(e){
 					objs.parentNode.parentNode.removeNode(objs.parentNode);
