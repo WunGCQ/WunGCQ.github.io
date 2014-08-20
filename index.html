@@ -379,13 +379,11 @@
 
 			function removeline_phone(objs){
 				try{
-					alert(objs.parentNode.className);
 					objs.parentNode.parentNode.parentNode.removeChild(objs.parentNode.parentNode);
 				}
 				catch(e){
 					objs.parentNode.parentNode.removeNode(objs.parentNode);
 				}
-				// objs.parentNode.parentNode.remove(objs.parentNode);
 			}
 			t_phone();
 			s_phone();
