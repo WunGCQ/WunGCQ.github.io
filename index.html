@@ -159,12 +159,12 @@
 			function t() {
 				// body...
 				counter_t++;
-				$("#description-form-div").append("<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\"id=\"description-"+counter_t.toString()+"\"+ style=\"text-align:center;\"><div class=\"remove col-lg-1 col-md-1 col-sm-1 col-xs-1\"onClick=\"removeline(this)\">x</div><input for=\"description\" id=\"description-label\" class=\"col-lg-7 col-md-7 col-sm-7 col-xs-6 description-input\" id=\"description-input-1\"><input class=\"col-lg-2 col-md-2 col-sm-2 col-xs-2 count-input\" id=\"count-input\" ><input  class=\"col-lg-2 col-md-2 col-sm-2 col-sx-2 jedmere-input\" id=\"jedmere-input-1\"></div>");
+				$("#description-form-div").append("<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\"id=\"description-"+counter_t.toString()+"\"+ style=\"text-align:center;\"><div class=\"remove col-lg-1 col-md-1 col-sm-1 col-xs-1\"onClick=\"removeline()\">x</div><input for=\"description\" id=\"description-label\" class=\"col-lg-7 col-md-7 col-sm-7 col-xs-6 description-input\" id=\"description-input-1\"><input class=\"col-lg-2 col-md-2 col-sm-2 col-xs-2 count-input\" id=\"count-input\" ><input  class=\"col-lg-2 col-md-2 col-sm-2 col-sx-2 jedmere-input\" id=\"jedmere-input-1\"></div>");
 			}
 			function s() {
 				counter_s++;
 				// body...
-				$("#work-form-div").append("<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\" style=\"text-align:center;\" id=\"work-"+counter_s.toString()+"\"><div class=\"remove col-lg-1 col-md-1 col-sm-1 col-xs-1\"onClick=\"removeline(this)\">x</div><input class=\"col-lg-8 col-md-8 col-sm-8 col-xs-8 work-description-input\" id=\"work-description-input-1\"><input class=\"col-lg-2 col-md-2 col-sm-2 col-xs-2 work-time-input\" id=\"work-time-input-1\"></div>");
+				$("#work-form-div").append("<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\" style=\"text-align:center;\" id=\"work-"+counter_s.toString()+"\"><div class=\"remove col-lg-1 col-md-1 col-sm-1 col-xs-1\"onClick=\"removeline()\">x</div><input class=\"col-lg-8 col-md-8 col-sm-8 col-xs-8 work-description-input\" id=\"work-description-input-1\"><input class=\"col-lg-2 col-md-2 col-sm-2 col-xs-2 work-time-input\" id=\"work-time-input-1\"></div>");
 			}
 			function removeline(obj){
 				var objid=obj.parentNode.id.toString();
@@ -266,7 +266,7 @@
 			</div>
 		</div>
 		<form id="work-form-div-phone">
-			<div class="row visible-xs contain-phone-textarea" id="work-1">
+			<!-- <div class="row visible-xs contain-phone-textarea" id="work-1">
 				<div class="col-xs-2">
 					<div class="remove-phone" onClick="removeline_phone(this)"><img src="images/delete1.png" alt="rmv"></div>
 				</div>
@@ -276,7 +276,7 @@
 				<div class="col-xs-4">
 					<input type="text" class="form-control work-time-input" id="work-time-input-1">
 				</div>
-			</div>
+			</div> -->
 		</form>
 		
 
@@ -310,7 +310,7 @@
 		</div>
 			
 		<form id="description-form-div-phone">
-			<div class="row visible-xs contain-phone-textarea" id="description-1">
+			<!-- <div class="row visible-xs contain-phone-textarea" id="description-1">
 				<div class="col-xs-2">
 					<div class="remove-phone"  onClick="removeline_phone(this)"><img src="images/delete1.png" alt="rmv"></div>
 				</div>
@@ -324,7 +324,7 @@
 				<div class="col-xs-3">
 					<textarea  class="form-control pedmere-input" id="jedmere-input-1"></textarea>
 				</div>
-			</div>	
+			</div> -->	
 		</form>
 			
 
@@ -362,25 +362,27 @@
 			<button class="btn btn-success" stlyle="">commit</button>
 		</div>
 		<script>
-			var counter_s_phone=1;
-			var counter_t_phone=1;
+
+			var counter_s_phone=0;
+			var counter_t_phone=0;
 
 			function s_phone() {
 				counter_s_phone++;
 				// body...
-				$("#work-form-div-phone").append("<div class=\"row visible-xs contain-phone-textarea\" id=\"work-phone-"+counter_s_phone.toString()+"\"><div class=\"col-xs-2\"><div class=\"remove-phone\" onClick=\"removeline_phone(this)\"><img src=\"images/delete1.png\" alt=\"rmv\" ></div></div><div class=\"col-xs-6\" ><textarea type=\"text\" class=\"form-control work-description-input\"  id=\"work-description-input-phone-"+counter_s_phone.toString()+"\"></textarea></div><div class=\"col-xs-4\"><input type=\"text\" class=\"form-control work-time-input\" id=\"work-time-input-phone-"+counter_s_phone.toString()+"\"></div></div>");
+				$("#work-form-div-phone").append("<div class=\"row visible-xs contain-phone-textarea\" id=\"work-phone-"+counter_s_phone.toString()+"\"><div class=\"col-xs-2\"><div class=\"remove-phone\" onClick=\"removeline_phone(\'work-phone-"+counter_s_phone.toString()+"\')\"><img src=\"images/delete1.png\" alt=\"rmv\" ></div></div><div class=\"col-xs-6\" ><textarea type=\"text\" class=\"form-control work-description-input\"  id=\"work-description-input-phone-"+counter_s_phone.toString()+"\"></textarea></div><div class=\"col-xs-4\"><input type=\"text\" class=\"form-control work-time-input\" id=\"work-time-input-phone-"+counter_s_phone.toString()+"\"></div></div>");
 			}
 
 			function t_phone() {
 				// body...
 				counter_t_phone++;
-				$("#description-form-div-phone").append("<div class=\"row visible-xs contain-phone-textarea\" id=\"description-phone-"+counter_t_phone.toString()+"\"><div class=\"col-xs-2\"><div class=\"remove-phone\" onClick=\"removeline_phone(this)\"><img src=\"images/delete1.png\" alt=\"rmv\" ></div></div><div class=\"col-xs-5\" ><textarea class=\"form-control description-input\" id=\"description-input-phone-"+counter_t_phone.toString()+"\"></textarea></div><div class=\"col-xs-2\"><textarea class=\"form-control count-input\" id=\"count-input-phone-"+counter_t_phone.toString()+"\"></textarea></div><div class=\"col-xs-3\"><textarea  class=\"form-control pedmere-input\" id=\"jedmere-input-phone-"+counter_t_phone.toString()+"\"></textarea></div></div>");
+				$("#description-form-div-phone").append("<div class=\"row visible-xs contain-phone-textarea\" id=\"description-phone-"+counter_t_phone.toString()+"\"><div class=\"col-xs-2\"><div class=\"remove-phone\" onClick=\"removeline_phone(\'description-phone-"+counter_t_phone.toString()+"\')\"><img src=\"images/delete1.png\" alt=\"rmv\" ></div></div><div class=\"col-xs-5\" ><textarea class=\"form-control description-input\" id=\"description-input-phone-"+counter_t_phone.toString()+"\"></textarea></div><div class=\"col-xs-2\"><textarea class=\"form-control count-input\" id=\"count-input-phone-"+counter_t_phone.toString()+"\"></textarea></div><div class=\"col-xs-3\"><textarea  class=\"form-control pedmere-input\" id=\"jedmere-input-phone-"+counter_t_phone.toString()+"\"></textarea></div></div>");
 			}
 
-			function removeline_phone(objs){
-				objs.parentNode.parentNode.remove(objs.parentNode);
+			function removeline_phone(id){
+				document.getElementById(id).remove();
 			}
-
+			s_phone();
+			t_phone();
 		</script>
 		<!-- 小屏幕 -->
 	</div>
