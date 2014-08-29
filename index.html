@@ -5,6 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" user-scalable ="no">
 	<script type="text/javascript" src="script/jquery.min.js"></script>
 	<script type="text/javascript" src="script/bootstrap.min.js"></script>
+	<script src="script/jquery.signaturepad.min.js"></script>
+	<script src="script/json2.min.js"></script>
+	<script src="script/flashcanvas.js"></script>
+	<link rel="stylesheet" href="style/jquery.signaturepad.css">
 	<link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style/formPage.css">
 	<title>Form</title>
@@ -128,9 +132,37 @@
 				</div>
 			</form>
 
-			<form class="form-inline" style="text-align:center;">
+			<div class="form-inline row" style="text-align:center;">
 				<div class="col-lg-4 col-md-4 col-sm-4 ">
-					<input id="buyer-sign-input" name="buyer-sign">
+					<!-- <input id="buyer-sign-input" name="buyer-sign">
+					<div  class="sigPad">
+  						<p class="typeItDesc">Review your signature</p>
+  						<p class="drawItDesc">Draw your signature</p>
+  						<ul class="sigNav">
+    						<li class="typeIt"><a href="#type-it" class="current">Type It</a></li>
+    						<li class="drawIt"><a href="#draw-it">Draw It</a></li>
+    						<li class="clearButton"><a href="#clear">Clear</a></li>
+  						</ul>
+  					<div class="sig sigWrapper">
+    					<div class="typed"></div>
+    					<canvas class="pad"></canvas>
+    					<input type="hidden" name="output" class="output">
+  					</div>
+  					
+					</div> -->
+				<form method="post" action="" class="sigPad">
+  					<input type="text" name="name" id="name" class="name">
+  					<ul class="sigNav">
+   						<li class="typeIt"><a href="#type-it" class="current">Type It</a></li>
+    					<li class="drawIt"><a href="#draw-it">Draw It</a></li>
+    					<li class="clearButton"><a href="#clear">Clear</a></li>
+  					</ul>
+  					<div class="sig sigWrapper">
+    				<div class="typed"></div>
+    				<canvas class="pad" width="198" height="55"></canvas>
+    				<input type="hidden" name="output" class="output">
+  					</div>
+				</form>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-4 ">
 					<input id="datetime-sign-input" name="datetime-sign">
@@ -138,10 +170,10 @@
 				<div class="col-lg-3 col-md-3 col-sm-3 ">
 					<input id="pelcer-sign-input" name="percel-sign">
 				</div>
-			</form>
+			</div>
 
-			<form class="form-inline" style="text-align:center;">
-				<label class="col-lg-4 col-md-4 col-sm-4 " id="buyer-sign-label">
+			<div class="form-inline" style="text-align:center;margin-top:0px;">
+				<label class="col-lg-4 col-md-4 col-sm-4 " id="buyer-sign-label" >
 					Potpis naru&#x010D;ioca
 				</label>
 				<label class="col-lg-4 col-md-4 col-sm-4 " id="datetime-sign-label">
@@ -150,7 +182,7 @@
 				<label class="col-lg-3 col-md-3 col-sm-3 " id="pelcer-sign-label">
 					Za PeLCer doo
 				</label>
-			</form>
+			</div>
 
 
 			<script>
@@ -170,8 +202,10 @@
 				obj.parentNode.parentNode.removeChild(obj.parentNode);
 			}
 
-			</script>
+			$(document).ready(function () {$('.sigPad').signaturePad();});
 
+			</script>
+			
 		</div>
 		<!-- 大中屏幕 end -->
 
@@ -262,7 +296,7 @@
 		<form id="work-form-div-phone">
 			<!-- <div class="row visible-xs contain-phone-textarea" id="work-1">
 				<div class="col-xs-2">
-					<div class="remove-phone" onClick="removeline_phone(this)"><img src="images/delete1.png" alt="rmv"></div>
+					<div class="remove-phone" onClick="removeline_phone(this)"><img src="../images/delete1.png" alt="rmv"></div>
 				</div>
 				<div class="col-xs-6" >
 					<textarea type="text" class="form-control work-description-input"  id="work-description-input-1"></textarea>
@@ -306,7 +340,7 @@
 		<form id="description-form-div-phone">
 			<!-- <div class="row visible-xs contain-phone-textarea" id="description-1">
 				<div class="col-xs-2">
-					<div class="remove-phone"  onClick="removeline_phone(this)"><img src="images/delete1.png" alt="rmv"></div>
+					<div class="remove-phone"  onClick="removeline_phone(this)"><img src="../images/delete1.png" alt="rmv"></div>
 				</div>
 				<div class="col-xs-5" >
 					<textarea id="description-label" class="form-control description-input" id="description-input-1"></textarea>
@@ -318,15 +352,13 @@
 				<div class="col-xs-3">
 					<textarea  class="form-control pedmere-input" id="jedmere-input-1"></textarea>
 				</div>
-			</div>	 -->
+			</div> -->	
 		</form>
 			
 
-		<div class="row visible-xs contain-phone-textarea-head">
-			<div class="col-xs-4">
-				<label  id="buyer-sign-label">
-					Potpis naru&#x010D;ioca
-				</label>
+		<!-- <div class="row visible-xs contain-phone-textarea-head">
+			<div class="col-xs-">
+				
 			</div>
 			<div class="col-xs-4">
 				<label  id="datetime-sign-label">
@@ -338,9 +370,52 @@
 					Za PeLCer doo
 				</label>
 			</div>			
+		</div> -->
+		<div class="row visible-xs contain-phone-textarea-head">
+			<div class="col-xs-12">
+				<label  id="buyer-sign-label">
+					Potpis naru&#x010D;ioca
+				</label>
+			</div>
+			<div class="col-xs-12" style="text-align:left !important;float:left;">
+  				<form method="post" action="" id="buyer-sign-form" class="sigPad1">
+  					<input type="text" name="name" id="buyer-sign-input" class=" form-control buyer-sign-input name1">
+  					<ul class="sigNav1">
+   						<li class="typeIt1"><a href="#type-it1" class="current">Type It</a></li>
+    					<li class="drawIt1"><a href="#draw-it1">Draw It</a></li>
+    					<li class="clearButton1"><a href="#clear">Clear</a></li>
+  					</ul>
+  					<div class="sig1 sigWrapper1">
+    				<div class="typed1"></div>
+    				<canvas class="pad1 canvas1" height="55"></canvas>
+    				<input type="hidden" name="output" class="output">
+  					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row visible-xs contain-phone-textarea-head">
+			<div class="col-xs-12">
+				<label  id="datetime-sign-label">
+					Datum i vreme
+				</label>
+			</div>
+			<div class="col-xs-12">
+				<textarea class="form-control datetime-sign-input" id="datetime-sign-input" ></textarea>
+			</div>
 		</div>
 
-		<div class="row visible-xs contain-phone-textarea">
+		<div class="row visible-xs contain-phone-textarea-head">
+			<div class="col-xs-12">
+				<label  id="pelcer-sign-label">
+					Za PeLCer doo
+				</label>
+			</div>
+			<div class="col-xs-12">
+				<textarea  class="form-control percel-sign-input" id="percel-sign-input"></textarea>
+			</div>
+		</div>
+
+		<!-- <div class="row visible-xs contain-phone-textarea">
 			<div class="col-xs-4" >
 				<textarea  id="description-label" class="form-control buyer-sign-input" id="buyer-sign-input"></textarea>
 			</div>
@@ -350,7 +425,7 @@
 					<div class="col-xs-4">
 				<textarea  class="form-control percel-sign-input" id="percel-sign-input"></textarea>
 			</div>
-		</div>
+		</div> -->
 
 		<div class="row visible-xs" style="text-align:center;padding:5px;margin-top:10px;">
 			<button class="btn btn-success commit-btn" >commit</button>
@@ -371,7 +446,8 @@
 				$("#description-form-div-phone").append("<div class=\"row visible-xs contain-phone-textarea\" id=\"description-phone-"+counter_t_phone.toString()+"\"><div class=\"col-xs-1\"><div class=\"remove-phone\" onClick=\"removeline_phone(this)\"><img src=\"images/delete1.png\" alt=\"rmv\" ></div></div><div class=\"col-xs-5\" ><textarea class=\"form-control description-input\" id=\"description-input-phone-"+counter_t_phone.toString()+"\"></textarea></div><div class=\"col-xs-3\"><textarea class=\"form-control count-input\" id=\"count-input-phone-"+counter_t_phone.toString()+"\"></textarea></div><div class=\"col-xs-3\"><textarea  class=\"form-control pedmere-input\" id=\"jedmere-input-phone-"+counter_t_phone.toString()+"\"></textarea></div></div>");
 			}
 
-			function removeline_phone(objs){
+
+				function removeline_phone(objs){
 				try{
 					objs.parentNode.parentNode.parentNode.removeChild(objs.parentNode.parentNode);
 				}
@@ -379,9 +455,43 @@
 					objs.parentNode.parentNode.removeNode(objs.parentNode);
 				}
 			}
+				// objs.parentNode.parentNode.remove(objs.parentNode);
+			
 			t_phone();
 			s_phone();
-
+			$('#buyer-sign-form').signaturePad({
+				defaultAction: "typeIt",
+				displayOnly: !1,
+				drawOnly: !1,
+				canvas: ".canvas1",
+				sig: ".sig1",
+				sigNav: ".sigNav1",
+				bgColour: "#ffffff",
+				penColour: "#145394",
+				penWidth: 2,
+				penCap: "round",
+				lineColour: "#ccc",
+				lineWidth: 2,
+				lineMargin: 5,
+				lineTop: 35,
+				name: ".buyer-sign-input",
+				typed: ".typed1",
+				clear: ".clearButton1",
+				typeIt: ".typeIt1 a",
+				drawIt: ".drawIt1 a",
+				typeItDesc: ".typeItDesc1",
+				drawItDesc: ".drawItDesc1",
+				output: ".output1",
+				currentClass: "current1",
+				validateFields: !0,
+				errorClass: "error1",
+				errorMessage: "Please enter your name",
+				errorMessageDraw: "Please sign the document",
+				onBeforeValidate: null,
+				onFormError: null,
+				onDraw: null,
+				onDrawEnd: null
+			});
 		</script>
 		<!-- 小屏幕 -->
 	</div>

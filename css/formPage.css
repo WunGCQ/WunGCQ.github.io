@@ -67,7 +67,6 @@
         background-color:#36f; 
         border-radius: 5px;
         padding: 5px;
-        height: 40px !important;
         cursor: pointer;
     }
     #add-one-phone:hover,#add-one-phone:active{
@@ -83,35 +82,13 @@
         border-radius: 5px;
         padding: 4px 0px 6px 0px;
         cursor: pointer;
-        margin-top: 10px;
-       /* margin-top:50%;*/
-    }
-    .remove-phone:active{
-        background-color:#f60; 
+        margin-top:50%;
     }
     .remove-phone img{
         width: 13px;
         margin: auto;
         text-align: center;
     }
-    .remove-phone img:active{
-        border: 2px solid #fff;
-    }
-    .sigNav a.current,
-    .sigNav a.current:link,
-    .sigNav a.current:visited {
-    background-color: #666;
-    color: #fff;
-    text-decoration: none;
-}
-
-.sigNav .typeIt a.current,
-.sigNav .typeIt a.current:link,
-.sigNav .typeIt a.current:visited {
-  background-color: #ccc !important;
-  color: #555 !important;
-}
-
 }
 
 
@@ -390,10 +367,6 @@
     #buyer-sign-input, #datetime-sign-input, #pelcer-sign-input {
         width: 214px;
     }
-    .pad{
-        width: 198px;
-        height: 50px;
-    }
 }
 /*中屏幕*/
 
@@ -525,10 +498,6 @@
     #buyer-sign-input, #datetime-sign-input, #pelcer-sign-input {
         width: 263px;
     }
-    .pad{
-        width: 198px;
-        height: 50px;
-    }
 }
 /*大屏幕 end*/
 
@@ -633,11 +602,6 @@ hr {
     font-weight: normal;
     color: #f00;
     line-height: 1.5em;
-    width: 10px ;
+    width: auto;
     cursor: pointer;
-}
-
-.sigNav, .sigNav li{
-    display:inline-block;
-    list-style:none;
 }
