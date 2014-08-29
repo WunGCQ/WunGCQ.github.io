@@ -116,7 +116,7 @@
 
 .sigWrapper {
   clear: both;
-  height: 55px;
+  height: 80px;
 
   border: 1px solid #ccc;
 }
@@ -154,7 +154,7 @@
 }
 
 .typed {
-  height: 55px;
+  height: 80px;
   margin: 0;
   padding: 0 5px;
   position: absolute;
@@ -370,7 +370,7 @@ p.error {
 }
 
 .typed1 {
-  height: 55px;
+  height: 80px;
   margin: 0;
   padding: 0 5px;
   position: absolute;

@@ -259,6 +259,10 @@
         outline: none;
         border: none;
     }
+    .pad{
+        width: 198px;
+        height: 80px;
+    }
 }
 /*平板*/
 
@@ -392,7 +396,7 @@
     }
     .pad{
         width: 198px;
-        height: 50px;
+        height: 80px;
     }
 }
 /*中屏幕*/
@@ -527,7 +531,7 @@
     }
     .pad{
         width: 198px;
-        height: 50px;
+        height: 80px;
     }
 }
 /*大屏幕 end*/
