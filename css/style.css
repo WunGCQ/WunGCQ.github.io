@@ -114,10 +114,11 @@ a.map_link , a:hover.map_link{
     background:transparent;
 }
 
-@media screen and (max-width: 1270px) {
+@media screen and (max-width: 1170px) {
     #header-AIESEC {
 
         height: 50px !important;
+        z-index:50;
     }
     #header-logos{
         height: 150px !important;
@@ -139,6 +140,9 @@ a.map_link , a:hover.map_link{
         height: 100%;
         background: rgba(141,198,63,0.1);
     }
+    #intro{
+        padding: 2% 2% !important;
+    }
     .intro-block p{
         padding: 2% !important;
     }
@@ -147,6 +151,9 @@ a.map_link , a:hover.map_link{
     }
     .intro-list{
         padding: 2% 10% !important;
+    }
+    .title{
+        width: 100% !important;
     }
 }
 
