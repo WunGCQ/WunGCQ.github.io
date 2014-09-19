@@ -77,6 +77,7 @@
             </p>
         </div>
 
+        <div id="intro-container">
         <div class="intro-block">
 			<!--<a name="sector2" class="hidden-a"></a>-->
             <div class="icon-row">
@@ -155,7 +156,7 @@
 
             
         </div>
-
+        </div>
 
 
     </div>
@@ -332,27 +333,34 @@
         $("#committee_map_wrapper").css("zoom",zoom);
         $("#committee_map_wrapper").css("-moz-transform","scale("+zoom+")");
 
-        var h1=0,h2=0,h3=0,max=0;
-        var intro1=$(".intro-block").first();
+//        var h1=0,h2=0,h3=0,max=0;
+//        var intro1=$(".intro-block").first();
+//
+//        var intro2=intro1.next();
+//        var intro3=intro2.next();
+//        $(".intro-block").css({"height":"auto"});
+//        h1=intro1.outerHeight();
+//        h2=intro2.outerHeight();
+//        h3=intro3.outerHeight();
+//        //alert(h1+" "+h2+" "+h3);
+//        if(h1>h2){
+//            max=h1;
+//        }else{
+//            max=h2;
+//        }
+//        if(max<h3){
+//            max=h3;
+//        }
+//
+//        //alert(max);
+//        $(".intro-block").css({"height":max+20});
+        //alert($(window).innerWidth());
+//        if($(window).innerWidth()>=1154){
+//            var h=$("#intro-container").innerHeight();
+//            $(".intro-block").css({"height":"auto"},function(){$(".intro-block").css({"height":h});});
+//
+//        }
 
-        var intro2=intro1.next();
-        var intro3=intro2.next();
-        $(".intro-block").css({"height":"auto"});
-        h1=intro1.outerHeight();
-        h2=intro2.outerHeight();
-        h3=intro3.outerHeight();
-        //alert(h1+" "+h2+" "+h3);
-        if(h1>h2){
-            max=h1;
-        }else{
-            max=h2;
-        }
-        if(max<h3){
-            max=h3;
-        }
-
-        //alert(max);
-        $(".intro-block").css({"height":max+20});
     }
 
     reset();
