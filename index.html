@@ -6,12 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="css/style.css" />
-    <!--&lt;!&ndash; Latest compiled and minified CSS &ndash;&gt;-->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
-    <!--&lt;!&ndash; Optional theme &ndash;&gt;-->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">-->
-    <!--&lt;!&ndash; Latest compiled and minified JavaScript &ndash;&gt;-->
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
     <script src="script/bootstrap.min.js"></script>
     <script src="script/jquery.min.js"></script>
     <script type="text/javascript" src="script/jquery.scrollTo.js"></script> 
@@ -25,9 +19,9 @@
     <div id="header">
 
         <ul id="nav">
-            <li id="nav-1"><a>Landing Page</a></li>
-            <li id="nav-2"><a>What is Future Leader?</a></li>
-            <li id="nav-3"><a>About AIESEC in Poland!</a></li>
+            <li id="nav-1"><a>Join us</a></li>
+            <li id="nav-2"><a>About Future Leader</a></li>
+            <li id="nav-3"><a href="http://aiesec.pl">About AIESEC in Poland</a></li>
         </ul>
 
         <img src="images/AIESEC.png" alt="" id="header-AIESEC" />
@@ -71,7 +65,7 @@
         </div>
 
         <div class="title" id="intro-fl">
-            <span>What is Future Leader?</span>
+            <span>About Future Leader</span>
             <p>
                 Chcesz dołączyć do AIESEC? Zostań future leader! Dzięki programowi członkowskiemu dołączysz do naszych inicjatyw oraz projektów realizowanych w ramach Międzynardowego Programu Praktyk i Wolontariatu. Future Leaders to program skierowany do studentów zainteresowanych rozwojem osobistym i profesjonalnym. Nie przegap szansy na spróbowanie swoich sił w pracy z zespołem! Aplikując na program Future Leaders możesz wybrać jeden z 3 obszarów w których chciałbyś działać:
             </p>
@@ -365,14 +359,12 @@
 
     reset();
     $("#nav-1").click(function(){ 
-            $.scrollTo('#header',500); 
-    }); 
-    $("#nav-2").click(function(){ 
-            $.scrollTo('#intro',500); 
-        }); 
-    $("#nav-3").click(function(){ 
-            $.scrollTo('#map-row',500); 
-        });
+            $.scrollTo('#map-row',500);
+    });
+    $("#nav-2").click(function(){
+        $.scrollTo('#intro',500);
+    });
+
 
 </script>
 </html>
