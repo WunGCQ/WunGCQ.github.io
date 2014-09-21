@@ -125,6 +125,7 @@ a.map_link , a:hover.map_link{
     }
     #title{
         font-size: 3.4em !important;
+        left: 10% !important;
     }
     .intro-block {
 
@@ -161,6 +162,13 @@ a.map_link , a:hover.map_link{
     }
     #map-row .title span{
         font-size: 3rem;
+    }
+    #header-info{
+        left: 10% !important;
+        width: 86% !important;
+    }
+    .buttons-2{
+        font-size: 1em !important;
     }
 }
 @media screen and (max-width: 1170px) and( min-width: 690px) {
