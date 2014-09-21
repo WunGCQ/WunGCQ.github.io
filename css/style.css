@@ -124,7 +124,7 @@ a.map_link , a:hover.map_link{
         z-index:50;
     }
     #title{
-        font-size: 5em !important;
+        font-size: 3.4em !important;
     }
     .intro-block {
 
@@ -153,7 +153,7 @@ a.map_link , a:hover.map_link{
     .title{
         width: 100% !important;
     }
-    #intro-container{
+    .intro-container{
         display: block;
         height: 100%;
         overflow-y: scroll;
@@ -173,7 +173,7 @@ a.map_link , a:hover.map_link{
         height: 150px !important;
     }
     #title{
-        margin-top: 100px;
+        /*margin-top: 100px;*/
         font-size: 4em !important;
     }
     .intro-block {
@@ -204,7 +204,7 @@ a.map_link , a:hover.map_link{
     .title{
         width: 100% !important;
     }
-    #intro-container{
+    .intro-container{
         display: block;
         height: 100%;
         overflow-y: scroll;
@@ -242,7 +242,14 @@ a.map_link , a:hover.map_link{
     text-align: center;
     background-color: #fff;
 }
-
+#about-aiesec{
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: hidden;
+    padding: 2% 5%;
+    background: url('../images/bg1.jpg') 50% 50% / cover no-repeat;
+}
 #map-row {
     border-top: 0px solid #ccc;
     display: block;
@@ -308,14 +315,74 @@ a.map_link , a:hover.map_link{
 }
 
 #title {
+    left: 50%;
     position: absolute;
-    font-size: 12rem;
+    font-size: 7rem;
     font-family: "novecento wide";
     font-weight: 700;
-    text-shadow: 0px 0px 10px #fff;
-    color: #fff;
+    color: rgba(255,255,255,0.94);
+    /*word-spacing: 0.6em;*/
+    /*letter-spacing: 0.5rem;*/
+}
+#header-info{
+    position: absolute;
+    left:50%;
+    width: 40%;
+    right: 20px;
+    text-align: center;
+}
+#header-info p{
+    color: rgba(255,255,255,0.94);
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1.4em;
+    text-align: justify;
+    display: block;
+    text-shadow: rgba(0, 0, 0, 0.701961) 1px 1px 0px;
 }
 
+.buttons{
+
+    display: inline-block;
+    border: 3px solid #fff;
+    padding: 8px 20px;
+    font-size: 1.4em;
+    background-color: transparent;
+    cursor: pointer;
+    color:rgba(255,255,255,0.94);
+    margin: 20px auto 0px auto;
+
+}
+.buttons:hover{
+    background-color: rgba(0,0,0,0.1);
+    color: rgb(141,198,63);
+    border: 3px solid rgb(141,198,63);
+}
+
+
+.buttons-2{
+
+    display: inline-block;
+    border: 3px solid #428bca;;
+    padding: 8px 20px;
+    font-size: 1.4em;
+    background-color: transparent;
+    cursor: pointer;
+    color:#428bca;;
+    margin: 20px auto 0px auto;
+}
+.buttons-2 a{
+    color: #428bca; !important;
+    text-decoration: none !important;
+}
+.buttons-2 a:hover{
+    color: rgb(141,198,63)!important;
+    text-decoration: none !important;
+}
+.buttons-2:hover{
+    color: rgb(141,198,63);
+    border: 3px solid rgb(141,198,63);
+}
 .title {
     width: 92%;
     padding: 10px;
@@ -428,9 +495,31 @@ p {
     border-radius: 5px;
 }
 
-#intro-container{
+.intro-container{
     display: block;
     height: auto;
     overflow-y: hidden;
     padding: 10px;
+}
+#AIESEC-intro{
+    display: block;
+    height: auto;
+    overflow-y: hidden;
+    padding: 10px;
+}
+#AIESEC-intro .intro-list{
+    font-size: 1.4em;
+    list-style-image:url(../images/globe.png);
+}
+#AIESEC-intro .intro-list li{
+    height: auto;
+    line-height: 1.5em;
+}
+
+#AIESEC-intro .intro-block{
+    width: 45%;
+    margin-left: 3%;
+}
+#AIESEC-pic{
+    line-height: 100%;
 }
