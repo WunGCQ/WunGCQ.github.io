@@ -192,7 +192,7 @@ a.map_link , a:hover.map_link{
         width: 100% !important;
         float: left;
         margin: 5px 10px !important;
-        text-align: center;
+        text-align: justify;
         display: block;
         height: 100%;
         margin-bottom:0px !important;
@@ -340,7 +340,7 @@ a.map_link , a:hover.map_link{
     font-family: Helvetica, Arial, sans-serif;
     font-weight: 300;
     font-size: 1.2em;
-    text-align: justify;
+    text-align: center;
     display: inline-block;
 }
 
@@ -512,7 +512,8 @@ p {
 }
 #AIESEC-intro .intro-list{
     font-size: 1.4em;
-    list-style-image:url(../images/globe.png);
+    /*list-style-image:url(../images/globe.png);*/
+    list-style: none;
 }
 #AIESEC-intro .intro-list li{
     height: auto;
