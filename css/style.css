@@ -59,7 +59,10 @@ a.map_link , a:hover.map_link{
     -moz-transform:scale(2);
     -moz-transform-origin:top;
 }
-
+#more{
+    font-size: 1.4em;
+    padding: 5px 40px;
+}
 #committee_map_wrapper img {
     position:absolute;
     left:0;
@@ -164,7 +167,7 @@ a.map_link , a:hover.map_link{
         font-size: 3rem;
     }
     #header-info{
-        left: 10% !important;
+
         width: 86% !important;
     }
     .buttons-2{
@@ -334,7 +337,7 @@ a.map_link , a:hover.map_link{
 }
 #header-info{
     position: absolute;
-    left:50%;
+
     width: 40%;
     right: 20px;
     text-align: center;
@@ -344,7 +347,7 @@ a.map_link , a:hover.map_link{
     font-family: Helvetica, Arial, sans-serif;
     font-weight: 300;
     font-size: 1.4em;
-    text-align: justify;
+    text-align: center;
     display: block;
     text-shadow: rgba(0, 0, 0, 0.701961) 1px 1px 0px;
 }
