@@ -357,9 +357,10 @@ a.map_link , a:hover.map_link{
 }
 #header-info p{
     color: #fff;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: Museo,Helvetica, Arial, sans-serif;
     font-weight: 300;
     font-size: 1.2em;
+    font-weight: 600;
     text-align: center;
     display: inline-block;
 }
@@ -528,7 +529,7 @@ p {
 #AIESEC-intro{
     display: block;
     height: auto;
-    overflow-y: hidden;
+    overflow: hidden;
     padding: 10px;
     text-align: center;
 }

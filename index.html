@@ -320,6 +320,12 @@
 
         }
         $("#about-aiesec").css({ "height": window_height.toString() + "px" });
+        if($("#about-aiesec").outerHeight()<window_height){
+            $("#about-aiesec").css({ "height": window_height.toString() + "px" });
+        }
+        else{
+            
+        }
         $("#map-row").css({ "height": (window_height+50).toString() + "px" });
 
         $("#map").css({ "height": $(window).outerHeight().toString() + "px" });
