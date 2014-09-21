@@ -171,8 +171,8 @@
 
     <div id="map-row">
 		<a name="sector3" class="hidden-a"></a>
-        <div class="title" style="text-align: center">
-            <span>Apply in the local committee near you!</span>
+        <div class="title" style="text-align: center;margin-top: 30px;">
+            <span style="font-size: 2em;">Apply in the local committee near you!</span>
             <!--<div class="buttons-2"  style="margin-left: 50px"><a>Apply in the local committee near you!</a></div>-->
             <!--<button type="button" class="btn btn-primary" style="margin-top:10px;margin-left: 50px; ">Apply in the local committee near you!</button>-->
             <!--<div class="buttons-2"  style="margin-left: 50px"><a>For more stories, please click here!</a></div>-->
@@ -314,7 +314,7 @@
         var window_height = $(window).outerHeight();
 
         $("#header").css({ "height": window_height.toString() + "px" });
-        $("#map-row").css({ "height": window_height.toString() + "px" });
+        $("#map-row").css({ "height": (window_height+50).toString() + "px" });
 
         $("#map").css({ "height": $(window).outerHeight().toString() + "px" });
 
