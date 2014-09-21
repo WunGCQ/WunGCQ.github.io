@@ -43,12 +43,12 @@
             <!--</p>-->
         <!--</div>-->
 
-        <div class="title" id="intro-fl">
+        <!-- <div class="title" id="intro-fl">
             <span>About Future Leader</span>
             <p>
                 Chcesz dołączyć do AIESEC? Zostań future leader! Dzięki programowi członkowskiemu dołączysz do naszych inicjatyw oraz projektów realizowanych w ramach Międzynardowego Programu Praktyk i Wolontariatu. Future Leaders to program skierowany do studentów zainteresowanych rozwojem osobistym i profesjonalnym. Nie przegap szansy na spróbowanie swoich sił w pracy z zespołem! Aplikując na program Future Leaders możesz wybrać jeden z 3 obszarów w których chciałbyś działać:
             </p>
-        </div>
+        </div> -->
 
 
         <div class="intro-container">
@@ -134,11 +134,12 @@
             
         </div>
         </div>
+        <button type="button" class="btn btn-primary" id="more-2" style="padding: 5px 40px;">More</button>
 
 
     </div>
     <div id="about-aiesec">
-        <span style="font-size: 3.4em;cursor: pointer;position:abolute !important;display:block;"><a style="color: #fff;" target="_blank" href="https://www.aiesec.org/" id="about-aiesec-link">About AIESEC</a></span>
+        <span id="about-aiesec-title" style="font-size: 3.4em;cursor: pointer;display:block;"><a style="color: #fff;" target="_blank" href="https://www.aiesec.org/" id="about-aiesec-link">About AIESEC</a></span>
 
         <div class="intro-container" id="AIESEC-intro">
             
@@ -311,7 +312,14 @@
         var window_height = $(window).outerHeight();
 
         $("#header").css({ "height": window_height.toString() + "px" });
-        $("#map-row").css({ "height": (window_height+50).toString() + "px" });
+        if($("#intro").outerHeight()<window_height){
+            $("#intro").css({ "height": window_height.toString() + "px" });
+        }
+        else{
+
+        }
+        $("#about-aiesec").css({ "height": window_height.toString() + "px" });
+        $("#map-row").css({ "height": (window_height).toString() + "px" });
 
         $("#map").css({ "height": $(window).outerHeight().toString() + "px" });
 
@@ -322,6 +330,7 @@
                 $("#header-circle").css({"left":x.toString()+"px","top":(window_height/10).toString()+"px"});
                 $("#title").css({left:xx,top:(yy-100)});
                 $("#header-info").css({left:xxx,top:(yy-80+$("#title").outerHeight())});
+        $("#about-aiesec-title").css({"margin-top":($("#header").outerHeight()-$("#intro-container").outerHeight()-$("#about-aiesec-title").outerHeight())/5});
 
 
         var o_height=400;
@@ -357,6 +366,9 @@
     });
     $("#nav-2").click(function(){
         $.scrollTo('#intro',500);
+    });
+    $("#more-2").click(function(){
+        $.scrollTo('#about-aiesec',500);
     });
 
 

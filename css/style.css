@@ -260,7 +260,7 @@ a.map_link , a:hover.map_link{
     width: 100%;
     height: auto;
     overflow: hidden;
-    /*background: rgba(141,198,63,0.2) 50% 50% / cover no-repeat;*/
+    background: url('../images/background-of-the-map.jpg') 50% 50% / cover no-repeat;
     text-align: center;
     background-color: #fff;
 }
@@ -424,7 +424,7 @@ a.map_link , a:hover.map_link{
 
 p {
     font-size: 1.6rem;
-    color: #333;
+    color: #fff;
     font-family:Museo,comfortaa;
     padding: 5px 0;
     display:block;
@@ -452,9 +452,10 @@ p {
 }
 .intro-block .title span{
     font-size: 1.8em;
+    color: #fff;
 }
 .intro-block p{
-    font-size: 1.4em;
+    font-size: 1.2em;
     word-spacing: 0.1rem;
 }
 
@@ -469,11 +470,11 @@ p {
 
 .intro-list {
     font-family: Museo;
-    font-size: 1.4em;
+    font-size: 1.2em;
     word-spacing: 0.1rem;
     font-weight: 700;
     /*list-style-type:d;*/
-    color: #000;
+    color: #fff;
     padding: 0px 10px;
 }
 .map_tooltip-up_hover{
