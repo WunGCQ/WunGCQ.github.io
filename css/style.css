@@ -128,7 +128,11 @@ a.map_link , a:hover.map_link{
     }
     #title{
         font-size: 3.4em !important;
+        margin-top: -50px;
 
+    }
+    #header-info{
+        margin-top: -70px;
     }
     .intro-block {
 
@@ -172,6 +176,9 @@ a.map_link , a:hover.map_link{
     .buttons-2{
         font-size: 1em !important;
     }
+    #aiesec-intro-block{
+        width: 90%!important;
+    }
 }
 @media screen and (max-width: 1023px) and (min-width: 690px) {
     #header-AIESEC {
@@ -184,6 +191,10 @@ a.map_link , a:hover.map_link{
     }
     #title{
         font-size: 4em !important;
+        margin-top: -30px;
+    }
+    #header-info{
+        margin-top: -50px;
     }
     .intro-block {
 
@@ -219,7 +230,9 @@ a.map_link , a:hover.map_link{
         overflow-y: scroll;
         padding: 10px;
     }
-
+    #aiesec-intro-block{
+        width: 80%!important;
+    }
 }
 
  body {
@@ -510,12 +523,26 @@ p {
     height: auto;
     overflow-y: hidden;
     padding: 10px;
+    text-align: center;
+}
+#AIESEC-intro .intro-block{
+    margin:0px auto;
+    width: 40% !important;
 }
 #AIESEC-intro .intro-list{
     font-size: 1.4em;
-    /*list-style-image:url(../images/globe.png);*/
     list-style: none;
 }
+#aiesec-intro-block{
+    margin:0px auto;
+    width: 60%;
+    text-align: center;
+}
+/*#AIESEC-intro .intro-list li:after{
+    content: url(../images/globe.png);
+    margin-left:1em;
+}
+*/
 #AIESEC-intro .intro-list li{
     height: auto;
     line-height: 1.5em;
