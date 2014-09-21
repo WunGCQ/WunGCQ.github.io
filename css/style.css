@@ -179,6 +179,9 @@ a.map_link , a:hover.map_link{
     #aiesec-intro-block{
         width: 90%!important;
     }
+    #aiesec-intro-block p{
+        font-size: 1em !important;
+    }
 }
 @media screen and (max-width: 1023px) and (min-width: 690px) {
     #header-AIESEC {
@@ -231,7 +234,10 @@ a.map_link , a:hover.map_link{
         padding: 10px;
     }
     #aiesec-intro-block{
-        width: 80%!important;
+        width: 90%!important;
+    }
+    #aiesec-intro-block p{
+        font-size: 1.2em !important;
     }
 }
 
@@ -460,7 +466,7 @@ p {
 }
 
 .intro-icon {
-    width: 130px;
+    width: 110px;
     text-align: center;
 }
 
