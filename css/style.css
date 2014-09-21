@@ -61,7 +61,7 @@ a.map_link , a:hover.map_link{
 }
 #more{
     font-size: 1.4em;
-    padding: 5px 40px;
+    padding: 5px 50px;
 }
 #committee_map_wrapper img {
     position:absolute;
@@ -128,7 +128,7 @@ a.map_link , a:hover.map_link{
     }
     #title{
         font-size: 3.4em !important;
-        left: 10% !important;
+
     }
     .intro-block {
 
@@ -164,17 +164,16 @@ a.map_link , a:hover.map_link{
         padding: 10px;
     }
     #map-row .title span{
-        font-size: 3rem;
+        font-size: 4rem;
     }
     #header-info{
-
         width: 86% !important;
     }
     .buttons-2{
         font-size: 1em !important;
     }
 }
-@media screen and (max-width: 1170px) and( min-width: 690px) {
+@media screen and (max-width: 1023px) and (min-width: 690px) {
     #header-AIESEC {
         left:-30% !important;
         height: 50px !important;
@@ -184,7 +183,6 @@ a.map_link , a:hover.map_link{
         height: 150px !important;
     }
     #title{
-        /*margin-top: 100px;*/
         font-size: 4em !important;
     }
     .intro-block {
@@ -194,7 +192,7 @@ a.map_link , a:hover.map_link{
         width: 100% !important;
         float: left;
         margin: 5px 10px !important;
-        text-align: justify;
+        text-align: center;
         display: block;
         height: 100%;
         margin-bottom:0px !important;
@@ -233,7 +231,7 @@ a.map_link , a:hover.map_link{
     width: 100%;
     height: 100%;
     text-align: center;
-    background: url(../images/Austin.jpg) 50% 50% / cover no-repeat;
+    background: url(../images/header-bg.jpg) 50% 50% / cover no-repeat;
 }
 .hidden-a{
     visibility:hidden;
@@ -259,7 +257,8 @@ a.map_link , a:hover.map_link{
     display: block;
     overflow: hidden;
     padding: 2% 5%;
-    background: url('../images/bg1.jpg') 50% 50% / cover no-repeat;
+    color: #fff;
+    background: url('../images/Back-ground-of-AIESEC.jpg') 50% 50% / cover no-repeat;
 }
 #map-row {
     border-top: 0px solid #ccc;
@@ -270,9 +269,7 @@ a.map_link , a:hover.map_link{
     width: 100%;
     height: 100%;
     overflow-y:hidden;
-    /*background: rgba(141,198,63,0.2) 50% 50% / cover no-repeat;*/
-    background-color: #fff;
-    background-color: #fff;
+    background: url(../images/Background-of-each-bucket.jpg) 50% 50% / cover no-repeat;
 }
 
 #fllogo{
@@ -326,30 +323,25 @@ a.map_link , a:hover.map_link{
 }
 
 #title {
-    left: 50%;
     position: absolute;
-    font-size: 7rem;
+    font-size: 10rem;
     font-family: "novecento wide";
     font-weight: 700;
-    color: rgba(255,255,255,0.94);
-    /*word-spacing: 0.6em;*/
-    /*letter-spacing: 0.5rem;*/
+    color: #fff;
+
 }
 #header-info{
     position: absolute;
-
-    width: 40%;
-    right: 20px;
+    width: 70%;
     text-align: center;
 }
 #header-info p{
-    color: rgba(255,255,255,0.94);
+    color: #fff;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: 300;
-    font-size: 1.4em;
-    text-align: center;
-    display: block;
-    text-shadow: rgba(0, 0, 0, 0.701961) 1px 1px 0px;
+    font-size: 1.2em;
+    text-align: justify;
+    display: inline-block;
 }
 
 .buttons{
