@@ -1,500 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1" user-scalable ="no">
-	<script type="text/javascript" src="script/jquery.min.js"></script>
-	<script type="text/javascript" src="script/bootstrap.min.js"></script>
-	<script src="script/jquery.signaturepad.min.js"></script>
-	<script src="script/json2.min.js"></script>
-	<script src="script/flashcanvas.js"></script>
-	<link rel="stylesheet" href="style/jquery.signaturepad.css">
-	<link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="style/formPage.css">
-	<title>Form</title>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.scrollTo.js"></script>
+    <link rel="stylesheet" href="css/css.css"/>
+    <title>王春琪</title>
 
+
+    <style>
+        body{
+            width: 100%;
+            height: auto;
+            margin: auto;
+            overflow-x: hidden;
+            padding: 0;
+            display: block;
+            cursor: url('img/cursor.png'),default;
+        }
+        #container{
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            position: relative;
+            margin: 0;
+        }
+        .fullscreen{
+            width: 100%;
+            height: auto;
+            background: #000;
+            position: relative;
+        }
+
+        /*header*/
+        #header {
+            background-color: #000000;
+        }
+
+
+
+        #magic,#inner-circle,#outer-circle{
+            display: block;
+            margin: auto;
+            position: absolute;
+            z-index:1;
+            /*-webkit-transform: scale(1);*/
+            /*-moz-transform: scale(1,1);*/
+            /*transform:scale(1,1);*/
+
+        }
+        #header-circle{
+            display: block;
+            margin: auto;
+            position: absolute;
+            width: 558px;
+            height: 558px;
+            z-index:1;
+            text-align: left;
+        }
+        .paused{
+            animation-play-state:paused;
+            -webkit-animation-play-state:paused; /* Safari 和 Chrome */
+        }
+        #inner-circle{
+            top:142px;
+            left:142px;
+        }
+        #icon-me{
+            position: absolute;
+            z-index:10;
+            height: 226px;
+            border-radius: 300px;
+            cursor: url('img/pointer.png'),pointer;
+            opacity: 0.92;
+        }
+        .icon-intro{
+            position: absolute;
+            z-index: 2;
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0,0);
+            transform:scale(0,0);
+            border-radius: 120px;
+            cursor: url('img/pointer.png'),pointer;
+        }
+        #icon-brief-intro{
+            top:-40px;
+            left:176px;
+        }
+        #icon-skills{
+            top:109px;
+            left: 379px;
+        }
+        #icon-projects{
+            top: 348px;
+            left: 300px;
+        }
+        #icon-blog{
+            top: 348px;
+            left: 50px;
+        }
+        /*#music*/
+        #icon-music{
+            top: 109px;
+            left: -28px;
+        }
+        /*#briefintro*/
+        #briefintro{
+
+        }
+
+        /*#skills*/
+        #skills{
+
+        }
+        /*#nichijou*/
+        #nichijou{
+
+        }
+
+        /*#music*/
+        #music{
+
+        }
+        /*#projects*/
+        #projects{
+
+        }
+        /*#footer*/
+        #footer{
+
+        }
+
+    </style>
 </head>
-<body>
-	<div class="container">
-		<!-- 大众屏幕 -->
-		<div class="header row hidden-xs">
-			<div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3">
-				<img class="logo" src="images/logo.png" alt="logo:PELCER">
-			</div>	
-			<div class="col-lg-7 col-md-7 col-sm-9 col-xs-9" id="intro">
-				<p>PeLCer doo Subotica, Samoborska 22/A, 24000 Subotica, Srbija</p> 
-				<p><a href="tel:+38162252819">tel:+381 24 541 936</a>, <a href="tel:+38162252819">mob:+381 62 252 819</a>,&nbsp; email: <a href="mailto:info@pelcer.info">info@pelcer.info</a>, &nbsp;web: <a href="www.pelcer.info">www.pelcer.info</a></p>
-				<p>&#x0160;ifra delatnosti: 7022, mati&#x010D;ni broj: 20237961,&nbsp; PIB: 104792264, &nbsp;PEPDV 363708633</p>
-				<p>Broj ra&#x010D;una: 310-174020-13</p>
-			</div>
-		</div>
+<body onresize="load_magic()">
+    <div id="container">
+        <div class="fullscreen" id="header" >
+            <div id="header-circle" >
+                <img src="img/outer-circle.png" id="outer-circle" class=""/>
+                <img src="img/magic.png" id="magic" class=""/>
+                <img src="img/inner-circle.png" id="inner-circle" class=""/>
+                <!--五个介绍块区-->
+                <img src="img/icon-intro.jpg" alt="breif-intro" class="icon-intro " id="icon-brief-intro"/>
+                <img src="img/icon-skills.jpg" alt="my skills" class="icon-intro " id="icon-skills"/>
+                <img src="img/icon-projects.jpg" alt="my projects" class="icon-intro " id="icon-projects"/>
+                <img src="img/icon-blog.jpg" alt="my blog" class="icon-intro " id="icon-blog"/>
+                <img src="img/icon-music.jpg" alt="my music" class="icon-intro " id="icon-music"/>
+            </div>
+            <img src="img/icon-me.jpg" alt="Me" id="icon-me" class=""/>
+        </div>
+        <div class="fullscreen" id="briefintro">
 
-		
-		
+        </div>
+        <div class="fullscreen" id="skills">
 
-		<div class="row hidden-xs" id="form-main">
-			<form class="form-inline">
-				<div class="col-lg-12 col-md-12 col-sm-12 ">
-					<label  for="date" id="Datum-label">Datum i vreme otvaranja naloga</label>				
-						<input  type="text" id="date-input" style="border-bottom:2px solid #000 !important;">
-				</div>
-			</form>
-			<form class="form-inline">
-				<div class="col-lg-12 col-md-12 col-sm-12 " style="text-align:center;">
-					<label for="account" id="account-label"><b>RADNI NALOG </b> <span id="br"><b>br.</b></span></label>
-					<input type="text" id="account-input" name="account" style="border-bottom:2px solid #000 !important;">	
-				</div>
-			</form>
-			<form class="form-inline">
-				<div class="col-lg-12 col-md-12 col-sm-12 " style="text-align:left;">
-					<div class="col-lg-8 col-md-7 col-sm-7 col-xs-7 form-shell">
-						<label for="account" id="buyer-label">KUPAC: </label>
-						<input type="text" id="buyer-input" name="buyer">
-					</div>
-					<div class="col-lg-4 col-md-4 col-sm-5  form-shell">
-						<label for="account" id="address-label">MESTO: </label>
-						<input type="text" id="address-input" name="address">
-					</div>	
-				</div>
-			</form>
-			<form class="form-inline">
-				<div class="col-lg-12 col-md-12 col-sm-12 " style="text-align:left;">
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-5 form-shell">
-						<label  for="account" id="street-label">ULICA: </label>
-						<input  type="text" id="street-input" name="buyer">
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-4  form-shell">
-						<label  for="account" id="number-label">Broj: </label>
-						<input  type="text" id="number-input" name="address">
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-2 form-shell">
-						<label for="account" id="km-label">km</label>
-						<input  type="text" id="km-input" name="address">
-					</div>	
-				</div>
-			</form>
-			<form class="form-inline">
-				<div class="col-lg-12 col-md-12 col-sm-12 " style="text-align:left;">
-					<label for="associated-services" id="associated-services-label">PREDMET SERVISA</label>
-					<textarea wrap="physical" name="associated-services" id="associated-services-input" cols="30" rows="2"></textarea>
-					<hr id="hr1" class="hra">
-					<hr class="hra">
-				</div>
-			</form>
-			<form class="form-inline">
-				<div class="col-lg-12 col-md-12 col-sm-12 " style="text-align:center;">
-					<label for="work-description" id="work-description-label" class="col-lg-2 col-md-2 col-sm-3">OPIS POSLA <span id="add-one" onClick="s()">+</span></label>
-					<label for="work-time" id="work-time-label" class="col-lg-2 col-lg-offset-7 col-md-2 col-md-offset-7 col-sm-2 col-sm-offset-6 "style="text-align:center !important;">vreme</label>
-				</div>
-			</form>
-			<form class="form-inline" id="work-form-div">
-				<div class="col-lg-12 col-md-12 col-sm-12 " style="text-align:center;" id="work-1">
-					<div class="remove col-lg-1 col-md-1 col-sm-1 "onClick="removeline(this)">x</div>
-					<input class="col-lg-8 col-md-8 col-sm-8  work-description-input" id="work-description-input-1">
-					<input class="col-lg-2 col-md-2 col-sm-2  work-time-input" id="work-time-input-1">
-				</div>
-			</form>
+        </div>
+        <div class="fullscreen" id="projects">
 
-			<form class="form-inline">
-				<div class="col-lg-12 col-md-12 col-sm-12 ">
-					<label for="total-time-cosume" id="total-time-cosume-label">Ukupno utrošeno vreme:</label>
-					<input name="total-time-cosume" id="total-time-cosume-input">
-				</div>
-			</form>
+        </div>
+        <div class="fullscreen" id="blog">
 
-			<form class="form-inline">
-				<div class="col-lg-12 col-md-12 col-sm-12 " style="text-align:left;margin-top:2%;">
-					<label for="notes" id="notes-label">Napomena</label>
-					<textarea wrap="physical" name="notes" id="notes-input" cols="30" rows="2"></textarea>
-					<hr  class="hrb" id="hr2">
-					<hr class="hrb">
-				</div>
-			</form>
-			<div class="col-lg-12 col-md-12 col-sm-12 " style="text-align:left;">
-				<label for="materail-cosume" id="materail-cosume-label">Ustrošak materijala</label>
-			</div>
+        </div>
+        <div class="fullscreen" id="music">
 
-			<form class="form-inline">
-				<div class="col-lg-12 col-md-12 col-sm-12 " style="text-align:center;">
-					<label for="description" id="description-label" class="col-lg-2 col-md-2 col-sm-2 ">opis <span id="add-one" onClick="t()">+</span></label>
-					<label for="count" id="count-label" class="col-lg-2 col-lg-offset-5 col-md-2 col-md-offset-5 col-sm-2 col-sm-offset-6  "style="text-align:center !important;">koli&#x010D;ina</label>
-					<label for="jedmere" id="jedmere-label" class="col-lg-2 col-md-2 col-sm-2 "style="text-align:center !important;">jed.mere</label>
-				</div>
-			</form>
+        </div>
+        <div id="footer">
 
-			<form class="form-inline" id="description-form-div">
-				<div class="col-lg-12 col-md-12 col-sm-12 " style="text-align:center;" id="description-1">
-					<div class="remove col-lg-1 col-md-1 col-sm-1 "onClick="removeline(this)">x</div>
-					<input for="description" id="description-label" class="col-lg-7 col-md-7 col-sm-7  description-input" id="description-input-1">
-					
-					<input class="col-lg-2 col-md-2 col-sm-2  count-input" id="count-input" >
-					<input  class="col-lg-2 col-md-2 col-sm-2  jedmere-input" id="jedmere-input-1">
-				</div>
-			</form>
-
-			<div class="form-inline row" style="text-align:center;">
-				<div class="col-lg-4 col-md-4 col-sm-4 ">
-					<!-- <input id="buyer-sign-input" name="buyer-sign">
-					<div  class="sigPad">
-  						<p class="typeItDesc">Review your signature</p>
-  						<p class="drawItDesc">Draw your signature</p>
-  						<ul class="sigNav">
-    						<li class="typeIt"><a href="#type-it" class="current">Type It</a></li>
-    						<li class="drawIt"><a href="#draw-it">Draw It</a></li>
-    						<li class="clearButton"><a href="#clear">Clear</a></li>
-  						</ul>
-  					<div class="sig sigWrapper">
-    					<div class="typed"></div>
-    					<canvas class="pad"></canvas>
-    					<input type="hidden" name="output" class="output">
-  					</div>
-  					
-					</div> -->
-				<form method="post" action="" class="sigPad">
-  					<input type="text" name="name" id="name" class="name">
-  					<ul class="sigNav">
-   						<li class="typeIt"><a href="#type-it" class="current">Type It</a></li>
-    					<li class="drawIt"><a href="#draw-it">Draw It</a></li>
-    					<li class="clearButton"><a href="#clear">Clear</a></li>
-  					</ul>
-  					<div class="sig sigWrapper">
-    				<div class="typed"></div>
-    				<canvas class="pad" width="198" height="80"></canvas>
-    				<input type="hidden" name="output" class="output">
-  					</div>
-				</form>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-4 ">
-					<input id="datetime-sign-input" name="datetime-sign">
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-3 ">
-					<input id="pelcer-sign-input" name="percel-sign">
-				</div>
-			</div>
-
-			<div class="form-inline" style="text-align:center;margin-top:0px;">
-				<label class="col-lg-4 col-md-4 col-sm-4 " id="buyer-sign-label" >
-					Potpis naru&#x010D;ioca
-				</label>
-				<label class="col-lg-4 col-md-4 col-sm-4 " id="datetime-sign-label">
-					Datum i vreme
-				</label>
-				<label class="col-lg-3 col-md-3 col-sm-3 " id="pelcer-sign-label">
-					Za PeLCer doo
-				</label>
-			</div>
-
-
-			<script>
-			var counter_t=1;
-			var counter_s=1;
-			function t() {
-				// body...
-				counter_t++;
-				$("#description-form-div").append("<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\"id=\"description-"+counter_t.toString()+"\"+ style=\"text-align:center;\"><div class=\"remove col-lg-1 col-md-1 col-sm-1 col-xs-1\"onClick=\"removeline(this)\">x</div><input for=\"description\" id=\"description-label\" class=\"col-lg-7 col-md-7 col-sm-7 col-xs-6 description-input\" id=\"description-input-1\"><input class=\"col-lg-2 col-md-2 col-sm-2 col-xs-2 count-input\" id=\"count-input\" ><input  class=\"col-lg-2 col-md-2 col-sm-2 col-sx-2 jedmere-input\" id=\"jedmere-input-1\"></div>");
-			}
-			function s() {
-				counter_s++;
-				// body...
-				$("#work-form-div").append("<div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\" style=\"text-align:center;\" id=\"work-"+counter_s.toString()+"\"><div class=\"remove col-lg-1 col-md-1 col-sm-1 col-xs-1\"onClick=\"removeline(this)\">x</div><input class=\"col-lg-8 col-md-8 col-sm-8 col-xs-8 work-description-input\" id=\"work-description-input-1\"><input class=\"col-lg-2 col-md-2 col-sm-2 col-xs-2 work-time-input\" id=\"work-time-input-1\"></div>");
-			}
-			function removeline(obj){
-				obj.parentNode.parentNode.removeChild(obj.parentNode);
-			}
-
-			$(document).ready(function () {$('.sigPad').signaturePad();});
-
-			</script>
-			
-		</div>
-		<!-- 大中屏幕 end -->
-
-		<!-- 小屏幕 -->
-		<div class="header row visible-xs">
-			<img class="logo" src="images/logophone.jpg" alt="logo:PELCER">
-		</div>
-
-		<div class="row visible-xs" style="text-align:center;padding:5px;">
-			<p id="phone-determin">
-				Please input your work order information
-			</p>
-			<button class="btn btn-primary view-work-order-btn"> go to view this work order</button>
-		</div>
-
-		<div class="row visible-xs contain-phone">
-			<form class="form-inline">
-				<label  for="date" id="Datum-label">Datum i vreme otvaranja naloga</label>				
-				<input class="form-control" type="text" id="date-input" >
-			</form>
-		</div>
-
-		
-
-		<div class="row visible-xs contain-phone">
-			<form class="form-inline">
-				<label for="account" id="account-label"><b>RADNI NALOG </b> <span id="br"><b>br.</b></span></label>
-				<input type="text" class="form-control" id="account-input" name="account" >
-			</form>
-		</div>
-		
-		<div class="row visible-xs contain-phone">
-			<form class="form-inline">
-				<label for="account" id="buyer-label">KUPAC: </label>
-				<input class="form-control" type="text" id="buyer-input" name="buyer">
-			</form>
-		</div>
-
-		<div class="row visible-xs contain-phone">
-			<form class="form-inline">
-				<label for="account" id="address-label">MESTO: </label>
-				<input type="text" class="form-control" id="address-input" name="address">
-
-			</form>
-		</div>
-
-		
-
-		<div class="row visible-xs contain-phone">
-			<form class="form-inline">
-				<label  for="account" id="street-label">ULICA: </label>
-				<input  type="text" class="form-control" id="street-input" name="buyer">
-			</form>
-		</div>
-
-
-		<div class="row visible-xs contain-phone">
-			<form class="form-inline">
-				<label  for="account" id="number-label">Broj: </label>
-				<input  type="text" class="form-control" id="number-input" name="address">
-
-			</form>
-		</div>
-
-		<div class="row visible-xs contain-phone">
-			<form class="form-inline">
-				<label for="account" id="km-label">km</label>
-				<input  type="text" class="form-control"id="km-input" name="address">
-
-			</form>
-		</div>
-
-
-		<div class="row visible-xs contain-phone">
-			<label for="associated-services" id="associated-services-label">PREDMET SERVISA</label>
-			<textarea type="text" class="form-control"id="km-input" name="address"></textarea>
-
-		</div>
-
-		<div class="row visible-xs contain-phone-textarea-head">
-			<div class="col-xs-8">
-				<label for="work-description" id="work-description-label" >OPIS POSLA &nbsp;&nbsp;<span id="add-one-phone" onClick="s_phone()">+ Add</span></label>	
-			</div>
-			<div class="col-xs-4">
-				<label for="work-time" id="work-time-label" > vreme </label>
-			</div>
-		</div>
-		<form id="work-form-div-phone">
-			<!-- <div class="row visible-xs contain-phone-textarea" id="work-1">
-				<div class="col-xs-2">
-					<div class="remove-phone" onClick="removeline_phone(this)"><img src="../images/delete1.png" alt="rmv"></div>
-				</div>
-				<div class="col-xs-6" >
-					<textarea type="text" class="form-control work-description-input"  id="work-description-input-1"></textarea>
-				</div>
-				<div class="col-xs-4">
-					<input type="text" class="form-control work-time-input" id="work-time-input-1">
-				</div>
-			</div> -->
-		</form>
-		
-
-		<div class="row visible-xs contain-phone" >
-			<label for="total-time-cosume" id="total-time-cosume-label">Ukupno utrošeno vreme:</label>
-			<input name="total-time-cosume" class="form-control" id="total-time-cosume-input">
-		</div>
-
-		<div class="row visible-xs contain-phone">
-			<label for="notes" id="notes-label">Napomena</label>
-			<textarea wrap="physical" class="form-control" name="notes" id="notes-input-phone" ></textarea>
-		</div>
-
-		<div class="row visible-xs contain-phone">
-			<label for="materail-cosume" id="materail-cosume-label">Ustrošak materijala</label>
-		</div>
-		
-		<div class="row visible-xs contain-phone-textarea-head">
-			<div class="col-xs-6">
-				<label for="description" id="description-label" >opis &nbsp;&nbsp;<span id="add-one-phone" onClick="t_phone()">+ Add</span></label>
-
-			</div>
-			<div class="col-xs-3">
-				<label for="count" id="count-label" style="text-align:center !important;">koli&#x010D;ina</label>
-
-			</div>
-			<div class="col-xs-3">
-				<label for="jedmere" id="jedmere-label"style="text-align:center !important;">jed.mere</label>
-
-			</div>
-		</div>
-			
-		<form id="description-form-div-phone">
-			<!-- <div class="row visible-xs contain-phone-textarea" id="description-1">
-				<div class="col-xs-2">
-					<div class="remove-phone"  onClick="removeline_phone(this)"><img src="../images/delete1.png" alt="rmv"></div>
-				</div>
-				<div class="col-xs-5" >
-					<textarea id="description-label" class="form-control description-input" id="description-input-1"></textarea>
-				</div>
-				<div class="col-xs-2">				
-					<textarea class="form-control count-input" id="count-input-1" ></textarea>
-
-				</div>
-				<div class="col-xs-3">
-					<textarea  class="form-control pedmere-input" id="jedmere-input-1"></textarea>
-				</div>
-			</div> -->	
-		</form>
-			
-
-		<!-- <div class="row visible-xs contain-phone-textarea-head">
-			<div class="col-xs-">
-				
-			</div>
-			<div class="col-xs-4">
-				<label  id="datetime-sign-label">
-					Datum i vreme
-				</label>
-			</div>
-			<div class="col-xs-4">
-				<label  id="pelcer-sign-label">
-					Za PeLCer doo
-				</label>
-			</div>			
-		</div> -->
-		<div class="row visible-xs contain-phone-textarea-head">
-			<div class="col-xs-12">
-				<label  id="buyer-sign-label">
-					Potpis naru&#x010D;ioca
-				</label>
-			</div>
-			<div class="col-xs-12" style="text-align:left !important;float:left;">
-  				<form method="post" action="" id="buyer-sign-form" class="sigPad1">
-  					<input type="text" name="name" id="buyer-sign-input" class=" form-control buyer-sign-input name1">
-  					<ul class="sigNav1">
-   						<li class="typeIt1"><a href="#type-it1" class="current">Type It</a></li>
-    					<li class="drawIt1"><a href="#draw-it1">Draw It</a></li>
-    					<li class="clearButton1"><a href="#clear">Clear</a></li>
-  					</ul>
-  					<div class="sig1 sigWrapper1">
-    				<div class="typed1"></div>
-    				<canvas class="pad1 canvas1" height="80"></canvas>
-    				<input type="hidden" name="output" class="output">
-  					</div>
-				</form>
-			</div>
-		</div>
-		<div class="row visible-xs contain-phone-textarea-head">
-			<div class="col-xs-12">
-				<label  id="datetime-sign-label">
-					Datum i vreme
-				</label>
-			</div>
-			<div class="col-xs-12">
-				<textarea class="form-control datetime-sign-input" id="datetime-sign-input" ></textarea>
-			</div>
-		</div>
-
-		<div class="row visible-xs contain-phone-textarea-head">
-			<div class="col-xs-12">
-				<label  id="pelcer-sign-label">
-					Za PeLCer doo
-				</label>
-			</div>
-			<div class="col-xs-12">
-				<textarea  class="form-control percel-sign-input" id="percel-sign-input"></textarea>
-			</div>
-		</div>
-
-		<!-- <div class="row visible-xs contain-phone-textarea">
-			<div class="col-xs-4" >
-				<textarea  id="description-label" class="form-control buyer-sign-input" id="buyer-sign-input"></textarea>
-			</div>
-			<div class="col-xs-4">				
-				<textarea class="form-control datetime-sign-input" id="datetime-sign-input" ></textarea>
-			</div>
-					<div class="col-xs-4">
-				<textarea  class="form-control percel-sign-input" id="percel-sign-input"></textarea>
-			</div>
-		</div> -->
-
-		<div class="row visible-xs" style="text-align:center;padding:5px;margin-top:10px;">
-			<button class="btn btn-success commit-btn" >commit</button>
-		</div>
-		<script>
-			var counter_s_phone=0;
-			var counter_t_phone=0;
-
-			function s_phone() {
-				counter_s_phone++;
-				// body...
-				$("#work-form-div-phone").append("<div class=\"row visible-xs contain-phone-textarea\" id=\"work-phone-"+counter_s_phone.toString()+"\"><div class=\"col-xs-1\"><div class=\"remove-phone\" onClick=\"removeline_phone(this)\"><img src=\"images/delete1.png\" alt=\"rmv\" ></div></div><div class=\"col-xs-7\" ><textarea type=\"text\" class=\"form-control work-description-input\"  id=\"work-description-input-phone-"+counter_s_phone.toString()+"\"></textarea></div><div class=\"col-xs-4\"><input type=\"text\" class=\"form-control work-time-input\" id=\"work-time-input-phone-"+counter_s_phone.toString()+"\"></div></div>");
-			}
-
-			function t_phone() {
-				// body...
-				counter_t_phone++;
-				$("#description-form-div-phone").append("<div class=\"row visible-xs contain-phone-textarea\" id=\"description-phone-"+counter_t_phone.toString()+"\"><div class=\"col-xs-1\"><div class=\"remove-phone\" onClick=\"removeline_phone(this)\"><img src=\"images/delete1.png\" alt=\"rmv\" ></div></div><div class=\"col-xs-5\" ><textarea class=\"form-control description-input\" id=\"description-input-phone-"+counter_t_phone.toString()+"\"></textarea></div><div class=\"col-xs-3\"><textarea class=\"form-control count-input\" id=\"count-input-phone-"+counter_t_phone.toString()+"\"></textarea></div><div class=\"col-xs-3\"><textarea  class=\"form-control pedmere-input\" id=\"jedmere-input-phone-"+counter_t_phone.toString()+"\"></textarea></div></div>");
-			}
-
-
-				function removeline_phone(objs){
-				try{
-					objs.parentNode.parentNode.parentNode.removeChild(objs.parentNode.parentNode);
-				}
-				catch(e){
-					objs.parentNode.parentNode.removeNode(objs.parentNode);
-				}
-			}
-				// objs.parentNode.parentNode.remove(objs.parentNode);
-			
-			t_phone();
-			s_phone();
-			$('#buyer-sign-form').signaturePad({
-				defaultAction: "typeIt",
-				displayOnly: !1,
-				drawOnly: !1,
-				canvas: ".canvas1",
-				sig: ".sig1",
-				sigNav: ".sigNav1",
-				bgColour: "#ffffff",
-				penColour: "#145394",
-				penWidth: 2,
-				penCap: "round",
-				lineColour: "#ccc",
-				lineWidth: 2,
-				lineMargin: 5,
-				lineTop: 35,
-				name: ".buyer-sign-input",
-				typed: ".typed1",
-				clear: ".clearButton1",
-				typeIt: ".typeIt1 a",
-				drawIt: ".drawIt1 a",
-				typeItDesc: ".typeItDesc1",
-				drawItDesc: ".drawItDesc1",
-				output: ".output1",
-				currentClass: "current1",
-				validateFields: !0,
-				errorClass: "error1",
-				errorMessage: "Please enter your name",
-				errorMessageDraw: "Please sign the document",
-				onBeforeValidate: null,
-				onFormError: null,
-				onDraw: null,
-				onDrawEnd: null
-			});
-		</script>
-		<!-- 小屏幕 -->
-	</div>
-
+        </div>
+    </div>
 </body>
+<script>
+//    $(window).ready();
+    var magic_r=558;
+    var headicon_r=226;
+    function load_magic(){
+        var w = $(window).outerWidth();
+        var h = $(window).outerHeight();
+
+        $("#header").css({height:h});
+        var magic_center_x = Math.floor((w-magic_r)/2);
+        var magic_center_y = Math.floor((h-magic_r)/2);
+
+        $("#icon-me").css({left: Math.floor((w-headicon_r)/2),top: Math.floor((h-headicon_r)/2)});
+        $("#header-circle").css({left:  magic_center_x,top:  magic_center_y});
+    }
+    function load_animation(){
+        var s0=setTimeout(function(){
+            $("#icon-me").attr("class","head-showed");
+
+            $("#magic").attr("class","circle-showed");
+            $("#inner-circle").attr("class","circle-showed");
+            $("#outer-circle").attr("class","outer-circle-showed");
+        },0);
+        var s=setTimeout(function(){
+            $(".icon-intro").attr("class","icon-intro icon-showed");
+        },1000);
+        var s1=setTimeout(function(){
+            $("#outer-circle").attr("class","rotating");
+            $("#inner-circle").attr("class","reverse-rotating");
+        },1300);
+
+    }
+    load_magic();
+    load_animation();
+</script>
 </html>

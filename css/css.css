@@ -1,0 +1,217 @@
+*{
+    padding: 0;
+}
+
+/*Fullscreen*/
+
+
+
+/*header*/
+
+
+
+@-webkit-keyframes magic{
+    0% {
+        -webkit-transform: rotate(0deg); /* Safari 和 Chrome */
+    }
+    100%{
+        -webkit-transform: rotate(360deg); /* Safari 和 Chrome */
+    }
+}
+@keyframes magic{
+    0% {
+        /*transform: rotate(0deg);*/
+        transform: rotate(0deg); /* Firefox */
+    }
+    100%{
+        /*transform: rotate(359deg);*/
+        transform: rotate(360deg); /* Firefox */
+    }
+}
+@-moz-keyframes magic{
+    0% {
+        /*transform: rotate(0deg);*/
+        -moz-transform: rotate(0deg); /* Firefox */
+    }
+    100%{
+        /*transform: rotate(359deg);*/
+        -moz-transform: rotate(360deg); /* Firefox */
+    }
+}
+
+@-webkit-keyframes inner-rotating{
+    0% {
+        -webkit-transform: rotate(360deg); /* Safari 和 Chrome */
+    }
+    100%{
+        -webkit-transform: rotate(0deg); /* Safari 和 Chrome */
+    }
+}
+@keyframes inner-rotating{
+    0% {
+        /*transform: rotate(0deg);*/
+        transform: rotate(360deg); /* Firefox */
+    }
+    100%{
+        /*transform: rotate(359deg);*/
+        transform: rotate(0deg); /* Firefox */
+    }
+}
+@-moz-keyframes inner-rotating{
+    0% {
+        /*transform: rotate(0deg);*/
+        -moz-transform: rotate(360deg); /* Firefox */
+    }
+    100%{
+        /*transform: rotate(359deg);*/
+        -moz-transform: rotate(0deg); /* Firefox */
+    }
+}
+/*显示icons*/
+@-moz-keyframes showing-icons{
+    0% {
+        /*transform: rotate(0deg);*/
+        -moz-transform: scale(0,0); /* Firefox */
+    }
+    100%{
+        /*transform: rotate(359deg);*/
+        -moz-transform: scale(0.5,0.5); /* Firefox */
+    }
+}
+@-webkit-keyframes showing-icons{
+    0% {
+        /*transform: rotate(0deg);*/
+        -webkit-transform: scale(0); /* Firefox */
+    }
+    100%{
+        /*transform: rotate(359deg);*/
+        -webkit-transform: scale(0.5); /* Firefox */
+    }
+}
+@keyframes showing-icons{
+    0% {
+        /*transform: rotate(0deg);*/
+        transform: scale(0,0); /* Firefox */
+    }
+    100%{
+        /*transform: rotate(359deg);*/
+        transform: scale(0.5,0.5); /* Firefox */
+    }
+}
+
+/*显示头像和其他*/
+@-moz-keyframes showing-head{
+    0% {
+        /*transform: scale(0,0);*/
+        -moz-transform: scale(0,0); /* Firefox */
+    }
+    100%{
+        /*transform: scale(1,1);*/
+        -moz-transform: scale(1,1); /* Firefox */
+    }
+}
+@-webkit-keyframes showing-head{
+    0% {
+        /*transform: rotate(0deg);*/
+        -webkit-transform: scale(0); /* Firefox */
+    }
+    100%{
+        /*transform: rotate(359deg);*/
+        -webkit-transform: scale(1); /* Firefox */
+    }
+}
+@keyframes showing-head{
+    0% {
+        /*transform: rotate(0deg);*/
+        transform: scale(0,0); /* Firefox */
+    }
+    100%{
+        /*transform: rotate(359deg);*/
+        transform: scale(1,1); /* Firefox */
+    }
+}
+/*鼠标悬浮效果*/
+@-moz-keyframes icon-scale-onmouseover{
+    0% {
+        /*transform: scale(0,0);*/
+        -moz-transform: scale(0.5,0.5); /* Firefox */
+    }
+    60%{
+        /*transform: scale(1,1);*/
+        -moz-transform: scale(0.8,0.8); /* Firefox */
+    }
+    100%{
+        -moz-transform: scale(0.65,0.65); /* Firefox */
+    }
+}
+@-webkit-keyframes icon-scale-onmouseover{
+    0% {
+        /*transform: scale(0,0);*/
+        -webkit-transform: scale(0.5,0.5); /* Firefox */
+    }
+    60%{
+        /*transform: scale(1,1);*/
+        -webkit-transform: scale(0.8,0.8); /* Firefox */
+    }
+    100%{
+        -webkit-transform: scale(0.65,0.65); /* Firefox */
+    }
+}
+@keyframes icon-scale-onmouseover{
+    0% {
+        /*transform: scale(0,0);*/
+        transform: scale(0.5,0.5); /* Firefox */
+    }
+    60%{
+        /*transform: scale(1,1);*/
+        transform: scale(0.8,0.8); /* Firefox */
+    }
+    100%{
+        transform: scale(0.65,0.65); /* Firefox */
+    }
+}
+
+
+
+.icon-showed{
+    -webkit-animation: showing-icons 0.3s ease 0s forwards;
+    -moz-animation: showing-icons 0.3s ease 0s forwards;
+    -o-animation-timing-function: showing-icons 0.3s ease 0s forwards;
+    animation-timing-function:showing-icons 0.3s ease 0s forwards;
+}
+.head-showed{
+    -webkit-animation: showing-head 0.3s ease 0s forwards;
+    -moz-animation: showing-head 0.3s ease 0s forwards;
+    -o-animation-timing-function: showing-head 0.3s ease 0s forwards;
+    animation-timing-function:showing-head 0.3s ease 0s forwards;
+}
+.circle-showed{
+    -webkit-animation: showing-head 0.3s ease 0.3s forwards;
+    -moz-animation: showing-head 0.3s ease 0.3s forwards;
+    -o-animation-timing-function: showing-head 0.3s ease 0.3s forwards;
+    animation-timing-function:showing-head 0.3s ease 0.3s forwards;
+}
+.outer-circle-showed{
+    -webkit-animation: showing-head 0.4s ease 0.6s forwards;
+    -moz-animation: showing-head 0.4s ease 0.6s forwards;
+    -o-animation-timing-function: showing-head 0.4s ease 0.6s forwards;
+    animation-timing-function:showing-head 0.4s ease 0.6s forwards;
+}
+.rotating{
+    -webkit-animation: magic 60s linear 0s infinite running;
+    -moz-animation: magic 60s linear 0s infinite running;
+    -o-animation-timing-function: magic 60s linear 0s infinite running;
+    animation-timing-function:magic 60s linear 0s infinite running;
+}
+.reverse-rotating{
+    -webkit-animation: inner-rotating 30s linear 0s infinite running;
+    -moz-animation: inner-rotating 30s linear 0s infinite running;
+    -o-animation-timing-function: inner-rotating 30s linear 0s infinite running;
+    animation-timing-function:inner-rotating 30s linear 0s infinite running;
+}
+.icon-intro:hover{
+    -webkit-animation: icon-scale-onmouseover 0.218s ease 0.0s forwards;
+    -moz-animation: icon-scale-onmouseover 0.218s ease 0.0s forwards;
+    -o-animation-timing-function: icon-scale-onmouseover 0.218s ease 0s forwards;
+    animation-timing-function:icon-scale-onmouseover 0.218s ease 0s forwards;
+}
