@@ -18,6 +18,9 @@
             display: block;
             cursor: url('img/cursor.png'),default;
         }
+        p{
+            font-family:"Microsoft Yahei",Tahoma, Arial, Helvetica, "Calabri",sans-serif;
+        }
         #container{
             width: 100%;
             height: auto;
@@ -36,8 +39,6 @@
         #header {
             background-color: #000000;
         }
-
-
 
         #magic,#inner-circle,#outer-circle{
             display: block;
@@ -68,7 +69,8 @@
         }
         #icon-me{
             position: absolute;
-            z-index:10;
+            display: block;
+            z-index:0 !important;
             height: 226px;
             border-radius: 300px;
             cursor: url('img/pointer.png'),pointer;
@@ -82,24 +84,100 @@
             transform:scale(0,0);
             border-radius: 120px;
             cursor: url('img/pointer.png'),pointer;
+            box-shadow: 0px 0px 6px 6px rgba(0,255,255,0.7);
         }
+        .my-info p{
+            display: block;
+            position: relative;
+            z-index:20;
+            background-color: #000;
+            padding: 5px 10px;
+            color: #c4fff7;
+            text-shadow: 0px 0px 5px rgb(255,255,255);
+            box-shadow: 0px 0px 3px 3px rgba(0,255,255,0.7);
+            font-family: "owl","Microsoft Yahei";
+            line-height: 1.2em;
+            word-spacing: 0.3em;
+            letter-spacing: 0.1em;
+        }
+        .my-info{
+            position: absolute;
+
+        }
+        #briefintro-info{
+            left:1200px;
+            top: 110px;
+        }
+        #briefintro-info:before{
+            content: url("img/line1.png");
+            position: absolute;
+            right: 150px;
+            top:25px
+        }
+
         #icon-brief-intro{
             top:-40px;
             left:176px;
+        }
+
+        #skills-info{
+            top:370px;
+            left: 1300px;
+        }
+        #skills-info:before{
+            content: url("img/line2.png");
+            position: absolute;
+            right: 110px;
+            top:25px
         }
         #icon-skills{
             top:109px;
             left: 379px;
         }
+        #projects-info:before{
+            content: url("img/line3.png");
+            position: absolute;
+            right: 20px;
+            top:-25px;
+        }
+        #projects-info{
+            top:700px;
+            left:1260px;
+        }
+
         #icon-projects{
             top: 348px;
             left: 300px;
+        }
+        #blog-info{
+            top:700px;
+            left:550px;
+        }
+        #blog-info:before{
+            content: url("img/line4.png");
+            position: absolute;
+            left: 70px;
+            top:-15px;
         }
         #icon-blog{
             top: 348px;
             left: 50px;
         }
-        /*#music*/
+        #music-info:before{
+            content: url("img/line5.png");
+            position: absolute;
+            left: 20px;
+            top:5px;
+        }
+        #music-info{
+            top:300px;
+            left: 500px;
+        }
+
+
+
+
+
         #icon-music{
             top: 109px;
             left: -28px;
@@ -111,10 +189,6 @@
 
         /*#skills*/
         #skills{
-
-        }
-        /*#nichijou*/
-        #nichijou{
 
         }
 
@@ -142,12 +216,53 @@
                 <img src="img/inner-circle.png" id="inner-circle" class=""/>
                 <!--五个介绍块区-->
                 <img src="img/icon-intro.jpg" alt="breif-intro" class="icon-intro " id="icon-brief-intro"/>
+
                 <img src="img/icon-skills.jpg" alt="my skills" class="icon-intro " id="icon-skills"/>
+
                 <img src="img/icon-projects.jpg" alt="my projects" class="icon-intro " id="icon-projects"/>
+
                 <img src="img/icon-blog.jpg" alt="my blog" class="icon-intro " id="icon-blog"/>
+
                 <img src="img/icon-music.jpg" alt="my music" class="icon-intro " id="icon-music"/>
+
             </div>
             <img src="img/icon-me.jpg" alt="Me" id="icon-me" class=""/>
+            <div class="my-info" id="briefintro-info">
+                <p>
+                    Brief introduction
+                    <br>
+                    简介
+                </p>
+            </div>
+            <div class="my-info" id="skills-info">
+                <p>
+                    About skills
+                    <br>
+                    有关技能
+                </p>
+            </div>
+            <div class="my-info" id="projects-info">
+                <p>
+
+                    Projects Experience
+                    <br>
+                    项目 经历
+                </p>
+            </div>
+            <div class="my-info" id="blog-info">
+                <p>
+                    Blog : Reading
+                    <br>
+                    博客 · 读物
+                </p>
+            </div>
+            <div class="my-info" id="music-info">
+                <p>
+                    Music : Feeling
+                    <br>
+                    音乐 · 感知
+                </p>
+            </div>
         </div>
         <div class="fullscreen" id="briefintro">
 
@@ -177,12 +292,17 @@
         var w = $(window).outerWidth();
         var h = $(window).outerHeight();
 
-        $("#header").css({height:h});
+        $(".fullscreen").css({height:h});
         var magic_center_x = Math.floor((w-magic_r)/2);
         var magic_center_y = Math.floor((h-magic_r)/2);
 
         $("#icon-me").css({left: Math.floor((w-headicon_r)/2),top: Math.floor((h-headicon_r)/2)});
         $("#header-circle").css({left:  magic_center_x,top:  magic_center_y});
+        $("#briefintro-info").css({left:magic_center_x+460,top:magic_center_y-40});
+        $("#skills-info").css({left:magic_center_x+620,top:magic_center_y+170});
+        $("#projects-info").css({left:magic_center_x+500,top:magic_center_y+500});
+        $("#blog-info").css({left:magic_center_x-120,top:magic_center_y+510});
+        $("#music-info").css({left:magic_center_x-180,top:magic_center_y+100});
     }
     function load_animation(){
         var s0=setTimeout(function(){

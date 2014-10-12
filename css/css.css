@@ -1,7 +1,14 @@
 *{
     padding: 0;
 }
-
+@font-face {
+    font-family: "DINWebPro";
+    src: url('../fonts/DINWebPro-Medium.woff');
+}
+@font-face {
+    font-family: "owl";
+    src: url('../fonts/OWL.woff2');
+}
 /*Fullscreen*/
 
 
@@ -75,7 +82,7 @@
     }
     100%{
         /*transform: rotate(359deg);*/
-        -moz-transform: scale(0.5,0.5); /* Firefox */
+        -moz-transform: scale(0.4,0.4); /* Firefox */
     }
 }
 @-webkit-keyframes showing-icons{
@@ -85,7 +92,7 @@
     }
     100%{
         /*transform: rotate(359deg);*/
-        -webkit-transform: scale(0.5); /* Firefox */
+        -webkit-transform: scale(0.4); /* Firefox */
     }
 }
 @keyframes showing-icons{
@@ -95,7 +102,7 @@
     }
     100%{
         /*transform: rotate(359deg);*/
-        transform: scale(0.5,0.5); /* Firefox */
+        transform: scale(0.4,0.4); /* Firefox */
     }
 }
 
@@ -134,40 +141,40 @@
 @-moz-keyframes icon-scale-onmouseover{
     0% {
         /*transform: scale(0,0);*/
-        -moz-transform: scale(0.5,0.5); /* Firefox */
+        -moz-transform: scale(0.4,0.4); /* Firefox */
     }
     60%{
         /*transform: scale(1,1);*/
-        -moz-transform: scale(0.8,0.8); /* Firefox */
+        -moz-transform: scale(0.7,0.7); /* Firefox */
     }
     100%{
-        -moz-transform: scale(0.65,0.65); /* Firefox */
+        -moz-transform: scale(0.6,0.6); /* Firefox */
     }
 }
 @-webkit-keyframes icon-scale-onmouseover{
     0% {
         /*transform: scale(0,0);*/
-        -webkit-transform: scale(0.5,0.5); /* Firefox */
+        -webkit-transform: scale(0.4,0.4); /* Firefox */
     }
     60%{
         /*transform: scale(1,1);*/
-        -webkit-transform: scale(0.8,0.8); /* Firefox */
+        -webkit-transform: scale(0.7,0.7); /* Firefox */
     }
     100%{
-        -webkit-transform: scale(0.65,0.65); /* Firefox */
+        -webkit-transform: scale(0.6,0.6); /* Firefox */
     }
 }
 @keyframes icon-scale-onmouseover{
     0% {
         /*transform: scale(0,0);*/
-        transform: scale(0.5,0.5); /* Firefox */
+        transform: scale(0.4,0.4); /* Firefox */
     }
     60%{
         /*transform: scale(1,1);*/
-        transform: scale(0.8,0.8); /* Firefox */
+        transform: scale(0.7,0.7); /* Firefox */
     }
     100%{
-        transform: scale(0.65,0.65); /* Firefox */
+        transform: scale(0.6,0.6); /* Firefox */
     }
 }
 
@@ -198,16 +205,21 @@
     animation-timing-function:showing-head 0.4s ease 0.6s forwards;
 }
 .rotating{
-    -webkit-animation: magic 60s linear 0s infinite running;
-    -moz-animation: magic 60s linear 0s infinite running;
-    -o-animation-timing-function: magic 60s linear 0s infinite running;
-    animation-timing-function:magic 60s linear 0s infinite running;
+    -webkit-animation: magic 30s linear 0s infinite running;
+    -moz-animation: magic 30s linear 0s infinite running;
+    -o-animation-timing-function: magic 30s linear 0s infinite running;
+    animation-timing-function:magic 30s linear 0s infinite running;
 }
+
 .reverse-rotating{
     -webkit-animation: inner-rotating 30s linear 0s infinite running;
     -moz-animation: inner-rotating 30s linear 0s infinite running;
     -o-animation-timing-function: inner-rotating 30s linear 0s infinite running;
     animation-timing-function:inner-rotating 30s linear 0s infinite running;
+}
+.reverse-rotating:hover{
+    -webkit-animation-play-state:paused; /* Safari 和 Chrome */
+    animation-play-state:paused;
 }
 .icon-intro:hover{
     -webkit-animation: icon-scale-onmouseover 0.218s ease 0.0s forwards;
