@@ -33,29 +33,48 @@
             height: auto;
             background: #000;
             position: relative;
+            border-bottom: 1px solid rgb(170,255,255);
         }
-
+        .display-block{
+            display: block;
+        }
         /*header*/
         #header {
             background-color: #000000;
+            position: relative;
         }
-
+        #mytitle,#mytitle-chn{
+            display: block;
+            font-family: 'SH',"owl","Microsoft Yahei";
+            font-size: 3em;
+            position: absolute;
+            color: #fff;
+        }
+        #mytitle{
+            text-shadow: 0px 0px 10px #c4fff7;
+            letter-spacing: 0.15em;
+        }
+        #mytitle-chn{
+            text-shadow: 0px 0px 10px #c4fff7;
+            letter-spacing: 0.3em;
+            opacity: 1;
+         }
         #magic,#inner-circle,#outer-circle{
             display: block;
             margin: auto;
             position: absolute;
             z-index:1;
-            /*-webkit-transform: scale(1);*/
-            /*-moz-transform: scale(1,1);*/
-            /*transform:scale(1,1);*/
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0,0);
+            transform:scale(0,0);
 
         }
         #header-circle{
             display: block;
             margin: auto;
             position: absolute;
-            width: 558px;
-            height: 558px;
+            width: 400px;
+            height: 400px;
             z-index:1;
             text-align: left;
         }
@@ -64,14 +83,14 @@
             -webkit-animation-play-state:paused; /* Safari 和 Chrome */
         }
         #inner-circle{
-            top:142px;
-            left:142px;
+            top:100px;
+            left:100px;
         }
         #icon-me{
             position: absolute;
             display: block;
             z-index:0 !important;
-            height: 226px;
+            height: 158px;
             border-radius: 300px;
             cursor: url('img/pointer.png'),pointer;
             opacity: 0.92;
@@ -102,28 +121,21 @@
         }
         .my-info{
             position: absolute;
+            display: none;
 
         }
-        #briefintro-info{
-            left:1200px;
-            top: 110px;
-        }
+
         #briefintro-info:before{
             content: url("img/line1.png");
             position: absolute;
             right: 150px;
             top:25px
         }
-
         #icon-brief-intro{
-            top:-40px;
-            left:176px;
+            top:-25px;
+            left:125px;
         }
 
-        #skills-info{
-            top:370px;
-            left: 1300px;
-        }
         #skills-info:before{
             content: url("img/line2.png");
             position: absolute;
@@ -131,56 +143,41 @@
             top:25px
         }
         #icon-skills{
-            top:109px;
-            left: 379px;
+            top:77px;
+            left: 263px;
         }
         #projects-info:before{
             content: url("img/line3.png");
             position: absolute;
-            right: 20px;
-            top:-25px;
-        }
-        #projects-info{
-            top:700px;
-            left:1260px;
+            right: 100px;
+            top:-5px;
         }
 
         #icon-projects{
-            top: 348px;
-            left: 300px;
-        }
-        #blog-info{
-            top:700px;
-            left:550px;
+            top: 243px;
+            left: 212px;
         }
         #blog-info:before{
             content: url("img/line4.png");
             position: absolute;
-            left: 70px;
-            top:-15px;
+            left: 120px;
+            top:5px;
         }
         #icon-blog{
-            top: 348px;
-            left: 50px;
+            top: 243px;
+            left: 36px;
         }
         #music-info:before{
             content: url("img/line5.png");
             position: absolute;
-            left: 20px;
-            top:5px;
+            left: 100px;
+            top:15px;
         }
-        #music-info{
-            top:300px;
-            left: 500px;
-        }
-
-
-
 
 
         #icon-music{
-            top: 109px;
-            left: -28px;
+            top: 77px;
+            left: -22px;
         }
         /*#briefintro*/
         #briefintro{
@@ -210,23 +207,25 @@
 <body onresize="load_magic()">
     <div id="container">
         <div class="fullscreen" id="header" >
+            <h1 id="mytitle">Past And Future</h1>
+            <h1 id="mytitle-chn"><span id="guo">过</span><span id="qu">去</span><span id="dot">·</span><span id="wei">未</span><span id="lai">来</span></h1>
             <div id="header-circle" >
                 <img src="img/outer-circle.png" id="outer-circle" class=""/>
                 <img src="img/magic.png" id="magic" class=""/>
                 <img src="img/inner-circle.png" id="inner-circle" class=""/>
                 <!--五个介绍块区-->
-                <img src="img/icon-intro.jpg" alt="breif-intro" class="icon-intro " id="icon-brief-intro"/>
+                <img src="img/icon-intro.png" alt="breif-intro" class="icon-intro " id="icon-brief-intro"/>
 
-                <img src="img/icon-skills.jpg" alt="my skills" class="icon-intro " id="icon-skills"/>
+                <img src="img/icon-skills.png" alt="my skills" class="icon-intro " id="icon-skills"/>
 
-                <img src="img/icon-projects.jpg" alt="my projects" class="icon-intro " id="icon-projects"/>
+                <img src="img/icon-projects.png" alt="my projects" class="icon-intro " id="icon-projects"/>
 
-                <img src="img/icon-blog.jpg" alt="my blog" class="icon-intro " id="icon-blog"/>
+                <img src="img/icon-blog.png" alt="my blog" class="icon-intro " id="icon-blog"/>
 
-                <img src="img/icon-music.jpg" alt="my music" class="icon-intro " id="icon-music"/>
+                <img src="img/icon-music.png" alt="my music" class="icon-intro " id="icon-music"/>
 
             </div>
-            <img src="img/icon-me.jpg" alt="Me" id="icon-me" class=""/>
+            <img src="img/icon-me.png" alt="Me" id="icon-me" class=""/>
             <div class="my-info" id="briefintro-info">
                 <p>
                     Brief introduction
@@ -286,8 +285,8 @@
 </body>
 <script>
 //    $(window).ready();
-    var magic_r=558;
-    var headicon_r=226;
+    var magic_r=390;
+    var headicon_r=158;
     function load_magic(){
         var w = $(window).outerWidth();
         var h = $(window).outerHeight();
@@ -298,29 +297,83 @@
 
         $("#icon-me").css({left: Math.floor((w-headicon_r)/2),top: Math.floor((h-headicon_r)/2)});
         $("#header-circle").css({left:  magic_center_x,top:  magic_center_y});
-        $("#briefintro-info").css({left:magic_center_x+460,top:magic_center_y-40});
-        $("#skills-info").css({left:magic_center_x+620,top:magic_center_y+170});
-        $("#projects-info").css({left:magic_center_x+500,top:magic_center_y+500});
-        $("#blog-info").css({left:magic_center_x-120,top:magic_center_y+510});
-        $("#music-info").css({left:magic_center_x-180,top:magic_center_y+100});
+        $("#briefintro-info").css({left:magic_center_x+330,top:magic_center_y-50});
+        $("#skills-info").css({left:magic_center_x+431,top:magic_center_y+119});
+        $("#projects-info").css({left:magic_center_x+380,top:magic_center_y+340});
+        $("#blog-info").css({left:magic_center_x-155,top:magic_center_y+340});
+        $("#music-info").css({left:magic_center_x-220,top:magic_center_y+65});
+        $("#mytitle-chn").css({left:Math.floor((w-$("#mytitle-chn").width())/2),top:(magic_center_y-100)});
+        $("#mytitle").css({left:Math.floor((w-$("#mytitle").width())/2+30),top:(magic_center_y-160)});
+
     }
     function load_animation(){
-        var s0=setTimeout(function(){
+        setTimeout(function(){
             $("#icon-me").attr("class","head-showed");
-
-            $("#magic").attr("class","circle-showed");
-            $("#inner-circle").attr("class","circle-showed");
-            $("#outer-circle").attr("class","outer-circle-showed");
         },0);
-        var s=setTimeout(function(){
-            $(".icon-intro").attr("class","icon-intro icon-showed");
+        setTimeout(function(){
+            $("#magic").attr("class","circle-showed");
+        },500);
+        setTimeout(function(){
+            $("#inner-circle").attr("class","circle-showed");
         },1000);
-        var s1=setTimeout(function(){
+        setTimeout(function(){
+            $("#icon-brief-intro").attr("class","icon-intro icon-showed");
+        },1550);
+        setTimeout(function(){
+            $("#icon-skills").attr("class","icon-intro icon-showed");
+        },1700);
+        setTimeout(function(){
+            $("#icon-projects").attr("class","icon-intro icon-showed");
+        },1850);
+        setTimeout(function(){
+            $("#icon-blog").attr("class","icon-intro icon-showed");
+        },2000);
+        setTimeout(function(){
+            $("#icon-music").attr("class","icon-intro icon-showed");
+        },2150);
+        setTimeout(function(){
+            $("#outer-circle").attr("class","outer-circle-showed");
+        },2300);
+        setTimeout(function(){
             $("#outer-circle").attr("class","rotating");
             $("#inner-circle").attr("class","reverse-rotating");
-        },1300);
-
+        },2800);
     }
+    function bind_intro_listener(){
+        $("#icon-brief-intro").hover(function(){
+            $("#briefintro-info").fadeIn(500);
+        });
+        $("#icon-brief-intro").click(function(){
+            $.scrollTo('#briefintro',300);
+        });
+
+        $("#icon-skills").hover(function(){
+            $("#skills-info").fadeIn(500);
+        });
+
+        $("#icon-skills").click(function(){
+            $.scrollTo('#skills',500);
+        });
+        $("#icon-projects").hover(function(){
+            $("#projects-info").fadeIn(500);
+        });
+        $("#icon-projects").click(function(){
+            $.scrollTo('#projects',500);
+        });
+        $("#icon-blog").hover(function(){
+            $("#blog-info").fadeIn(500);
+        });
+        $("#icon-blog").click(function(){
+            $.scrollTo('#blog',500);
+        });
+        $("#icon-music").hover(function(){
+            $("#music-info").fadeIn(500);
+        });
+        $("#icon-music").click(function(){
+            $.scrollTo('#music',500);
+        });
+    }
+    bind_intro_listener();
     load_magic();
     load_animation();
 </script>
