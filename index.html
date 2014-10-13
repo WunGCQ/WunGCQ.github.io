@@ -9,176 +9,8 @@
 
 
     <style>
-        body{
-            width: 100%;
-            height: auto;
-            margin: auto;
-            overflow-x: hidden;
-            padding: 0;
-            display: block;
-            cursor: url('img/cursor.png'),default;
-        }
-        p{
-            font-family:"Microsoft Yahei",Tahoma, Arial, Helvetica, "Calabri",sans-serif;
-        }
-        #container{
-            width: 100%;
-            height: auto;
-            overflow: hidden;
-            position: relative;
-            margin: 0;
-        }
-        .fullscreen{
-            width: 100%;
-            height: auto;
-            background: #000;
-            position: relative;
-            border-bottom: 1px solid rgb(170,255,255);
-        }
-        .display-block{
-            display: block;
-        }
-        /*header*/
-        #header {
-            background-color: #000000;
-            position: relative;
-        }
-        #mytitle,#mytitle-chn{
-            display: block;
-            font-family: 'SH',"owl","Microsoft Yahei";
-            font-size: 3em;
-            position: absolute;
-            color: #fff;
-        }
-        #mytitle{
-            text-shadow: 0px 0px 10px #c4fff7;
-            letter-spacing: 0.15em;
-        }
-        #mytitle-chn{
-            text-shadow: 0px 0px 10px #c4fff7;
-            letter-spacing: 0.3em;
-            opacity: 1;
-         }
-        #magic,#inner-circle,#outer-circle{
-            display: block;
-            margin: auto;
-            position: absolute;
-            z-index:1;
-            -webkit-transform: scale(0);
-            -moz-transform: scale(0,0);
-            transform:scale(0,0);
-
-        }
-        #header-circle{
-            display: block;
-            margin: auto;
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            z-index:1;
-            text-align: left;
-        }
-        .paused{
-            animation-play-state:paused;
-            -webkit-animation-play-state:paused; /* Safari 和 Chrome */
-        }
-        #inner-circle{
-            top:100px;
-            left:100px;
-        }
-        #icon-me{
-            position: absolute;
-            display: block;
-            z-index:0 !important;
-            height: 158px;
-            border-radius: 300px;
-            cursor: url('img/pointer.png'),pointer;
-            opacity: 0.92;
-        }
-        .icon-intro{
-            position: absolute;
-            z-index: 2;
-            -webkit-transform: scale(0);
-            -moz-transform: scale(0,0);
-            transform:scale(0,0);
-            border-radius: 120px;
-            cursor: url('img/pointer.png'),pointer;
-            box-shadow: 0px 0px 6px 6px rgba(0,255,255,0.7);
-        }
-        .my-info p{
-            display: block;
-            position: relative;
-            z-index:20;
-            background-color: #000;
-            padding: 5px 10px;
-            color: #c4fff7;
-            text-shadow: 0px 0px 5px rgb(255,255,255);
-            box-shadow: 0px 0px 3px 3px rgba(0,255,255,0.7);
-            font-family: "owl","Microsoft Yahei";
-            line-height: 1.2em;
-            word-spacing: 0.3em;
-            letter-spacing: 0.1em;
-        }
-        .my-info{
-            position: absolute;
-            display: none;
-
-        }
-
-        #briefintro-info:before{
-            content: url("img/line1.png");
-            position: absolute;
-            right: 150px;
-            top:25px
-        }
-        #icon-brief-intro{
-            top:-25px;
-            left:125px;
-        }
-
-        #skills-info:before{
-            content: url("img/line2.png");
-            position: absolute;
-            right: 110px;
-            top:25px
-        }
-        #icon-skills{
-            top:77px;
-            left: 263px;
-        }
-        #projects-info:before{
-            content: url("img/line3.png");
-            position: absolute;
-            right: 100px;
-            top:-5px;
-        }
-
-        #icon-projects{
-            top: 243px;
-            left: 212px;
-        }
-        #blog-info:before{
-            content: url("img/line4.png");
-            position: absolute;
-            left: 120px;
-            top:5px;
-        }
-        #icon-blog{
-            top: 243px;
-            left: 36px;
-        }
-        #music-info:before{
-            content: url("img/line5.png");
-            position: absolute;
-            left: 100px;
-            top:15px;
-        }
 
 
-        #icon-music{
-            top: 77px;
-            left: -22px;
-        }
         /*#briefintro*/
         #briefintro{
 
@@ -205,7 +37,16 @@
     </style>
 </head>
 <body onresize="load_magic()">
+<ul id="nav">
+    <li class="nav-bar active" id="nav-to-0"></li>
+    <li class="nav-bar" id="nav-to-1"></li>
+    <li class="nav-bar" id="nav-to-2"></li>
+    <li class="nav-bar" id="nav-to-3"></li>
+    <li class="nav-bar" id="nav-to-4"></li>
+    <li class="nav-bar" id="nav-to-5"></li>
+</ul>
     <div id="container">
+
         <div class="fullscreen" id="header" >
             <h1 id="mytitle">Past And Future</h1>
             <h1 id="mytitle-chn"><span id="guo">过</span><span id="qu">去</span><span id="dot">·</span><span id="wei">未</span><span id="lai">来</span></h1>
@@ -262,9 +103,12 @@
                     音乐 · 感知
                 </p>
             </div>
+
         </div>
         <div class="fullscreen" id="briefintro">
-
+            <div id="left-area-intro">
+                <img src="" alt=""/>
+            </div>
         </div>
         <div class="fullscreen" id="skills">
 
@@ -343,35 +187,104 @@
         $("#icon-brief-intro").hover(function(){
             $("#briefintro-info").fadeIn(500);
         });
+        $("#icon-brief-intro").mouseout(function(){
+            $("#briefintro-info").fadeOut(500);
+        });
         $("#icon-brief-intro").click(function(){
             $.scrollTo('#briefintro',300);
         });
 
+
         $("#icon-skills").hover(function(){
             $("#skills-info").fadeIn(500);
         });
-
         $("#icon-skills").click(function(){
             $.scrollTo('#skills',500);
         });
+        $("#icon-skills").mouseout(function(){
+            $("#skills-info").fadeOut(500);
+        });
+
+
         $("#icon-projects").hover(function(){
             $("#projects-info").fadeIn(500);
         });
         $("#icon-projects").click(function(){
             $.scrollTo('#projects',500);
         });
+        $("#icon-projects").mouseout(function(){
+            $("#projects-info").fadeOut(500);
+        });
+
+
+        $("#icon-blog").click(function(){
+            $.scrollTo('#blog',500);
+        });
         $("#icon-blog").hover(function(){
             $("#blog-info").fadeIn(500);
         });
-        $("#icon-blog").click(function(){
-            $.scrollTo('#blog',500);
+        $("#icon-blog").mouseout(function(){
+            $("#blog-info").fadeOut(500);
+        });
+
+
+
+        $("#icon-music").click(function(){
+            $.scrollTo('#music',500);
         });
         $("#icon-music").hover(function(){
             $("#music-info").fadeIn(500);
         });
-        $("#icon-music").click(function(){
+        $("#icon-music").mouseout(function(){
+            $("#music-info").fadeOut(500);
+        });
+
+
+//        头像点击绑定
+        $("#inner-circle").click(function(){
+            if($(".my-info").css("display")=="none"){
+                $(".my-info").fadeIn(500);
+            }
+            else{
+                $(".my-info").fadeOut(500);
+            }
+        });
+
+//        导航栏滚动绑定
+        $("#nav-to-0").click(function () {
+            $(".nav-bar").attr("class","nav-bar");
+            $("#nav-to-0").attr("class","active nav-bar");
+            $.scrollTo('#header',500);
+        });
+
+        $("#nav-to-1").click(function () {
+            $(".nav-bar").attr("class","nav-bar");
+            $("#nav-to-1").attr("class","active nav-bar");
+            $.scrollTo('#briefintro',500);
+        });
+
+        $("#nav-to-2").click(function () {
+            $(".nav-bar").attr("class","nav-bar");
+            $("#nav-to-2").attr("class","active nav-bar");
+            $.scrollTo('#skills',500);
+        });
+
+        $("#nav-to-3").click(function () {
+            $(".nav-bar").attr("class","nav-bar");
+            $("#nav-to-3").attr("class","active nav-bar");
+            $.scrollTo('#projects',500);
+        });
+        $("#nav-to-4").click(function () {
+            $(".nav-bar").attr("class","nav-bar");
+            $("#nav-to-4").attr("class","active nav-bar");
+            $.scrollTo('#blog',500);
+        });
+        $("#nav-to-5").click(function () {
+            $(".nav-bar").attr("class","nav-bar");
+            $("#nav-to-5").attr("class","active nav-bar");
             $.scrollTo('#music',500);
         });
+
     }
     bind_intro_listener();
     load_magic();
