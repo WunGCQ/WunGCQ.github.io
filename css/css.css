@@ -18,7 +18,7 @@ body{
     height: auto;
     margin: auto;
     overflow-x: hidden;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
     padding: 0;
     display: block;
     cursor: url('../img/cursor.png'),default;
@@ -45,24 +45,24 @@ p{
 }
 
 /* 设置滚动条的样式 */
-/*::-webkit-scrollbar {*/
-    /*width: 10px;*/
-/*}*/
-/* 滚动槽 */
-/*::-webkit-scrollbar-track {*/
-    /*-webkit-box-shadow: inset 0 0 10px rgba(0,255,255,0.6);*/
-    /*border-radius: 8px;*/
-    /*background-color: #000;*/
-/*}*/
-/* 滚动条滑块 */
-/*::-webkit-scrollbar-thumb {*/
-    /*border-radius: 8px;*/
-    /*background: rgba(170,255,255,0.1);*/
-    /*-webkit-box-shadow: inset 0 0 6px rgba(0,255,255,0.9);*/
-/*}*/
-/*::-webkit-scrollbar-thumb:window-inactive {*/
-    /*background: rgba(0,0,0,0.5);*/
-/*}*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+ /*滚动槽*/
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 10px rgba(0,255,255,0.6);
+    border-radius: 8px;
+    background-color: #000;
+}
+ /*滚动条滑块*/
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: rgba(170,255,255,0.1);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,255,255,0.9);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(0,0,0,0.5);
+}
 /*Fullscreen*/
 
 

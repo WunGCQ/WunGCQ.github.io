@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.scrollTo.js"></script>
+    <script src="js/jquery.mousewheel.min.js"></script>
     <link rel="stylesheet" href="css/css.css"/>
     <title>王春琪</title>
 
@@ -131,6 +132,7 @@
 //    $(window).ready();
     var magic_r=390;
     var headicon_r=158;
+    var active=0;
     function load_magic(){
         var w = $(window).outerWidth();
         var h = $(window).outerHeight();
@@ -192,6 +194,8 @@
         });
         $("#icon-brief-intro").click(function(){
             $.scrollTo('#briefintro',300);
+            $(".nav-bar").attr("class","nav-bar");
+            $("#nav-to-1").attr("class","active nav-bar");
         });
 
 
@@ -200,6 +204,8 @@
         });
         $("#icon-skills").click(function(){
             $.scrollTo('#skills',500);
+            $(".nav-bar").attr("class","nav-bar");
+            $("#nav-to-2").attr("class","active nav-bar");
         });
         $("#icon-skills").mouseout(function(){
             $("#skills-info").fadeOut(500);
@@ -211,6 +217,8 @@
         });
         $("#icon-projects").click(function(){
             $.scrollTo('#projects',500);
+            $(".nav-bar").attr("class","nav-bar");
+            $("#nav-to-3").attr("class","active nav-bar");
         });
         $("#icon-projects").mouseout(function(){
             $("#projects-info").fadeOut(500);
@@ -219,6 +227,8 @@
 
         $("#icon-blog").click(function(){
             $.scrollTo('#blog',500);
+            $(".nav-bar").attr("class","nav-bar");
+            $("#nav-to-4").attr("class","active nav-bar");
         });
         $("#icon-blog").hover(function(){
             $("#blog-info").fadeIn(500);
@@ -231,6 +241,8 @@
 
         $("#icon-music").click(function(){
             $.scrollTo('#music',500);
+            $(".nav-bar").attr("class","nav-bar");
+            $("#nav-to-5").attr("class","active nav-bar");
         });
         $("#icon-music").hover(function(){
             $("#music-info").fadeIn(500);
@@ -286,6 +298,62 @@
         });
 
     }
+    function check_stay_in_div(dir){
+        var div_arr=["#header","#briefintro","#skills","#projects","#blog","#music"];
+        var top= $(window).scrollTop();
+        var h = $(window).outerHeight();
+        var now_active=Math.floor(top/h);
+        if(now_active==active){
+
+        }else{
+            $(".nav-bar").attr("class","nav-bar");
+            var id_num="nav-to-"+now_active.toString();
+            $("#"+id_num).attr("class","nav-bar active");
+            active=now_active;
+        }
+        if(dir==0){
+
+        }
+        else if(dir>0){
+            if(active==0){
+
+            }
+            else{
+                active--;
+                var id_num="nav-to-"+active.toString();
+                var div_id="#"+div_arr[active];
+                $.scrollTo(div_id,500);
+                $(".nav-bar").attr("class","nav-bar");
+                $("#"+id_num).attr("class","nav-bar active");
+            }
+        }
+        else{
+            if(active==5){
+
+            }
+            else{
+                active++;
+                var id_num="nav-to-"+active.toString();
+                var div_id=div_arr[active];
+                $.scrollTo(div_id,500);
+                $(".nav-bar").attr("class","nav-bar");
+                $("#"+id_num).attr("class","nav-bar active");
+            }
+        }
+    }
+    function bind_wheel_action(){
+        $(window).on('mousewheel', function(event,delta) {
+           //console.log(event.deltaX, event.deltaY, event.deltaFactor);
+            var dir=delta>0?1:-1;//1向上-1乡下
+
+            check_stay_in_div(dir);
+        });
+        $(window).mousewheel(function(){
+
+        });
+        //window.onmousewheel=document.onmousewheel=check_stay_in_div();//IE/Opera/Chrome
+    }
+    bind_wheel_action();
     bind_intro_listener();
     load_magic();
     load_animation();
