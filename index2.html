@@ -5,8 +5,9 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.scrollTo.js"></script>
     <script src="js/jquery.mousewheel.min.js"></script>
-    <script src="js/index.js"></script>
     <link rel="stylesheet" href="css/css.css"/>
+    <script src="js/index.js"></script>
+    <script src="js/state-machine.js"></script>
     <title>王春琪</title>
 
 
@@ -15,36 +16,7 @@
 
         /*#briefintro*/
         #briefintro{
-            background: url(img/bg-intro.jpg) 50% 50% / cover no-repeat;
-            text-align: center;
-        }
-        #briefintro .content{
-            color: #fff;
-            text-align: right;
-        }
-        .mid-title{
-            display: block;
-            font-family: "SH","owl","Microsoft Yahei";
-            font-weight: normal;
-            font-size: 3em;
-            position: absolute;
-            left: 30%;
-            top:30px;
-            color: #fff;
-        }
-        .content{
-            display:block;
-            position: absolute;
-            font-family:owl,"Microsoft Yahei",Helvetica, Arial, sans-serif;
-            font-weight: normal;
-            text-align: center;
-            font-size: 1.3em;
-            line-height: 1.8em;
-            letter-spacing: 0.1em;
-            word-spacing: 0.3em;
-        }
-        .content-intro-1{
-            top:150px;
+
         }
 
         /*#skills*/
@@ -138,33 +110,7 @@
         </div>
         <div class="fullscreen" id="briefintro">
             <div id="left-area-intro">
-                <h1 class="mid-title mid-title-1">Who am I?<br>我是谁</h1>
-                <p class="content content-intro-1">
-                    Who is but the form following the function of what
-                    <br>
-                    姓名只是身份的一种表象
-                    <br>
-                    You can call me a programmer, a man who loves technology
-                    <br>
-                    汝可称我为码畜，或是技术爱好者
-                    <br>
-                    or just a student in BUAA Software College
-                    <br>
-                    majoring in Software Engineering
-                    <br>
-                    抑或是一个在北航软院软件工程专业的一个学生
-                    <br>
-                    love web development
-                    <br>
-                    热爱web开发
-                    <br>
-                    A little bit of <a href="http://en.dic.pixiv.net/a/Chuunibyou" target="_blank" style="color: #fff;text-decoration: none">Chuunibyo</a>
-                    <br>
-                    还有点中二
-                    <br>
-
-                </p>
-
+                <img src="" alt=""/>
             </div>
         </div>
         <div class="fullscreen" id="skills">
@@ -186,18 +132,15 @@
 </body>
 <script>
 //    $(window).ready();
-    var w = $(window).outerWidth();
-    var h = $(window).outerHeight();
     var magic_r=390;
     var headicon_r=158;
     var active=0;
 
     bind_wheel_action();
     bind_intro_listener();
-
     load_magic();
     load_animation();
-    check_stay_in_div(0);
+//    自动机
 
 </script>
 </html>
