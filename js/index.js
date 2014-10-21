@@ -10,7 +10,7 @@ function load_magic(){
     var magic_center_y = Math.floor((h-magic_r)/2);
 
     $("#icon-me").css({left: Math.floor((w-headicon_r)/2),top: Math.floor((h-headicon_r)/2)});
-    $("#header-circle").css({left:  magic_center_x,top:  magic_center_y});
+    $("#header-circle").css({left:  magic_center_x,top:magic_center_y});
     $("#briefintro-info").css({left:magic_center_x+330,top:magic_center_y-50});
     $("#skills-info").css({left:magic_center_x+431,top:magic_center_y+119});
     $("#projects-info").css({left:magic_center_x+380,top:magic_center_y+340});
@@ -18,6 +18,7 @@ function load_magic(){
     $("#music-info").css({left:magic_center_x-220,top:magic_center_y+65});
     $("#mytitle-chn").css({left:Math.floor((w-$("#mytitle-chn").width())/2),top:(magic_center_y-100)});
     $("#mytitle").css({left:Math.floor((w-$("#mytitle").width())/2+30),top:(magic_center_y-160)});
+    $(".ch-grid").css({top:(h- $(".ch-grid").outerHeight())/2});
 
     init_unit1();
 
@@ -217,11 +218,9 @@ function bind_wheel_action(){
         //console.log(event.deltaX, event.deltaY, event.deltaFactor);
         var dir=delta>0?1:-1;//1向上-1乡下
 
-        check_stay_in_div(dir);
+        check_stay_in_div(0);
     });
-    $(window).mousewheel(function(){
 
-    });
     //window.onmousewheel=document.onmousewheel=check_stay_in_div();//IE/Opera/Chrome
 }
 function init_unit1(){
