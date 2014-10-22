@@ -70,7 +70,8 @@ p{
 
 /*header*/
 #header {
-    background-color: #000000;
+    /*background-color: #000000;*/
+    background: url(../img/header_bg.jpg) 50% 50% / cover no-repeat;
     position: relative;
 }
 #mytitle,#mytitle-chn{
@@ -94,10 +95,11 @@ p{
     margin: auto;
     position: absolute;
     z-index:1;
+}
+.init{
     -webkit-transform: scale(0);
     -moz-transform: scale(0,0);
     transform:scale(0,0);
-
 }
 #header-circle{
     display: block;
@@ -129,10 +131,8 @@ p{
 .icon-intro{
     position: absolute;
     z-index: 2;
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0,0);
-    transform:scale(0,0);
     border-radius: 120px;
+    transform:scale(0.4,0.4)\9;
     cursor: url('../img/pointer.png'),pointer;
     box-shadow: 0px 0px 6px 6px rgba(0,255,255,0.7);
 }
@@ -506,10 +506,24 @@ p{
 }
 
 #music{
-    background: url(../img/blog_bg.jpg) 50% 50% / cover no-repeat;
+    background: url(../img/music.jpg) 50% 50% / cover no-repeat;
 }
-
-
+#player{
+    position: absolute;
+    left:0px;
+}
+#music-article{
+    position: absolute;
+    left: 300px;
+}
+#music-article p {
+    color: #fff;
+    font-family: "SH","Microsoft Yahei";
+    font-size: 1.3em;
+    text-align: center;
+    line-height: 1.5em;
+    text-shadow: 0px 0px 5px #fff;
+}
 
 /*动画*/
 @-webkit-keyframes magic{
