@@ -19,8 +19,8 @@ function load_magic(){
     $("#mytitle-chn").css({left:Math.floor((w-$("#mytitle-chn").width())/2),top:(magic_center_y-100)});
     $("#mytitle").css({left:Math.floor((w-$("#mytitle").width())/2+30),top:(magic_center_y-160)});
     $(".ch-grid").css({top:(h- $(".ch-grid").outerHeight())/2});
-    $("#player").css({top:(h- 346)/2});
-    $("#music-article").css({left:Math.floor((w-$("#music-article").width())/2),top:(h- $("#music-article").outerHeight())/2});
+//    $("#player").css({top:(h- 346)/2});
+//    $("#music-article").css({left:Math.floor((w-$("#music-article").width())/2),top:(h- $("#music-article").outerHeight())/2});
     init_unit1();
 
 }
@@ -55,7 +55,10 @@ function load_animation(){
     setTimeout(function(){
         $("#outer-circle").attr("class","rotating");
         $("#inner-circle").attr("class","reverse-rotating");
+        $(".my-info").fadeIn(300);
     },2800);
+
+
 }
 function bind_intro_listener(){
     $("#icon-brief-intro").hover(function(){

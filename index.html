@@ -13,7 +13,22 @@
     <style>
 
 
-
+        .fullscreen-container{
+            position: absolute;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+        #blog h2{
+            margin-top: 50px;
+            color: #eee;
+            font-family: 'SH',"Microsoft Yahei", Helvetica, Arial, sans-serif;
+            font-weight: normal;
+        }
+        #blog h2:hover{
+            color: #fff;
+        }
         /*#music*/
         #music{
 
@@ -21,7 +36,16 @@
 
         /*#footer*/
         #footer{
-
+            background-color: #111;
+            height: 120px;
+            width: 100%;
+        }
+        #footer{
+            color: #ccc;
+        }
+        #footer a{
+            color: #eee;
+            font-family: Helvetica, Arial, sans-serif;
         }
 
     </style>
@@ -252,28 +276,47 @@
             </ul>
         </div>
         <div class="fullscreen" id="blog">
-
+            <div class="fullscreen-container">
+                <h2>
+                    Blog:<br>
+                    私家珍藏，尚未上线，敬请期待~
+                </h2>
+            </div>
         </div>
         <div class="fullscreen" id="music">
-            <article id="music-article">
-                <p>
-                在我的心中，优秀的编码者一定与音乐家有着某种深层的联系。<br>
-                有本书叫《黑客与画家》，我倒认为，更像是音乐家。<br>
-                用符号去书写思维,遵循着规则却又创造着规则，用外人看似枯燥与繁琐的符号去创造美。<br>
-                在历史的潮流中，虽然有很多作品已经流逝，却总有一部分能穿越时光，让人们铭记。<br>
-                音乐是一种态度，好的音乐总能折射出创作者的灵感、情感。<br>
-                就像Scorpions这支乐队，40多年的高龄，但是他们的音乐总能打动我<br>
-                是摇滚，是金属，但不止于感情的宣泄，而更多倾诉<br>
-                总能带给我商业化的音乐所不能有的感动,是可以一个人静静欣赏的作品<br>
-                好听，却不满足于好听。回想起来某一句歌词，总会脑海中浮现出旋律<br>
-                让我相信，The best is yet to come！<br>
-                <a target="_blank" href="http://music.163.com/#/user/home?id=3452694" style="color: #0ff">我的网易云音乐主页</a>
-                </p>
-            </article>
-            <embed id="player" src="http://www.xiami.com/widget/41644968_1280328,1769415279,1279925,1280376,3365856,3681056,3381237,2098680,1025141,_235_346_333333_111111_1/multiPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque"></embed>
+            <div class="fullscreen-container">
+                <article id="music-article">
+                    <p>
+                        在我的心中，优秀的编码者一定与音乐家有着某种深层的联系。<br>
+                        有本书叫《黑客与画家》，我倒认为，更像是音乐家。<br>
+                        用符号去书写思维,遵循着规则却又创造着规则，用外人看似枯燥与繁琐的符号去创造美。<br>
+                        在历史的潮流中，虽然有很多作品已经流逝，却总有一部分能穿越时光，让人们铭记。<br>
+                        音乐是一种态度，好的音乐总能折射出创作者的灵感、情感。<br>
+                        就像Scorpions这支乐队，40多年的高龄，但是他们的音乐总能打动我<br>
+                        是摇滚，是金属，但不止于感情的宣泄，而更多倾诉<br>
+                        总能带给我商业化的音乐所不能有的感动,是可以一个人静静欣赏的作品<br>
+                        好听，却不满足于好听。回想起来某一句歌词，总会脑海中浮现出旋律<br>
+                        让我相信，The best is yet to come！<br>
+                        <a target="_blank" href="http://music.163.com/#/user/home?id=3452694" style="color: #0cf">我的网易云音乐主页</a>
+                    </p>
+                </article>
+            </div>
+
+            <!--<embed id="player" src="http://www.xiami.com/widget/41644968_1280328,1769415279,1279925,1280376,3365856,3681056,3381237,2098680,1025141,_235_346_333333_111111_1/multiPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque"></embed>-->
+            <!--<embed id="player" src="http://www.xiami.com/widget/41644968_3365856,1280328,1769415279,1280328,1769415279,1280376,3381237,3681056,1279925,1025141,2098680,_235_346_e29833_60362a_1/multiPlayer.swf" type="application/x-shockwave-flash" width="235" height="346" wmode="opaque"></embed>-->
+            <!--<script type="text/javascript" src="http://www.xiami.com/widget/player-multi?uid=41644968&sid=3365856,1280328,1769415279,1280328,1769415279,1280376,3381237,3681056,1279925,1025141,2098680,&width=235&height=346&mainColor=e29833&backColor=60362a&autoplay=1&mode=js"></script>-->
         </div>
         <div id="footer">
-
+            <div class="fullscreen-container">
+                <h2>友情链接</h2>
+                    <a href="http://renfeisong.org/" target="_blank">Renfei Song 宋任飞</a>
+                    <a href="http://wanzy.me/" target="_blank">Wanzysky 万昭祎</a>
+                    <a href="http://szm.me/" target="_blank">SZM's BLOG 宋子明</a>
+                    <a href="http://timmyxu.me/" target="_blank">Timmy Xu 徐少峰</a>
+                    <a href="http://wannakissyou.com/" target="_blank">LMY的浪漫博客</a>
+                    <br/>
+                    <a href="https://github.com/WunGCQ" target="_blank">Developed By:WunGCQ</a>
+            </div>
         </div>
     </div>
 </body>

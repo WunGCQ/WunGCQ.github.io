@@ -513,8 +513,9 @@ p{
     left:0px;
 }
 #music-article{
-    position: absolute;
-    left: 300px;
+    position: relative;
+    display: block;
+    margin: 100px auto;
 }
 #music-article p {
     color: #fff;
