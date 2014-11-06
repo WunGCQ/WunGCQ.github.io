@@ -153,3 +153,8 @@ function showElementByOpacity(ElementJQueryObj){
 function hideElementByOpacity(ElementJQueryObj){
     ElementJQueryObj.animate({"display":"none"},"slow");
 }
+function getInTouchWithMe(){
+    console.log("我的邮箱是:wangchunqibuaa@gmail.com");
+    console.log("或者人人网查找:王春琪");
+    console.log("微博@WunGCQ");
+}
