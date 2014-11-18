@@ -158,3 +158,22 @@ function getInTouchWithMe(){
     console.log("或者人人网查找:王春琪");
     console.log("微博@WunGCQ");
 }
+function getArrowAndScroll(event){
+    var arrowUnicode=event.keyCode;
+    var top= $(window).scrollTop();
+    var h = $(window).outerHeight();
+    var nowActive=parseInt(top/h+0.5);
+    var divArr=["#header","#me","#skills","#exp","#blog","#hobby","#footer"];
+    if(arrowUnicode==37||arrowUnicode==38){
+        if(nowActive>=1)
+            $.scrollTo(divArr[nowActive-1],500);
+        else
+            $.scrollTo(divArr[0],500);
+    }
+    else if(arrowUnicode==39||arrowUnicode==40){
+        if(nowActive<=5)
+            $.scrollTo(divArr[nowActive+1],500);
+        else
+            $.scrollTo(divArr[6],500);
+    }
+}
