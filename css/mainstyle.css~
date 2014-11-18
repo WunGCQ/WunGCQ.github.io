@@ -183,7 +183,7 @@ p {
     .moji-title{
         display: block;
         position: relative;
-        z-index: 320;
+        z-index: 120;
     }
 }
 
@@ -192,7 +192,7 @@ p {
         display: none !important;
     }
     .big-title{
-        font-size: 24px;
+        font-size: 28px;
     }
     .project-block img{
         width: 275px !important;
@@ -228,7 +228,7 @@ p {
     .important-title-seal-4 {
         display: block;
         text-align: center;
-        width: 192px;
+        width: 188px;
         padding: 15px;
         border: 2px outset #555;
         box-shadow: 0px 0px 20px 20px rgba(19, 19, 19, 0.5) inset;
@@ -386,10 +386,8 @@ p {
 
     .moji-title {
         padding: 10px 0px 20px 0px;
-        display: block;
         background-repeat: no-repeat;
         background-position: center center;
-        z-index: 3200 !important;
         background-image: url(../img/moji-bg.png);
     }
 
@@ -399,7 +397,7 @@ p {
         vertical-align: top;
     }
 
-    .project-block img{
+    .project-block img {
         width: 300px;
         height: 300px;
     }
