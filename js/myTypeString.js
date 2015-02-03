@@ -158,6 +158,7 @@ function getInTouchWithMe(){
     console.log("或者人人网查找:王春琪");
     console.log("微博@WunGCQ");
 }
+
 function getArrowAndScroll(event){
     var arrowUnicode=event.keyCode;
     var top= $(window).scrollTop();
