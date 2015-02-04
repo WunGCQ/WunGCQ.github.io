@@ -60,8 +60,8 @@
 .day-box:active {
     /*background-color: rgba(137, 184, 237, 0.60);*/
 
-    background-color: rgba(137, 184, 237, 0.9);
-
+    /*background-color: rgba(137, 184, 237, 0.9);*/
+    background-color: #69CCE9;
 }
 
 .day-box span {

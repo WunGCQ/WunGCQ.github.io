@@ -28,6 +28,15 @@ function calendar() {
         11: 30,
         12: 31
     };
+    this.week_in_Chinese = {
+      1:"星期一",
+      2:"星期二",
+      3:"星期三",
+      4:"星期四",
+      5:"星期五",
+      6:"星期六",
+      7:"星期日"
+    };
 //今天
     this.today = new Date();
 //今年
@@ -36,6 +45,8 @@ function calendar() {
     this.week_day = this.today.toDateString().slice(0, 3);
 //星期几 数字顺序
     this.the_week_day_sequence_of_today = this.today.getDay();
+//星期几 中文
+    this.the_week_day_in_Chinese = this.week_in_Chinese[this.today.getDay().toString()];
 
     /*获取this block及其内部元素的DOM*/
     this.get_calendar_views = function () {
@@ -65,12 +76,14 @@ function calendar() {
         var iterator = this.today;
         var position = this.the_week_day_sequence_of_today;
         this.calendar_dom_tree.day_span_array[position - 1].innerHTML = this.today.getDate();//填充今天的位置
+        this.calendar_dom_tree.day_span_array[position - 1].parentNode.setAttribute("data-date",this.today.toLocaleDateString());//绑定日期
         this.calendar_dom_tree.day_span_array[position - 1].parentNode.className+=" active";
 
         while (position >1) {
             iterator.setDate(iterator.getDate() - 1);//迭代器向前走一天
             position--;//位置前移
-            this.calendar_dom_tree.day_span_array[position - 1].innerHTML = iterator.getDate();
+            this.calendar_dom_tree.day_span_array[position - 1].innerHTML = iterator.getDate();//填入值
+            this.calendar_dom_tree.day_span_array[position - 1].parentNode.setAttribute("data-date",iterator.toLocaleDateString());//绑定日期
 
         }
         iterator = new Date();
@@ -80,7 +93,8 @@ function calendar() {
         while (position < 7) {
             iterator.setDate(iterator.getDate() + 1);//迭代器向后走一天
             position++;//位置后移
-            this.calendar_dom_tree.day_span_array[position - 1].innerHTML = iterator.getDate();
+            this.calendar_dom_tree.day_span_array[position - 1].innerHTML = iterator.getDate();//填入值
+            this.calendar_dom_tree.day_span_array[position - 1].parentNode.setAttribute("data-date",iterator.toLocaleDateString());//绑定日期
         }
     };
 
@@ -99,10 +113,12 @@ function calendar() {
     };
 
     var calendar_control = this;//供自调用函数使用
-    this.run = (function () {
+
+    this.init = (function () {
         calendar_control.set_day_todo_bar_length();
         calendar_control.fill_calendar_day_block();
     })();
+
     this.add_single_class_to_day_block = (function(){
         for(var i=0; i<calendar_control.calendar_dom_tree.day_span_array.length; i++) {
             if(calendar_control.calendar_dom_tree.day_span_array[i].innerHTML.length<2){

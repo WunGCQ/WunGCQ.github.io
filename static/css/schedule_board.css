@@ -1,0 +1,114 @@
+/*日程控件*/
+#schedule-board-box {
+    display: block;
+    position: relative;
+    margin-top: 5px;
+    width: 385px;
+    height: 580px;
+    z-index: 5;
+    font-family:  Arial, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', '宋体', 宋体, Tahoma, Arial, Helvetica, STHeiti;
+}
+#schedule-board-header {
+    display: block;
+    position: relative;
+    background-color: rgba(255, 255, 255, .4);
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    border-radius: 5px 5px 0 0;
+}
+#schedule-board-header span,#schedule-board-header svg {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+#schedule-board-header svg {
+    margin-left: 10px;
+}
+#schedule-board-header span{
+    font-size: 24px;
+    margin-left: -15px;
+    color: #0F0A0E;
+}
+#schedule-board-title {
+    display: block;
+    position: relative;
+    box-sizing: content-box;
+    margin:  0;
+    width: 100%;
+    height: 70px;
+    padding: 0;
+    background-color: rgba(255, 255, 255, .15);
+}
+#schedule-board-title-right-box {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    width: 320px;
+    height: 100%;
+}
+
+#schedule-board-title .time-box {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin-top: 20px;
+    border-right: 1px solid #9a9a9a;
+    width: 52px;
+    height: 50px;
+    text-align: center;
+
+}
+
+#schedule-board-title .time-box span {
+    color: #696969;
+    font-weight: 600;
+}
+
+#schedule-board-box .time-line-point {
+    display: block;
+    position: absolute;
+    right: -5px;
+    width: 7px;
+    height: 7px;
+    border-radius: 7px;
+    background-color: #B3B3B3;
+    border: 1px solid #808080;
+}
+
+#schedule-board-title .time-line-point {
+    top: 1px;
+}
+
+#schedule-board-title table {
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 100%;
+}
+#schedule-board-title tr>td:first-child {
+    width: 85px;
+}
+#schedule-board-title td {
+    color:#333;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+#schedule-board-title a {
+    display: block;
+    position: absolute;
+    color: #fff;
+    right: 0px;
+    bottom: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    opacity: 0.5;
+    transition: opacity 0.5s;
+}
+#schedule-board-title a:hover {
+    opacity: 1;
+
+}
