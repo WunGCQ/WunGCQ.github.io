@@ -158,15 +158,95 @@
                             <td></td>
                         </tr>
                     </table>
-                    <a href="#" onmouseover="UI_animate.shake(this);" onmouseout="UI_animate.remove_animation(this);" title="清空">
+                    <a href="#" onmouseover="UI_animate.shake(this);" onmouseout="UI_animate.remove_animation(this);">
                         <span class="fa fa-trash" ></span>
                     </a>
                 </div>
             </div>
-            <div>
-                <div>
+            <div id="schedule-board-list-box">
+                <ul>
+                    <li>
+                        <div class="time-box">
+                            <span>8:00</span>
+                            <i class="time-line-point"></i>
+                        </div>
+                        <div class="schedule-box color1">
+                            <div class="schedule-name-wrapper">
+                                <div class="schedule-name-box">
+                                    <span>基于透明计算的遗迹守卫协同学习</span>
+                                </div>
+                            </div>
+                            <div class="schedule-detail-box">
+                                <div class="teacher-info">
+                                    <span class="is-boya"></span>
+                                    <span class="fa fa-user"></span>
+                                    <span class="teacher-name">人民教师 葛木宗一郎</span>
+                                </div>
+                                <div class="classroom-info">
+                                    <span class="fa fa-map-marker"></span>
+                                    <span>冬木市 110</span>
+                                </div>
+                                <div class="time-info">
+                                    <span class="fa fa-clock-o"></span>
+                                    <span>50</span>
+                                </div>
+                            </div>
+                        </div>
 
+                    </li>
+                    <li>
+                        <div class="time-box">
+                            <span>9:00</span>
+                            <i class="time-line-point"></i>
+                        </div>
+                        <div class="schedule-box color2">
+                            <div class="schedule-name-wrapper">
+                                <div class="schedule-name-box">
+                                    <span>基于透明计算的遗迹守卫协同学习</span>
+                                </div>
+                            </div>
+                            <div class="schedule-detail-box">
+                                <div class="teacher-info">
+                                    <span class="is-boya"></span>
+                                    <span class="fa fa-user"></span>
+                                    <span class="teacher-name">人民教师 葛木宗一郎</span>
+                                </div>
+                                <div class="classroom-info">
+                                    <span class="fa fa-map-marker"></span>
+                                    <span>冬木市 110</span>
+                                </div>
+                                <div class="time-info">
+                                    <span class="fa fa-clock-o"></span>
+                                    <span>50</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+                <a id="add-schedule">+</a>
+            </div>
+            <div id="schedule-board-user-bar">
+                <div class="gradient-bg"></div>
+                <div class="user-head-box">
+                    <img src="../images/user-head.jpg" alt="头像"/>
                 </div>
+                <i id="is-online"></i>
+                <div class="up-box">
+                    <span class="fa fa-thumbs-up"></span>
+                    <a href="#">35</a>
+                </div>
+                <div class="comment-box">
+                    <span class="fa fa-comment"></span>
+                    <a href="#">35</a>
+                </div>
+                <a href="#" id="user-bar-message-icon" title="消息">
+                    <span class="fa fa-envelope"></span>
+                </a>
+                <a href="#" id="user-bar-could-icon" title="云盘">
+                    <span class="fa fa-cloud"></span>
+                </a>
+
             </div>
         </div>
     </div>

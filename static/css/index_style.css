@@ -24,9 +24,30 @@ body {
 #container {
     display: block;
     position: relative;
-    margin: 115px 67px auto 67px;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 115px 67px 50px 67px;
     width: calc(100% - 190px);
-    height: calc(100% - 280px);
-    min-height: 465px;
+    height: calc(100% - 180px);
+    min-height: 660px;
+    /*background-color: brown;*/
 }
 
+/*赞*/
+.up-box, .comment-box {
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+    font-size: 13px;
+    z-index: 15;
+}
+.up-box .fa, .comment-box .fa{
+    font-size: 15px;
+}
+.up-box a, .comment-box a {
+    text-decoration: none;
+    color: inherit;
+}
+.up-box a:hover, .comment-box a:hover{
+    text-decoration: underline;
+}

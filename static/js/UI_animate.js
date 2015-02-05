@@ -4,7 +4,13 @@
 var UI_animate = {};
 UI_animate.shake = function(obj){
     if(obj.className.indexOf("animate-shaking")==-1){
-        obj.className += " animate-shaking";
+        if(obj.classList[0]=="undefined"){
+            obj.className = "animate-shaking";
+        }
+        else{
+            obj.className += " animate-shaking";
+        }
+
     }
     else{
 
@@ -12,9 +18,9 @@ UI_animate.shake = function(obj){
 };
 UI_animate.remove_animation = function(obj){
     var classname = obj.className.split(' ');
-    var temp_class_name;
+    var temp_class_name = "";
     for(var i = 0;i< classname.length; i++) {
-        if(classname[i].indexOf('animate')==-1){
+        if(classname[i].indexOf('animate')==-1 && classname[i]!="undefined"){
             temp_class_name+=" "+classname[i];
         }
     }
