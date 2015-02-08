@@ -323,7 +323,9 @@
 
 
 
-
+#create-new-schedule-control {
+    background-color: #4b98e3;
+}
 
 
 
@@ -333,4 +335,7 @@
 }
 .color2 {
     background-color: #6ED4C6;
+}
+.color3 {
+    background-color: #69CCE9;
 }

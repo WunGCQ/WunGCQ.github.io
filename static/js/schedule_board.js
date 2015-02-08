@@ -29,14 +29,25 @@ function schedule_board() {
     };
 
     var schedule_board = this;
-    //填充数据
-    this.fill_schedule_board_title = function(date){
+    //填充title部分
+    this.fill_schedule_board_title = function(date) {
         schedule_board.fill_schedule_board_title_date(date);
         schedule_board.fill_schedule_board_title_week_day(date);
         schedule_board.fill_schedule_board_title_CN_date(date);
         schedule_board.stick_date_attr_on_box(date);
         //TODO
     };
+
+    this.add_schdule_to_list = function() {
+
+    };
+    this.show_create_control = function() {
+
+    };
+    this.scroll_list = function() {
+
+    };
+
 
     this.init = (function(){
         schedule_board.fill_schedule_board_title(calendar_control.today);

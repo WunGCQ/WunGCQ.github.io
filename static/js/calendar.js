@@ -44,7 +44,7 @@ function calendar() {
 //星期几 字符形式
     this.week_day = this.today.toDateString().slice(0, 3);
 //星期几 数字顺序
-    this.the_week_day_sequence_of_today = this.today.getDay();
+    this.the_week_day_sequence_of_today = (this.today.getDay()==0?7:this.today.getDay());
 //星期几 中文
     this.the_week_day_in_Chinese = this.week_in_Chinese[this.today.getDay().toString()];
 
@@ -107,7 +107,7 @@ function calendar() {
             /*先放一段随机长度~*/
             var width = Math.floor(56 * Math.random()).toString() + "px";
             //this.calendar_dom_tree.day_todo_bar[i].style.cssText = "width:" + width + ";"
-            set_style(this.calendar_dom_tree.day_todo_bar[i],("width:" + width + ";"));
+            this.calendar_dom_tree.day_todo_bar[i]._css("width",width);
         }
 
     };

@@ -27,10 +27,15 @@ body {
     box-sizing: border-box;
     padding: 0;
     margin: 115px 67px 50px 67px;
-    width: calc(100% - 190px);
+    width: calc(100% - 150px);
     height: calc(100% - 180px);
     min-height: 660px;
+    overflow: hidden;
+
     /*background-color: brown;*/
+}
+* {
+    /*box-shadow: 0 0 2px #000;*/
 }
 
 /*赞*/
@@ -51,3 +56,36 @@ body {
 .up-box a:hover, .comment-box a:hover{
     text-decoration: underline;
 }
+#left-control-wrapper {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    width: 385px;
+    height: 100%;
+}
+/*右边卡片的包裹box*/
+#water_fall_wrapper {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    background: transparent;
+    width: calc(100% - 400px);
+    height: 100%;
+    margin-left: 10px;
+}
+.card-row {
+    display: block;
+    vertical-align: top;
+    position: relative;
+    box-sizing: content-box;
+    float: left;
+    width: 385px;
+    height: auto;
+    margin-left: 10px;
+
+}
+
+
+/*img{*/
+    /*background-color: #000;*/
+/*}*/
