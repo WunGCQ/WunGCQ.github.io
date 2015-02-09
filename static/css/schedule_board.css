@@ -21,6 +21,9 @@
     width: 100%;
     line-height: 50px;
     border-radius: 5px 5px 0 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 #schedule-board-header span,#schedule-board-header svg {
     display: inline-block;

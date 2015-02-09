@@ -4,6 +4,9 @@
     margin: 0;
     height: 77px;
     width: 385px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 #calendar>li {

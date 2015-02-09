@@ -82,6 +82,9 @@ body {
     width: 385px;
     height: auto;
     margin-left: 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 
 }
 
@@ -89,3 +92,28 @@ body {
 /*img{*/
     /*background-color: #000;*/
 /*}*/
+
+/*滚动条样式*/
+
+::-webkit-scrollbar
+{
+    width: 10px;
+    height: 6px;
+}
+::-webkit-scrollbar-track-piece
+{
+    background-color: #ccc;
+    -webkit-border-radius: 0;
+}
+::-webkit-scrollbar-thumb:vertical
+{
+    height: 5px;
+    background-color: #999999;
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:horizontal
+{
+    width: 5px;
+    background-color: #CCCCCC;
+    -webkit-border-radius: 6px;
+}
