@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="../css/schedule_board.css"/>
     <!--卡片-->
     <link rel="stylesheet" href="../css/card.css"/>
+    <!--滚动条-->
+    <link rel="stylesheet" href="../css/scroll_bar.css"/>
     <!--font-awesome-->
     <link rel="stylesheet" href="../font-awesome-4.2.0/css/font-awesome.min.css"/>
     <!---->
@@ -39,12 +41,14 @@
     <script src="../js/lib/get_cn_date.js"></script>
     <!--瀑布流布局-->
     <script src="../js/waterfall_scroll.js"></script>
+    <!--滚动条-->
+    <script src="../js/scrollbar.js"></script>
     <!--UI动画-->
     <script src="../js/UI_animate.js"></script>
 
 
 </head>
-<body>
+<body onload="exam()">
     <header id="header">
         <a href="/" id="logo-box">
         </a>
@@ -508,6 +512,8 @@
             </div>
         </div>
     </div>
+    <span class="fa fa-angle-double-up" id="scroll-up"></span>
+    <span class="fa fa-angle-double-down" id="scroll-down"></span>
 
 
 
@@ -515,5 +521,6 @@
 <script>
 //    var calendar_control = new calendar();这个全局变量会在下面的控件中引入
     var schedule_control = new schedule_board();
+//    exam();
 </script>
 </html>

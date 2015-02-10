@@ -2,10 +2,11 @@
  * Created by WunG on 2015/2/6.
  */
 function waterfall_layout_control() {
-    this.water_fall_wrapper_id = arguments.water_fall_warpper_id||"water_fall_wrapper";
-    this.content_wrapper_class = arguments.content_wrapper_class||"card-row";
-    this.content_class = arguments.content_class||"card";
-    this.content_box_width = arguments.content_box_width||395;
+    this.arg = arguments[0];
+    this.water_fall_wrapper_id = this.arg.water_fall_warpper_id||"water_fall_wrapper";
+    this.content_wrapper_class = this.arg.content_wrapper_class||"card-row";
+    this.content_class = this.arg.content_class||"card";
+    this.content_box_width = this.arg.content_box_width||350;
     this.get_water_fall_wrapper = function () {
         return (document.getElementById(this.water_fall_wrapper_id));
     };
@@ -28,11 +29,14 @@ function waterfall_layout_control() {
         }
         return content_wrappers[lower_number];
     };
+
+    //TODO
     this.form_content_fragment = function() {
         var range = document.createRange();
         var str = ['<div class="card"></div>'];
     };
 
+    //TODO
     this.add_content = function(elem) {
         this.find_lowest_row().appendChild(fragment);
         return fragment;

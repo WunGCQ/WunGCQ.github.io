@@ -70,8 +70,10 @@ body {
     vertical-align: top;
     background: transparent;
     width: calc(100% - 400px);
-    height: 100%;
+    /*height: 100%;*/
+    height: auto;
     margin-left: 10px;
+    /*transition: all 0.01s linear;*/
 }
 .card-row {
     display: block;
@@ -79,7 +81,7 @@ body {
     position: relative;
     box-sizing: content-box;
     float: left;
-    width: 385px;
+    width: 340px;
     height: auto;
     margin-left: 10px;
     -webkit-user-select: none;
@@ -88,6 +90,24 @@ body {
 
 }
 
+#scroll-up{
+    display: block;
+    position: absolute;
+    color: #fff;
+    right: 30px;
+    font-size: 30px;
+    bottom: calc(40% + 50px);
+    cursor: pointer;
+}
+#scroll-down{
+    display: block;
+    position: absolute;
+    color: #fff;
+    right: 30px;
+    font-size: 30px;
+    bottom: 40%;
+    cursor: pointer;
+}
 
 /*img{*/
     /*background-color: #000;*/

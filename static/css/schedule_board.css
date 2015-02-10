@@ -158,11 +158,11 @@
     display: inline-block;
     vertical-align: top;
     position: relative;
-    width: 332px;
+    width: 331px;
     height: 55px;
     padding: 0;
     margin-left: -3px;
-    float: right;
+    /*float: right;*/
     cursor: default;
 }
 #schedule-board-list-box .schedule-name-wrapper {
@@ -190,7 +190,7 @@
     display: inline-block;
     vertical-align: top;
     height: 100%;
-    width: 163px;
+    width: 160px;
 }
 #schedule-board-list-box .schedule-detail-box>div{
     display:inline-block;
