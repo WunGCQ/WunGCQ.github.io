@@ -73,7 +73,7 @@ body {
     /*height: 100%;*/
     height: auto;
     margin-left: 10px;
-    /*transition: all 0.01s linear;*/
+    transition: all 0.1s linear;
 }
 .card-row {
     display: block;
@@ -90,23 +90,30 @@ body {
 
 }
 
-#scroll-up{
+#scroll-up,#scroll-down {
     display: block;
     position: absolute;
     color: #fff;
     right: 30px;
-    font-size: 30px;
-    bottom: calc(40% + 50px);
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    text-align: center;
+    line-height: 40px;
+    font-size: 25px;
+    font-weight: 100;
+    bottom: calc(40% + 80px);
     cursor: pointer;
+    opacity: 0.6;
+    transition: all ease 0.3s;
 }
-#scroll-down{
-    display: block;
-    position: absolute;
-    color: #fff;
-    right: 30px;
-    font-size: 30px;
+#scroll-up:hover, #scroll-down:hover {
+    opacity: 1;
+
+}
+#scroll-down {
     bottom: 40%;
-    cursor: pointer;
 }
 
 /*img{*/

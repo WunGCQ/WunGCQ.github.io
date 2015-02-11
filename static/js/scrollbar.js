@@ -7,13 +7,18 @@
 function exam(){
     var x1 = document.getElementById('container');
     var x2 = document.getElementById('water_fall_wrapper');
+    var x3 = document.getElementById('scroll-up');
+    var x4 = document.getElementById('scroll-down');
     var arg = {
         view_port_element : x1,
-        scroll_element : x2
+        scroll_element : x2,
+        up_button:x3,
+        down_button:x4
     };
     window.x = new scrollbar(arg);
-    x.add_scroll_bar();
-    x.fresh_controll();
+    x.init();
+    //x.add_scroll_bar();
+    //x.fresh_controll();
 }
 
 function scrollbar(){
@@ -94,16 +99,16 @@ function scrollbar(){
         }
 
     };
-    this.scroll_up = function(){
+    this.scroll_up = function(up_offset){
         if(this.scroll_bar_top>0){
-            this.scroll_bar_top-=2;
+            this.scroll_bar_top-=up_offset||2;
             this.scroll_bar._css("margin-top",(this.scroll_bar_top+"px").toString());
             this.move_scroll_element();
         }
     };
-    this.scroll_down = function(){
+    this.scroll_down = function(down_offest){
         if(this.scroll_bar_top+this.scroll_bar_height < this.scroll_bar_track_height){
-            this.scroll_bar_top+=2;
+            this.scroll_bar_top+=down_offest||2;
             this.scroll_bar._css("margin-top",(this.scroll_bar_top+"px").toString());
             this.move_scroll_element();
         }
@@ -119,6 +124,56 @@ function scrollbar(){
 
     this.up_controller = function(){
         this.is_mouse_down = false;
+    };
+    this.bind_button_scroll = function() {
+        if(this.arg.up_button){
+
+            this.arg.up_button.addEventListener('mousedown',function(){
+                s.tt = setInterval(function(){s.scroll_up();},10);
+            });
+            this.arg.up_button.addEventListener('mouseup',function(){
+                window.clearInterval(s.tt);
+            });
+
+        }
+        if(this.arg.down_button) {
+
+            this.arg.down_button.addEventListener('mousedown',function(){
+                s.tt = setInterval(function(){s.scroll_down();},10);
+            });
+            this.arg.down_button.addEventListener('mouseup',function(){
+                window.clearInterval(s.tt);
+            });
+
+        }
+
+
+    };
+    this.bind_key_scroll = function(){
+        //this.view_port_element.addEventListener('mouseover',function(){
+        //    //alert("oh!");
+        s.scroll_element.tabIndex = 0;
+        s.scroll_element.addEventListener('keydown',function(event){
+            var event = event||window.event;
+               //alert('2333');
+            var arrowUnicode = event.keyCode;
+            if(arrowUnicode==37||arrowUnicode==38){
+                //s.key_timer = setInterval(function(){s.scroll_up();},10);
+                s.scroll_up(10);
+            }
+            else if(arrowUnicode==39||arrowUnicode==40){
+                //s.key_timer = setInterval(function(){s.scroll_down();},10);
+                s.scroll_down(10);
+            }
+        });
+        s.scroll_element.addEventListener('keyup',function(event){
+            window.clearInterval(s.key_timer);
+
+        });
+
+        //});
+
+
     };
     //绑定刷新事件
     this.fresh_controll = function() {
@@ -139,18 +194,13 @@ function scrollbar(){
             alert(event.keyCode);
             s.up_controller();
         });
-        document.getElementById('scroll-up').addEventListener('mousedown',function(){
-            s.tt = setInterval(function(){s.scroll_up();},10);
-        });
-        document.getElementById('scroll-up').addEventListener('mouseup',function(){
-            window.clearInterval(s.tt);
-        });
-        document.getElementById('scroll-down').addEventListener('mousedown',function(){
-            s.tt = setInterval(function(){s.scroll_down();},10);
-        });
-        document.getElementById('scroll-down').addEventListener('mouseup',function(){
-            window.clearInterval(s.tt);
-        });
+
+    };
+    this.init = function(){
+        this.add_scroll_bar();
+        this.fresh_controll();
+        this.bind_key_scroll();
+        this.bind_button_scroll();
     };
     return  this;
 }
