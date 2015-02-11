@@ -8,7 +8,8 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: url(../images/bg_new.jpg) repeat;
+    background-color: #000;
+    /*background: url(../images/bg_new.jpg) repeat;*/
     /*background: url('../images/index_bg.jpg') 50% 50% /cover repeat-x;*/
     /*background-image: url('../images/index_bg.jpg');*/
     /*-moz-background-size: 100% 100%; *//*  Firefox 3.6 */
@@ -19,10 +20,23 @@ body {
     /*filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/index_bg.jpg', sizingMethod='scale');*/
 }
 
+#mov-bg {
+    min-width: 100%;
+    min-height:100%;
+    width: auto;
+    height: auto;
+    display: block;
+    position: absolute;
+    z-index: 0;
+    transition: all ease 0.5s;
+}
+.inactive {
+    visibility: hidden;
+}
 .card {
     display: block;
     position: absolute;
-    z-index: 3;
+    z-index: 999;
     width: 285px;
     height: 375px;
     margin-left: 102px;
@@ -64,7 +78,6 @@ body {
     margin-top: 85px;
     margin-left: 30px;
     background-image: url('../images/TP.png');
-    border:1px solid #fff;
 }
 .card form{
     display: block;
@@ -89,21 +102,46 @@ body {
     color:#555;
     text-indent: 1em;
     transition: all 0.3s ease;
+    outline: none;
+}
+.CAPTCHA-box {
+    width: 100%;
+    margin: 0 auto 0 auto;
+    height: 36px;
+    text-align: left;
+}
+.CAPTCHA {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    width: 35%;
+    height: 34px;
+    margin-top: 1px;
+    border: 1px solid #fff;
+}
+.small-input {
+    display: inline-block !important;
+    margin: 0 !important;
+    vertical-align: top;
+    width: 60% !important;
 }
 .card form input:focus {
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 5px rgba(0, 0, 0, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 4px rgba(0, 0, 0, .6);
 }
 .card form .button {
     display: block;
     position: relative;
     width: calc(100% - 2px);
-    margin: 34px auto 8px auto;
+    margin: 51px auto 8px auto;
     height: 36px;
     line-height: 36px;
     background-color: rgba(53, 171, 217, .6);
     border-radius: 5px;
     cursor: pointer;
     transition: all ease 0.3s;
+}
+#register .button {
+    margin-top: 10px;
 }
 .button .fa{
     color:#fff;
@@ -119,9 +157,63 @@ body {
 .card a{
     color:#666;
 }
-.register-link {
+.register-link, .login-link {
     float: left;
 }
 .password-back-link {
     float: right;
+}
+#password-back .register-link {
+    float: right;
+}
+#register table{
+    margin: 82px auto 5px auto;
+    width: 230px;
+}
+#register table tr, #register table tbody{
+    width: 100%;
+}
+
+#register table td{
+    width: 33%;
+}
+#register table td:first-child {
+    text-align: left;
+}
+#register table td:nth-child(2) {
+    text-align: center;
+}
+#register table td:last-child {
+    text-align: right;
+}
+#password-back #nav {
+    display: block;
+    width: 230px;
+    text-align: left;
+    margin: 123px auto 10px auto;
+}
+
+.active-link {
+    color:#444 !important;
+}
+.active-link:hover {
+    text-decoration: none;
+}
+.inactive-link:hover {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+}
+
+
+
+.in {
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: 350ms;
+    animation-timing-function: ease-out;
+    animation-duration: 350ms;
+}
+.out {
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-duration: 225ms;
+    animation-timing-function: ease-in;
+    animation-duration: 225ms;
 }
