@@ -127,7 +127,9 @@ function scrollbar(){
     };
     this.bind_button_scroll = function() {
         if(this.arg.up_button){
-
+            this.arg.up_button.addEventListener('click',function() {
+                s.scroll_up(10);
+            });
             this.arg.up_button.addEventListener('mousedown',function(){
                 s.tt = setInterval(function(){s.scroll_up();},10);
             });
@@ -137,7 +139,9 @@ function scrollbar(){
 
         }
         if(this.arg.down_button) {
-
+            this.arg.down_button.addEventListener('click',function() {
+                s.scroll_down(10);
+            });
             this.arg.down_button.addEventListener('mousedown',function(){
                 s.tt = setInterval(function(){s.scroll_down();},10);
             });
@@ -150,24 +154,22 @@ function scrollbar(){
 
     };
     this.bind_key_scroll = function(){
-        //this.view_port_element.addEventListener('mouseover',function(){
-        //    //alert("oh!");
+
         s.scroll_element.tabIndex = 0;
         s.scroll_element.addEventListener('keydown',function(event){
             var event = event||window.event;
-               //alert('2333');
             var arrowUnicode = event.keyCode;
             if(arrowUnicode==37||arrowUnicode==38){
-                //s.key_timer = setInterval(function(){s.scroll_up();},10);
+
                 s.scroll_up(10);
             }
             else if(arrowUnicode==39||arrowUnicode==40){
-                //s.key_timer = setInterval(function(){s.scroll_down();},10);
+
                 s.scroll_down(10);
             }
         });
         s.scroll_element.addEventListener('keyup',function(event){
-            window.clearInterval(s.key_timer);
+            //window.clearInterval(s.key_timer);
 
         });
 
