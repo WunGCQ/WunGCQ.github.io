@@ -55,6 +55,7 @@
     padding-top: 12px;
     font-size: 3.2em;
     box-shadow: inset 4px 0px 10px 3px rgba(200,200,200,0.1);
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, .3);
 }
 .single-number:hover {
     padding-left: 18px;
