@@ -2,16 +2,19 @@ function get_style(elem,attr) {
     if(elem.style[attr]){
         //若样式存在于html中,优先获取
         return elem.style[attr];
-    }else if(elem.currentStyle){
-        //IE下获取CSS属性最终样式(同于CSS优先级)
-        return elem.currentStyle[attr];
-    }else if(document.defaultView && document.defaultView.getComputedStyle){
+    }
+    else if(document.defaultView && document.defaultView.getComputedStyle){
         //W3C标准方法获取CSS属性最终样式(同于CSS优先级)
         //注意,此法属性原格式(text-align)获取的,故要转换一下
         attr=attr.replace(/([A-Z])/g,'-$1').toLowerCase();
         //获取样式对象并获取属性值
         return document.defaultView.getComputedStyle(elem,null).getPropertyValue(attr);
-    }else{
+    }
+    else if(elem.currentStyle){
+        //IE下获取CSS属性最终样式(同于CSS优先级)
+        return elem.currentStyle[attr];
+    }
+    else{
         return null;
     }
 }
@@ -38,16 +41,19 @@ if(Node){
             if(this.style[attr]){
                 //若样式存在于html中,优先获取
                 return this.style[attr];
-            }else if(this.currentStyle){
-                //IE下获取CSS属性最终样式(同于CSS优先级)
-                return this.currentStyle[attr];
-            }else if(document.defaultView && document.defaultView.getComputedStyle){
+            }
+            else if(document.defaultView && document.defaultView.getComputedStyle){
                 //W3C标准方法获取CSS属性最终样式(同于CSS优先级)
                 //注意,此法属性原格式(text-align)获取的,故要转换一下
                 attr=attr.replace(/([A-Z])/g,'-$1').toLowerCase();
                 //获取样式对象并获取属性值
                 return document.defaultView.getComputedStyle(this,null).getPropertyValue(attr);
-            }else{
+            }
+            else if(this.currentStyle){
+                //IE下获取CSS属性最终样式(同于CSS优先级)
+                return this.currentStyle[attr];
+            }
+            else{
                 return null;
             }
         }
