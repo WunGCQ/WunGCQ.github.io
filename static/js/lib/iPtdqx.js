@@ -26,32 +26,35 @@ function set_style(elem,css) {
 
 }
 //扩展 css
-Node.prototype._css = function(attr,value){
-    if(value!=null && typeof value!="undefined" ){
-        if(typeof value!="")
-        this.style[attr]=value;
+if(Node){
+    Node.prototype._css = function(attr,value){
+        if(value!=null && typeof value!="undefined" ){
+            if(typeof value!="")
+                this.style[attr]=value;
 
-        return this;//返回本对象，方便链式调用~
-    }
-    else{
-        if(this.style[attr]){
-            //若样式存在于html中,优先获取
-            return this.style[attr];
-        }else if(this.currentStyle){
-            //IE下获取CSS属性最终样式(同于CSS优先级)
-            return this.currentStyle[attr];
-        }else if(document.defaultView && document.defaultView.getComputedStyle){
-            //W3C标准方法获取CSS属性最终样式(同于CSS优先级)
-            //注意,此法属性原格式(text-align)获取的,故要转换一下
-            attr=attr.replace(/([A-Z])/g,'-$1').toLowerCase();
-            //获取样式对象并获取属性值
-            return document.defaultView.getComputedStyle(this,null).getPropertyValue(attr);
-        }else{
-            return null;
+            return this;//返回本对象，方便链式调用~
         }
-    }
+        else{
+            if(this.style[attr]){
+                //若样式存在于html中,优先获取
+                return this.style[attr];
+            }else if(this.currentStyle){
+                //IE下获取CSS属性最终样式(同于CSS优先级)
+                return this.currentStyle[attr];
+            }else if(document.defaultView && document.defaultView.getComputedStyle){
+                //W3C标准方法获取CSS属性最终样式(同于CSS优先级)
+                //注意,此法属性原格式(text-align)获取的,故要转换一下
+                attr=attr.replace(/([A-Z])/g,'-$1').toLowerCase();
+                //获取样式对象并获取属性值
+                return document.defaultView.getComputedStyle(this,null).getPropertyValue(attr);
+            }else{
+                return null;
+            }
+        }
 
-};
+    };
+}
+
 
 
 
@@ -115,4 +118,5 @@ function get_browser() {
     if (Sys.chrome) return('Chrome: ' + Sys.chrome);
     if (Sys.opera) return('Opera: ' + Sys.opera);
     if (Sys.safari) return('Safari: ' + Sys.safari);
+    else return('IE: 11');
 }
