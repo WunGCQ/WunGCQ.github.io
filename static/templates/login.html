@@ -97,11 +97,11 @@
     var card2 = document.getElementById('register');
     var card3 = document.getElementById('password-back');
     var mov_bg = document.getElementById('mov-bg');
-    function convert(from,to) {
-        mov_bg._css("opacity","0");
 
+
+    function convert(from,to) {
         var eleBack = null, eleFront = null,
-        eleList = [from,to];//纸牌元素列表
+                eleList = [from,to];//纸牌元素列表
         function funBackOrFront() {
 
             for(var i=0;i<eleList.length; i++) {
@@ -113,31 +113,52 @@
                 }
             }
         }
-        funBackOrFront();
+
+        if(get_browser().indexOf('Safari')!= -1){
+            mov_bg._css("opacity","0");
+            funBackOrFront();
+            setTimeout(function() {
+                eleFront.classList.add('out');
+                eleFront.classList.remove('in');
+                funBackOrFront();
+            }, 500);
+            setTimeout(function() {
+                eleBack.classList.add('in');
+                eleBack.classList.remove('out');
+//            eleBack.addClass("in").removeClass("out");
+                // 重新确定正反元素
+                funBackOrFront();
+
+            }, 825);
+            setTimeout(function() {
+                mov_bg._css("opacity","1");
+            }, 1000);
+        }
+
+        else {
+            funBackOrFront();
+            eleFront.classList.add('out');
+            eleFront.classList.remove('in');
+            setTimeout(function() {
+                eleBack.classList.add('in');
+                eleBack.classList.remove('out');
+                funBackOrFront();
+            }, 225);
+        }
+
+
+
+
         // 切换的顺序如下
         // 1. 当前在前显示的元素翻转90度隐藏, 动画时间225毫秒
         // 2. 结束后，之前显示在后面的元素逆向90度翻转显示在前
         // 3. 完成翻面效果
-        setTimeout(function() {
-            eleFront.classList.add('out');
-            eleFront.classList.remove('in');
-//            eleBack.addClass("in").removeClass("out");
-            // 重新确定正反元素
-            funBackOrFront();
-        }, 500);
-        setTimeout(function() {
-            eleBack.classList.add('in');
-            eleBack.classList.remove('out');
-//            eleBack.addClass("in").removeClass("out");
-            // 重新确定正反元素
-            funBackOrFront();
 
-        }, 825);
-        setTimeout(function() {
-            mov_bg._css("opacity","1");
-        }, 1000);
 
         return false;
     }
+
+
+
 </script>
 </html>
