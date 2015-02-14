@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>OJ4Th</title>
+
+    <!--加载重置样式-->
+    <link rel="stylesheet" href="../stylesheets/reset.css"/>
+    <!-- 加载主体layout样式-->
+    <link rel="stylesheet" href="../stylesheets/layout.css"/>
+    <!--加载header样式表-->
+    <link rel="stylesheet" href="../stylesheets/header.css"/>
+    <!--加载banner样式表-->
+    <link rel="stylesheet" href="../stylesheets/banner.css"/>
+    <!--交互动画-->
+    <link rel="stylesheet" href="../stylesheets/animations.css"/>
+
+    <!--jq-->
+    <script src="../javascripts/lib/jquery-1.10.0.js"></script>
+    <!--UI动画-->
+    <script src="../javascripts/lib/UI_Animate.js"></script>
+    <!--跳转-->
+    <script src="../javascripts/lib/jRouter.js"></script>
+</head>
+<body>
+<div class="full-screen moving-show-animate">
+    <div id="container">
+        <header id="nav">
+            <span onclick="window.open('/');">Online Judge 4th</span>
+            <a  href="/index/">
+                <span>主页</span>
+                <i></i>
+            </a><a href="/problem/">
+            <span>题目</span>
+            <i></i>
+        </a><a href="/contest/">
+            <span>比赛</span>
+            <i></i>
+        </a><a href="/message/">
+            <span>消息</span>
+            <i></i>
+        </a><a href="/group/">
+            <span>小组</span>
+            <i></i>
+        </a><a href="javascript:alert('233');">
+                <span>搜索</span>
+                <i></i>
+            </a>
+            <ul id="search-nav" class="sub-nav">
+                <li>
+                    <a href="#">搜题目</a>
+                </li>
+                <li>
+                    <a href="#">搜用户</a>
+                </li>
+                <li>
+                    <a href="#">搜比赛</a>
+                </li>
+                <li>
+                    <a href="#">搜小组</a>
+                </li>
+            </ul>
+            <script>
+
+            </script>
+
+        </header>
+        <div class="banner">
+            <a href="http://www.baidu.com" target="_blank">hehe</a>
+        </div>
+    </div>
+</div>
+<!--<h1>BUAA 在线评测系统</h1>-->
+<script>
+    window.onpopstate = window.onload = function(){
+        //window.UI_animate = new UI_Animate();
+        window.currentPagejRouter = jRouter();
+        currentPagejRouter.parseAnchor();
+        currentPagejRouter.initWindow(function(){setActiveLink();});
+        currentPagejRouter.setInitDomFunction(function(){
+            setActiveLink();
+        });
+        //currentPagejRouter.init();
+    };
+
+    function setActiveLink() {
+        var href = window.location.href;
+        var navLinkArray = ['index','problem','contest','message','group'];
+        var titleArray = ['主页','题目','比赛','消息','小组'];
+        $('#nav a').removeClass('active-link');
+        for(var i =0; i<navLinkArray.length; i++) {
+            if(href.indexOf(navLinkArray[i])!=-1) {
+                document.getElementById('nav').getElementsByTagName('a')[i].classList.add('active-link');
+                document.title = 'OJ4th:'+titleArray[i];
+                return;
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
