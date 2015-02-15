@@ -9,6 +9,8 @@
 //并且支持Restful的URL路径解析
 //同时支持页面路径自检,方便分享
 //使用historyAPI做AJAX无刷新跳转
+//依赖一个全局的实例currentPagejRouter来实现对当前页面的控制和路由的注册;
+//路由需要用户自己写实现再由function添加到currentPagejRouter中去；
 
 (function(url) {
 
@@ -50,10 +52,8 @@
         addHistory:function(url){
             console.log(this);
             console.log('');
-            var URL = url||this.url
+            var URL = url||this.url;
             history.pushState({},'',URL);
-
-
         },
 
         //解析a标签，如果a标签href是路径的话则替换为jRouter的函数
@@ -65,8 +65,16 @@
                 if(temp.length>0) {
                     if(temp[0]!='#' && temp.indexOf('javascript:')==-1 && Anchors[i].getAttribute('target')!='_blank') {
                         var target = Anchors[i].getAttribute('target')=='_blank' ? 'new' : 'current';
-                        var str = "javascript:"+"jRouter('"+temp+"').redirect('"+target+"')";
-                        Anchors[i].setAttribute("href",str);
+                        var fun = jRouter.fn.getControllerByUrl(temp);
+                        if(fun) {
+                            Anchors[i].onclick = fun;
+                            Anchors[i].removeAttribute('href');
+                        }
+                        else{
+                            var str = "javascript:"+"jRouter('"+temp+"').redirect('"+target+"')";
+                            Anchors[i].setAttribute("href",str);
+                        }
+
                     }
                 }
             }
@@ -107,7 +115,9 @@
                 }
 
             , 500);
-        }
+        },
+        Controllers:{},
+        ControllerList:[]
 
 
     };
@@ -173,6 +183,28 @@
     //获得当前页面的路由
     jRouter.fn.currentPagejRouter = function(){
         return window.currentPagejRouter;
+    };
+    jRouter.fn.setRouter = function(name,type,url,fun){
+        if( !window.currentPagejRouter instanceof jRouter){
+            window.currentPagejRouter = jRouter();
+        }
+        eval('jRouter.prototype.Controllers.'+type+name+'Controller ='+fun.toString()+';');
+        eval('jRouter.prototype.ControllerList.push({url:'+url+',controllerFunction:jRouter.prototype.Controllers.'+type+name+'Controller})');
+
+    };
+    jRouter.fn.getControllerByUrl = function(url){
+        if(url==null||url=='') {
+            console.error('url地址不能为空');
+            return false;
+        }
+        else{
+            for(var i =0;i<jRouter.prototype.ControllerList.length;i++){
+                if(jRouter.prototype.ControllerList[i].url==url) {
+                    return jRouter.prototype.ControllerList[i].controllerFunction;
+                }
+            }
+        }
+        return false;
     };
 
     //原型
