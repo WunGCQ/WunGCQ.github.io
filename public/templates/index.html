@@ -21,13 +21,15 @@
     <script src="../javascripts/lib/UI_Animate.js"></script>
     <!--跳转-->
     <script src="../javascripts/lib/jRouter.js"></script>
+    <!--ajax-->
+    <script src="../javascripts/lib/ajax.min.js"></script>
 </head>
 <body>
 <div class="full-screen moving-show-animate">
     <div id="container">
         <header id="nav">
             <span onclick="window.open('/index/');">Online Judge 4th</span>
-            <a  href="/index/">
+            <a href="/index/">
                 <span>主页</span>
                 <i></i>
             </a><a href="/problem/">
@@ -65,7 +67,7 @@
             </script>
 
         </header>
-        <div class="banner">
+        <div id="banner" class="banner">
             <a href="http://www.baidu.com" target="_blank">hehe</a>
         </div>
     </div>
@@ -75,8 +77,12 @@
     window.onpopstate = window.onload = function(){
         //window.UI_animate = new UI_Animate();
         window.currentPagejRouter = jRouter();
-
-        jRouter().setRouter('problem','get','/problem/',function(){alert('!!!');});
+        jRouter().setRouter('problem','get','/problem/',function(){
+            var isGoToProblem= confirm('您确定要前往题目页吗');
+            if(isGoToProblem) {
+                jRouter('/problem/').redirect('current');
+            }
+        });
         jRouter().setRouter('group','get','/problem/',function(){alert('!!!');});
         currentPagejRouter.initWindow(function(){setActiveLink();});
         currentPagejRouter.setInitDomFunction(function(){
@@ -84,6 +90,8 @@
         });
         currentPagejRouter.parseAnchor();
         //currentPagejRouter.init();
+        currentPagejRouter.loadTemplate();
+        currentPagejRouter.loadModelData();
     };
 
     function setActiveLink() {
@@ -92,13 +100,14 @@
         var titleArray = ['主页','题目','比赛','消息','小组'];
         $('#nav a').removeClass('active-link');
         for(var i =0; i<navLinkArray.length; i++) {
-            if(href.indexOf(navLinkArray[i])!=-1) {
+            if(window.location.href.split('.html')[0].split('/').indexOf(navLinkArray[i])!=-1) {
                 document.getElementById('nav').getElementsByTagName('a')[i].classList.add('active-link');
                 document.title = 'OJ4th:'+titleArray[i];
                 return;
             }
         }
     }
+
 </script>
 
 </body>
