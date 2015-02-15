@@ -10,6 +10,9 @@
 //同时支持页面路径自检,方便分享
 //使用historyAPI做AJAX无刷新跳转
 //依赖一个全局的实例currentPagejRouter来实现对当前页面的控制和路由的注册;
+
+//          需要在窗口初始化完之后，页面跳转之前实例化一个currentPagejRouter
+
 //路由需要用户自己写实现再由function添加到currentPagejRouter中去；
 
 (function(url) {
@@ -26,6 +29,7 @@
         init:function(url) {
             var _jRouter = this;
             this.url = url||window.location.href;
+
             this.domainName =  this.getdomainName();
             //this.localDomainName = window.location.href.split('://')[1].toString().split('/')[0];
             if(!this.isSupportsHistoryApi()) {//错误提示及处理
@@ -50,8 +54,8 @@
         },
         //添加历史
         addHistory:function(url){
-            console.log(this);
-            console.log('');
+            //console.log(this);
+            //console.log('');
             var URL = url||this.url;
             history.pushState({},'',URL);
         },
@@ -117,21 +121,12 @@
             , 500);
         },
         Controllers:{},
-        ControllerList:[]
+        ControllerList:[],
+        Models:{},
+        ModelTemplates:[]
 
 
     };
-
-
-    //jRouter.fn.
-
-    //跳转动画
-    //jRouter.fn
-
-
-    //jRouter.fn
-
-
 
 
 
@@ -185,9 +180,6 @@
         return window.currentPagejRouter;
     };
     jRouter.fn.setRouter = function(name,type,url,fun){
-        if( !window.currentPagejRouter instanceof jRouter){
-            window.currentPagejRouter = jRouter();
-        }
         eval('jRouter.prototype.Controllers.'+type+name+'Controller ='+fun.toString()+';');
         eval('jRouter.prototype.ControllerList.push({url:'+url+',controllerFunction:jRouter.prototype.Controllers.'+type+name+'Controller})');
 
@@ -206,11 +198,60 @@
         }
         return false;
     };
+    //将URL切片去掉.html后缀后返回参数
+    jRouter.fn.getUrlParam = function(){
+        var res = {};
+        var protocolTester = new RegExp('http?://');
+        res.protocol = protocolTester.exec(this.url)[0];
+        res.domainName = protocolTester.test(this.url) ? this.url.split('://')[1].toString().split('/')[0] : window.localDomainName;
+        res.params = this.url.split('.html')[0].split('/');
+
+        return res;
+    };
+    jRouter.fn.loadTemplate = function(element, rendercallback){
+        var path = 'user.html';
+        ajax.send({
+            url: path,
+            data: null,
+            type: "GET",
+            dataType: "html",
+            success: function(Template){
+                jRouter.prototype.ModelTemplates.push(Template);
+            }
+        });
+    };
+    jRouter.fn.loadModelData = function(element,model){
+        var path = '../JSON/get_user.json';
+        ajax.send({
+            url: path,
+            data: null,
+            type: "GET",
+            dataType: "json",
+            success: function(data){
+                if(data.status==1){
+                    $('#banner').html( nanoRenderer(jRouter.prototype.ModelTemplates[0],data));
+                }
+            }
+        });
+    };
+
+
+
 
     //原型
     jRouter.fn.init.prototype = jRouter.fn;
     //实例化一个
     window.jRouter = jRouter;
+
+
+
 })(window.location.href);
 
-
+/* Nano Templates - https://github.com/trix/nano */
+function nanoRenderer(template, data) {
+    return template.replace(/\{([\w\.]*)\}/g, function(str, key) {
+        var keys = key.split("."), v = data[keys.shift()];
+        for (var i = 0, l = keys.length; i < l; i++) v = v[keys[i]];
+        return (typeof v !== "undefined" && v !== null) ? v : "";
+    });
+};
