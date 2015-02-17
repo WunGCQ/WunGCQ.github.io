@@ -12,6 +12,9 @@
 //依赖一个全局的实例currentPagejRouter来实现对当前页面的控制和路由的注册;
 
 //          需要在窗口初始化完之后，页面跳转之前实例化一个currentPagejRouter
+//模板可以存放在model中。
+//模板由统一的标签 <div class="jRouter-template" data-template-model="modelname" data-template-path="url"></div>
+//
 
 //路由需要用户自己写实现再由function添加到currentPagejRouter中去；
 
@@ -66,7 +69,7 @@
             var temp;
             for(var i = 0; i<Anchors.length; i++) {
                 temp = Anchors[i].getAttribute("href");
-                if(temp.length>0) {
+                if(temp!=null && temp.length>0) {
                     if(temp[0]!='#' && temp.indexOf('javascript:')==-1 && Anchors[i].getAttribute('target')!='_blank') {
                         var target = Anchors[i].getAttribute('target')=='_blank' ? 'new' : 'current';
                         var fun = jRouter.fn.getControllerByUrl(temp);
@@ -82,6 +85,22 @@
                     }
                 }
             }
+        },
+        parseTemplateElment : function(templatename) {
+            //若templatename为空的话就扫描文档中所有的template
+            if(templatename==null){
+                var templateElements = document.getElementsByClassName('jRouter-template');
+            }
+            else{
+                var templateElements = document.querySelectorAll('div [data-template-model="'+templatename+'"]');
+            }
+            if(templateElements.length>0){
+                for(var i= 0; i< templateElements.length; i++){
+
+                }
+            }
+
+
         },
         //跳转
         redirect : function(para_mode,afterRedirect) {
@@ -106,6 +125,7 @@
                 });
             }
         },
+        //跳转动画
         jumpAnimation : function(para_callback) {
             document.getElementsByClassName('full-screen')[0].classList.add('moving-disappear-animate');
             var callback = para_callback||function() {
@@ -162,29 +182,34 @@
         if(typeof setNavfun=="function")setNavfun();
         jRouter.fn.addShowingClass();
     };
+
     //清除滑出动画类
     jRouter.fn.clearDisappearClass = function(){
         document.getElementsByClassName('full-screen')[0].className='full-screen';
     };
+
     //添加化入动画类
     jRouter.fn.addShowingClass = function(){
         document.getElementsByClassName('full-screen')[0].classList.add('moving-show-animate');
     };
+
     //设置初始化页面的函数
     jRouter.fn.setInitDomFunction = function(fun){
         this.initDomFunction = fun;
     };
 
     //获得当前页面的路由
-    jRouter.fn.currentPagejRouter = function(){
+    jRouter.currentPagejRouter = jRouter.fn.currentPagejRouter = function(){
         return window.currentPagejRouter;
     };
-    jRouter.fn.setRouter = function(name,type,url,fun){
+
+    //设定controller
+    jRouter.setRouter = jRouter.fn.setRouter = function(name,type,url,fun){
         eval('jRouter.prototype.Controllers.'+type+name+'Controller ='+fun.toString()+';');
         eval('jRouter.prototype.ControllerList.push({url:'+url+',controllerFunction:jRouter.prototype.Controllers.'+type+name+'Controller})');
-
     };
-    jRouter.fn.getControllerByUrl = function(url){
+    //选取controller
+    jRouter.getControllerByUrl = jRouter.fn.getControllerByUrl = function(url){
         if(url==null||url=='') {
             console.error('url地址不能为空');
             return false;
@@ -198,8 +223,9 @@
         }
         return false;
     };
+
     //将URL切片去掉.html后缀后返回参数
-    jRouter.fn.getUrlParam = function(){
+    jRouter.getUrlParam =  jRouter.fn.getUrlParam = function(){
         var res = {};
         var protocolTester = new RegExp('http?://');
         res.protocol = protocolTester.exec(this.url)[0];
@@ -208,7 +234,8 @@
 
         return res;
     };
-    jRouter.fn.loadTemplate = function(element, rendercallback){
+
+    jRouter.loadTemplate = jRouter.fn.loadTemplate = function(){
         var path = 'user.html';
         ajax.send({
             url: path,
@@ -220,7 +247,8 @@
             }
         });
     };
-    jRouter.fn.loadModelData = function(element,model){
+
+    jRouter.loadModelData = jRouter.fn.loadModelData = function(){
         var path = '../JSON/get_user.json';
         ajax.send({
             url: path,
@@ -234,6 +262,12 @@
             }
         });
     };
+
+    //载入model
+    jRouter.Model = jRouter.prototype.Model = function(name,fun){
+        eval('jRouter.prototype.Models.'+name+' = '+fun.toString()+';');
+    };
+    jRouter.Models = jRouter.prototype.Models;
 
 
 

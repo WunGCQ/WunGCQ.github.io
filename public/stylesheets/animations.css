@@ -51,6 +51,7 @@
 
 
 .moving-disappear-animate {
+    display: block;
     animation:  0.5s moving-disappear linear forwards;
     -moz-animation:  0.5s moving-disappear linear forwards;
     -webkit-animation:  0.5s moving-disappear linear forwards;
@@ -71,10 +72,27 @@
     30%{  opacity: 0.8;  margin-left: 0;  }
     100%{  opacity: 0;  margin-left: -300px; visibility: hidden; }
 }
-.show-animate {
 
+
+.show-menu-animate {
+    display: block;
+    animation:  0.5s show-menu ease forwards;
+    -moz-animation:  0.5s show-menu ease forwards;
+    -webkit-animation:  0.5s show-menu ease forwards;
+    -ms-animation: 0.5s show-menu ease forwards;
 }
-
+@keyframes show-menu {
+    from { opacity: 0; }
+    to {opacity: 1; }
+}
+@-moz-keyframes show-menu {
+    from {opacity: 0; }
+    to {opacity: 1; }
+}
+@-webkit-keyframes show-menu {
+    from {opacity: 0; }
+    to {opacity: 1; }
+}
 /*@charset "UTF-8";*/
 /*!
 Animate.css - http://daneden.me/animate

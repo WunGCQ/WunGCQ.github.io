@@ -49,7 +49,7 @@
     box-shadow: inset 0 0 10px 3px rgba(0, 0, 0, .075);
     transition: all 0.3s linear;
 }
-#nav>a {
+#nav .nav-item {
     display: inline-block;
     position: relative;
     vertical-align: top;
@@ -121,7 +121,7 @@
 }
 
 .sub-nav {
-    display: block;
+    display: none;
     position: absolute;
     margin-top: 10px;
     margin-left: 0;
@@ -164,3 +164,44 @@
 #search-nav {
     margin-left: 590px;
 }
+#user-bar {
+
+    display: block;
+    position: relative;
+    float:right;
+}
+#user-bar:hover {
+    color:#fff !important;
+}
+#user-bar span:hover {
+    color: #1cedcb;
+    border-bottom: 1px solid #1cedcb;
+}
+#user-bar.log {
+    width:70px !important;
+}
+#user-bar.log .login-btn,#user-bar.log .register-btn{
+    display: none;
+}
+#user-bar.unlog {
+    width:100px !important;
+}
+#user-bar.unlog .user-btn {
+    display: none;
+}
+#user-nav {
+    right: 3px;
+}
+#user-nav:before {
+    content: "";
+    border-style: solid;
+    border-width: 0 9px 9px;
+    border-color: transparent transparent #34495E;
+    height: 0;
+    position: absolute;
+    right: 40px;
+    left: inherit;
+    top: -9px;
+    width: 0;
+}
+
