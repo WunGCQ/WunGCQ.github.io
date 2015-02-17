@@ -54,8 +54,8 @@ var UserModel = function(data){
         }
         ajax.send({
             url: '../JSON/login.json',
-            data: {username:username,password:password},
-            type: "POST",
+            data: null,
+            type: "GET",
             dataType: "json",
             success: function(responseData){
                 if(responseData.status==1){
