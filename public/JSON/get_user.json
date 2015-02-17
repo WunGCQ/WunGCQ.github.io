@@ -2,14 +2,14 @@
   "status":1,
   "user":{
     "id":  233,
-    "username":  "szm",
-    "password":  "szmdb233",
-    "nickname":  "荣芓萌",
-    "student_id": 122110233,
-    "school":  	  "BUAA",
+    "username":  "wcq",
+    "password":  "srf_saaby",
+    "nickname":  "小王子",
+    "student_id": "1221DEADBEEF",
+    "school":  	  "主北",
     "college":    "college of software",
-    "self_intro":  "54 db",
-    "head":      "../images/szm.jpg",
-    "email":      "szm@db.com"
+    "self_intro":  "Im Saaby",
+    "head":      "../images/doge.jpg",
+    "email":      "saaby@hehe.org"
   }
 }
