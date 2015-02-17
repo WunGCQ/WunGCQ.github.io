@@ -24,6 +24,8 @@
     <script src="../javascripts/lib/jRouter.js"></script>
     <!--ajax-->
     <script src="../javascripts/lib/ajax.min.js"></script>
+    <!--加载用户模块-->
+    <script src="../javascripts/Models/UserModel.js"></script>
 </head>
 <body>
 <div class="full-screen moving-show-animate">
@@ -46,9 +48,9 @@
             <span>小组</span>
             <i></i>
         </a><a class="nav-item" id="search-bar" onmouseover="document.getElementById('search-nav').classList.add('show-menu-animate');">
-                <span>搜索</span>
-                <i></i>
-            </a>
+            <span>搜索</span>
+            <i></i>
+        </a>
             <ul id="search-nav" class="sub-nav" onmouseleave="document.getElementById('search-nav').classList.remove('show-menu-animate');" onblur="document.getElementById('search-nav').classList.remove('show-menu-animate');">
                 <li>
                     <a href="#">搜题目</a>
@@ -138,7 +140,7 @@
 
 </script>
 
-<script src="../javascripts/Models/UserModel.js"></script>
+
 <!--jq-->
 <script src="../javascripts/lib/jquery-1.10.0.js"></script>
 </body>
