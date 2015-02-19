@@ -14,7 +14,12 @@
     <link rel="stylesheet" href="../stylesheets/banner.css"/>
     <!--交互动画-->
     <link rel="stylesheet" href="../stylesheets/animations.css"/>
-
+    <!--模态框-->
+    <link rel="stylesheet" href="../stylesheets/modal.css"/>
+    <!--表单样式-->
+    <link rel="stylesheet" href="../stylesheets/form.css"/>
+    <!--font-awesome-->
+    <link rel="stylesheet" href="../font-awesome-4.2.0/css/font-awesome.min.css"/>
 
     <!--smalljq-->
     <script src="../javascripts/lib/iPtdqx.js"></script>
@@ -26,6 +31,8 @@
     <script src="../javascripts/lib/ajax.min.js"></script>
     <!--加载用户模块-->
     <script src="../javascripts/Models/UserModel.js"></script>
+    <!--路由跳转控制器-->
+    <script src="../javascripts/Controllers/RouteController.js"></script>
 </head>
 <body>
 <div class="full-screen moving-show-animate">
@@ -89,53 +96,51 @@
             <a href="http://www.baidu.com" target="_blank">hehe</a>
         </div>
     </div>
+
 </div>
+
 <!--<h1>BUAA 在线评测系统</h1>-->
 <script>
-    window.onpopstate = window.onload = function(){
+    window.onpopstate = window.onload = function()
+    {
         //window.UI_animate = new UI_Animate();
         window.currentPagejRouter = jRouter();
-        jRouter().setRouter('problem','get','/problem/',function(){
-            var isGoToProblem= confirm('您确定要前往题目页吗');
-            if(isGoToProblem) {
-                jRouter('/problem/').redirect('current');
+        setRouteController();
+        currentPagejRouter.initWindow(
+            function(){
+                setActiveLink();
             }
-        });
-        jRouter().setRouter('group','get','/problem/',function(){alert('!!!');});
-        currentPagejRouter.initWindow(function(){setActiveLink();});
-        currentPagejRouter.setInitDomFunction(function(){
-            setActiveLink();
-        });
-        currentPagejRouter.parseAnchor();
-        //currentPagejRouter.init();
+        );
+        currentPagejRouter.setInitDomFunction(
+            function()
+            {
+                setActiveLink();
+            }
+        );
+        jRouter.parseAnchor();
         currentPagejRouter.loadTemplate();
         currentPagejRouter.loadModelData();
         initUserModel();
-        //user.bindHeaderBar();
 
 
     };
 
-    function setActiveLink() {
+    function setActiveLink()
+    {
         var href = window.location.href;
         var navLinkArray = ['index','problem','contest','message','group'];
         var titleArray = ['主页','题目','比赛','消息','小组'];
         $('#nav a').removeClass('active-link');
-        for(var i =0; i<navLinkArray.length; i++) {
-            if(window.location.href.split('.html')[0].split('/').indexOf(navLinkArray[i])!=-1) {
+        for(var i =0; i<navLinkArray.length; i++)
+        {
+            if(window.location.href.split('.html')[0].split('/').indexOf(navLinkArray[i])!=-1)
+            {
                 document.getElementById('nav').getElementsByTagName('a')[i].classList.add('active-link');
                 document.title = 'OJ4th:'+titleArray[i];
                 return;
             }
         }
     }
-    //初始化用户
-    window.initUserModel = function(){
-        window.user = new UserModel();
-        //if(document.readystate == "loaded") user.bindHeaderBar();
-        user.login();
-
-    };
 
 
 </script>
@@ -143,5 +148,27 @@
 
 <!--jq-->
 <script src="../javascripts/lib/jquery-1.10.0.js"></script>
+<script src="../javascripts/Models/Model.js"></script>
 </body>
+<div class="modal-background">
+    <h1 class="modal-oj-title">Online Judge 4th</h1>
+    <div class="left-intro">
+
+        <img src="../images/mail.png" width="100" alt=""/>
+
+        <h1>简洁 舒适<br/>评测机系统<br/>来到你身边</h1>
+    </div>
+    <div class="modal-window">
+        <div class="modal-content">
+            <form>
+                <input type="text" placeholder="用户名"/><span class="fa fa-user"></span>
+                <input type="password" class="error-input" placeholder="密码"/><span class="fa fa-lock"></span>
+            </form>
+            <a class="button" tabindex="0">登录</a>
+            <a href="#" class="register-link flat-link">前往注册~</a>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <a href="#" class="password-back-link flat-link">忘记密码？</a>
+        </div>
+    </div>
+</div>
 </html>
