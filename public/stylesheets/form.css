@@ -2,9 +2,10 @@ form {
     display: block;
     position: relative;
     background: transparent
-    width: calc(100% - 10px);
+width: calc(100% - 10px);
     margin: auto;
     padding-top: 5px;
+    font-family: "Microsoft YaHei", "Microsoft Yahei", "微软雅黑", "", "Courier New", "Helvetica Neue", Courier, monospace;
 
 }
 input[type="text"],
