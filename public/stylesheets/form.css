@@ -26,6 +26,8 @@ input[type="email"]{
     box-shadow: none;
     transition: all 0.5s ease;
     outline: none;
+    font-family: "Microsoft YaHei", "Microsoft Yahei", "微软雅黑", "", "Courier New", "Helvetica Neue", Courier, monospace;
+
 }
 
 /*注意这里的fa时宽度较大与input不在同一行所以input的margin-top作用于.fa上了，
