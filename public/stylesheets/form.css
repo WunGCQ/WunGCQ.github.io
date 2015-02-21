@@ -8,7 +8,8 @@ form {
 
 }
 input[type="text"],
-input[type="password"]{
+input[type="password"],
+input[type="email"]{
     display: block;
     background: #fff;
     border: 2px solid #DCE4EC;
@@ -22,7 +23,7 @@ input[type="password"]{
     text-indent: 1em;
     border-radius: 6px;
     box-shadow: none;
-    transition: all 0.618s ease;
+    transition: all 0.5s ease;
     outline: none;
 }
 

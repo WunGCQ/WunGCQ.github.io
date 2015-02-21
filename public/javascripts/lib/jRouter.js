@@ -11,7 +11,7 @@
 //使用historyAPI做AJAX无刷新跳转
 //依赖一个全局的实例currentPagejRouter来实现对当前页面的控制和路由的注册;
 
-//          需要在窗口初始化完之后，页面跳转之前实例化一个currentPagejRouter
+//    需要在窗口初始化完之后，页面跳转之前实例化一个currentPagejRouter
 //模板可以存放在model中。
 //模板由统一的标签 <div class="jRouter-template" data-template-model="modelname" data-template-path="url"></div>
 //
@@ -48,18 +48,19 @@
             }
             return this;
         },
+        root:'/index/',
 
         jRouter:"1.0",
 
         url:this.url,
 
         domainName:(function(){return this.getdomainName();}),
-
+        //协议
         protocol:function()
         {
             return this.url.split('://')[0];
         },
-
+        //获取域名
         getdomainName:function()
         {
             return RegExp('http?://').test(this.url) ? this.url.split('://')[1].toString().split('/')[0] : window.localDomainName;
@@ -70,33 +71,48 @@
             //console.log(this);
             //console.log('');
             var URL = url||this.url;
-            history.pushState({},'',URL);
+            history.pushState({url:this.url},'',URL);
         },
 
         //解析a标签，如果a标签href是路径的话则替换为jRouter的函数
 
         //跳转
-        redirect : function(para_mode,afterRedirect)
+        redirect : function(para_mode,isReplace)
         {
             var mode = para_mode||'current';
             if(mode=='current')
             {
-                this.jumpAnimation(function()
-                {
-                    //判断是否为外部链接
-                    if(this.domainName==window.localDomainName)
-                    {//本地链接
+                //判断是否为外部链接
+                if(this.domainName==window.localDomainName)
+                {//本地链接
+                    if(isReplace!=true){
                         this.addHistory();
-                        var currentPageRouter = this.currentPagejRouter();
-                        this.initWindow(currentPageRouter.initDomFunction);
-                        //this.clearDisappearClass();
                     }
-                    else
-                    {
-                        location.href = jRouter.url;
-                    }
-
-                });
+                    //alert(this.url);
+                    var currentPageRouter = this.currentPagejRouter();
+                    this.initWindow(currentPageRouter.initDomFunction);
+                    //this.clearDisappearClass();
+                }
+                else
+                {
+                    location.href = jRouter.url;
+                }
+                //this.jumpAnimation(function()
+                //{
+                //    //判断是否为外部链接
+                //    if(this.domainName==window.localDomainName)
+                //    {//本地链接
+                //        this.addHistory();
+                //        var currentPageRouter = this.currentPagejRouter();
+                //        this.initWindow(currentPageRouter.initDomFunction);
+                //        //this.clearDisappearClass();
+                //    }
+                //    else
+                //    {
+                //        location.href = jRouter.url;
+                //    }
+                //
+                //});
             }
             else
             {
@@ -128,9 +144,8 @@
         Controllers:{},
         ControllerList:[],
         Models:{},
-        ModelTemplates:[]
-
-
+        ModelTemplates:[],
+        RouterRules:{}
     };
 
 
@@ -222,27 +237,65 @@
         else{
             for( var i =0;i<jRouter.prototype.ControllerList.length;i++)
             {
+                var x = jRouter(url).getUrlParam().params[0];
+                console.log(x);
                 if(jRouter.prototype.ControllerList[i].url==url)
                 {
                     return jRouter.prototype.ControllerList[i].controllerFunction;
                 }
+
             }
         }
         return false;
     };
 
     //将URL切片去掉.html后缀后返回参数
-    jRouter.getUrlParam =  jRouter.fn.getUrlParam = function()
+    jRouter.getUrlParam =  jRouter.fn.getUrlParam = function(path)
     {
         var res = {};
-        var protocolTester = new RegExp('http?://');
-        res.protocol = protocolTester.exec(this.url)[0];
-        res.domainName = protocolTester.test(this.url) ? this.url.split('://')[1].toString().split('/')[0] : window.localDomainName;
-        res.params = this.url.split('.html')[0].split('/');
+        var protocolTester = new RegExp('http?');
+        var path = path || window.location.href;
 
+        res.protocol = protocolTester.exec(path)[0];
+
+        res.domainName = protocolTester.test(path) ? path.split('://')[1].toString().split('/')[0] : window.localDomainName;
+        var params = path.split('.html')[0].split('/');
+        res.params = [];
+        for(var i=0; i< params.length; i++)
+        {
+            //删除参数
+            if(params[i]!=(res.protocol+':') && params[i]!=res.domainName && params[i]!='' )
+            {
+                res.params.push(params[i]);
+            }
+        }
         return res;
     };
+    jRouter.initPage =jRouter.prototype.initPage = function(isReplace){
+        var params = this.getUrlParam().params;
+        var childUrl;
+        if(params.length==0){
+            childUrl = jRouter.prototype.root;
+        }
+        else{
+            childUrl = '/'+params[0]+'/';
+        }
+        var fun = jRouter.getControllerByUrl(childUrl);
+        //todo
+        if(isReplace=='replace'){
+            fun(true);
+        }
+        else{
+            fun();
+        }
 
+
+    };
+
+    jRouter.resumeState = function(){
+
+    };
+    //试验用，此功能已解耦，转移到Model类
     jRouter.loadTemplate = jRouter.fn.loadTemplate = function()
     {
         var path = 'user.html';
@@ -259,7 +312,7 @@
             }
         );
     };
-
+    //试验用，此功能已解耦，转移到Model类
     jRouter.loadModelData = jRouter.fn.loadModelData = function()
     {
         var path = '../JSON/get_user.json';
@@ -335,6 +388,18 @@
                 //var template
             }
         }
+    };
+    //TODO
+    //设定路由状态
+    //这些状态包含:title,paraList,action;
+    //唯一标识为path
+    jRouter.setRouterStates = function(arg){
+        jRouter.prototype.RouterRules = arg;
+    };
+    //TODO
+    //查找路由规则,利用正则字符串匹配
+    jRouter.queryRouterRules = function(url){
+
     };
 
 

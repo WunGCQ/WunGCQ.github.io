@@ -66,7 +66,7 @@
     transition: color 0.7s linear;
     z-index: 20;
 }
-#nav .active-link {
+#nav .active-link{
     background-color: #2C3E50;
     color: #16A085;
 }
@@ -170,11 +170,19 @@
     position: relative;
     float:right;
 }
-#user-bar:hover {
-    color:#fff !important;
+#user-bar li{
+    display: inline-block;
 }
-#user-bar span:hover {
-    color: #1cedcb;
+#user-bar a {
+    color:#fff !important;
+    cursor: pointer;
+
+}
+#user-bar a:hover {
+    color: #1abc9c;
+}
+#user-bar a:hover {
+    color: #1cedcb !important;
     border-bottom: 1px solid #1cedcb;
 }
 #user-bar.log {
