@@ -56,43 +56,44 @@
         </a><a class="nav-item" href="/group/">
             <span>小组</span>
             <i></i>
-        </a><a class="nav-item" id="search-bar" onmouseover="document.getElementById('search-nav').classList.add('show-menu-animate');setTimeout(function(){document.getElementById('search-nav').classList.remove('show-menu-animate');},2000);">
+        </a><a class="nav-item" href="/search/">
             <span>搜索</span>
             <i></i>
         </a>
-            <ul id="search-nav" class="sub-nav" onmouseleave="document.getElementById('search-nav').classList.remove('show-menu-animate');" onblur="document.getElementById('search-nav').classList.remove('show-menu-animate');">
-                <li>
-                    <a href="#">搜题目</a>
-                </li>
-                <li>
-                    <a href="#">搜用户</a>
-                </li>
-                <li>
-                    <a href="#">搜比赛</a>
-                </li>
-                <li>
-                    <a href="#">搜小组</a>
-                </li>
-            </ul>
+            <!--<ul id="search-nav" class="sub-nav" onmouseleave="document.getElementById('search-nav').classList.remove('show-menu-animate');" onblur="document.getElementById('search-nav').classList.remove('show-menu-animate');">-->
+                <!--<li>-->
+                    <!--<a href="#">搜题目</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">搜用户</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">搜比赛</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="#">搜小组</a>-->
+                <!--</li>-->
+            <!--</ul>-->
 
-            <ul class="nav-item unlog" id="user-bar" onmouseover="(function(){if(document.getElementById('user-bar').classList.contains('log')){document.getElementById('user-nav').classList.add('show-menu-animate');}})();setTimeout(function(){document.getElementById('user-nav').classList.remove('show-menu-animate'); },5000);">
+            <ul class="nav-item unlog" id="user-bar" onmouseover="(function(){if(document.getElementById('user-bar').classList.contains('log')){document.getElementById('user-nav').classList.add('show-menu-animate');}})();"onmouseleave="document.getElementById('user-nav').classList.remove('show-menu-animate');" onblur="document.getElementById('user-nav').classList.remove('show-menu-animate');">
                 <li class="user-btn"><a>我</a></li>
                 <li class="login-btn"><a href="/login/">登录</a></li>
                 <li class="register-btn"><a href="/register/">注册</a></li>
                 <i></i>
+                <ul id="user-nav" class="sub-nav" >
+                    <li>
+                        <a class="user-name" href="/user/">用户名</a>
+                    </li>
+                    <li>
+                        <a href="/user/">用户设置</a>
+                    </li>
+                    <li>
+                        <a href="/logout/">登出</a>
+                    </li>
+                </ul>
             </ul>
 
-            <ul id="user-nav" class="sub-nav" onmouseleave="document.getElementById('user-nav').classList.remove('show-menu-animate');" onblur="document.getElementById('user-nav').classList.remove('show-menu-animate');">
-                <li>
-                    <a class="user-name" href="/user/">用户名</a>
-                </li>
-                <li>
-                    <a href="/user/">用户设置</a>
-                </li>
-                <li>
-                    <a href="/logout/">登出</a>
-                </li>
-            </ul>
+
         </header>
         <div id="main-section" class="main-section">
             <!--用户信息模块-->
@@ -138,6 +139,10 @@
             <!--消息模块-->
             <div id="message-section" class="main-blocks">
                 消息模块
+            </div>
+            <!--搜索结果-->
+            <div id="search-section" class="main-blocks">
+                搜索结果
             </div>
 
         </div>
