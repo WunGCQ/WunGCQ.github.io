@@ -21,12 +21,13 @@ UserModel.prototype = new Model();
 (
     function()
     {
-        UserModel.prototype.templatePath = 'http://localhost:63342/github/ngtest/public/templates/user.html';
-        UserModel.prototype.AddPath      = 'http://localhost:63342/github/ngtest/public/JSON/register.json';
-        UserModel.prototype.RetrievePath = 'http://localhost:63342/github/ngtest/public/JSON/get_user.json';
-        UserModel.prototype.UpdatePath   = 'http://localhost:63342/github/ngtest/public/JSON/update_user.json';
-        UserModel.prototype.LoginPath    = 'http://localhost:63342/github/ngtest/public/JSON/login.json';
-        UserModel.prototype.LogoutPath   = 'http://localhost:63342/github/ngtest/public/JSON/logout.json';
+        UserModel.prototype.templatePath = 'http://wungcq.github.io/public/templates/user.html';
+        UserModel.prototype.AddPath      = 'http://wungcq.github.io/public/JSON/register.json';
+        UserModel.prototype.RetrievePath = 'http://wungcq.github.io/public/JSON/get_user.json';
+        UserModel.prototype.UpdatePath   = 'http://wungcq.github.io/public/JSON/update_user.json';
+        UserModel.prototype.LoginPath    = 'http://wungcq.github.io/public/JSON/login.json';
+        UserModel.prototype.LogoutPath   = 'http://wungcq.github.io/public/JSON/logout.json';
+        UserModel.prototype.Retrievemethod = 'GET';
     }
 )();
 
