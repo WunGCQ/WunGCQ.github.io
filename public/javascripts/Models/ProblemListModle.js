@@ -19,8 +19,9 @@ ProblemListModel.prototype = new Model();
 (
     function()
     {
-        ProblemListModel.prototype.templatePath = 'http://localhost:63342/github/ngtest/public/templates/problemlist.html';
-        ProblemListModel.prototype.RetrievePath = 'http://localhost:63342/github/ngtest/public/JSON/get_problem_list.json';
+        ProblemListModel.prototype.templatePath = 'http://wungcq.github.io/public/templates/problemlist.html';
+        ProblemListModel.prototype.RetrievePath = 'http://wungcq.github.io/public/JSON/get_problem_list.json';
+        ProblemListModel.prototype.Retrievemethod = 'GET';
     }
 )();
 

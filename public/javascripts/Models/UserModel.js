@@ -116,7 +116,7 @@ UserModel.prototype.logout = function()
             {
                 url: UserModel.prototype.LogoutPath,
                 data: data,
-                type: 'POST',
+                type: 'GET',
                 dataType: "json",
                 success: function(Data)
                 {

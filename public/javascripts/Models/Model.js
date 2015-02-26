@@ -26,7 +26,7 @@ Model.prototype.getTemplateUrl = function()
 
 //增
 Model.prototype.AddPath = null;
-Model.prototype.Addmethod = 'POST';
+Model.prototype.Addmethod = 'GET';
 Model.prototype.getAddPath = function()
 {
     return {
@@ -37,7 +37,7 @@ Model.prototype.getAddPath = function()
 //删
 
 Model.prototype.RemovePath = null;
-Model.prototype.Removemethod = 'POST';
+Model.prototype.Removemethod = 'GET';
 Model.prototype.getRemovePath = function()
 {
     return {
@@ -47,7 +47,7 @@ Model.prototype.getRemovePath = function()
 };
 //改
 Model.prototype.UpdatePath = null;
-Model.prototype.Updatemethod = 'POST';
+Model.prototype.Updatemethod = 'GET';
 Model.prototype.getUpdatePath = function()
 {
     return {
@@ -57,7 +57,7 @@ Model.prototype.getUpdatePath = function()
 };
 //查
 Model.prototype.RetrievePath = null;
-Model.prototype.Retrievemethod = 'POST';
+Model.prototype.Retrievemethod = 'GET';
 Model.prototype.getRetrievePath = function()
 {
     return {

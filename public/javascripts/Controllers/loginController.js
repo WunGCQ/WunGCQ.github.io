@@ -86,7 +86,7 @@ var loginController = function(){
             {
                 url: UserModel.prototype.LoginPath,
                 data: this.loginData,
-                type: 'POST',
+                type: 'GET',
                 dataType: "json",
                 success: function(data)
                 {
