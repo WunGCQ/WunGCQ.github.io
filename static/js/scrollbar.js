@@ -44,13 +44,15 @@ function scrollbar(){
     };
     //添加
     this.add_scroll_bar = function() {
-        var range = document.createRange();
-        var str = '<div class="scroll-bar-track"><div class="scroll-bar" style="height: 0;"></div></div>';
-        var fragment = range.createContextualFragment(str);
-        this.view_port_element.appendChild(fragment);
+        //var range = document.createRange();
+        //var str = '<div class="scroll-bar-track">'+'<div class="scroll-bar" style="height: 0;"></div>'+'</div>';
+        //var fragment = range.createContextualFragment(str);
+        //this.view_port_element.appendChild(fragment);
+        $(this.view_port_element).append('<div class="scroll-bar-track"><div class="scroll-bar" style="height: 0;"></div></div>');
         this.exec_scroll_bar();
         this.get_scroll_bar();
-        this.scroll_bar._css("height",(this.scroll_bar_height+"px").toString());
+        var the_height = (this.scroll_bar_height+"px").toString();
+        this.scroll_bar._css("height",the_height);
     };
 
     this.get_scroll_bar = function() {
@@ -181,7 +183,6 @@ function scrollbar(){
     this.fresh_controll = function() {
         this.t_fresh_height = setInterval(function(){s.reset_scroll_bar();},200);
         this.scroll_bar.addEventListener("mousedown", function(){
-            console.log('down');
             s.drag_scroll_bar_controller();
         });
         //this.scroll_bar.addEventListener("mousemove", function(){s.move_controller()});
@@ -193,7 +194,6 @@ function scrollbar(){
         this.view_port_element.addEventListener("keydown",function(){
             //console.log('up');
             //up('up');
-            alert(event.keyCode);
             s.up_controller();
         });
 

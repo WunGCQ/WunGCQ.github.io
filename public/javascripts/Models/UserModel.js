@@ -1,8 +1,8 @@
 window.UserModel = function(UserData)
 {
-    if(typeof this.UserData == "undefined" && typeof UserData != "undefined")
+    if(typeof this.modelData == "undefined" && typeof UserData != "undefined")
     {
-        this.UserData = UserData;
+        this.modelData = UserData;
         this.init(UserData);
 
     }
@@ -32,7 +32,7 @@ UserModel.prototype = new Model();
 )();
 
 UserModel.prototype.init = function(UserData){
-    var UserData = UserData||this.UserData;
+    var UserData = UserData||this.modelData;
     if(typeof UserData != "undefined"){
         this.username   = UserData.username;
         this.nickname   = UserData.nickname;
@@ -80,7 +80,8 @@ UserModel.prototype.writeCookie = function(name){
     cookieMethods.setCookie('username',name);
 };
 
-
+//这两个实在不知道放哪里了，先放在数据模型里面吧
+//TODO 这两个函数的逻辑，给她们找个地方
 //激活用户菜单栏
 UserModel.prototype.setUserBarLog = function(username)
 {
@@ -206,21 +207,3 @@ UserModel.prototype.RETRIEVE = function(arg)
     );
 };
 
-//资料面板
-UserModel.prototype.showCurrentUserInfo = function()
-{
-    //如果还没加载过这个模块
-    if(!this.isUserInfoShown){
-        //由于UserModel的构造函数决定了一定已经有模板了
-        var text = juicer(this.getTemplateText(),{user:this.UserData});
-        //document.getElementById('user-info-section').innerHTML = text;
-        $('#user-info-section').html(text);
-        this.isUserInfoShown = true;
-    }
-    //如果已经加载过这个模块
-    else{
-        //就不用做这些破事儿了
-    }
-    document.getElementById('user-info-section').style["display"] = "block";
-    return;
-};
