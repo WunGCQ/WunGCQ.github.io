@@ -28,14 +28,14 @@ month_calendar.prototype.change_month = function(direction){
 
     var year_slash_month = this.get_month_on_the_current_calendar_view().split("/");
 
-    var m = new Date(year_slash_month[0],year_slash_month[1],1);
+    var m = new Date(year_slash_month[0],year_slash_month[1]-1,1);
     //向后翻
     if(direction>0) {
 
         if(m.getMonth()==11){
             this.month_of_current_calendar_view = (m.getFullYear()+1)+"/1";
         }else{
-            this.month_of_current_calendar_view = (m.getFullYear())+"/"+(m.getMonth()+1);
+            this.month_of_current_calendar_view = (m.getFullYear()+"/"+(m.getMonth()+2));
         }
     }
     //向前翻
@@ -43,7 +43,7 @@ month_calendar.prototype.change_month = function(direction){
         if(m.getMonth()==0){
             this.month_of_current_calendar_view = (m.getFullYear()-1)+"/12";
         }else{
-            this.month_of_current_calendar_view = (m.getFullYear())+"/"+(m.getMonth()-1);
+            this.month_of_current_calendar_view = (m.getFullYear())+"/"+(m.getMonth());
         }
     }
     this.set_calendar();
@@ -54,11 +54,11 @@ month_calendar.prototype.change_month = function(direction){
 
 month_calendar.prototype.get_the_first_week_of_the_month_sequence = function(){
     var year_slash_month = this.month_of_current_calendar_view.split("/");
-    var first_day_of_the_month = new Date(year_slash_month[0],year_slash_month[1],1);
+    var first_day_of_the_month = new Date(year_slash_month[0],year_slash_month[1]-1,1);
     var month = first_day_of_the_month.getMonth();
     var the_first_week_sequence_of_the_month = -1;
     var iterator = first_day_of_the_month;
-    var first_day_of_the_year = new Date(first_day_of_the_month.getFullYear(),1,1);
+    var first_day_of_the_year = new Date(first_day_of_the_month.getFullYear(),0,1);
     var monday_of_the_first_week_of_the_year = {};
     var t = first_day_of_the_year.getDay();
     if(t==1) {
@@ -70,14 +70,14 @@ month_calendar.prototype.get_the_first_week_of_the_month_sequence = function(){
     else{
         monday_of_the_first_week_of_the_year = first_day_of_the_year.setDate(first_day_of_the_year.getDate()+(8-t));
     }
-    var week_sequence = Math.floor((first_day_of_the_month - monday_of_the_first_week_of_the_year)/(1000*3600*24*7));
+    var week_sequence = Math.floor((first_day_of_the_month - monday_of_the_first_week_of_the_year)/(1000*3600*24*7))+1;
     return week_sequence;
 };
 
 
 month_calendar.prototype.set_calendar = function() {
     var year_slash_month = this.month_of_current_calendar_view.split("/");
-    var first_day_of_the_month = new Date(year_slash_month[0],year_slash_month[1],1);
+    var first_day_of_the_month = new Date(year_slash_month[0],year_slash_month[1]-1,1);
     var month = first_day_of_the_month.getMonth()+1;
     var iterator = first_day_of_the_month;
     var first_week_of_the_month = this.get_the_first_week_of_the_month_sequence();
@@ -107,13 +107,13 @@ month_calendar.prototype.set_calendar = function() {
 
         if(iterator.toDateString()==today.toDateString()){
 
-            temp_str[3*week_day + 2] = '<span class="today">' + month_date +'</span>';
-
-        }else{
-
-            temp_str[3*week_day + 2] = '<span>'+month_date+'</span>';
+            temp_str[3*week_day + 1] = '<td  class="today">';
 
         }
+
+        temp_str[3*week_day + 2] = '<span>'+month_date+'</span>';
+
+
 
         if(week_day==7){
             fragment_str += temp_str.join("");
@@ -130,9 +130,9 @@ month_calendar.prototype.set_calendar = function() {
         }
 
     }
-    this.wrapper.getElementsByClassName("month-number")[0].innerHTML = '<span>' +(first_day_of_the_month.getMonth()+1)+"月" + '</span>';
+    this.wrapper.getElementsByClassName("month-number")[0].innerHTML = '<span>' +(month.toString())+"月" + '</span>';
     this.wrapper.getElementsByTagName("tbody")[0].innerHTML = fragment_str;
-    var data_year_month = first_day_of_the_month.getFullYear()+"/"+first_day_of_the_month.getMonth();
+    var data_year_month = first_day_of_the_month.getFullYear()+"/"+(month);
     this.wrapper.setAttribute("data-year-month",data_year_month);
 };
 
