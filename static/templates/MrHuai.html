@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/huai.css"/>
     <link rel="stylesheet" href="../css/reset.css"/>
     <script src="../js/lib/jquery.min.js"></script>
-    <script src="../js/lib/jquery.scrollTo.js"></script>
+
 </head>
 
 <body onResize="setFullScreenElementsStyle()">
@@ -95,16 +95,56 @@
             window.timer =setInterval(function(){
                 if($(window).scrollTop() > (windowHeight*0.4)){
 
-                    $.scrollTo("#page-2",300);
+                    $.scrollTo("#pics",300);
                     setTimeout(function(){
-                        var elem = document.getElementById("page-2");
+                        var elem = document.getElementById("#page-2");
                         removeGray(elem);
                         showPicInfo(elem);
-
                     },300);
                     clearInterval(window.timer);
                 }
             },100);
+            $("#page-1").on("scorllstart",function(){
+                $.scrollTo("#pics",300);
+            });
+            //向左滑往右走
+            $("#page-container").on("swipeleft",function(){
+                var windowWidth = $(window).outerWidth();
+                var offset = parseInt($("#page-container").css("left"));
+                if(offset> (-3*windowWidth)) {
+                    var index = parseInt(-offset / windowWidth);
+                    index++;
+
+                    var leftOffset = -windowWidth * index;
+
+                    $("#page-container").css({
+                        "left": leftOffset + "px"
+                    });
+                    var elem = document.getElementById("page-" + (index + 2).toString());
+                    removeGray(elem);
+                    showPicInfo(elem);
+                    setNavActive(index);
+                }
+
+            });
+            //向右滑往左走
+            $("#page-container").on("swiperight",function(){
+                var windowWidth = $(window).outerWidth();
+                var offset = parseInt($("#page-container").css("left"));
+                if(offset<0){
+                    var index = parseInt(-offset/windowWidth);
+                    index--;
+                    var leftOffset = -windowWidth*index;
+                    $("#page-container").css({
+                        "left":leftOffset+"px"
+                    });
+                    var elem = document.getElementById("page-"+(index+2).toString());
+                    removeGray(elem);
+                    showPicInfo(elem);
+                    setNavActive(index);
+
+                }
+            });
 
         });
 
@@ -135,6 +175,12 @@
                 if(!e.classList.contains("show")) {
                     e.classList.add("show");
                 }
+            }
+        }
+        function setNavActive(index){
+            $("#pic-nav li").attr("class","");
+            if(0<=index<=4){
+                document.getElementById("pic-nav").getElementsByTagName("li")[index].classList.add("active");
             }
         }
 
@@ -207,5 +253,7 @@
 
 
     </script>
+    <script src="../js/lib/jquery.scrollTo.js"></script>
+    <script src="../js/lib/jquery.mobile.min.js"></script>
 </body>
 </html>

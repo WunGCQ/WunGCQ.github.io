@@ -205,18 +205,18 @@ body {
 
 @-webkit-keyframes logo-box-animation {
     0% {  top: 0;  -webkit-transform: scale(0.1);  }
-    50% {  top: calc(50% - 100px); -webkit-transform: scale(0.25);  }
-    100% {  top: calc(50% - 100px); -webkit-transform: scale(1);  }
+    50% {  top: 40%; -webkit-transform: scale(0.25);  }
+    100% {  top: 40%; -webkit-transform: scale(1);  }
 }
 @-moz-keyframes logo-box-animation {
     0% {  top: 0;  -moz-transform: scale(0.1);  }
-    50% {  top: calc(50% - 100px); -moz-transform: scale(0.25);  }
-    100% {  top: calc(50% - 100px); -moz-transform: scale(1);  }
+    50% {  top: 40%; -moz-transform: scale(0.25);  }
+    100% {  top: 40%; -moz-transform: scale(1);  }
 }
 @keyframes logo-box-animation {
     0% {  top: 0;  transform: scale(0.1);  }
-    50% {  top: calc(50% - 100px); transform: scale(0.25);  }
-    100% {  top: calc(50% - 100px); transform: scale(1);  }
+    50% {  top: 40%; transform: scale(0.25);  }
+    100% {  top: 40%; transform: scale(1);  }
 }
 @-webkit-keyframes logo-animation {
     0% {  opacity: 0; }
@@ -280,7 +280,7 @@ body {
 #pic-nav {
     display: block;
     position: absolute;
-    left: calc(50% - 47px);
+    left: 45%;
     bottom: 30px;
     z-index: 999999;
 }
@@ -314,6 +314,11 @@ body {
     .intro time{
         font-size: 36px !important;
     }
+    #pic-nav li{
+        margin: 10px !important;
+        width: 15px !important;
+        height: 15px !important;
+    }
 }
 @media screen and (max-width: 521px){
     .intro header{
@@ -321,5 +326,10 @@ body {
     }
     .intro time{
         font-size: 24px !important;
+    }
+    #pic-nav li{
+        margin: 10px !important;
+        width: 15px !important;
+        height: 15px !important;
     }
 }
