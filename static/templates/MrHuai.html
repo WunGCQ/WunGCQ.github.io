@@ -92,23 +92,23 @@
                 }
             });
             var windowHeight = $(window).outerHeight();
-            window.timer =setInterval(function(){
-                if($(window).scrollTop() > (windowHeight*0.4)){
-
-                    $.scrollTo("#pics",300);
-                    setTimeout(function(){
-                        var elem = document.getElementById("#page-2");
-                        removeGray(elem);
-                        showPicInfo(elem);
-                    },300);
-                    clearInterval(window.timer);
-                }
-            },100);
-            $("#page-1").on("scorllstart",function(){
-                $.scrollTo("#pics",300);
-            });
+//            window.timer =setInterval(function(){
+//                if($(window).scrollTop() > (windowHeight*0.4)){
+//
+//                    $.scrollTo("#pics",300);
+//                    setTimeout(function(){
+//                        var elem = document.getElementById("#page-2");
+//                        removeGray(elem);
+//                        showPicInfo(elem);
+//                    },300);
+//                    clearInterval(window.timer);
+//                }
+//            },100);
+//            $("#page-1").on("scorllstart",function(){
+//                $.scrollTo("#pics",300);
+//            });
             //向左滑往右走
-            $("#page-container").on("swipeleft",function(){
+            $("#page-container .pages").on("swipeleft",function(){
                 var windowWidth = $(window).outerWidth();
                 var offset = parseInt($("#page-container").css("left"));
                 if(offset> (-3*windowWidth)) {
@@ -128,7 +128,7 @@
 
             });
             //向右滑往左走
-            $("#page-container").on("swiperight",function(){
+            $("#page-container .pages").on("swiperight",function(){
                 var windowWidth = $(window).outerWidth();
                 var offset = parseInt($("#page-container").css("left"));
                 if(offset<0){
