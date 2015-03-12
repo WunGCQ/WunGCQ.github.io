@@ -20,7 +20,7 @@
         </div>
     </section>
 
-    <section id="pics" class=" full-screen" style="overflow: hidden">
+    <section id="pics" class="full-screen" style="overflow: hidden">
         <ul id="pic-nav">
             <li class="active"></li>
             <li></li>
@@ -67,6 +67,84 @@
         </div>
 
     </section>
+    <section id="words-header" class="banner">
+        <header>
+            <div>
+                <i class="huai-logo"></i>
+                <span>Mr.Huai</span>
+            </div>
+            <div>
+                留言.
+            </div>
+            <section>
+                <h2>怀进鹏</h2>
+                <span>中国共产党党员，中国科学院院士，计算机软件专家。工业和信息化部副部长、党组成员。前北京航空航天大学校长。</span>
+            </section>
+
+        </header>
+    </section>
+    <div id="words">
+        <section>
+            <h2>为什么要上大学</h2>
+            <h3>——北航2011级本科新生开学典礼</h3>
+            <p>
+                也许有人认为，上大学只是一种选择，上“好大学”是一种荣誉和目标；
+                也许有人认为，在大学可以学习更多的知识和技能，以后有个让人满意的职业；
+                也许有人认为，上大学可以成为一个有修养、受人尊敬的人。
+            </p>
+        </section>
+        <section>
+            <h2>仰望星空 德才兼备 报效祖国</h2>
+            <h3>——2010届毕业生典礼</h3>
+            <p>
+                这几天，校园里布满了一种气息，空气中弥漫着一种情绪，这里充满了激情和信心，这就是青春和飞腾的冲动！
+                同学们，你们今天就要从这里起航，去放飞梦想，去拥抱未来！
+            </p>
+        </section>
+    </div>
+    <section id="leave-message-header" class="banner">
+        <header>
+            <div>
+                <i class="huai-logo"></i>
+                <span>Mr.Huai</span>
+            </div>
+            <div>
+                留言.
+            </div>
+
+
+        </header>
+    </section>
+    <section id="leave-message">
+        <a href="javascript:show_editor();" id="add-message-link" data-clicked="false">
+            留言
+        </a>
+        <section>
+            <h2>旧书信</h2>
+            <time>2014/3/5</time>
+            <p>祝您事事顺意，每天都有一份好心情！</p>
+        </section>
+        <section>
+            <h2>酒杯斟满</h2>
+            <time>2014/3/5</time>
+            <p>
+                桃李满天下，恩情似海深，您不仅是一位合格的教师，更是一位好朋友！谢谢您所做的一切。
+            </p>
+            <p class="reply">
+                谢谢，希望你好好学习，将来为北航争光添彩
+            </p>
+        </section>
+        <section>
+            <h2>雾散尽之后</h2>
+            <time>2014/3/2</time>
+            <p>阳光普照，园丁心坎春意暖；雨露滋润，桃李蓓蕾红。您辛苦了~</p>
+        </section>
+        <section>
+            <h2>依旧如初</h2>
+            <time>2014/3/2</time>
+            <p>祝老师桃李满天下，一切都好！</p>
+        </section>
+    </section>
 
 
     <script>
@@ -75,7 +153,6 @@
             setTimeout(function(){
                 mo();
             },1000);
-
             $("#pic-nav li").click(function(){
                 if(!this.classList.contains("active")) {
                     $("#pic-nav .active").attr("class","");
@@ -91,19 +168,7 @@
                     showPicInfo(elem);
                 }
             });
-            var windowHeight = $(window).outerHeight();
-//            window.timer =setInterval(function(){
-//                if($(window).scrollTop() > (windowHeight*0.4)){
-//
-//                    $.scrollTo("#pics",300);
-//                    setTimeout(function(){
-//                        var elem = document.getElementById("#page-2");
-//                        removeGray(elem);
-//                        showPicInfo(elem);
-//                    },300);
-//                    clearInterval(window.timer);
-//                }
-//            },100);
+
 //            $("#page-1").on("scorllstart",function(){
 //                $.scrollTo("#pics",300);
 //            });
@@ -146,6 +211,107 @@
                 }
             });
 
+
+            window.scrollData = {};
+            var flag1 = true;
+            var flag2 = true;
+            var flag3 = true;
+            var flag4 = true;
+            var flag5 = true;
+            var flag6 = true;
+            var flag7 = true;
+            var flag8 = true;
+
+            setTimeout(function(){
+                $('#page-1').bind('mousewheel',function(event,delta,deltaX,deltaY){
+                    if(flag1){
+                        if(delta<0){
+                            flag1 = false;
+                            setTimeout(function(){
+                                $.scrollTo("#pics",400);
+                                var elem = document.getElementById("page-2");
+                                removeGray(elem);
+                                showPicInfo(elem);
+                                flag1 = true;
+                            },100);
+                        }
+
+                    }
+
+                });
+                $('.bg').bind('mousewheel',function(event,delta,deltaX,deltaY){
+                    if(delta<0){
+                        if(flag2){
+                            flag2 = false;
+                            setTimeout(function(){
+                                $.scrollTo("#words-header",400);
+                                flag2 = true;
+                            },100);
+                        }
+                    }else{
+                        if(flag3){
+                            flag3 = false;
+                            setTimeout(function(){
+                                $.scrollTo("#page-1",400);
+                                flag3 = true;
+                            },100);
+                        }
+                    }
+                });
+                $('#words-header').bind('mousewheel',function(event,delta,deltaX,deltaY){
+                    if(delta<0){
+                        if(flag4){
+                            flag4 = false;
+                            setTimeout(function(){
+                                $.scrollTo("#words",400);
+                                flag4 = true;
+                            },100);
+                        }
+                    }else{
+                        if(flag5){
+                            flag5 = false;
+                            setTimeout(function(){
+                                $.scrollTo("#pics",400);
+                                flag5 = true;
+                            },100);
+                        }
+                    }
+                });
+                $('#leave-message-header').bind('mousewheel',function(event,delta,deltaX,deltaY){
+                    if(delta>0){
+                        if(flag7){
+                            flag7 = false;
+                            setTimeout(function(){
+                                $.scrollTo("#words",400);
+                                flag7 = true;
+                            },100);
+                        }
+                    }else{
+                        if(flag8){
+                            flag8 = false;
+                            setTimeout(function(){
+                                $.scrollTo("#leave-message",400);
+                                flag8 = true;
+                            },100);
+                        }
+                    }
+                });
+            },1000);
+
+//            $('#page-1').bind('mousewheel', function(event, delta, deltaX, deltaY) {
+//                if(delta<0){
+//                    setTimeout(function(){
+//                        $.scrollTo("#pics",800);
+//                        var elem = document.getElementById("page-2");
+//                        removeGray(elem);
+//                        showPicInfo(elem);
+//                    },200);
+//
+//                }
+//            });
+
+
+
         });
 
 
@@ -161,13 +327,30 @@
                 "height":windowHeight.toString() + "px",
                 "left":0
             });
+            $("#words-header").css({
+                "min-height":(windowHeight*0.4).toString() + "px"
+            });
+            $("#words").css({
+                "min-height":(windowHeight*0.6).toString() + "px"
+            });
+            $("#leave-message").css({
+                "min-height":(windowHeight*0.7).toString() + "px"
+            });
+            var nav_width = parseInt($("#pic-nav").outerWidth());
+            $("#pic-nav").css({
+                "left": parseInt((windowWidth - nav_width)/2) + "px"
+            });
+
         }
 
         function removeGray(elem) {
-            if(elem.classList.contains("gray")) {
-                elem.classList.remove("gray");
-                elem.classList.add("fade");
+            if(elem){
+                if(elem.classList.contains("gray")) {
+                    elem.classList.remove("gray");
+                    elem.classList.add("fade");
+                }
             }
+
         }
         function showPicInfo(elem){
             var e = elem.getElementsByClassName("intro")[0];
@@ -176,6 +359,7 @@
                     e.classList.add("show");
                 }
             }
+
         }
         function setNavActive(index){
             $("#pic-nav li").attr("class","");
@@ -184,61 +368,6 @@
             }
         }
 
-//        function up(){
-//            var index = Math.floor($(window).scrollTop()/$(window).outerHeight())+1;
-//            if(index > 1){
-//                //上一页
-//                index--;
-//                var id = "#"+document.getElementsByClassName("pages")[index - 1].id;
-//                $.scrollTo(id,500);
-//                setTimeout(function(){
-//                    var elem = $(id).get()[0];
-//                    removeGray(elem);
-//                    showPicInfo(elem);
-//                },500);
-//            }
-//        }
-//        function down(){
-//            var index = Math.floor($(window).scrollTop()/$(window).outerHeight())+1;
-//            if(index < document.getElementsByClassName("pages").length){
-//                //下一页
-//                index++;
-//                var id = "#"+document.getElementsByClassName("pages")[index - 1].id;
-//                $.scrollTo(id,500);
-//                setTimeout(function(){
-//                    var elem = $(id).get()[0];
-//                    removeGray(elem);
-//                    showPicInfo(elem);
-//                },500);
-//            }
-//        }
-
-//        var scrollFunc = function (e) {
-//            var direct = 0;
-//            e = e || window.event;
-//            if (e.wheelDelta) {  //判断浏览器IE，chrome滑轮事件
-//                if (e.wheelDelta > 0) { //当滑轮向上滚动时
-//                    up();
-//                }
-//                if (e.wheelDelta < 0) { //当滑轮向下滚动时
-//                    down();
-//                }
-//            } else if (e.detail) {  //Firefox滑轮事件
-//                if (e.detail> 0) { //当滑轮向上滚动时
-//                    up();
-//                }
-//                if (e.detail< 0) { //当滑轮向下滚动时
-//                    down();
-//                }
-//            }
-////                ScrollText(direct);
-//        };
-        //给页面绑定滑轮滚动事件
-//        if (document.addEventListener) {
-//            document.addEventListener('DOMMouseScroll', scrollFunc, false);
-//        }
-
-//        window.onmousewheel = document.onmousewheel = scrollFunc;
         function mo(){
             var logo_box = document.getElementById("logo-box");
             logo_box.classList.add("show");
@@ -247,7 +376,34 @@
             document.getElementById("logo").classList.add("logo-animation");
         }
 
+        function show_editor() {
+            var editor = [
+                '<div name="add-message" id="add-message">',
+                '<div contenteditable="true" id="edit-message">',
+                '<span class="placeholder">在这里写下想对怀校长说的话吧!</span>',
+                '</div>',
+                '</div>'
+            ].join("");
 
+            var t = document.getElementById("add-message-link").getAttribute("data-clicked");
+            if(t == "false") {
+                if(window.user == null){
+//                var str = '<div class="user-name">'+window.user.nickname+'</div>'+editor;
+                    $(editor).insertAfter("#add-message-link");
+                    $("#leave-message-header").css({"height":"150px"});
+                    document.getElementById("add-message-link").setAttribute("data-clicked","true");
+
+                }
+            }else{
+                $("#add-message").fadeOut(300);
+                $("#leave-message-header").css({"height":"400px"});
+                document.getElementById("add-message-link").setAttribute("data-clicked","false");
+            }
+
+
+
+        }
+        window.user = null;
         //滚动滑轮触发scrollFunc方法
 
 
@@ -255,5 +411,6 @@
     </script>
     <script src="../js/lib/jquery.scrollTo.js"></script>
     <script src="../js/lib/jquery.mobile.min.js"></script>
+    <script src="../js/lib/mousewheel.min.js"></script>
 </body>
 </html>
