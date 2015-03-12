@@ -17,7 +17,7 @@
 
 
 </head>
-<body onresize="set_mov_size();">
+<body onResize="set_mov_size();">
     <div id="mov-bg">
         <video  autoplay loop poster="../images/bg_new.jpg" width="100%">
             <source src="../Test-H5/Sample1.webm" type="video/webm">
@@ -132,7 +132,6 @@
 //            });
         }
     }
-    window.onresize = set_mov_size();
     //翻牌用~
     function convert(from,to) {
         var eleBack = null, eleFront = null,

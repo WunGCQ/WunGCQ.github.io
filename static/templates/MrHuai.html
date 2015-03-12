@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>怀进鹏</title>
+    <link rel="stylesheet" href="../css/huai.css"/>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/lib/jquery.scrollTo.js"></script>
+</head>
+
+<body onResize="setFullScreenElementsStyle()">
+    <section id="page-1" class="pages full-screen">
+        <div id="logo-box">
+            <img id="mo" src="../images/mo.png" alt=""/>
+            <img id="logo" src="../images/huai_logo.png" alt=""/>
+            <header id="master-name">
+                <span id="Jinpeng">Jinpeng</span> <span id="huai">Huai</span>
+            </header>
+        </div>
+    </section>
+
+    <section id="pics" class=" full-screen" style="overflow: hidden">
+        <ul id="pic-nav">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div id="page-container">
+            <section id="page-2" class="pages full-screen gray">
+                <div class="bg"></div>
+                <div class="intro" style="top:10%;left:5%;">
+                    <header>“法国外交部长洛朗·法比尤斯与怀进鹏校长亲切交谈”</header>
+                    <time>2013 / 7</time>
+                </div>
+
+                <i class="up-angle"></i>
+                <i class="down-angle"></i>
+            </section>
+
+
+            <section id="page-3" class="pages full-screen gray">
+                <div class="bg"></div>
+                <div class="intro" style="bottom: 5%;left: 5%;">
+                    <time>2013 / 10</time>
+                    <header>“校庆嘉年华上亲自体验一把‘愤怒的小鸟’”</header>
+                </div>
+                <i class="up-angle"></i>
+                <i class="down-angle"></i>
+            </section>
+
+
+            <section id="page-4" class="pages full-screen gray">
+                <div class="bg"></div>
+                <div class="intro" style="left: 5%;top: 5%;">
+                    <header>“习近平主席见证我校与布鲁塞尔自由大学<br/>签署战略合作协议”</header>
+                    <time>2014 / 3</time>
+                </div>
+                <i class="up-angle"></i>
+                <i class="down-angle"></i>
+            </section>
+            <section id="page-5" class="pages full-screen gray">
+                <div class="bg"></div>
+                <div class="intro" style="left: 5%;bottom:20%;">
+                    <time>2014 / 4</time>
+                    <header>“毕业季嘉年华，毕业季筹备委员会团队，向<br/>怀校长赠送2014首款毕业戒指，怀校长表示<br/>需要支持团队的运营和持续发展，亲自购买”</header>
+                </div>
+                <i class="up-angle"></i>
+                <i class="down-angle"></i>
+                <!--todo 需要png的图实现上下指示箭头-->
+            </section>
+        </div>
+
+    </section>
+
+
+    <script>
+        $(document).ready(function(){
+            setFullScreenElementsStyle();
+            setTimeout(function(){
+                mo();
+            },2000);
+
+            $("#pic-nav li").click(function(){
+                if(!this.classList.contains("active")) {
+                    $("#pic-nav .active").attr("class","");
+                    this.classList.add("active");
+                    var index = $("#pic-nav li").index($(this));
+                    var windowWidth = $(window).outerWidth();
+                    var leftOffset = -windowWidth*index;
+                    $("#page-container").css({
+                        "left":leftOffset+"px"
+                    });
+                    var elem = document.getElementById("page-"+(index+2).toString());
+                    removeGray(elem);
+                    showPicInfo(elem);
+                }
+            });
+            var windowHeight = $(window).outerHeight();
+            window.timer =setInterval(function(){
+                if($(window).scrollTop() > windowHeight*0.5){
+
+                    $.scrollTo("#page-2",300);
+                    setTimeout(function(){
+                        var elem = document.getElementById("page-2");
+                        removeGray(elem);
+                        showPicInfo(elem);
+
+                    },300);
+                    clearInterval(window.timer);
+                }
+            },100);
+
+        });
+
+
+        function setFullScreenElementsStyle(){
+            var windowWidth = $(window).outerWidth();
+            var windowHeight = $(window).outerHeight();
+            $(".full-screen").css({
+                "width":windowWidth.toString() + "px",
+                "height":windowHeight.toString() + "px"
+            });
+            $("#page-container").css({
+                "width":(4*windowWidth).toString() + "px",
+                "height":windowHeight.toString() + "px"
+            });
+        }
+
+        function removeGray(elem) {
+            if(elem.classList.contains("gray")) {
+                elem.classList.remove("gray");
+                elem.classList.add("fade");
+            }
+        }
+        function showPicInfo(elem){
+            var e = elem.getElementsByClassName("intro")[0];
+            if(e){
+                if(!e.classList.contains("show")) {
+                    e.classList.add("show");
+                }
+            }
+        }
+
+//        function up(){
+//            var index = Math.floor($(window).scrollTop()/$(window).outerHeight())+1;
+//            if(index > 1){
+//                //上一页
+//                index--;
+//                var id = "#"+document.getElementsByClassName("pages")[index - 1].id;
+//                $.scrollTo(id,500);
+//                setTimeout(function(){
+//                    var elem = $(id).get()[0];
+//                    removeGray(elem);
+//                    showPicInfo(elem);
+//                },500);
+//            }
+//        }
+//        function down(){
+//            var index = Math.floor($(window).scrollTop()/$(window).outerHeight())+1;
+//            if(index < document.getElementsByClassName("pages").length){
+//                //下一页
+//                index++;
+//                var id = "#"+document.getElementsByClassName("pages")[index - 1].id;
+//                $.scrollTo(id,500);
+//                setTimeout(function(){
+//                    var elem = $(id).get()[0];
+//                    removeGray(elem);
+//                    showPicInfo(elem);
+//                },500);
+//            }
+//        }
+
+//        var scrollFunc = function (e) {
+//            var direct = 0;
+//            e = e || window.event;
+//            if (e.wheelDelta) {  //判断浏览器IE，chrome滑轮事件
+//                if (e.wheelDelta > 0) { //当滑轮向上滚动时
+//                    up();
+//                }
+//                if (e.wheelDelta < 0) { //当滑轮向下滚动时
+//                    down();
+//                }
+//            } else if (e.detail) {  //Firefox滑轮事件
+//                if (e.detail> 0) { //当滑轮向上滚动时
+//                    up();
+//                }
+//                if (e.detail< 0) { //当滑轮向下滚动时
+//                    down();
+//                }
+//            }
+////                ScrollText(direct);
+//        };
+        //给页面绑定滑轮滚动事件
+//        if (document.addEventListener) {
+//            document.addEventListener('DOMMouseScroll', scrollFunc, false);
+//        }
+
+//        window.onmousewheel = document.onmousewheel = scrollFunc;
+        function mo(){
+            var logo_box = document.getElementById("logo-box");
+            logo_box.classList.add("show");
+            document.getElementById("mo").classList.add("mo-animation");
+            logo_box.classList.add("logo-box-animation");
+            document.getElementById("logo").classList.add("logo-animation");
+        }
+
+
+        //滚动滑轮触发scrollFunc方法
+
+
+
+    </script>
+</body>
+</html>
