@@ -35,19 +35,15 @@
                     <time>2013 / 7</time>
                 </div>
 
-                <i class="up-angle"></i>
-                <i class="down-angle"></i>
             </section>
 
 
             <section id="page-3" class="pages full-screen gray">
                 <div class="bg"></div>
-                <div class="intro" style="bottom: 5%;left: 5%;">
+                <div class="intro" style="bottom: 7%;left: 5%;">
                     <time>2013 / 10</time>
                     <header>“校庆嘉年华上亲自体验一把‘愤怒的小鸟’”</header>
                 </div>
-                <i class="up-angle"></i>
-                <i class="down-angle"></i>
             </section>
 
 
@@ -57,17 +53,15 @@
                     <header>“习近平主席见证我校与布鲁塞尔自由大学<br/>签署战略合作协议”</header>
                     <time>2014 / 3</time>
                 </div>
-                <i class="up-angle"></i>
-                <i class="down-angle"></i>
             </section>
+
             <section id="page-5" class="pages full-screen gray">
                 <div class="bg"></div>
                 <div class="intro" style="left: 5%;bottom:20%;">
                     <time>2014 / 4</time>
                     <header>“毕业季嘉年华，毕业季筹备委员会团队，向<br/>怀校长赠送2014首款毕业戒指，怀校长表示<br/>需要支持团队的运营和持续发展，亲自购买”</header>
                 </div>
-                <i class="up-angle"></i>
-                <i class="down-angle"></i>
+
                 <!--todo 需要png的图实现上下指示箭头-->
             </section>
         </div>
@@ -80,7 +74,7 @@
             setFullScreenElementsStyle();
             setTimeout(function(){
                 mo();
-            },2000);
+            },1000);
 
             $("#pic-nav li").click(function(){
                 if(!this.classList.contains("active")) {
@@ -99,7 +93,7 @@
             });
             var windowHeight = $(window).outerHeight();
             window.timer =setInterval(function(){
-                if($(window).scrollTop() > windowHeight*0.5){
+                if($(window).scrollTop() > (windowHeight*0.4)){
 
                     $.scrollTo("#page-2",300);
                     setTimeout(function(){
@@ -124,7 +118,8 @@
             });
             $("#page-container").css({
                 "width":(4*windowWidth).toString() + "px",
-                "height":windowHeight.toString() + "px"
+                "height":windowHeight.toString() + "px",
+                "left":0
             });
         }
 
