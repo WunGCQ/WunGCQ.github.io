@@ -14,10 +14,9 @@
         <div id="logo-box">
             <img id="mo" src="../images/mo.png" alt=""/>
             <img id="logo" src="../images/huai_logo.png" alt=""/>
-            <header id="master-name">
-                <span id="Jinpeng">Jinpeng</span> <span id="huai">Huai</span>
-            </header>
+            <span id="jinpeng">Jinpeng</span> <span id="huai">Huai</span>
         </div>
+        <span class="down-arrow"></span>
     </section>
 
     <section id="pics" class="full-screen" style="overflow: hidden">
@@ -28,7 +27,7 @@
             <li></li>
         </ul>
         <div id="page-container">
-            <section id="page-2" class="pages full-screen gray">
+            <section id="page-2" class="pages full-screen">
                 <div class="bg"></div>
                 <div class="intro" style="top:10%;left:5%;">
                     <header>“法国外交部长洛朗·法比尤斯与怀进鹏校长亲切交谈”</header>
@@ -38,7 +37,7 @@
             </section>
 
 
-            <section id="page-3" class="pages full-screen gray">
+            <section id="page-3" class="pages full-screen">
                 <div class="bg"></div>
                 <div class="intro" style="bottom: 7%;left: 5%;">
                     <time>2013 / 10</time>
@@ -47,7 +46,7 @@
             </section>
 
 
-            <section id="page-4" class="pages full-screen gray">
+            <section id="page-4" class="pages full-screen">
                 <div class="bg"></div>
                 <div class="intro" style="left: 5%;top: 5%;">
                     <header>“习近平主席见证我校与布鲁塞尔自由大学<br/>签署战略合作协议”</header>
@@ -55,7 +54,7 @@
                 </div>
             </section>
 
-            <section id="page-5" class="pages full-screen gray">
+            <section id="page-5" class="pages full-screen">
                 <div class="bg"></div>
                 <div class="intro" style="left: 5%;bottom:20%;">
                     <time>2014 / 4</time>
@@ -119,6 +118,32 @@
         <a href="javascript:show_editor();" id="add-message-link" data-clicked="false">
             留言
         </a>
+        <div name="add-message" id="add-message" style="display: none;">
+            <div contenteditable="true" id="edit-message">
+                <span class="placeholder">在这里写下想对怀校长说的话吧!</span>
+            </div>
+        </div>
+        <form class="login-form form" style="display: none;">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>用户名</td>
+                        <td><input type="text" name="username" placeholder="输入用户名"/></td>
+                    </tr>
+                    <tr>
+                        <td>密码</td>
+                        <td><input type="password" name="password" placeholder="输入密码"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a href="javascript:login();" class="button">登陆</a>
+                            <a href="" class="button">注册</a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </form>
         <section>
             <h2>旧书信</h2>
             <time>2014/3/5</time>
@@ -157,15 +182,8 @@
                 if(!this.classList.contains("active")) {
                     $("#pic-nav .active").attr("class","");
                     this.classList.add("active");
-                    var index = $("#pic-nav li").index($(this));
-                    var windowWidth = $(window).outerWidth();
-                    var leftOffset = -windowWidth*index;
-                    $("#page-container").css({
-                        "left":leftOffset+"px"
-                    });
-                    var elem = document.getElementById("page-"+(index+2).toString());
-                    removeGray(elem);
-                    showPicInfo(elem);
+                    var index = $("#pic-nav li").index($(this))+2;
+                    scroll_pics(index);
                 }
             });
 
@@ -179,15 +197,7 @@
                 if(offset> (-3*windowWidth)) {
                     var index = parseInt(-offset / windowWidth);
                     index++;
-
-                    var leftOffset = -windowWidth * index;
-
-                    $("#page-container").css({
-                        "left": leftOffset + "px"
-                    });
-                    var elem = document.getElementById("page-" + (index + 2).toString());
-                    removeGray(elem);
-                    showPicInfo(elem);
+                    scroll_pics(index+2);
                     setNavActive(index);
                 }
 
@@ -199,15 +209,8 @@
                 if(offset<0){
                     var index = parseInt(-offset/windowWidth);
                     index--;
-                    var leftOffset = -windowWidth*index;
-                    $("#page-container").css({
-                        "left":leftOffset+"px"
-                    });
-                    var elem = document.getElementById("page-"+(index+2).toString());
-                    removeGray(elem);
-                    showPicInfo(elem);
+                    scroll_pics(index+2);
                     setNavActive(index);
-
                 }
             });
 
@@ -223,6 +226,26 @@
             var flag8 = true;
 
             setTimeout(function(){
+//                $('.bg').bind('mouseover',function(){
+//                    if(flag1){
+//                        flag1 = false;
+//                        $.scrollTo("#pics",800);
+//                        setTimeout(function(){
+//                            var elem = document.getElementById("page-2");
+//                            showPicInfo(elem);
+//                            removeGray(elem);
+//                        },200);
+//                    }
+//                });
+                $("#page-1 .down-arrow").bind("click",function(){
+                    $.scrollTo("#pics",800);
+                    setTimeout(function(){
+                        var elem = document.getElementById("page-2");
+                        showPicInfo(elem);
+                        removeGray(elem);
+                    },200);
+                });
+//
                 $('#page-1').bind('mousewheel',function(event,delta,deltaX,deltaY){
                     if(flag1){
                         if(delta<0){
@@ -230,8 +253,8 @@
                             setTimeout(function(){
                                 $.scrollTo("#pics",400);
                                 var elem = document.getElementById("page-2");
-                                removeGray(elem);
                                 showPicInfo(elem);
+                                removeGray(elem);
                                 flag1 = true;
                             },100);
                         }
@@ -239,64 +262,64 @@
                     }
 
                 });
-                $('.bg').bind('mousewheel',function(event,delta,deltaX,deltaY){
-                    if(delta<0){
-                        if(flag2){
-                            flag2 = false;
-                            setTimeout(function(){
-                                $.scrollTo("#words-header",400);
-                                flag2 = true;
-                            },100);
-                        }
-                    }else{
-                        if(flag3){
-                            flag3 = false;
-                            setTimeout(function(){
-                                $.scrollTo("#page-1",400);
-                                flag3 = true;
-                            },100);
-                        }
-                    }
-                });
-                $('#words-header').bind('mousewheel',function(event,delta,deltaX,deltaY){
-                    if(delta<0){
-                        if(flag4){
-                            flag4 = false;
-                            setTimeout(function(){
-                                $.scrollTo("#words",400);
-                                flag4 = true;
-                            },100);
-                        }
-                    }else{
-                        if(flag5){
-                            flag5 = false;
-                            setTimeout(function(){
-                                $.scrollTo("#pics",400);
-                                flag5 = true;
-                            },100);
-                        }
-                    }
-                });
-                $('#leave-message-header').bind('mousewheel',function(event,delta,deltaX,deltaY){
-                    if(delta>0){
-                        if(flag7){
-                            flag7 = false;
-                            setTimeout(function(){
-                                $.scrollTo("#words",400);
-                                flag7 = true;
-                            },100);
-                        }
-                    }else{
-                        if(flag8){
-                            flag8 = false;
-                            setTimeout(function(){
-                                $.scrollTo("#leave-message",400);
-                                flag8 = true;
-                            },100);
-                        }
-                    }
-                });
-            },1000);
+//                $('.bg').bind('mousewheel',function(event,delta,deltaX,deltaY){
+//                    if(delta<0){
+//                        if(flag2){
+//                            flag2 = false;
+//                            setTimeout(function(){
+//                                $.scrollTo("#words-header",400);
+//                                flag2 = true;
+//                            },100);
+//                        }
+//                    }else{
+//                        if(flag3){
+//                            flag3 = false;
+//                            setTimeout(function(){
+//                                $.scrollTo("#page-1",400);
+//                                flag3 = true;
+//                            },100);
+//                        }
+//                    }
+//                });
+//                $('#words-header').bind('mousewheel',function(event,delta,deltaX,deltaY){
+//                if(delta<0){
+//                    if(flag4){
+//                        flag4 = false;
+//                        setTimeout(function(){
+//                            $.scrollTo("#words",400);
+//                            flag4 = true;
+//                        },100);
+//                    }
+//                }else{
+//                    if(flag5){
+//                        flag5 = false;
+//                        setTimeout(function(){
+//                            $.scrollTo("#pics",400);
+//                            flag5 = true;
+//                        },100);
+//                    }
+//                }
+//            });
+//            $('#leave-message-header').bind('mousewheel',function(event,delta,deltaX,deltaY){
+//                if(delta>0){
+//                    if(flag7){
+//                        flag7 = false;
+//                        setTimeout(function(){
+//                            $.scrollTo("#words",400);
+//                            flag7 = true;
+//                        },100);
+//                    }
+//                }else{
+//                    if(flag8){
+//                        flag8 = false;
+//                        setTimeout(function(){
+//                            $.scrollTo("#leave-message",400);
+//                            flag8 = true;
+//                        },100);
+//                    }
+//                }
+//            });
+        },500);
 
 //            $('#page-1').bind('mousewheel', function(event, delta, deltaX, deltaY) {
 //                if(delta<0){
@@ -330,17 +353,23 @@
             $("#words-header").css({
                 "min-height":(windowHeight*0.4).toString() + "px"
             });
+            $("#words-header>header").css({
+                "height":(windowHeight*0.4).toString() + "px"
+            });
             $("#words").css({
                 "min-height":(windowHeight*0.6).toString() + "px"
             });
             $("#leave-message").css({
                 "min-height":(windowHeight*0.7).toString() + "px"
             });
+
             var nav_width = parseInt($("#pic-nav").outerWidth());
             $("#pic-nav").css({
                 "left": parseInt((windowWidth - nav_width)/2) + "px"
             });
-
+            $(".down-arrow").css({
+                "left":parseInt((windowWidth - 30)/2) + "px"
+            })
         }
 
         function removeGray(elem) {
@@ -350,11 +379,14 @@
                     elem.classList.add("fade");
                 }
             }
-
         }
         function showPicInfo(elem){
             var e = elem.getElementsByClassName("intro")[0];
             if(e){
+                var bg = e.parentNode.children[0];
+                $(bg).css({
+                    "background-color":"rgba(0,0,0,0.3)"
+                });
                 if(!e.classList.contains("show")) {
                     e.classList.add("show");
                 }
@@ -367,41 +399,84 @@
                 document.getElementById("pic-nav").getElementsByTagName("li")[index].classList.add("active");
             }
         }
-
+        //首页的duang特效
         function mo(){
             var logo_box = document.getElementById("logo-box");
             logo_box.classList.add("show");
             document.getElementById("mo").classList.add("mo-animation");
             logo_box.classList.add("logo-box-animation");
             document.getElementById("logo").classList.add("logo-animation");
+
+            $("#jinpeng").attr("class","jump1");
+            $("#huai").attr("class","jump2");
+
+            setTimeout(function(){
+                $(".down-arrow").css({
+                    "opacity":"0.8"
+                });
+            },2000);
         }
 
         function show_editor() {
-            var editor = [
-                '<div name="add-message" id="add-message">',
-                '<div contenteditable="true" id="edit-message">',
-                '<span class="placeholder">在这里写下想对怀校长说的话吧!</span>',
-                '</div>',
-                '</div>'
-            ].join("");
 
             var t = document.getElementById("add-message-link").getAttribute("data-clicked");
             if(t == "false") {
-                if(window.user == null){
-//                var str = '<div class="user-name">'+window.user.nickname+'</div>'+editor;
-                    $(editor).insertAfter("#add-message-link");
+                if(window.user){
+                    if($("#leave-message .user-name").get().length==0) {
+                        var str = '<div class="user-name"><span>'+window.user.username+'</span></div>';
+                        $(str).insertAfter("#add-message-link");
+                    }
+                    else {
+                        $("#leave-message .user-name span").html(window.user.username);
+                    }
                     $("#leave-message-header").css({"height":"150px"});
-                    document.getElementById("add-message-link").setAttribute("data-clicked","true");
+                    $("#add-message").fadeIn(300);
 
+                }else {
+
+                    if($("#leave-message .alert").get().length==0){
+                        var str = '<div class="alert"><span>请登陆或注册</span></div>';
+                        $(str).insertAfter("#add-message-link");
+                    }
+                    $("#leave-message-header").css({"height":"150px"});
+                    $("#leave-message .form").fadeIn(300);
                 }
+                document.getElementById("add-message-link").setAttribute("data-clicked","true");
             }else{
                 $("#add-message").fadeOut(300);
+                $("#leave-message .form").fadeOut(300);
+                $("#leave-message .alert").fadeOut(300);
                 $("#leave-message-header").css({"height":"400px"});
                 document.getElementById("add-message-link").setAttribute("data-clicked","false");
             }
+        }
 
+        function login(){
+            var username = $("#leave-message .form input:eq(0)").val();
+            var password = $("#leave-message .form input:eq(1)").val();
+            //这一部分算回调
+            window.user = {"username":username};
+            $("#leave-message .form").fadeOut(300);
+            $("#leave-message .alert").remove();
+            show_editor();
+            show_editor();
+        }
 
+        function scroll_pics(index){
 
+            var windowWidth = $(window).outerWidth();
+
+            for(var i = 2;i<index; i++) {
+                var el = document.getElementById("page-"+i.toString());
+                $(el).css({"left":parseInt(-windowWidth)+"px"});
+            }
+            for(var j = index;j<=5;j++){
+                var el = document.getElementById("page-"+j.toString());
+                $(el).css({"left":0});
+            }
+            var elem = document.getElementById("page-"+index.toString());
+            removeGray(elem);
+            showPicInfo(elem);
         }
         window.user = null;
         //滚动滑轮触发scrollFunc方法
