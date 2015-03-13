@@ -479,6 +479,7 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
     font-weight: normal;
     color: rgba(255, 255, 255, .9);
 }
+
 #words-header header section
 {
     display: table-cell;
@@ -728,6 +729,9 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
 .form .button:hover {
     text-decoration: none;
     background-color: #986fd2;
+}
+#words-header,#words,#leave-message-header,#leave-message {
+    display: none;
 }
 
 @media screen and (max-width: 1024px) and (min-width: 721px){

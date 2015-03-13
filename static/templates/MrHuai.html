@@ -186,6 +186,12 @@
                     scroll_pics(index);
                 }
             });
+            setTimeout(function(){
+                $("#words-header").show(0);
+                $("#words").show(0);
+                $("#leave-message-header").show(0);
+                $("#leave-message").show(0);
+            },2000);
 
 //            $("#page-1").on("scorllstart",function(){
 //                $.scrollTo("#pics",300);
