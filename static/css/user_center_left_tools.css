@@ -1,6 +1,7 @@
 .left-tools-container {
-    display: block;
-    position: absolute;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
     width: 335px;
 }
 .left-tools-container .section-title {

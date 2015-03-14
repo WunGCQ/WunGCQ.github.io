@@ -31,7 +31,7 @@
                 <div class="bg"></div>
                 <div class="intro" style="top:10%;left:5%;">
                     <header>“法国外交部长洛朗·法比尤斯与怀进鹏校长亲切交谈”</header>
-                    <time>2013 / 7</time>
+                    <time>2013/7</time>
                 </div>
 
             </section>
@@ -40,7 +40,7 @@
             <section id="page-3" class="pages full-screen">
                 <div class="bg"></div>
                 <div class="intro" style="bottom: 7%;left: 5%;">
-                    <time>2013 / 10</time>
+                    <time>2013/10</time>
                     <header>“校庆嘉年华上亲自体验一把‘愤怒的小鸟’”</header>
                 </div>
             </section>
@@ -50,14 +50,14 @@
                 <div class="bg"></div>
                 <div class="intro" style="left: 5%;top: 5%;">
                     <header>“习近平主席见证我校与布鲁塞尔自由大学<br/>签署战略合作协议”</header>
-                    <time>2014 / 3</time>
+                    <time>2014/3</time>
                 </div>
             </section>
 
             <section id="page-5" class="pages full-screen">
                 <div class="bg"></div>
                 <div class="intro" style="left: 5%;bottom:20%;">
-                    <time>2014 / 4</time>
+                    <time>2014/4</time>
                     <header>“毕业季嘉年华，毕业季筹备委员会团队，向<br/>怀校长赠送2014首款毕业戒指，怀校长表示<br/>需要支持团队的运营和持续发展，亲自购买”</header>
                 </div>
 
@@ -170,6 +170,25 @@
             <p>祝老师桃李满天下，一切都好！</p>
         </section>
     </section>
+    <footer>
+        <section onclick="$.scrollTo('#page-1',800);">
+            <i class="huai"></i>
+            <span>Mr.Huai</span>
+        </section>
+        <section onclick="$.scrollTo('#pics',600);">
+            <i class="album"></i>
+            <span>His photos</span>
+        </section>
+        <section onclick="$.scrollTo('#leave-message-header',400);">
+            <i class="say-something"></i>
+            <span>Say something to him</span>
+        </section>
+        <section>
+            <span>Copyright 2015 by <strong>Jinpeng Xu</strong> and <strong>Chunqi Wang</strong></span>
+            <span>All Rights Reserved</span>
+        </section>
+
+    </footer>
 
 
     <script>
@@ -460,7 +479,18 @@
         function login(){
             var username = $("#leave-message .form input:eq(0)").val();
             var password = $("#leave-message .form input:eq(1)").val();
-            //这一部分算回调
+            //todo 补全ajax 这一部分回调
+            window.user = {"username":username};
+            $("#leave-message .form").fadeOut(300);
+            $("#leave-message .alert").remove();
+
+            show_editor();
+            show_editor();
+        }
+        function register(){
+            var username = $("#leave-message .form input:eq(0)").val();
+            var password = $("#leave-message .form input:eq(1)").val();
+            //todo 补全ajax 这一部分写在success回调
             window.user = {"username":username};
             $("#leave-message .form").fadeOut(300);
             $("#leave-message .alert").remove();

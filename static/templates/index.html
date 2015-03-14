@@ -73,6 +73,19 @@
         <a id="bar-message" class="bar-menu bar-have-message" href="messages/" title="消息">
             <span class="fa fa-bell"></span>
         </a>
+        <script>
+            function set_logo_box(){
+                var logo = document.getElementById("logo-box");
+                console.log(window.innerWidth);
+                if(window.innerWidth<1135) {
+                    logo.style["left"] = "0px";
+                }else{
+                    logo.removeAttribute("style");
+                }
+            }
+            set_logo_box();
+            window.addEventListener("resize",set_logo_box);
+        </script>
     </header>
 
     <div id="container">

@@ -26,11 +26,13 @@ body {
     margin: auto;
     margin-top: 15px;
     width: 1000px;
-    height: 100px;
+    height: auto;
     font-family: "Microsoft YaHei","Microsoft Yahei","微软雅黑",Arial,Helvetica Neue, Courier;
     color:rgba(55, 55, 55, .9);
 }
+.right-cards-container {
 
+}
 h1{
     font-size: 20pt;
 }

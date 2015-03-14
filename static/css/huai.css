@@ -32,16 +32,16 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
     background: url(../images/huai_bg_01.jpg) no-repeat scroll 50% 50% / cover transparent;
 }
 #page-2 {
-    background: url(../images/1.jpg) no-repeat scroll 50% 50% / cover transparent;
+    background: url(../images/1_1.jpg) no-repeat scroll 50% 50% / cover transparent;
 }
 #page-3 {
-    background: url(../images/huai_pic_02.jpg) no-repeat scroll 50% 50% / cover transparent;
+    background: url(../images/2_1.jpg) no-repeat scroll 50% 50% / cover transparent;
 }
 #page-4 {
-    background: url(../images/2.jpg) no-repeat scroll 50% 50% / cover transparent;
+    background: url(../images/3_1.jpg) no-repeat scroll 50% 50% / cover transparent;
 }
 #page-5 {
-    background: url(../images/3.jpg) no-repeat scroll 50% 50% / cover transparent;
+    background: url(../images/4_1.jpg) no-repeat scroll 50% 50% / cover transparent;
 }
 .down-arrow {
     display:block;
@@ -733,6 +733,70 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
 #words-header,#words,#leave-message-header,#leave-message {
     display: none;
 }
+
+footer {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 40px 0;
+    background-color: #ddd;
+    text-align: center;
+}
+footer section {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    margin: auto;
+    width: auto;
+    margin-left: 40px;
+    color: #999;
+    padding: 10px;
+    font-size: 10pt;
+    cursor: pointer;
+    transition: all ease-out 0.5s;
+}
+footer section:hover>span {
+    text-decoration: underline;
+}
+footer section i {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    background-image: url(../images/footer.png);
+}
+footer section span {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    height: 30px;
+    line-height: 30px;
+}
+footer section:last-child {
+    width: auto;
+    text-align: left;
+    cursor: default;
+}
+footer section:last-child span {
+    display: block;
+    height: auto;
+    line-height: 1.3em;
+}
+footer section:last-child:hover {
+    background: transparent;
+}
+footer .huai {
+    background-position: -300px -75px;
+}
+footer .album {
+    background-position: -548px -75px;
+}
+footer .say-something {
+    background-position: -830px -75px;
+}
+
 
 @media screen and (max-width: 1024px) and (min-width: 721px){
     .intro header{
