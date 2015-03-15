@@ -134,10 +134,10 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
 
 
 .jump2 {
-    animation:jump 1s forwards 1.25s;
-    -moz-animation:jump 1s forwards 1.25s; /* Firefox */
-    -webkit-animation:jump 1s forwards 1.25s; /* Safari and Chrome */
-    -o-animation:jump 1s forwards 1.25s; /* Opera */
+    animation:jump 1s forwards 1.3s;
+    -moz-animation:jump 1s forwards 1.3s; /* Firefox */
+    -webkit-animation:jump 1s forwards 1.3s; /* Safari and Chrome */
+    -o-animation:jump 1s forwards 1.3s; /* Opera */
     transition-timing-function: cubic-bezier(.34,.39,.46,.91);
     -webkit-transition-timing-function: cubic-bezier(.34,.39,.46,.91);
     -moz-transition-timing-function: cubic-bezier(.34,.39,.46,.91);
@@ -468,13 +468,12 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
     transition: all ease 0.8s;
 }
 #words-header header {
-    display: table;
+    display: block;
     position: relative;
-    max-width: 700px;
+    max-width: 600px;
     width: 90%;
     height: 100%;
     margin:0 auto;
-    top:20px;
     font-size: 24px;
     font-weight: normal;
     color: rgba(255, 255, 255, .9);
@@ -482,14 +481,15 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
 
 #words-header header section
 {
-    display: table-cell;
+    display: block;
     position: relative;
     width: 100%;
     margin: auto;
     vertical-align: middle;
     text-align: left;
-    height: auto;
-    padding: 10%;
+    height: 100%;
+    padding: 0;
+    z-index: 200;
 }
 #words-header header section h2 {
     display: block;
@@ -497,18 +497,30 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
     margin-bottom: 15px;
 
 }
+#words-header header section div{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    left: 0;
+    bottom: 70px;
+    text-align: left;
+}
 #words-header header section span {
     display: block;
+    position: relative;
     line-height: 1.3em;
     font-size: 16px;
+    margin: 0;
+    width: 96%;
 }
 #leave-message-header header {
     display: block;
     position: relative;
-    max-width: 1000px;
+    max-width: 600px;
     width: 90%;
     margin:0 auto;
-    top:20px;
+    top:0;
     font-size: 24px;
     font-weight: normal;
     color: rgba(255, 255, 255, .9);
@@ -516,22 +528,36 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
 .banner header>div:first-child {
     display: block;
     position: absolute;
-    top:10px;
-    left: 0;
+    top:20px;
+    left: -45px;
     text-align: left;
+    cursor: pointer;
+    z-index: 1000;
 }
 .banner header>div:nth-child(2) {
     display: block;
     position: absolute;
-    top:10px;
-    right: 0;
+    top:20px;
+    right: -20px;
     text-align: right;
+    cursor: pointer;
+    z-index: 1000;
+}
+.banner header .huai-logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 26px;
+    height: 26px;
+    background-image: url(../images/huai_logo.png);
+    background-size: 26px 26px;
 }
 #words,#leave-message {
     display: block;
     position: relative;
+    box-sizing: border-box;
     width: 100%;
     height: auto;
+    overflow: hidden;
     padding-top: 40px;
     padding-bottom: 40px;
     text-align: center;
@@ -539,13 +565,13 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
 #words section,#leave-message section {
     display: block;
     position: relative;
-    max-width: 700px;
+    max-width: 600px;
     width: 90%;
-    margin: 40px auto;
+    margin: 30px auto;
     text-align: left;
 }
 #words section h2 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: normal;
     color: #33b6b9;
 }
@@ -580,11 +606,35 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
     color: #737373;
     margin-top: 10px;
 }
-#leave-message .reply:before {
-    content: "回复: ";
-    font-size: 18px;
+#leave-message .reply-from, #leave-message .reply-to{
+    display: inline;
+    font-size: 14px;
     font-weight: normal;
     color: #33b6b9;
+}
+#leave-message .reply{
+    display: block;
+    position: relative;
+    margin-top: 5px;
+
+}
+#leave-message .reply-to:before {
+    content: "回复";
+    text-indent: 1em;
+    margin-right: 5px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #999;
+}
+#leave-message .reply-content {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #373737;
+    line-height: 1.3em;
+}
+#leave-message{
+    margin-top: -10px;
+    padding-top: 0;
 }
 #add-message-link {
     display: block;
@@ -595,8 +645,9 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
     text-align: center;
     margin: auto;
     background-color: #fff;
+    color: #fff;
     font-size: 12px;
-    margin-top: -54px;
+    margin-top: 0;
 }
 #add-message-link:before {
     content: "";
@@ -658,16 +709,15 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
     color: #373737;
     margin: 20px auto;
     border: 1px solid #ddd;
-    background-color: #ddd;
+    background-color: #efefef;
     outline: none;
     text-align: left;
     font-size: 16px;
 
 }
 #edit-message:focus {
-    border: 1px solid #33b6b9;
-    background-color: transparent;
-    box-shadow: inset 0 0 3px 1px rgba(51, 182, 185, .1);
+    border: 1px solid #aaa;
+    background-color: #fefefe;
 }
 #leave-message .placeholder {
     color:#aaa;
@@ -690,12 +740,22 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
 #leave-message .form td {
     height: 50px;
 }
+#leave-message td[colspan="2"] {
+    text-align: center;
+}
+#leave-message section a{
+    color: #aaa;
+    font-size: 12px;
+    text-indent: 1em;
+}
 #leave-message .form input,#leave-message .form input {
     display: block;
-    width: 120px;
-    margin-left: 10px;
+    width: 216px;
+    margin: auto;
     outline: none;
-    border: 1px solid #33b6b9;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background-color: #eee;
     font-size: 14px;
     font-weight: 500;
     padding: 5px 5px 6px 0px;
@@ -719,7 +779,6 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
     padding: 8px 20px;
     width: 60px;
     margin: auto;
-    left: 10px;
     color: rgba(255, 255, 255, .9);
     background-color: rgba(152, 111, 210, .8);
     font-size: 16px;
@@ -733,14 +792,52 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
 #words-header,#words,#leave-message-header,#leave-message {
     display: none;
 }
-
+.load-more {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, .4);
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+.load-more:hover {
+    background: rgba(0, 0, 0, .3);
+}
+.top-arrow-wrapper {
+    display: block;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 20px;
+    opacity: 0;
+    transition: all ease 0.3s;
+}
+.top-arrow-wrapper .top-arrow {
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin: auto;
+    background-image: url(../images/top-arrow.png);
+    background-size: 24px 24px;
+    cursor: pointer;
+}
+.top-arrow-wrapper:hover {
+    opacity: 1;
+}
 footer {
     display: block;
     position: relative;
     width: 100%;
     height: auto;
     padding: 40px 0;
-    background-color: #ddd;
+    background-color: transparent;
     text-align: center;
 }
 footer section {
@@ -774,7 +871,6 @@ footer section span {
     height: 30px;
     line-height: 30px;
 }
-/**/
 footer section:last-child {
     width: auto;
     text-align: left;
