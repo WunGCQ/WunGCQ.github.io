@@ -182,7 +182,7 @@
             <span class="reply-to">怀校长</span>
             <article class="reply-content">我一定谨记校长的教诲，努力工作，升职加薪，出任CEO迎娶白富美走上人生巅峰，为北航争光添彩！<a class="comment">回复</a>
                 <div contenteditable="true" class="comment-area">
-                    <span class="placeholder">在这里写下想对怀校长说的话吧!不过要记得，上网不涉密哟~~</span>
+                    <span class="placeholder">回复</span>
                 </div></article>
         </article>
     </section>
@@ -239,7 +239,8 @@
             $("#words").show(0);
             $("#leave-message-header").show(0);
             $("#leave-message").show(0);
-        },2000);
+            $("footer").show(0);
+        },1000);
 
 //            $("#page-1").on("scorllstart",function(){
 //                $.scrollTo("#pics",300);
@@ -585,7 +586,7 @@
             });
         }
     }
-    function show_edit_reply(){
+    function show_edit_reply(obj){
 
     }
 
