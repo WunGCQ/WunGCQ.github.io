@@ -648,6 +648,7 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
     color: #fff;
     font-size: 12px;
     margin-top: 0;
+    cursor:pointer;
 }
 #add-message-link:before {
     content: "";
@@ -673,7 +674,7 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
 #leave-message .user-name {
     display: block;
     position: relative;
-    max-width: 700px;
+    max-width: 600px;
     margin: 15px auto 5px auto;
     width: 90%;
     text-align: left;
@@ -696,11 +697,11 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
     font-weight: normal;
     color: #737373;
 }
-#edit-message{
+#edit-message,.comment-area{
     display: block;
     position: relative;
     box-sizing: border-box;
-    max-width: 700px;
+    max-width: 600px;
     width: 90%;
     min-height: 80px;
     height: auto;
@@ -815,7 +816,7 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
     width: 100%;
     text-align: center;
     bottom: 20px;
-    opacity: 0;
+    opacity: 1;
     transition: all ease 0.3s;
 }
 .top-arrow-wrapper .top-arrow {
@@ -827,9 +828,17 @@ div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default.ui-loader-fakefix{
     background-image: url(../images/top-arrow.png);
     background-size: 24px 24px;
     cursor: pointer;
+    opacity: 0;
 }
-.top-arrow-wrapper:hover {
+.top-arrow:hover {
     opacity: 1;
+}
+.comment {
+    visibility: hidden;
+    cursor: pointer;
+}
+#leave-message>section:hover .comment{
+    visibility: visible;
 }
 footer {
     display: block;
