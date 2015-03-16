@@ -14,7 +14,22 @@
     <link rel="stylesheet" href="../css/animate.css"/>
     <script src="../js/lib/jquery-1.11.2.min.js"></script>
     <script src="../js/lib/iPtdqx.js"></script>
+    <style>
+        input:-moz-placeholder,
+        textarea:-moz-placeholder {
+            color: #494949;
+        }
 
+        input:-ms-input-placeholder,
+        textarea:-ms-input-placeholder {
+            color: #494949;
+        }
+
+        input::-webkit-input-placeholder,
+        textarea::-webkit-input-placeholder {
+            color: #494949;
+        }
+    </style>
 
 </head>
 <body onResize="set_mov_size();">
@@ -105,7 +120,7 @@
 
         var window_x = $(window).innerWidth();
         var window_y = $(window).innerHeight();
-        var tp_top = parseInt(window_y/2 - 190);
+        var tp_top = parseInt(window_y/2 - 240);
         $(".card").css({
             "margin-top":tp_top
         });
