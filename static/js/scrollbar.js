@@ -155,6 +155,7 @@ function scrollbar(){
 
 
     };
+
     this.bind_key_scroll = function(){
 
         s.scroll_element.tabIndex = 0;
@@ -176,8 +177,20 @@ function scrollbar(){
         });
 
         //});
-
-
+    };
+    this.bind_mouse_wheel_scroll = function(){
+        $().bind('mousewheel',function(event,delta,deltaX,deltaY){
+            if(delta<0){
+                if(flag7 && $(window).scrollTop() == ($(document.body).innerHeight()-$(window).outerHeight())){
+                    flag7 = false;
+                    setTimeout(function(){
+                        load_messages();
+                        //$.scrollTo("#words",400);
+//                            flag7 = true;
+                    },100);
+                }
+            }
+        });
     };
     //绑定刷新事件
     this.fresh_controll = function() {
