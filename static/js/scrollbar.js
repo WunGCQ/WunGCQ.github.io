@@ -179,16 +179,14 @@ function scrollbar(){
         //});
     };
     this.bind_mouse_wheel_scroll = function(){
-        $().bind('mousewheel',function(event,delta,deltaX,deltaY){
+        s.scroll_element.tabIndex = 0;
+        $(s.scroll_element).bind('mousewheel',function(event,delta,deltaX,deltaY){
             if(delta<0){
-                if(flag7 && $(window).scrollTop() == ($(document.body).innerHeight()-$(window).outerHeight())){
-                    flag7 = false;
-                    setTimeout(function(){
-                        load_messages();
-                        //$.scrollTo("#words",400);
-//                            flag7 = true;
-                    },100);
-                }
+                s.scroll_down(10);
+                console.log("向下滚动");
+            }else{
+                s.scroll_up(10);
+                console.log("向上滚动");
             }
         });
     };
@@ -215,7 +213,8 @@ function scrollbar(){
         this.add_scroll_bar();
         this.fresh_controll();
         this.bind_key_scroll();
-        this.bind_button_scroll();
+        //this.bind_button_scroll();
+        this.bind_mouse_wheel_scroll();
     };
     return  this;
 }
