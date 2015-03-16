@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/topMessage.css"/>
     <script src="../js/lib/jquery.min.js"></script>
 
+
 </head>
 
 <body onResize="setFullScreenElementsStyle()">
@@ -423,6 +424,7 @@
             });
         },500);
 
+
 //            $('#page-1').bind('mousewheel', function(event, delta, deltaX, deltaY) {
 //                if(delta<0){
 //                    setTimeout(function(){
@@ -656,14 +658,14 @@
     function submit_message(){
         var username = juicer("${user.username}",{"user":window.user});
         var textarea = document.getElementById("edit-message");
-        var content = textarea.innerText;
+        var content = $(textarea).text();
         var dataSet = {
             "from":username,
             "content":content
         };
         $.ajax({
             type: "post",
-            url : "/api/create_message",
+            url : "/static/templates/create_message/",
             dataType:'json',
             data: dataSet,
             success: function(data){
@@ -735,7 +737,7 @@
             window.block = textarea.parentNode.parentNode;
             var to = block.getAttribute("data-from");
             var target = block.getAttribute("data-id");
-            var content = textarea.innerText;
+            var content = $(textarea).text();
             if(!block.classList.contains("reply")){
                 block = block.parentNode;
             }
@@ -895,5 +897,6 @@
 <script src="../js/lib/mousewheel.min.js"></script>
 <script src="../js/lib/juicer.js"></script>
 <script src="../js/lib/topMessage.js"></script>
+<script src="../js/lib/iPtdqx.js"></script>
 </body>
 </html>
