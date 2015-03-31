@@ -468,7 +468,7 @@
         console.log(url);
         $.ajax({
             url:url,
-            type:"POST",
+            type:"GET",
             success:function(data){
                 var result = data.toString();
                 result = result.split('\n');
