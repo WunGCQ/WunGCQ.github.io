@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="script/three.js"></script>
+    <script src="script/jquery.min.js"></script>
+    <script src="script/TrackballControls.js"></script>
+    <script src="script/LoadJsonMap.js"></script>
+    <script src="script/helvetiker_regular.typeface.js"></script>
+    <style>
+        #btn1{
+            position:absolute;
+            top:20px;
+            right:20px;
+        }
+        #btn2{
+            position:absolute;
+            top:50px;
+            right:20px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn1" value="报数" />
+<input type="button" id="btn2" value="向右看齐" />
+</body>
+<script>
+    //main script
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    //var orthoCamera = new THREE.OrthographicCamera(winW/-2+(num-1)/2, winW/2+(num-1)/2, winH/2, winH/-2, -10, 1000);
+    var renderer = new THREE.WebGLRenderer();
+
+    var controls = new THREE.TrackballControls(camera);
+    controls.rotateSpeed = 4.0;
+    controls.zoomSpeed = 1.2;
+    controls.panSpeed = 0.8;
+    controls.noZoom = false;
+    controls.noPan = false;
+    controls.staticMoving = true;
+    controls.dynamicDampingFactor = 0.3;
+    controls.keys = [ 65, 83, 68 ];
+    controls.addEventListener( 'change', render );
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+
+    var country = new ZP.LoadJsonMap("data/USA.json", [95, -35], func);
+    var lineGeometry = [];
+    var meshes = [];
+
+    //棒子图所需数据
+    var barMeshPosition = [];           //省份中央位置
+    var barMeshPositionInLine = [];     //排队位置
+    var barMesh = [];
+    var barMeshHeight = [];
+    var barMeshMaterial = [];
+    var barMeshText = [];
+
+
+    animate();
+    //Most Events Happen Here
+    function func()
+    {
+        var stateLen = country.states.length;
+
+        for(var i=0;i<stateLen;i++){
+            lineGeometry[i] = [];
+            meshes[i] = [];
+            for(var j=0;j<country.states[i].coordinates.length;j++){
+                lineGeometry[i][j] = new THREE.Geometry();
+                lineGeometry[i][j].vertices = country.states[i].coordinates[j];
+
+                meshes[i][j] = new THREE.Line(lineGeometry[i][j], new THREE.LineBasicMaterial({color:0xabcdef}));
+
+                scene.add(meshes[i][j]);
+            }
+
+            barMeshPosition[i] = getStateMid(i);
+            barMeshHeight[i] = Math.random()*8+3;
+            barMeshMaterial[i] = genTransMaterial(0.8, 0xABCEDF - Math.random()*2048*4  );
+        }
+
+        camera.position.z = 126;
+        camera.position.y = 20;
+        //camera.lookAt(0, 0, 0);
+
+
+        $("#btn1").click(function(){
+            growUp = true;
+        });
+        $("#btn2").click(function(){
+            lineUp = true;
+        });
+
+        //init HeightOrderList
+        var bigger = 0;
+        for(var i=0;i<stateLen;i++){
+            bigger = 0;
+            for(var j=0;j<stateLen;j++){
+                if(barMeshHeight[j]>barMeshHeight[i])bigger++;
+            }
+            barMeshPositionInLine[i] = bigger;
+        }
+    }
+
+
+    function animate()
+    {
+        requestAnimationFrame(animate);
+
+        if(growUp)grow();
+        if(lineUp)lineUpMesh();
+        controls.update();
+    }
+
+    function render()
+    {
+        renderer.render(scene, camera);
+
+
+        //stats.update();
+    }
+
+
+    function genTransMaterial(alpha, color)    //生成透明纹理
+    {
+        var x = document.createElement("canvas");
+        var xc = x.getContext("2d");
+        x.width = 128;
+        x.height = 128;
+        var co = (alpha*0xFFFFFF).toString(16);
+        xc.fillStyle = "#"+co;
+        xc.fillRect(0,0,128,128);
+
+        var alphaMap = new THREE.Texture(x);
+        alphaMap.needsUpdate = true;
+
+        return new THREE.MeshBasicMaterial({color:color, alphaMap:alphaMap, transparent:true});
+    }
+
+    function getStateMid(p)      //取最大值和最小值的中点
+    {
+        var mid = new THREE.Vector3();
+        var top=-10000, bottom=10000, left=10000, right=-10000;
+
+        var stateData = country.states[p].coordinates;
+
+        for(var i=0;i<stateData.length;i++){
+            for(var j=0;j<stateData[i].length;j++){
+                var nowP = stateData[i][j];
+
+                if(nowP.x > right)right = nowP.x;
+                if(nowP.x < left)left = nowP.x;
+                if(nowP.z > top)top = nowP.z;
+                if(nowP.z < bottom)bottom = nowP.z;
+            }
+        }
+        mid.x = (left+right)/2;
+        mid.z = (top+bottom)/2;
+        return mid;
+    }
+
+
+    var growUp = false;         //是否生成棒子图
+    var grown = false;          //是否停止生长
+    var heightNow = 0;          //当前高度
+    var barNow = 0;             //当前棒子
+    var growSpeed = 0.9;
+    function grow()
+    {
+        if(grown)return; //already grow up
+
+        if(heightNow <= barMeshHeight[barNow]){
+            scene.remove(barMesh[barNow]);
+
+            barMesh[barNow] = new THREE.Mesh(new THREE.BoxGeometry(1, heightNow, 1), barMeshMaterial[barNow]);
+            barMesh[barNow].translateX(barMeshPosition[barNow].x);
+            barMesh[barNow].translateY(heightNow/2);
+            barMesh[barNow].translateZ(barMeshPosition[barNow].z);
+            scene.add(barMesh[barNow]);
+
+            if(heightNow == barMeshHeight[barNow] || heightNow + growSpeed <= barMeshHeight[barNow]){
+                heightNow+=growSpeed;
+            }else{
+                heightNow = barMeshHeight[barNow];
+                //添加文字信息
+                var theText = country.states[barNow].name;
+                barMeshText[barNow] = new THREE.Mesh(
+                        new THREE.TextGeometry(theText, {size:0.4,height:0.01,curveSegments:1,font:"helvetiker"}),
+                        genTransMaterial(0.6, barMesh[barNow].material.color));
+                barMeshText[barNow].translateX(barMeshPosition[barNow].x-1);
+                barMeshText[barNow].translateZ(barMeshPosition[barNow].z);
+                barMeshText[barNow].translateY(barMeshHeight[barNow]+0.6);
+                scene.add(barMeshText[barNow]);
+            }
+        }else{
+            barNow++;
+            heightNow = 0;
+            if(barNow >= country.states.length)grown = true;
+        }
+
+        render();
+    }
+
+    var lineUp = false;
+    var linen = 0;
+    function lineUpMesh()
+    {
+        if(linen == country.states.length){
+            return;
+        } //already lined up
+
+        var jump = 20;
+        for(var i=0;i<country.states.length;i++){
+
+            var difx = barMeshPositionInLine[i]-17-barMesh[i].position.x;
+            var difz = 10-barMesh[i].position.z;
+
+            if(difx == 0 && difz == 0)continue;
+            if(Math.abs(difx)<0.01 && Math.abs(difz)<0.01){
+                jump = 1;
+                linen++;
+            }
+            barMesh[i].translateX(difx/jump);
+            barMesh[i].translateZ(difz/jump);
+
+            barMeshText[i].translateX(difx/jump);
+            barMeshText[i].translateZ(difz/jump);
+            jump = 20;
+        }
+//        if(linen == country.states.length){
+//            for(var i=0;i<linen;i++){
+//                barMesh[i].material = genTransMaterial(0.9, Math.random()*0xFFFFFF);
+//            }
+//        }
+        render();
+
+    }
+
+
+
+</script>
+</html>

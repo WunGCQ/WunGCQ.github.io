@@ -74,7 +74,7 @@ UserModel.prototype.checkIsLogin = function(){
     }
 };
 
-UserModel.prototype.writeCookie = function(name){
+UserModel.prototype.writeCookie = function(name, token){
     var username = name||this.username;
     cookieMethods.setCookie('isLogin','true');
     cookieMethods.setCookie('username',name);

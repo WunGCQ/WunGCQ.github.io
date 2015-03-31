@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Second Three.js app</title>
+    <style> body { margin: 0; } canvas { width: 100%; height: 100% } </style>
+    <style>
+        #changeBtn{
+            position: absolute;
+            top:10px;
+            right: 10px;
+        }
+        #stopBtn{
+            position: absolute;
+            top:50px;
+            right:10px;
+        }
+        #switch2d{
+            position:absolute;
+            top:90px;
+            right:10px;
+        }
+    </style>
+    <script src="script/three.min.js"></script>
+</head>
+<body>
+    <input id="changeBtn" type="button" value="展开"/>
+    <input id="stopBtn" type="button" value="暂停"/>
+    <input id="switch2d" type="button" value="2D<->3D" />
+</body>
+<script>
+    //data area
+    var num = 5;
+    var heightList = [];
+    var isQueueUp = false;  //是否正在展开
+    var isSpread = false;   //是否已展开
+    var isRotate = true;
+    var pi = 3.141592653;
+    var changeSpeed = 20;
+    var is2d = false;
+
+    var i,j; //temp variables
+    
+    for(i=0;i<num;i++){
+        for(j=0;j<num;j++){
+            heightList[i*num+j] = Math.random()*4;
+        }
+    }
+
+    var orderPosition = [];
+    //sort -- can be improved
+    var bigger;
+    for(i=0;i<num*num;i++){
+        bigger = 0;
+        for(j=0;j<num*num;j++){
+            if(heightList[j]>heightList[i]) {
+                bigger++;
+            }
+        }
+        orderPosition[i] = bigger;
+    }
+
+
+    var midP = new THREE.Vector3((num-1)/2, 1, -(num-1)/2);	//所有柱状体的中点
+    var rotAngle = 0;
+
+    //main script
+    var winW = 10;
+    var winH = 10;
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    var orthoCamera = new THREE.OrthographicCamera(winW/-2+(num-1)/2, winW/2+(num-1)/2, winH/2, winH/-2, -10, 1000);
+    var renderer = new THREE.WebGLRenderer();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    var geometry = [];
+    for(i=0;i<num;i++){
+        for(j=0;j<num;j++){
+            geometry[i*num+j] = new THREE.BoxGeometry(0.7, heightList[i*num+j], 0.7);
+        }
+    }
+
+    var cube = [];
+    for(i=0;i<num;i++){
+        for(j=0;j<num;j++){
+            cube[i*num+j] =
+                    new THREE.Mesh(geometry[i*num+j], new THREE.MeshLambertMaterial({color:parseInt(Math.random()*16777216)}));
+            cube[i*num+j].translateX(i);
+            cube[i*num+j].translateZ(-j);
+            cube[i*num+j].translateY(heightList[i*num+j]/2);
+            scene.add(cube[i*num+j]);
+        }
+    }
+
+    var pointLight = new THREE.PointLight(0xFFFFFF, 1, 40);
+    pointLight.position.set(10, 10, 10);
+
+    scene.add( pointLight );
+
+    var dis = 6;
+
+    function onConditions()
+    {
+        if(!isQueueUp){
+            if(isRotate){
+                rotateCamera(0.01);
+                camera.lookAt(midP);
+            }
+
+        }
+        if(isQueueUp){
+            if(2*pi - rotAngle > 0.001){
+                var rotTmp = 2*pi-rotAngle;
+                rotateCamera(rotTmp/20);
+                camera.lookAt(midP);
+                //transformToX();
+            }else{
+                transformToX();
+                //isQueueUp = false;
+            }
+            //transformToX();
+        }
+    }
+
+    function rotateCamera(speed)
+    {
+        camera.position.x = midP.x+dis*Math.sin(rotAngle);
+        camera.position.z = midP.z+dis*Math.cos(rotAngle);
+        camera.position.y = 3;
+        rotAngle += speed;
+
+        if(rotAngle >= 2*pi)
+            rotAngle = 0;
+    }
+
+    function render()
+    {
+        onConditions();
+
+        requestAnimationFrame(render);
+
+        if(is2d){
+            renderer.render(scene, orthoCamera);
+        }else{
+            renderer.render(scene, camera);
+        }
+
+    }
+
+
+    function getThinner(){
+        for(i=0;i<num;i++){
+            for(j=0;j<num;j++){
+                //cube[i*num+j].position
+            }
+        }
+    }
+
+
+    function transformToX(){
+        getThinner();
+        for(i=0;i<num;i++){
+            for(j=0;j<num;j++){
+                var x = cube[i*num+j].position.x;
+                var z = cube[i*num+j].position.z;
+                cube[i*num+j].translateX((orderPosition[i*num+j]-x)/changeSpeed);
+                cube[i*num+j].translateZ(-z/changeSpeed);
+            }
+        }
+        camera.position.x += (num*num/2-camera.position.x)/changeSpeed;
+        camera.position.z += (num*1.8 - camera.position.z)/changeSpeed;
+        camera.position.y += (num*1.5 - camera.position.y)/changeSpeed;
+
+        if(num*1.5-camera.position.y <= 0.01) {
+            isQueueUp = false;
+            isSpread = true;
+        }
+    }
+
+    function switchTo2D()
+    {
+        if(isQueueUp)return; //变化中不可以转换
+        is2d = !is2d;
+
+        if(isSpread){
+            winW = winH = 30;
+            orthoCamera.left = winW/-2+(num*num-1)/2;
+            orthoCamera.right = winW/2+(num*num-1)/2;
+            orthoCamera.top = 15;
+            orthoCamera.bottom = -5;
+        }
+        else{
+            winW = winH = 10;
+            orthoCamera.left = winW/-2+(num-1)/2;
+            orthoCamera.right = winW/2+(num-1)/2;
+            orthoCamera.top = 5;
+            orthoCamera.bottom = -3;
+        }
+        orthoCamera.updateProjectionMatrix();
+    }
+
+    document.getElementById("changeBtn").onclick = function(){
+        isQueueUp = true;
+        isRotate = !isRotate;
+    };
+    document.getElementById("stopBtn").onclick = function(){
+        if(isRotate){
+            this.value = "start";
+        }else{
+            this.value = "stop";
+        }
+        isRotate = !isRotate;
+    };
+    document.getElementById("switch2d").onclick = function(){
+        switchTo2D();
+    };
+    render();
+</script>
+</html>

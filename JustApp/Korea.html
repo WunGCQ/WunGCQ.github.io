@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Korea Terrian</title>
+    <script type="text/javascript" src="script/three.min.js"></script>
+    <script type="text/javascript" src="script/TrackballControls.js"></script>
+    <script type="text/javascript" src="script/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Monospace;
+            background-color: #f0f0f0;
+            margin: 0px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+</body>
+<script>
+    //data
+    var container;
+    var camera, controls, scene, renderer;
+    var pickingData = [], pickingTexture, pickingScene, pickingGeometry;
+    var objects = [];
+    var hightLightBox;
+
+    var mouse = new THREE.Vector2();
+    var offset = new THREE.Vector3(10, 10, 10);
+
+    init();
+    animate();
+
+    function init() {
+        container = document.getElementById("container");
+        camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.z = 30;
+
+        controls = new THREE.TrackballControls(camera);
+        controls.rotateSpeed = 1.0;
+        controls.zoomSpeed = 1.2;
+        controls.panSpeed = 0.8;
+        controls.noZoom = false;
+        controls.noPan = false;
+        controls.staticMoving = true;
+        controls.dynamicDampingFactor = 0.3;
+
+        scene = new THREE.Scene();
+
+        pickingScene = new THREE.Scene();
+        pickingTexture = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
+        pickingTexture.minFilter = THREE.LinearFilter;
+        pickingTexture.generateMipmaps = false;
+
+        var ambientL = new THREE.AmbientLight(0xFFFFFF);
+        scene.add(ambientL);
+
+        var geom = new THREE.SphereGeometry(1, 10, 10);
+        var color = new THREE.Color;
+        var matrix = new THREE.Matrix4();
+        var quaternion = new THREE.Quaternion();
+        var mesh;
+        for ( var i = 0; i < 50; i ++ ) {
+            geom = new THREE.SphereGeometry(1, 10, 10);
+
+            var mesh = new THREE.Mesh(geom, new THREE.MeshBasicMaterial({color:color.setHex(i)}));
+            mesh.translateX(Math.random()*30);
+            mesh.translateY(Math.random()*30);
+            mesh.translateZ(Math.random()*30);
+
+            scene.add(mesh);
+            pickingScene.add(mesh.clone());
+//            var position = new THREE.Vector3();
+//            position.x = Math.random() * 100 - 50;
+//            position.y = Math.random() * 60 - 30;
+//            position.z = Math.random() * 80 - 40;
+//
+//            var rotation = new THREE.Euler();
+//
+//            var scale = new THREE.Vector3(1, 1, 1);
+//
+//            quaternion.setFromEuler( rotation, false );
+//            matrix.compose( position, quaternion, scale );
+//
+//
+//            geom.applyMatrix(matrix);
+//            scene.add(new THREE.Mesh(geom, new THREE.MeshBasicMaterial({color:0xFF0000})));
+//            pickingScene.add(new THREE.Mesh(geom, new THREE.MeshBasicMaterial({color:color.setHex(i)})));
+
+            pickingData[ i ] = mesh.position;
+
+        }
+
+        highlightBox = new THREE.Mesh(
+                new THREE.SphereGeometry(1, 10, 10),
+                new THREE.MeshLambertMaterial( { color: 0xffff00 }
+                ) );
+        scene.add( highlightBox );
+
+        renderer = new THREE.WebGLRenderer();
+//        renderer.setClearColor( 0xffffff );
+//        renderer.setPixelRatio( window.devicePixelRatio);
+        renderer.setSize( window.innerWidth, window.innerHeight );
+//        renderer.sortObjects = false;
+        document.body.appendChild( renderer.domElement );
+
+        renderer.domElement.addEventListener('mousemove', onMouseMove);
+        renderer.setClearColor(0xFFFFFF);
+    }
+
+    function onMouseMove( e ) {
+
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+
+    }
+
+    function animate() {
+
+        requestAnimationFrame( animate );
+        pick();
+        render();
+    }
+
+    function pick()
+    {
+        renderer.render(pickingScene, camera, pickingTexture);
+        var pixelBuffer = new Uint8Array(4);
+
+        renderer.readRenderTargetPixels(pickingTexture, mouse.x, pickingTexture.height-mouse.y, 1, 1, pixelBuffer);
+        console.log(pixelBuffer);
+        var id= ( pixelBuffer[0]<<16) | (pixelBuffer[1]<<8) | (pixelBuffer[2]);
+        var data = pickingData[id];
+        if ( data) {
+
+            //move our highlightBox so that it surrounds the picked object
+
+            if ( data){
+
+                highlightBox.position.copy( data );
+
+                highlightBox.visible = true;
+
+            }
+
+        } else {
+
+            highlightBox.visible = false;
+
+        }
+    }
+
+    function render()
+    {
+        controls.update();
+        renderer.render(scene, camera);
+    }
+
+
+</script>
+</html>

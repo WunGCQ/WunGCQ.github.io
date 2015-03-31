@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="script/three.js"></script>
+    <script src="script/TrackballControls.js"></script>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            margin: 0px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+</body>
+<script>
+    //初始化
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer();
+    var controls = new THREE.TrackballControls(camera);
+    controls.rotateSpeed = 4.0;
+    controls.zoomSpeed = 1.2;
+    controls.panSpeed = 0.8;
+    controls.noZoom = false;
+    controls.noPan = false;
+    controls.staticMoving = true;
+    controls.dynamicDampingFactor = 0.3;
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    renderer.setClearColor(0xFFFFFF);
+    animate();
+
+
+    //数据区
+    var i,j; //局部变量
+
+    var pcDensity = 300;             //烟雾相关数据 pc:PointCloud
+    var pcGeometry = [];
+    var pcMesh = [];
+    var pcColor = [0x66ccff, 0xd9f221, 0xd3d300, 0xc4b146];
+    var pcLeft = -12, pcRight = 12, pcTop = 3, pcBottom = -3, pcFront = 0, pcBack = -8;
+
+    var slGeometry = [];            //包围网格 sl:Surrounding Line
+    var slMesh = [];
+    var slMonthText = ["Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec.", ""];
+    var slPollutionText = ["0 /", "50", "100", "150", "200", "300", "AQI"];
+
+    var slTempText = [];
+
+    var dataGeometry = [];          //数据相关
+    var dataMesh = [];
+    var pollution = {}; //包括pm2.5和aqi
+    var linkGeometry = [];
+    var linkMesh = [];
+    var midPoint = new THREE.Vector3(0,0,0);
+
+    var orCamera = new THREE.OrthographicCamera(pcLeft-3, pcRight+3, pcTop+1, pcBottom-1, 10, -1000);
+    var dateNow = new Date(2015, 0, 3);
+
+    var pickingData = [];
+    var pickingTexture, pickingScene, pickingGeometry;
+    var color = new THREE.Color;
+    var highlightSphere;
+    var mouse = new THREE.Vector2();
+    var offset = new THREE.Vector3(10, 10, 10);
+    pickingScene = new THREE.Scene();
+    pickingTexture = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
+    pickingTexture.minFilter = THREE.LinearFilter;
+    pickingTexture.generateMipmaps = false;
+    pickingGeometry = new THREE.Geometry();
+
+    var loadingComplete = false;
+    var ambientLight = new THREE.AmbientLight(0xFFFFFF);
+    scene.add(ambientLight);
+    //首先是坐标轴，暂时用包围网格来实现
+
+
+    //camera.position.z = 14;
+    camera.position.x = -13.5;
+    camera.position.y = -1.4;
+    camera.position.z = 5.1;
+
+    var pickingMesh = [];
+    afterLoading();
+    function afterLoading() {
+        for (i = 0; i < 20; i++) {        //点
+            scene.remove(dataMesh[i]);
+            //pickingScene.remove(dataMesh[i]);
+
+            dataGeometry[i] = new THREE.SphereGeometry(0.1, 10, 10);
+            dataMesh[i] = new THREE.Mesh(dataGeometry[i], new THREE.MeshBasicMaterial({color: color.setHex(i)}));
+
+            dataMesh[i].translateX(Math.random()*20-10);
+            dataMesh[i].translateY(Math.random()*20-10);
+            dataMesh[i].translateZ(Math.random()*20-10);
+
+            pickingData[i] = dataMesh[i].position;
+
+            scene.add(dataMesh[i]);
+            pickingMesh[i] = dataMesh[i].clone();
+
+            pickingScene.add(pickingMesh[i]);
+
+        }
+
+        highlightSphere = new THREE.Mesh(
+                new THREE.SphereGeometry(0.2, 10, 10),
+                new THREE.MeshLambertMaterial( { color: 0xff0000 }
+                ));
+        highlightSphere.visible = false;
+        scene.add(highlightSphere);
+
+        loadingComplete = true;
+        render();
+    }
+
+
+
+    function pick()
+    {
+
+        renderer.render(pickingScene, camera, pickingTexture);
+        var pixelBuffer = new Uint8Array(4);
+
+        renderer.readRenderTargetPixels(pickingTexture, mouse.x, pickingTexture.height-mouse.y, 1, 1, pixelBuffer);
+
+        var id= ( pixelBuffer[0]<<16) | (pixelBuffer[1]<<8) | (pixelBuffer[2]);
+        var data = pickingData[id];
+        if ( data) {
+            console.log(mouse.x);
+            //move our highlightBox so that it surrounds the picked object
+            highlightSphere.position.copy(data);
+            highlightSphere.visible = true;
+        } else {
+            highlightSphere.visible = true;
+        }
+
+    }
+
+    renderer.domElement.addEventListener('mousemove', onMouseMove);     //绑定鼠标移动
+
+    function onMouseMove( e ) {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    }
+
+
+    function animate(){
+        requestAnimationFrame(animate);
+
+        controls.update();
+        if(loadingComplete){
+            pick();
+            render();
+        }
+    }
+
+    function render(){
+        camera.lookAt(midPoint);
+        renderer.render(scene, camera);
+    }
+
+</script>
+</html>
