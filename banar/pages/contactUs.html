@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/index.css"/>
+    <link  type="text/less" rel="stylesheet/less" rev="stylesheet/less" href="../css/index.less"/>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <!--<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+    <!--<link rel="stylesheet" href="../css/bootswatch.less"/>-->
+    <!--<link rel="stylesheet" href="../css/boostrap.min.css"/>-->
+    <style>
+        .container {
+            text-align: center;
+        }
+        article{
+            width: 700px;
+            margin: auto;
+            color: #494949;
+        }
+        article p{
+            /*display: block;*/
+            padding-top: 10px;
+            font-size: 16px;
+            line-height: 1.4em;
+            color: #777;
+            /*text-indent: 2em;*/
+            text-align: center;
+        }
+        article h1{
+            font-size: 2em;
+            text-align: center;
+        }
+        article h2{
+            color: #666;
+            text-align: center;
+        }
+        footer{
+            margin-top: 150px;
+            font-size: 80%;
+        }
+        img{
+            margin: auto;
+            text-align: center;
+        }
+        .container section>div {
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+        }
+        .hr{
+            height: 0;
+            width: 340px;
+            margin: auto;
+            border-top:1px solid #999;
+        }
+        td{
+            padding-top: 10px;
+        }
+        section {
+            padding-top: 100px;
+        }
+        input,textarea{
+            width: 360px;
+            outline: none;
+            font-size: 14px;
+            line-height: 1.4em;
+            box-sizing: border-box;
+            padding: 8px 15px;
+            border-radius: 3px;
+            border: 2px solid #efb685;
+            transition: all ease .3s;
+            margin-top: 10px;
+        }
+        input:focus, textarea:focus{
+            border-color: #ff8f4c;
+        }
+        label {
+            font-size: 1.2em;
+        }
+        textarea{
+            /*width: 100%;*/
+            min-height: 120px;
+            resize: vertical;
+            outline: none;
+        }
+        tr{
+            width: 100%;
+        }
+        section p{
+            padding-top: 15px;
+            width: 300px;
+            text-align: center;
+            margin: auto;
+            line-height: 2em;
+        }
+        section>div {
+            text-align: center;
+        }
+        section>div>address{
+            padding-top: 10px;
+            width: 150px;
+            font-size: 1em;
+            font-style:normal;
+            margin: auto;
+            /*padding-left: 100px;*/
+            text-align: left;
+        }
+        section>div>address a{
+            margin-left: 10px;
+            color: #ff8f4c;
+        }
+        section>div>address a:hover {
+            color: #FF5517;
+        }
+        button {
+            display: block;
+            position: relative;
+
+            background-color: #ff8f4c;
+            width: 360px;
+            margin: auto;
+            margin-top: 10px;
+            box-sizing: border-box;
+            color: #fff;
+            /*letter-spacing: .5em;*/
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+            transition: all ease .3s;
+        }
+        button:hover {
+            background-color: #f60;
+        }
+    </style>
+</head>
+<body>
+<nav class="top-nav">
+    <a class="logo" href="http://banar.cn">
+        搬哪儿
+    </a>
+    <a class="float-right">
+        400-880-7870
+    </a>
+    <a class="float-right" href="../pages/contactUs.html">
+        联系我们
+    </a>
+    <a class="float-right" href="../pages/aboutus.html">
+        关于我们
+    </a>
+
+
+</nav>
+
+<div style="width: 100%;height: 80px">
+
+</div>
+<div class="container">
+    <section>
+        <div style="width: 400px;text-align: center">
+            <h1>联系我们</h1>
+            <div class="hr"></div>
+            <p>
+                如果您有任何疑问、意见以及建议
+                <br>
+                欢迎与我们取得联系。
+            </p>
+            <address>
+                邮件:<a href="mailto:hi@banar.cn">hi@banar.cn</a>
+            </address>
+            <!--<address>-->
+                <!--投诉:<a href="mailto:ceo@banar.cn">ceo@banar.cn</a>-->
+            <!--</address>-->
+            <address>
+                电话:<a>400-880-7870</a>
+            </address>
+
+        </div>
+        <div>
+            <form style="width: 500px" action="#" method="post">
+                <input type="text" name="name" id="name" placeholder="留下您的大名" required="required"/>
+                <input type="email" name="email" id="email" placeholder="邮件地址" required="required"/>
+                <textarea name="content" id="content" placeholder="留下您想说的话" required="required" ></textarea>
+                <button type="submit">发&nbsp;送</button>
+            </form>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <ul>
+        <li style="padding-right: 0;padding-left: 0">
+            <div>
+                <h2>
+                    客服电话
+                </h2>
+            </div>
+            <div>
+                <div class="phone"></div>
+            </div>
+            <h2>
+                <a style="display: block;font-size: 0.9em;margin-top: -5px;font-weight: normal">每天 8:00 - 22:00</a>
+            </h2>
+        </li>
+        <li>
+            <setcion class="footer-section">
+                <div>
+                    <h2>关于搬哪儿</h2>
+                </div>
+                <div>
+                    <a href="../pages/aboutus.html">关于我们</a>
+                </div>
+                <div>
+                    <a href="../pages/contactUs.html">联系我们</a>
+                </div>
+                <div>
+                    <a href="../pages/contactUs.html">加入我们</a>
+                </div>
+                <!--<div>-->
+                <!--<a href="#">最新动态</a>-->
+                <!--</div>-->
+
+            </setcion>
+        </li>
+        <li>
+            <setcion class="footer-section">
+                <div>
+                    <h2>服务保障</h2>
+                </div>
+                <div>
+                    <a href="../pages/contactUs.html">帮助中心</a>
+                </div>
+                <div>
+                    <a href="../pages/other.html">使用条款</a>
+                </div>
+                <div>
+                    <a href="../pages/privacy.html">隐私政策</a>
+                </div>
+
+            </setcion>
+        </li>
+        <li>
+            <setcion class="footer-section">
+                <div>
+                    <h2>微信关注我们</h2>
+                </div>
+                <div>
+                    <img src="../images/block.png" width="100" />
+                </div>
+
+            </setcion>
+        </li>
+    </ul>
+    <div id="footer-company-id">
+        Copyright © 2015 搬哪儿科技   京ICP备15007319号
+    </div>
+</footer>
+
+</div>
+<script>
+    document.body.onload = function(){
+        setTimeout(function(){
+            $(".top-nav").slideDown(500);
+        },300);
+
+    };
+</script>
+</body>
+</html>

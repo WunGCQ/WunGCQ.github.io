@@ -1,0 +1,14 @@
+//发送:
+{
+  "driver_id": 233,
+  //司机的id
+  "token": "cookie(token)",
+  //用户令牌
+  "isCollected":0//0表示添加收藏,1表示取消收藏
+}
+        //返回
+{
+"status":1,//0失败，1成功
+"isCollected":1,//1收藏成功,0取消收藏
+"error":"404"//错误消息
+}

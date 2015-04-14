@@ -1,0 +1,75 @@
+@theme-color:#FF5517;
+@ftsz:14px;
+@ftcl:#222;
+@nav-height:80px;
+@border-color:#ccc;
+
+html,
+body{
+  padding: 0;
+  margin: 0;
+  font-size: @ftsz;
+  background-color: #ffffff;
+  a:hover,a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  font-family: 'Microsoft YaHei', Tahoma, Verdana;
+}
+.top-nav{
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: @nav-height;
+  box-sizing: border-box;
+  padding: 10px;
+  color: @ftcl;
+  clear: both;
+  border-top: 2px solid @theme-color;
+
+  a{
+    display: inline-block;
+    vertical-align: top;
+    height: (@nav-height)-20px;
+    line-height: (@nav-height)-20px;
+    margin: auto 20px;
+    color: inherit;
+    text-align: center;
+    transition: all ease .3s;
+  }
+  a:hover {
+    color: @theme-color;
+  }
+  .logo{
+    height: (@nav-height)-20px;
+    width: 132px;
+    background-image: url(../images/logo.png);
+  }
+  a.register,
+  a.login{
+    float: right;
+  }
+
+  a.register:before,a.login:before {
+    content: "";
+    display: block;
+    position: absolute;
+    margin-left: -20px;
+    height: 30px;
+    margin-top: 15px;
+    width: 1px;
+    background-color: #cccccc;
+  }
+  .top-nav.log .register, .top-nav.log .login {
+    display: none;
+  }
+  .top-nav.unlog .user-bar, .top-nav .user-bar {
+    display: none;
+  }
+  .top-nav.log .user-bar {
+    display: inline-block;
+  }
+
+
+
+}
