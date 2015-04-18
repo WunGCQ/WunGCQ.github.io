@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>搬哪儿：关于我们</title>
     <link rel="stylesheet" href="../css/index.css"/>
     <link  type="text/less" rel="stylesheet/less" rev="stylesheet/less" href="../css/index.less"/>
     <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
@@ -37,12 +37,144 @@
         }
         footer{
             margin-top: 150px;
+            font-size: 96%;
+        }
+        img{
+            margin: auto;
+            text-align: center;
+        }
+
+
+        /*联系我们*/
+        .container {
+            text-align: center;
+        }
+        article{
+            width: 700px;
+            margin: auto;
+            color: #494949;
+        }
+        article p{
+            /*display: block;*/
+            padding-top: 10px;
+            font-size: 16px;
+            line-height: 1.4em;
+            color: #777;
+            /*text-indent: 2em;*/
+            text-align: center;
+        }
+        article h1{
+            font-size: 2em;
+            text-align: center;
+        }
+        article h2{
+            color: #666;
+            text-align: center;
+        }
+        footer{
+            margin-top: 150px;
             font-size: 80%;
         }
         img{
             margin: auto;
             text-align: center;
         }
+        .container>section>div {
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+        }
+        .hr{
+            height: 0;
+            width: 340px;
+            margin: auto;
+            border-top:1px solid #999;
+        }
+        td{
+            padding-top: 10px;
+        }
+        section {
+        }
+        input,textarea{
+            width: 360px;
+            outline: none;
+            font-size: 14px;
+            line-height: 1.4em;
+            box-sizing: border-box;
+            padding: 8px 15px;
+            border-radius: 3px;
+            border: 2px solid #efb685;
+            transition: all ease .3s;
+            margin-top: 10px;
+        }
+        input:focus, textarea:focus{
+            border-color: #ff8f4c;
+        }
+        label {
+            font-size: 1.2em;
+        }
+        textarea{
+            /*width: 100%;*/
+            min-height: 120px;
+            resize: vertical;
+            outline: none;
+        }
+        tr{
+            width: 100%;
+        }
+        section p{
+            padding-top: 15px;
+            width: 300px;
+            text-align: center;
+            margin: auto;
+            line-height: 2em;
+        }
+        section>div {
+            text-align: center;
+        }
+        section>div>address{
+            padding-top: 10px;
+            width: 150px;
+            font-size: 1em;
+            font-style:normal;
+            margin: auto;
+            /*padding-left: 100px;*/
+            text-align: left;
+        }
+        section>div>address a{
+            margin-left: 10px;
+            color: #ff8f4c;
+        }
+        section>div>address a:hover {
+            color: #FF5517;
+        }
+        button {
+            display: block;
+            position: relative;
+
+            background-color: #ff8f4c;
+            width: 360px;
+            margin: auto;
+            margin-top: 10px;
+            box-sizing: border-box;
+            color: #fff;
+            font-family: "微软雅黑", "Microsoft Yahei", Arial, Helvetica, sans-serif, "宋体";
+            /*letter-spacing: .5em;*/
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+            transition: all ease .3s;
+        }
+        button:hover {
+            background-color: #f60;
+        }
+        .top-nav {
+            background-color: rgba(0,0,0,.3);
+            position: fixed;
+        }
+
     </style>
 </head>
 <body>
@@ -63,14 +195,14 @@
 
 </nav>
 
-<div style="width: 100%;height: 80px">
 
-</div>
+
 <div class="container">
+    <img src="../images/p222.jpg" alt="" style="margin-top: 20px"/>
         <!--<h2>-->
             <!--“想搬哪儿、就搬哪儿”。-->
         <!--</h2>-->
-        <img src="../images/p22.jpg" alt=""/>
+
     <article>
         <h1>关于我们</h1>
 
@@ -111,20 +243,24 @@
         </p>
 
     </article>
+
     <footer>
         <ul>
             <li style="padding-right: 0;padding-left: 0">
                 <div>
                     <h2>
-                        客服电话
+                        客户服务
                     </h2>
                 </div>
                 <div>
-                    <div class="phone"></div>
+                    <a href="tel:400-880-7870"><h2>400-880-7870</h2></a>
+                    <!--<div class="phone"></div>-->
                 </div>
-                <h2>
-                    <a style="display: block;font-size: 0.9em;margin-top: -5px;font-weight: normal">每天 8:00 - 22:00</a>
-                </h2>
+                <div>
+                    <a href="mailto:hi@banar.cn"><h2>hi@banar.cn</h2></a>
+                </div>
+
+
             </li>
             <li>
                 <setcion class="footer-section">
@@ -163,20 +299,39 @@
 
                 </setcion>
             </li>
-            <li>
-                <setcion class="footer-section">
-                    <div>
-                        <h2>微信关注我们</h2>
-                    </div>
-                    <div>
-                        <img src="../images/block.png" width="100" />
-                    </div>
 
-                </setcion>
-            </li>
         </ul>
         <div id="footer-company-id">
-            Copyright © 2015 搬哪儿科技   京ICP备15007319号
+            <h2>关注我们</h2>
+            <ul>
+                <li>
+                    <section class="footer-section">
+                        <div>
+                            <a href="#"><h2>微信平台</h2></a>
+                        </div>
+                        <div>
+                            <img src="../images/qr_weibo.jpg" width="116" style="border: 2px solid #fff"/>
+                        </div>
+                        <div>
+                            <a class="icon-link" href="#"><i id="icon-wechat"></i>搬哪儿</a>
+                        </div>
+                    </section>
+                </li>
+                <li>
+                    <section class="footer-section">
+                        <div>
+                            <a href="http://weibo.com/banarcn" > <h2>官方微博</h2></a>
+                        </div>
+                        <div>
+                            <img src="../images/block.png" width="120" />
+                        </div>
+                        <div>
+                            <a class="icon-link" href="http://weibo.com/banarcn"><i id="icon-weibo"></i>搬哪儿</a>
+                        </div>
+                    </section>
+                </li>
+            </ul>
+            <p>Copyright © 2015 搬哪儿科技   京ICP备15007319号</p>
         </div>
     </footer>
 </div>

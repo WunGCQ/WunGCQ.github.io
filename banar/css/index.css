@@ -17,7 +17,7 @@ body a {
     float: right;
 }
 .top-nav {
-    display: none;
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
@@ -91,8 +91,9 @@ body a {
 
 }
 #pic-driver {
-    left: 0;
     top: 0;
+    left: 200vw;
+
     background: url("../images/che11.jpg") no-repeat scroll 0vw -30px/ 110vw auto transparent;
     /*background-size: 100vw 500px;*/
 }
@@ -106,7 +107,7 @@ body a {
     /*background-size: 100vw 500px;*/
 }
 #pic-city {
-    left: 200vw;
+    left: 0vw;
     top: 0;
     background: url("../images/city.jpg") no-repeat scroll 0vw -100px/ 110vw auto  transparent;
 }
@@ -265,18 +266,98 @@ body a {
     cursor: pointer;
     transition: all ease .5s;
 }
-#selection-nav li:nth-child(1) {
-    background-image: url(../images/4.pic_hd.jpg);
-
-}
-#selection-nav li:nth-child(2) {
-    background-image: url(../images/3.pic.jpg);
-}
-#selection-nav li:nth-child(3) {
-    background-image: url(../images/2.pic.jpg);
+#feature-cards-wrapper {
+    display: block;
+    width: 100%;
+    background-color: #f1f1f1;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
 }
 
+#feature-cards-wrapper .feature-cards {
+    display: inline-block;
+    width: 300px;
+    margin: 15px;
+    height: 400px;
+    text-align: center;
+    border-radius: 1px;
+    box-shadow: 0 0 3px #aaaaaa;
+    transition: all ease 0.5s;
+    overflow: hidden;
+}
+#feature-cards-wrapper .feature-cards:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 300px;
+    height: 140px;
+    background-color: #fff;
+    margin-top: 0;
+    z-index: 100;
+}
+#feature-cards-wrapper .feature-cards:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 300px;
+    height: 260px;
+    background-color: #FFA100;
+    margin-top: -153px;
+    z-index: 100;
+}
+#feature-cards-wrapper .feature-cards:hover{
+    box-shadow:
+    0 0 7px 2px rgba(192, 192, 192, .2),
+    0 2px 7px 1px rgba(192, 192, 192, .9),
+    -2px 0px 12px 1px rgba(192, 192, 192, .2),
+    2px 0px 12px 1px rgba(192, 192, 192, .2);
+}
 
+.feature-cards i{
+    display: block;
+    position: relative;
+    margin: auto;
+    margin-top: 80px ;
+    width: 120px;
+    height: 120px;
+    border-radius: 160px;
+
+    box-shadow: 0 0 5px 5px rgba(0,0,0,.1);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    z-index: 200;
+    transition: all ease .3s;
+    cursor: pointer;
+}
+.feature-cards i:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0px 5px 2px rgba(255, 202, 4, 0.90);
+}
+
+.feature-cards p {
+    display: block;
+    position: relative;
+    margin:auto;
+    margin-top: 30px;
+    font-size: 24px;
+    text-align: center;
+    color: #fff;
+    z-index: 300;
+}
+
+
+#p21 {
+    background-image: url(../images/p221.jpg);
+}
+#p22 {
+    background-image: url(../images/p222.jpg);
+}
+#p23 {
+    background-image: url(../images/p223.jpg);
+}
 
 #selection-nav li i{
     display: block;
@@ -323,7 +404,7 @@ body a {
     margin: auto;
     width: 100%;
     height: 100%;
-    background-image: url(../images/p3.png);
+    background-image: url(../images/p31.jpg);
     background-position: center;
     background-size: auto 400px;
     background-repeat: no-repeat;
@@ -390,22 +471,29 @@ footer ul li {
     /*border-left: 1px solid #999;*/
     vertical-align: top;
     box-sizing: border-box;
-    padding: 30px 30px;
+    padding: 30px 50px;
     padding-bottom: 10px;
 }
 #footer-company-id {
     border-top: 1px solid #666;
     background-color: transparent;
-    width: calc(50% + 100px);
+    width: 700px;
     display: block;
     text-align: center;
     margin: auto;
-    color: #aaa;
-    padding: 20px 0 100px 0;
+
+    padding: 15px 0 30px 0;
     box-sizing: border-box;
 }
+#footer-company-id li {
+    padding: 10px 30px;
+}
+
 footer h2 {
     font-size: 120%;
+    line-height: 0;
+    letter-spacing: .1em;
+    font-weight: normal;
 }
 footer a{
     color: #f1f1f1;
@@ -418,6 +506,36 @@ footer ul li div {
 footer a:hover {
     text-decoration: none;
     color: #ffc543;
+}
+#footer-company-id p {
+    color: #aaa;
+}
+#icon-wechat,#icon-weibo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    background-size: 24px auto;
+    background-image: url(../images/footer-logos.png);
+    /*background-size: ;*/
+    transition: all ease .3s;
+}
+#icon-wechat {
+    background-position: 0 -48px;
+}
+.icon-link:hover >#icon-wechat{
+    background-position: 0 -72px;
+}
+#icon-webo {
+    background-position: 0 0;
+}
+.icon-link:hover >#icon-weibo{
+    background-position: 0 -24px;
+}
+.icon-link {
+    display: block;
+    margin-top: -10px;
 }
 .phone {
     display: block;

@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>搬哪儿：联系我们</title>
     <link rel="stylesheet" href="../css/index.css"/>
     <link  type="text/less" rel="stylesheet/less" rev="stylesheet/less" href="../css/index.less"/>
     <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
@@ -36,14 +36,14 @@
             text-align: center;
         }
         footer{
-            margin-top: 150px;
-            font-size: 80%;
+            margin-top: 100px;
+            font-size: 96%;
         }
         img{
             margin: auto;
             text-align: center;
         }
-        .container section>div {
+        .container>section>div {
             display: inline-block;
             vertical-align: top;
             position: relative;
@@ -57,8 +57,8 @@
         td{
             padding-top: 10px;
         }
-        section {
-            padding-top: 100px;
+        .container>section {
+            padding-top: 50px;
         }
         input,textarea{
             width: 360px;
@@ -123,6 +123,7 @@
             margin-top: 10px;
             box-sizing: border-box;
             color: #fff;
+            font-family: "微软雅黑", "Microsoft Yahei", Arial, Helvetica, sans-serif, "宋体";
             /*letter-spacing: .5em;*/
             padding: 10px;
             font-size: 16px;
@@ -133,6 +134,9 @@
         }
         button:hover {
             background-color: #f60;
+        }
+        #pic-intro i {
+            background-image: url(../images/p31.jpg);
         }
     </style>
 </head>
@@ -154,10 +158,11 @@
 
 </nav>
 
-<div style="width: 100%;height: 80px">
-
-</div>
+<section id="pic-intro" style="padding-top: 0">
+    <i></i>
+</section>
 <div class="container">
+
     <section>
         <div style="width: 400px;text-align: center">
             <h1>联系我们</h1>
@@ -181,7 +186,7 @@
         <div>
             <form style="width: 500px" action="#" method="post">
                 <input type="text" name="name" id="name" placeholder="留下您的大名" required="required"/>
-                <input type="email" name="email" id="email" placeholder="邮件地址" required="required"/>
+                <input type="email" name="email_or_tel" id="email" placeholder="邮件地址/电话号码" required="required"/>
                 <textarea name="content" id="content" placeholder="留下您想说的话" required="required" ></textarea>
                 <button type="submit">发&nbsp;送</button>
             </form>
@@ -195,15 +200,18 @@
         <li style="padding-right: 0;padding-left: 0">
             <div>
                 <h2>
-                    客服电话
+                    客户服务
                 </h2>
             </div>
             <div>
-                <div class="phone"></div>
+                <a href="tel:400-880-7870"><h2>400-880-7870</h2></a>
+                <!--<div class="phone"></div>-->
             </div>
-            <h2>
-                <a style="display: block;font-size: 0.9em;margin-top: -5px;font-weight: normal">每天 8:00 - 22:00</a>
-            </h2>
+            <div>
+                <a href="mailto:hi@banar.cn"><h2>hi@banar.cn</h2></a>
+            </div>
+
+
         </li>
         <li>
             <setcion class="footer-section">
@@ -242,20 +250,39 @@
 
             </setcion>
         </li>
-        <li>
-            <setcion class="footer-section">
-                <div>
-                    <h2>微信关注我们</h2>
-                </div>
-                <div>
-                    <img src="../images/block.png" width="100" />
-                </div>
 
-            </setcion>
-        </li>
     </ul>
     <div id="footer-company-id">
-        Copyright © 2015 搬哪儿科技   京ICP备15007319号
+        <h2>关注我们</h2>
+        <ul>
+            <li>
+                <section class="footer-section">
+                    <div>
+                        <a href="#"><h2>微信平台</h2></a>
+                    </div>
+                    <div>
+                        <img src="../images/qr_weibo.jpg" width="116" style="border: 2px solid #fff"/>
+                    </div>
+                    <div>
+                        <a class="icon-link" href="#"><i id="icon-wechat"></i>搬哪儿</a>
+                    </div>
+                </section>
+            </li>
+            <li>
+                <section class="footer-section">
+                    <div>
+                        <a href="http://weibo.com/banarcn" > <h2>官方微博</h2></a>
+                    </div>
+                    <div>
+                        <img src="../images/block.png" width="120" />
+                    </div>
+                    <div>
+                        <a class="icon-link" href="http://weibo.com/banarcn"><i id="icon-weibo"></i>搬哪儿</a>
+                    </div>
+                </section>
+            </li>
+        </ul>
+        <p>Copyright © 2015 搬哪儿科技   京ICP备15007319号</p>
     </div>
 </footer>
 
