@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>中二的居中图片控件</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: "Microsoft YaHei", "Microsoft Yahei", "微软雅黑", "", "Courier New", "Helvetica Neue", Courier, monospace;
+            background-color: #f1f1f1;
+        }
+        .pic-wrapper{
+            display: block;
+            position: relative;
+            margin: 15px auto;
+            width: auto;
+            height: auto;
+            background-size: contain;
+            transition: all ease .3s;
+        }
+        .pic-wrapper img{
+            display: block;
+            position: absolute;
+            z-index: 10;
+            top:0;
+            left: 0;
+
+        }
+
+        .pic-wrapper .words-wrapper {
+            display: table-cell;
+            position: relative;
+            margin: 0;
+            text-align: center;
+            vertical-align: middle;
+            z-index: 50;
+            background-color: rgba(0,0,0, .3);
+            transition: all ease-out .6s .1s;
+        }
+        .pic-wrapper .words-wrapper:hover {
+            background-color: rgba(0,0,0, .7);
+        }
+        .pic-wrapper .words-wrapper:hover .words {
+            opacity: 1;
+        }
+        .pic-wrapper .words-wrapper:hover .sub-title {
+            transform: translateY(5px);
+        }
+        .pic-wrapper .words-wrapper:hover .title {
+            transform: translateY(-5px);
+        }
+        .pic-wrapper .words-wrapper .words{
+            width:auto;
+            height: auto;
+            display: block;
+            margin: auto;
+            text-align: center;
+            vertical-align: middle;
+            transition: all ease .5s;
+            opacity: .7;
+            cursor: pointer;
+        }
+        .pic-wrapper .words-wrapper .title,
+        .pic-wrapper .words-wrapper .sub-title{
+            display: block;
+            color: #fff;
+            margin: 0;
+            font-weight: normal;
+            transition: all ease .5s .05s;
+        }
+        .pic-wrapper .words-wrapper .sub-title{
+            font-size: 24px;
+            margin-top: 10px;
+        }
+        .pic-wrapper .words-wrapper .title{
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <!--<div class="pic-wrapper">-->
+        <!--<section class="words">-->
+            <!--<h1 class="title"></h1>-->
+            <!--<h2 class="sub-title"></h2>-->
+        <!--</section>-->
+    <!--</div>-->
+    <script>
+        var arg ={
+            items:
+                [
+                    {   "pid":42,
+                        "image":"../images/archer.jpg",
+                        "width":960,
+                        "height":600,
+                        "words":{
+                            "title":"血若钢铁铮铮,心似琉璃易碎",
+                            "subTitle":"fate,stay the night"
+                        }
+                    },
+                    {   "pid":1,
+                        "image":"../images/akaduo.jpg",
+                        "words":{
+                            "title":"我乃赫尔莫斯之鸟，噬己翼，以驾驭吾心",
+                            "subTitle":"Hellsing 国教皇家骑士团"
+                        }
+                    },
+                    {   "pid":2,
+                        "image":"../images/bilibili.jpg",
+                        "words":{
+                            "title":"唯我超电磁炮永世长存!",
+                            "subTitle":"炮姐赛高~ Bili bili!"
+                        }
+                    }
+                ]
+        };
+        (function m(parentWrapper,setSize){
+            template = [
+                '<div class="pic-wrapper" id="','1','" style="','3','" >',
+                    '<section class="words-wrapper" style="','6','">',
+                        '<div class="words">',
+                            '<h1 class="title">','10','</h1>',
+                            '<h2 class="sub-title">','13','</h2>',
+                        '</div>',
+                    '</section>',
+                '</div>'
+            ];
+
+            var arr = arg.items||[];
+            var len = arr.length;
+
+            var t = function(img,i,arr,width,height){
+                    temp[1] = "wrapper_"+arr[i]["pid"];
+                    temp[3] = "width:" + width+"px;height:"+height+"px;";
+                    temp[6] = "width:" + width+"px;height:"+height+"px;";
+                    temp[10] = arr[i].words.title;
+                    temp[13] = arr[i].words.subTitle;
+                    var html = temp.join("");
+                    nodes[i].outerHTML = html;
+                    document.getElementById("wrapper_"+arr[i]["pid"]).appendChild(img);
+
+                    //这里可以添加向IE7兼容的定位计算
+            };
+
+            if(len>0){
+
+                var temp = template.concat();
+                var m = function(i){
+                    var img_my = new Image();
+
+                    var _i = i;
+                    var item = arr[_i];
+
+                    img_my.onload = function(){
+                        if(1){
+                            var width = item["width"]||img_my.width;
+                            var height = item["height"]||img_my.height;
+                            t(img_my,_i,arr,width,height);
+                            img_my.width = width;
+                            img_my.height = height;
+                            setSize&&setSize();
+                        }
+
+                    };
+
+                    img_my.src = arr[i].image;
+                };
+                var node= document.createElement("div");
+                node.className = "pic-wrapper";
+                for(var i = 0; i< len;i++) {
+                    var nodeCopy = node.cloneNode(true);
+                    parentWrapper.appendChild(nodeCopy);
+                    var nodes = document.getElementsByClassName("pic-wrapper");
+                    m(i);
+                }
+            }
+        })(document.body);
+
+    </script>
+</body>
+</html>
