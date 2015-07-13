@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中法工程师学院</title>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/juicer.js"></script>
+    <style media="screen">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            text-align: center;
+            min-height: 100vh;
+            font-family: "Microsoft Yahei", "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+        }
+
+        #page {
+            width: 1100px;
+            height: 850px;
+            margin: auto;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+
+        #header {
+            height: 74px;
+            width: inherit;
+            background-color: #fff;
+            text-align: center;
+            line-height: 74px;
+            font-size: 14px;
+
+        }
+
+        #header .header-container {
+            margin: auto;
+            width: 1100px;
+            height: inherit;
+            line-height: inherit;
+            text-align: left;
+        }
+
+        #header .header-container .txt {
+            display: inline-block;
+            vertical-align: top;
+            height: inherit;
+            padding: 0 10px;
+            margin-left: 5px;
+            color: #666;
+            text-decoration: none;
+            line-height: inherit;
+        }
+        #header .header-container .txt.lang {
+            padding: 0 3px;
+            margin-left: 2px;
+        }
+        #header .header-container .txt.lang:first-child{
+            padding-left: 30px;
+        }
+
+        #header .header-container a.txt:hover {
+            text-decoration: underline;
+        }
+
+        #header .header-container #search-area {
+            display: inline-block;
+            padding-left: 50px;
+            width: 300px;
+            height: inherit;
+            line-height: inherit;
+            float: right;
+        }
+
+        #search-input {
+            padding: 7px 10px;
+            border: 1px solid #999;
+            border-radius: 4px;
+        }
+
+        #search-input:focus {
+            outline: none;
+            border-color: #1a70c7;
+            box-shadow: 0 0 6px 1px rgba(26,112,199,.6);
+        }
+
+        #search-submit {
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: middle;
+            width: 80px;
+            line-height: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            text-indent: 5px;
+            letter-spacing: 5px;
+            border-radius: 5px;
+            border: 1px solid #999;
+        }
+
+        #search-submit:hover {
+            background-color: #ddd;
+        }
+
+        #school-logo {
+            display: block;
+            float: left;
+        }
+
+        #college-logo {
+            display: block;
+            float: left;
+            width: 200px;
+            margin-left: 15px;
+            height: 74px;
+            background-image: url(img/__logo.png);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-right: 10px;
+        }
+
+        #pic-round {
+            display: block;
+            position: absolute;
+            top: 74px;
+            width: 100%;
+            height: 490px;
+            min-width: 1200px;
+            background-color: #333;
+        }
+
+        #pic-bg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            opacity: 1;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url('img/1.jpg');
+            transition: opacity ease-out 1s;
+            -webkit-transition: opacity ease-out 1s;
+        }
+
+        #pic-bg.hide {
+            opacity: 0;
+        }
+
+        #pic-round-circle {
+            display: block;
+            position: absolute;
+            height: 200px;
+            top: 364px;
+            width: 100%;
+            min-width: 1200px;
+
+            background-position: center bottom;
+            background-size: auto 200px;
+            background-repeat: no-repeat;
+            opacity: 0.6;
+            background-image: url('img/masque_image.png');
+        }
+
+        #nav {
+            display: block;
+            position: absolute;
+            margin: 440px auto 0 auto;
+            width: inherit;
+            height: 50px;
+            z-index: 200;
+            /*background-color: #000;*/
+        }
+
+        #nav .nav-item {
+            display: block;
+            position: relative;
+            float: left;
+            height: inherit;
+            line-height: 50px;
+            width: 80px;
+            font-size: 14px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #nav .nav-menu {
+            display: none;
+            position: absolute;
+            float: left;
+            margin-top: 50px;
+            left: 0;
+            height: 40px;
+            width: 800px;
+            font-size: 14px;
+            background-color: #2290ff;
+            z-index: 200;
+        }
+
+        #nav .nav-item .link:hover {
+            text-decoration: underline;
+        }
+
+        #nav .nav-item:hover + .nav-menu,
+        #nav .nav-menu:hover {
+            display: block;
+        }
+
+        #nav .nav-menu .menu-item {
+            display: block;
+            position: relative;
+            float: left;
+            line-height: 40px;
+            width: auto;
+            padding: 0 20px;
+            height: inherit;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        #nav .nav-menu .menu-item:hover {
+            text-decoration: underline;
+            background-color: #1a70c7;
+        }
+
+        #right-block {
+            display: block;
+            position: relative;
+            float: right;
+            width: 250px;
+
+            height: 630px;
+        }
+
+        #right-block .block {
+            height: 235px;
+            padding-top: 5px;
+            background-color: rgba(0, 0, 0, .5);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        #right-block .block .title {
+            width: inherit;
+
+            height: 30px;
+            box-sizing: border-box;
+            line-height: 30px;
+            color: #fff;
+            padding-left: 10px;
+        }
+
+        #right-block .block .first {
+            height: 50px;
+            width: 100%;
+            vertical-align: text-top
+        }
+
+        #right-block .block .first .img {
+            width: 30%;
+            height: inherit;
+            float: left;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        #right-block .block .first .time {
+            display: block;
+            width: 70px;
+            height: 18px;
+            box-sizing: border-box;
+            float: left;
+            padding-top: 5px;
+            font-size: 13.2px;
+            color: #fff;
+            text-align: left;
+        }
+
+        #right-block .block .first .link {
+            display: block;
+            float: left;
+            width: 152px;
+            height: 32px;
+            font-size: 12px;
+            line-height: 18px;
+            color: #fff;
+            max-height: 27.6px;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        #right-block .block .a {
+            display: block;
+            padding: 8px 5px;
+            text-decoration: none;
+            width: 100%;
+            color: inherit;
+            overflow: hidden;
+            word-break: break-all;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 12px;
+            color: #fff;
+            text-align: left;
+        }
+
+        #right-block .block .a .time {
+            padding: 0 5px;
+            font-size: 13.2px;
+            color: #fff
+        }
+
+        #right-block .block .a:hover {
+            text-decoration: underline
+        }
+
+        #right-block .block .more {
+            width: 45px;
+            height: 18px;
+            line-height: 18px;
+            display: block;
+            position: absolute;
+            margin-top: 222px;
+            right: 15px;
+            background-color: #f60;
+            color: #fff;
+            z-index: inherit;
+            font-size: 12px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #right-block .block .more:before {
+            content: "+"
+        }
+
+        #footer {
+            display: block;
+            position: absolute;
+            top: 920px;
+            bottom: 0;
+            height: 100px;
+            padding: 5px;
+            box-sizing: border-box;
+            width: 100%;
+            background-color: #666;
+            color: #fff;
+            text-align: center;
+        }
+
+        #footer a {
+            line-height: 30px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        #footer-nav {
+            display: block;
+            width: 100%;
+            height: 45px;
+            background-color: #333;
+        }
+
+        #footer-nav .footer-nav-container {
+            width: 1100px;
+            margin: auto;
+            text-align: left;
+        }
+
+        #footer .row {
+            display: block;
+            margin: auto;
+            width: 1100px;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        #footer .row * {
+            display: inline-block;
+            height: inherit;
+            line-height: inherit;
+            vertical-align: top;
+            font-size: 14px;
+            font-style: normal;
+        }
+
+        #footer-nav .footer-nav-container a {
+            display: block;
+            float: left;
+            height: 40px;
+            width: 80px;
+            text-align: center;
+        }
+
+        #footer-nav .footer-nav-container a:hover {
+            text-decoration: underline;
+        }
+
+        #dg-container {
+            display: block;
+            position: absolute;
+            margin-top: 560px;
+            margin-left: 280px;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+        }
+
+        .dg-container {
+            height: 300px;
+            position: relative;
+        }
+
+        .dg-wrapper {
+            width: 260px;
+            height: 135px;
+            margin: 0 auto;
+            position: relative;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-perspective: 1000px;
+            -moz-perspective: 1000px;
+            -o-perspective: 1000px;
+            -ms-perspective: 1000px;
+            perspective: 1000px;
+        }
+
+        .dg-wrapper a {
+            width: 260px;
+            height: 135px;
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*background: transparent url(../images/browser.png) no-repeat top left;*/
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .dg-wrapper a.dg-transition {
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            -ms-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .dg-wrapper a .img {
+            display: block;
+            width: 260px;
+            height: 135px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 41px 0px 0px 1px;
+        }
+
+        .dg-wrapper a div {
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            font-size: 16px;
+            width: 100%;
+            bottom: -40px;
+            display: none;
+            background-color: rgba(0, 0, 0, .6);
+            position: absolute;
+        }
+
+        .dg-wrapper a.dg-center div {
+            display: block;
+        }
+
+        .dg-container nav {
+            width: 58px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 80px;
+            left: 50%;
+            margin-left: -29px;
+        }
+
+        .dg-container nav span {
+            text-indent: -9000px;
+            float: left;
+            cursor: pointer;
+            width: 24px;
+            height: 25px;
+            opacity: 0.8;
+            background: transparent url(img/arrows.png) no-repeat top left;
+        }
+
+        .dg-container nav span:hover {
+            opacity: 1;
+        }
+
+        .dg-container nav span.dg-next {
+            background-position: top right;
+            margin-left: 10px;
+        }
+
+        #partners.block {
+            height: 330px;
+            background-color: transparent;
+        }
+
+        #partners .partner {
+            display: block;
+            width: inherit;
+            height: 60px;
+            margin-top: 5px;
+            line-height: 30px;
+            text-decoration: none;
+
+        }
+
+        #partners .partner img {
+            display: inline-block;
+            vertical-align: top;
+            height: 60px;
+            line-height: 60px;
+            max-width: 80px;
+            text-decoration: none;
+        }
+
+        #partners .partner span {
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box;
+            padding-left: 15px;
+            height: 60px;
+            line-height: 60px;
+            color: #2290ff;
+        }
+
+        #partners .partner span:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+    <script type="text/javascript" src="js/modernizr.custom.53451.js"></script>
+</head>
+<body>
+<div id="pic-round">
+    <div id="pic-bg"></div>
+</div>
+<div id="pic-round-circle"></div>
+<div id="header">
+    <div class="header-container">
+        <a href="#" id="college-logo">
+        </a>
+        <a href="" class="txt">链接1</a>
+        <a href="" class="txt">这里可以是长连接</a>
+        <a href="" class="txt">链接1</a>
+        <a href="" class="txt lang" style="margin-left: 50px">中文</a>
+        <span class="txt lang">|</span>
+        <a href="" class="txt lang">EN</a>
+        <span class="txt lang">|</span>
+        <a href="" class="txt lang">FR</a>
+        <div id="search-area">
+            <input type="text" id="search-input"/>
+            <span id="search-submit">搜索</span>
+        </div>
+    </div>
+
+    <!-- <h1 id="school-logo">
+      <a  id="logo" href="#">
+        <img src="img/logo_buaa.png" width="122" alt="" />
+      </a>
+    </h1> -->
+
+</div>
+<div id="page">
+
+    <div id="nav">
+        <div class="nav-item">
+            <a class="link">学院概况</a>
+        </div>
+        <div class="nav-menu">
+            <a class="menu-item">学院简介</a>
+            <a class="menu-item">学院概况</a>
+            <a class="menu-item">学院领导</a>
+            <a class="menu-item">学院大事记</a>
+        </div>
+        <div class="nav-item">
+            <a class="link">通知公告</a>
+        </div>
+        <div class="nav-menu">
+            <a class="menu-item">毕设答辩</a>
+            <a class="menu-item">实习就业</a>
+            <a class="menu-item">学校通知</a>
+            <a class="menu-item">学院通知</a>
+            <a class="menu-item">下载服务</a>
+        </div>
+        <div class="nav-item">
+            <a class="link">科学研究</a>
+        </div>
+        <div class="nav-menu">
+            <a class="menu-item">毕设答辩</a>
+            <a class="menu-item">实习就业</a>
+            <a class="menu-item">学校通知</a>
+            <a class="menu-item">学院通知</a>
+            <a class="menu-item">下载服务</a>
+        </div>
+        <div class="nav-item">
+            <a class="link">学院新闻</a>
+        </div>
+        <div class="nav-menu">
+            <a class="menu-item">毕设答辩</a>
+            <a class="menu-item">实习就业</a>
+            <a class="menu-item">学校通知</a>
+            <a class="menu-item">学院通知</a>
+            <a class="menu-item">下载服务</a>
+        </div>
+        <div class="nav-item">
+            <a class="link">师资队伍</a>
+        </div>
+        <div class="nav-menu">
+            <a class="menu-item">毕设答辩</a>
+            <a class="menu-item">实习就业</a>
+            <a class="menu-item">学校通知</a>
+            <a class="menu-item">学院通知</a>
+            <a class="menu-item">下载服务</a>
+        </div>
+        <div class="nav-item">
+            <a class="link">招生就业</a>
+        </div>
+        <div class="nav-menu">
+            <a class="menu-item">毕设答辩</a>
+            <a class="menu-item">实习就业</a>
+            <a class="menu-item">学校通知</a>
+            <a class="menu-item">学院通知</a>
+            <a class="menu-item">下载服务</a>
+        </div>
+        <div class="nav-item">
+            <a class="link">交流合作</a>
+        </div>
+        <div class="nav-menu">
+            <a class="menu-item">毕设答辩</a>
+            <a class="menu-item">实习就业</a>
+            <a class="menu-item">学校通知</a>
+            <a class="menu-item">学院通知</a>
+            <a class="menu-item">下载服务</a>
+        </div>
+        <div class="nav-item">
+            <a class="link">人才培养</a>
+        </div>
+        <div class="nav-menu">
+            <a class="menu-item">毕设答辩</a>
+            <a class="menu-item">实习就业</a>
+            <a class="menu-item">学校通知</a>
+            <a class="menu-item">学院通知</a>
+            <a class="menu-item">下载服务</a>
+        </div>
+        <div class="nav-item">
+            <a class="link">学生工作</a>
+        </div>
+        <div class="nav-menu">
+            <a class="menu-item">毕设答辩</a>
+            <a class="menu-item">实习就业</a>
+            <a class="menu-item">学校通知</a>
+            <a class="menu-item">学院通知</a>
+            <a class="menu-item">下载服务</a>
+        </div>
+        <div class="nav-item">
+            <a class="link">党建工作</a>
+        </div>
+        <div class="nav-menu">
+            <a class="menu-item">毕设答辩</a>
+            <a class="menu-item">实习就业</a>
+            <a class="menu-item">学校通知</a>
+            <a class="menu-item">学院通知</a>
+            <a class="menu-item">下载服务</a>
+        </div>
+    </div>
+    <div id="right-block">
+        <div id="news" class="block">
+            <a class="more">更多</a>
+            <span class="title">学院新闻</span>
+
+            <div id="news-container">
+
+            </div>
+        </div>
+        <div id="announcement" class="block">
+            <a class="more">更多</a>
+            <span class="title">近期通知</span>
+
+            <div id="announcement-container">
+
+            </div>
+        </div>
+        <div id="partners" class="block">
+            <a href="" class="partner"><img src="img/logo_buaa.png" alt=""/> <span>北京航空航天大学</span></a>
+            <a href="" class="partner"><img src="img/LILLE-LOGO.jpg" alt=""/> <span>LILLE</span></a>
+            <a href="" class="partner"><img src="img/logo-CentraleSupelec.jpg" alt=""/> <span>CentraleSupelec</span></a>
+            <a href="" class="partner"><img src="img/LOGO-MARSEILLE.png" alt=""/> <span>MARSEILLE</span></a>
+            <a href="" class="partner"><img src="img/Lyon-LOGO.png" alt=""/> <span>Lyon</span></a>
+        </div>
+    </div>
+    <section id="dg-container" class="dg-container">
+        <div class="dg-wrapper">
+            <a href="#"><span class="img" style="background-image: url('img/1.jpg');"></span>
+
+                <div>新闻主题</div>
+            </a>
+            <a href="#"><span class="img" style="background-image: url('img/2.jpg');"></span>
+
+                <div>新闻主题</div>
+            </a>
+            <a href="#"><span class="img" style="background-image: url('img/3.jpg');"></span>
+
+                <div>新闻主题</div>
+            </a>
+            <a href="#"><span class="img" style="background-image: url('img/4.png');"></span>
+
+                <div>新闻主题</div>
+            </a>
+        </div>
+        <nav>
+            <span class="dg-prev">&lt;</span>
+            <span class="dg-next">&gt;</span>
+        </nav>
+    </section>
+
+</div>
+<div id="footer">
+    <div class="row">
+        <span>版权所有2010北京航空航天大学 &nbsp; </span>
+        <address>北京市海淀区学院路37号教学区2号楼 &nbsp;邮编：100191</address>
+    </div>
+    <div class="row">
+        <span>通讯方式：</span>
+        <address>电话：010-82339307</address>
+        <span>电子邮箱：</span>
+        <address><a href="mailto:ecpkn@buaa.edu.cn">ecpkn@buaa.edu.cn</a></address>
+    </div>
+    <div class="row">
+        <span>京ICP备05004617</span><span>文保网安备案号1001080018</span>
+    </div>
+</div>
+
+
+</body>
+<script id="block-template" type="text/html">
+    <!--
+    {@helper date}
+        function(time){
+             var date = new Date(time);
+             return date.getMonth()+1+'/'+date.getDate();
+        }
+    {@/helper}
+    {@helper imgSrc}
+    function( record ){
+        console.log(record);
+        console.log(record.images.length);
+        if(record.images.length > 0){
+            return  record.images[0].source;
+        }else {
+            return '/img/1.jpg';
+        }
+    }
+    {@/helper}
+    -->
+    {@each list as record}
+    {@if record.first == true}
+    <div class="first">
+        <img src="${record|imgSrc}" class="img">
+        <time class="time">${record.createdAt|date}</time>
+        <a href="/news/${record._id}" class="link">${record.title}</a>
+    </div>
+    {@else}
+    <div class="">
+        <a href="/news/${record._id}" class="a">
+            <time class="time">${record.createdAt|date}</time>
+            ${record.title}</a>
+    </div>
+    {@/if}
+    {@/each}
+
+</script>
+<script src="js/index.js"></script>
+
+<script type="text/javascript" src="js/jquery.gallery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#dg-container').gallery({
+            autoplay: true
+        });
+    });
+
+    (function () {
+        var h = $(window).innerHeight();
+        if (h > 1020) {
+            $("#footer").css({"top": "auto", "bottom": "0"});
+        }
+
+    })();
+</script>
+</html>
