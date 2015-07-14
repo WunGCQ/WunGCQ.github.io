@@ -3,7 +3,7 @@
  */
 (function () {
     var target = $("#pic-bg");
-    var arr = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg','img/4.png'];
+    var arr = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg'];
     var index = 0;
     var pages = 3;
 
@@ -30,7 +30,7 @@
                     target.css('background-image', toUrl(arr[index]));
                 }, 1000
             );
-        }, 8000
+        }, 5000
     );
 })();
 
@@ -50,10 +50,10 @@
                 "originalName": "620",
                 "name": "620",
                 "extension": "",
-                "path": "img/header-1.jpg",
+                "path": "img/C1.jpg",
                 "dir": "/statics/uploads/images/",
                 "url": "/statics/uploads/images/620",
-                "source": "img/header-1.jpg",
+                "source": "img/C1.jpg",
                 "__v": 0,
                 "createdAt": "2015-06-20T06:41:38.843Z"
             }],

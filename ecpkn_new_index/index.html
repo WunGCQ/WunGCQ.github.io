@@ -19,11 +19,13 @@
         }
 
         #page {
-            width: 1100px;
+            display: block;
+            position: relative;
+            z-index: 150;
+            width: 980px;
             height: 850px;
             margin: auto;
-            border-left: 1px solid #ddd;
-            border-right: 1px solid #ddd;
+
         }
 
         #header {
@@ -38,7 +40,7 @@
 
         #header .header-container {
             margin: auto;
-            width: 1100px;
+            width: 980px;
             height: inherit;
             line-height: inherit;
             text-align: left;
@@ -69,7 +71,7 @@
         #header .header-container #search-area {
             display: inline-block;
             padding-left: 50px;
-            width: 300px;
+            width: 240px;
             height: inherit;
             line-height: inherit;
             float: right;
@@ -91,21 +93,21 @@
             display: inline-block;
             margin-left: 10px;
             vertical-align: middle;
-            width: 80px;
+            width: 50px;
             line-height: 30px;
             height: 30px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px;
             color: #666;
             text-align: center;
-            text-indent: 5px;
-            letter-spacing: 5px;
-            border-radius: 5px;
+            text-indent: 3px;
+            letter-spacing: 3px;
+            border-radius: 3px;
             border: 1px solid #999;
         }
 
         #search-submit:hover {
-            background-color: #ddd;
+            background-color: #eee;
         }
 
         #school-logo {
@@ -197,12 +199,14 @@
             margin-top: 50px;
             left: 0;
             height: 40px;
-            width: 800px;
+            width: 730px;
             font-size: 14px;
             background-color: #2290ff;
             z-index: 200;
         }
-
+        #nav .nav-item .link{
+            text-decoration: none;
+        }
         #nav .nav-item .link:hover {
             text-decoration: underline;
         }
@@ -223,6 +227,7 @@
             color: #fff;
             font-size: 14px;
             cursor: pointer;
+            text-decoration: none;
         }
 
         #nav .nav-menu .menu-item:hover {
@@ -232,10 +237,10 @@
 
         #right-block {
             display: block;
-            position: relative;
+            position: absolute;
             float: right;
             width: 250px;
-
+            margin-left: 730px;
             height: 630px;
         }
 
@@ -371,7 +376,7 @@
         }
 
         #footer-nav .footer-nav-container {
-            width: 1100px;
+            width: 980px;
             margin: auto;
             text-align: left;
         }
@@ -379,7 +384,7 @@
         #footer .row {
             display: block;
             margin: auto;
-            width: 1100px;
+            width: 980px;
             text-align: center;
             height: 30px;
             line-height: 30px;
@@ -519,9 +524,12 @@
         #partners .partner {
             display: block;
             width: inherit;
-            height: 60px;
+            height: 70px;
+            box-sizing: border-box;
+            padding: 5px;
             margin-top: 5px;
-            line-height: 30px;
+            line-height: 50px;
+            /*box-shadow:  0 1px 0 0 rgba(0,0,0,.3);*/
             text-decoration: none;
 
         }
@@ -543,6 +551,33 @@
             height: 60px;
             line-height: 60px;
             color: #2290ff;
+        }
+        #partners .partner.other{
+            display: inline;
+            height: auto;
+            width: auto;
+            padding: 0 10px 0 0;
+            margin: 0 5px;
+            line-height: 2;
+        }
+        #partners .partner.other span{
+            line-height: normal;
+            display: inline;
+        }
+        #page{
+            background-color: transparent;
+            display: block;
+            position: relative;
+        }
+        #page:before{
+            content: "";
+            display: block;
+            width: 980px;
+            position: absolute;
+            height: 350px;
+            margin-top: 493px;
+            box-shadow: -5px 0 10px 1px rgba(0,0,0,.1),5px 0 10px 1px rgba(0,0,0,.1);
+            z-index: 0;
         }
 
         #partners .partner span:hover {
@@ -593,97 +628,45 @@
             <a class="menu-item">学院概况</a>
             <a class="menu-item">学院领导</a>
             <a class="menu-item">学院大事记</a>
+            <a href="" class="menu-item">科学研究</a>
+            <a href="" class="menu-item">师资队伍</a>
         </div>
-        <div class="nav-item">
-            <a class="link">通知公告</a>
-        </div>
-        <div class="nav-menu">
-            <a class="menu-item">毕设答辩</a>
-            <a class="menu-item">实习就业</a>
-            <a class="menu-item">学校通知</a>
-            <a class="menu-item">学院通知</a>
-            <a class="menu-item">下载服务</a>
-        </div>
-        <div class="nav-item">
-            <a class="link">科学研究</a>
-        </div>
-        <div class="nav-menu">
-            <a class="menu-item">毕设答辩</a>
-            <a class="menu-item">实习就业</a>
-            <a class="menu-item">学校通知</a>
-            <a class="menu-item">学院通知</a>
-            <a class="menu-item">下载服务</a>
-        </div>
-        <div class="nav-item">
-            <a class="link">学院新闻</a>
-        </div>
-        <div class="nav-menu">
-            <a class="menu-item">毕设答辩</a>
-            <a class="menu-item">实习就业</a>
-            <a class="menu-item">学校通知</a>
-            <a class="menu-item">学院通知</a>
-            <a class="menu-item">下载服务</a>
-        </div>
-        <div class="nav-item">
-            <a class="link">师资队伍</a>
-        </div>
-        <div class="nav-menu">
-            <a class="menu-item">毕设答辩</a>
-            <a class="menu-item">实习就业</a>
-            <a class="menu-item">学校通知</a>
-            <a class="menu-item">学院通知</a>
-            <a class="menu-item">下载服务</a>
-        </div>
-        <div class="nav-item">
-            <a class="link">招生就业</a>
-        </div>
-        <div class="nav-menu">
-            <a class="menu-item">毕设答辩</a>
-            <a class="menu-item">实习就业</a>
-            <a class="menu-item">学校通知</a>
-            <a class="menu-item">学院通知</a>
-            <a class="menu-item">下载服务</a>
-        </div>
+
+
         <div class="nav-item">
             <a class="link">交流合作</a>
         </div>
         <div class="nav-menu">
-            <a class="menu-item">毕设答辩</a>
-            <a class="menu-item">实习就业</a>
-            <a class="menu-item">学校通知</a>
-            <a class="menu-item">学院通知</a>
-            <a class="menu-item">下载服务</a>
+            <a class="menu-item">国际交流</a>
+            <a class="menu-item">企业合作</a>
         </div>
         <div class="nav-item">
             <a class="link">人才培养</a>
         </div>
         <div class="nav-menu">
-            <a class="menu-item">毕设答辩</a>
-            <a class="menu-item">实习就业</a>
-            <a class="menu-item">学校通知</a>
-            <a class="menu-item">学院通知</a>
-            <a class="menu-item">下载服务</a>
+            <a class="menu-item">学生工作</a>
+            <a class="menu-item">党建工作</a>
         </div>
-        <div class="nav-item">
-            <a class="link">学生工作</a>
-        </div>
-        <div class="nav-menu">
-            <a class="menu-item">毕设答辩</a>
-            <a class="menu-item">实习就业</a>
-            <a class="menu-item">学校通知</a>
-            <a class="menu-item">学院通知</a>
-            <a class="menu-item">下载服务</a>
-        </div>
-        <div class="nav-item">
-            <a class="link">党建工作</a>
-        </div>
-        <div class="nav-menu">
-            <a class="menu-item">毕设答辩</a>
-            <a class="menu-item">实习就业</a>
-            <a class="menu-item">学校通知</a>
-            <a class="menu-item">学院通知</a>
-            <a class="menu-item">下载服务</a>
-        </div>
+        <!--<div class="nav-item">-->
+            <!--<a class="link">学生工作</a>-->
+        <!--</div>-->
+        <!--<div class="nav-menu">-->
+            <!--<a class="menu-item">毕设答辩</a>-->
+            <!--<a class="menu-item">实习就业</a>-->
+            <!--<a class="menu-item">学校通知</a>-->
+            <!--<a class="menu-item">学院通知</a>-->
+            <!--<a class="menu-item">下载服务</a>-->
+        <!--</div>-->
+        <!--<div class="nav-item">-->
+            <!--<a class="link">党建工作</a>-->
+        <!--</div>-->
+        <!--<div class="nav-menu">-->
+            <!--<a class="menu-item">毕设答辩</a>-->
+            <!--<a class="menu-item">实习就业</a>-->
+            <!--<a class="menu-item">学校通知</a>-->
+            <!--<a class="menu-item">学院通知</a>-->
+            <!--<a class="menu-item">下载服务</a>-->
+        <!--</div>-->
     </div>
     <div id="right-block">
         <div id="news" class="block">
@@ -703,16 +686,18 @@
             </div>
         </div>
         <div id="partners" class="block">
-            <a href="" class="partner"><img src="img/logo_buaa.png" alt=""/> <span>北京航空航天大学</span></a>
-            <a href="" class="partner"><img src="img/LILLE-LOGO.jpg" alt=""/> <span>LILLE</span></a>
-            <a href="" class="partner"><img src="img/logo-CentraleSupelec.jpg" alt=""/> <span>CentraleSupelec</span></a>
-            <a href="" class="partner"><img src="img/LOGO-MARSEILLE.png" alt=""/> <span>MARSEILLE</span></a>
-            <a href="" class="partner"><img src="img/Lyon-LOGO.png" alt=""/> <span>Lyon</span></a>
+            <a href="" class="partner"><img src="img/logo_buaa.png" alt=""/><span>北京航空航天大学</span></a>
+            <a href="" class="partner"><img src="img/logo10.jpg" alt=""/><span>十周年院庆专题</span></a>
+            <a href="" class="partner"> <span>教育捐赠</span></a>
+            <a href="" class="partner other"><span>友情链接1</span></a>
+            <a href="" class="partner other"><span>友情链接1</span></a>
+            <a href="" class="partner other"><span>友情链接1</span></a>
+
         </div>
     </div>
     <section id="dg-container" class="dg-container">
         <div class="dg-wrapper">
-            <a href="#"><span class="img" style="background-image: url('img/1.jpg');"></span>
+            <a href="#"><span class="img" style="background-image: url('img/C2.jpg');"></span>
 
                 <div>新闻主题</div>
             </a>
@@ -720,7 +705,7 @@
 
                 <div>新闻主题</div>
             </a>
-            <a href="#"><span class="img" style="background-image: url('img/3.jpg');"></span>
+            <a href="#"><span class="img" style="background-image: url('img/C1.jpg');"></span>
 
                 <div>新闻主题</div>
             </a>
@@ -769,7 +754,7 @@
         if(record.images.length > 0){
             return  record.images[0].source;
         }else {
-            return '/img/1.jpg';
+            return '/img/C1.jpg';
         }
     }
     {@/helper}
