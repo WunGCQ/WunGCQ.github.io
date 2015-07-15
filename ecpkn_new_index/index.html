@@ -121,7 +121,7 @@
             width: 200px;
             margin-left: 15px;
             height: 74px;
-            background-image: url(img/__logo.png);
+            background-image: url(img/logo.png);
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
@@ -583,7 +583,19 @@
         #partners .partner span:hover {
             text-decoration: underline;
         }
-
+        #partners .qr{
+            display: inline-block;
+            margin-top: 10px;
+            vertical-align: top;
+            height: 120px;
+            width: 110px;
+            text-align: center;
+        }
+        #partners .qr span{
+            height: 20px;
+            color: #2290ff;
+            font-size: 14px;
+        }
     </style>
     <script type="text/javascript" src="js/modernizr.custom.53451.js"></script>
 </head>
@@ -688,10 +700,15 @@
         <div id="partners" class="block">
             <a href="" class="partner"><img src="img/logo_buaa.png" alt=""/><span>北京航空航天大学</span></a>
             <a href="" class="partner"><img src="img/logo10.jpg" alt=""/><span>十周年院庆专题</span></a>
-            <a href="" class="partner"> <span>教育捐赠</span></a>
-            <a href="" class="partner other"><span>友情链接1</span></a>
-            <a href="" class="partner other"><span>友情链接1</span></a>
-            <a href="" class="partner other"><span>友情链接1</span></a>
+            <!--<a href="" class="partner"> <span>教育捐赠</span></a>-->
+            <div class="qr">
+                <img src="img/qr.png" width="100" alt=""/>
+                <span class="txt">学院主页</span>
+            </div>
+            <div class="qr">
+                <img src="img/qr.png" width="100" alt=""/>
+                <span class="txt">微信公众号</span>
+            </div>
 
         </div>
     </div>
@@ -791,7 +808,6 @@
         if (h > 1020) {
             $("#footer").css({"top": "auto", "bottom": "0"});
         }
-
     })();
 </script>
 </html>
