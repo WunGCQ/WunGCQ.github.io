@@ -366,20 +366,20 @@
                 switch (d.deltaX){
                     case 0:
                         break;
-                    case 1:
+                    case -1:
                         showWeekend();
                         break;
-                    case -1:
+                    case 1:
                         hideWeekend();
                         break;
                 }
                 switch (d.deltaY){
                     case 0:
                         break;
-                    case 1:
+                    case -1:
                         showNight();
                         break;
-                    case -1:
+                    case 1:
                         hideNight();
                 }
                 var t = e.target;
