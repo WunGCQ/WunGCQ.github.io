@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta/>
     <title>课表</title>
-    <link rel="stylesheet" href="touchtest.css"/>
-    <script src="jq.js"></script>
-    <!--<script src="../static/js/lib/jquery.touchy.min.js"></script>-->
-    <script src="juicer.js"></script>
+    <link rel="stylesheet" href="../static/css/pages/class_table.css"/>
+    <script src="../static/js/lib/jquery.min.js"></script>
+    <script src="../static/js/lib/juicer-min.js"></script>
 </head>
-<body class="page" id="page" >
+<body class="page" id="page">
 
 <div class="class-table-container" id="class-table-container">
     <div class="scroll-view">
@@ -173,9 +172,7 @@
         <p class="class-position txt">${item.position}</p>
 
         <p class="class-teacher txt">
-            {@each item.teachers as t}
-            ${t}/
-            {@/each}
+            {@each item.teachers as t}${t}&nbsp;{@/each}
         </p>
 
     </a>
@@ -270,6 +267,11 @@
         ]
     };
     (function(data){
+
+        function excutColor(){
+
+        }
+
         function importClass(data) {
 //        var classes = JSON.parse(arg);
             var tmp = $("#tmp-class").html().trim();
@@ -278,19 +280,15 @@
         }
         importClass(data);
         function showNight(){
-//            $(".page").hasClass("night") ||
             $(".page").addClass("night");
         }
         function showWeekend(){
-//            $(".page").hasClass("weekend")||
             $(".page").addClass("weekend");
         }
         function hideNight(){
-//            $(".page").hasClass("night") &&
             $(".page").removeClass("night");
         }
         function hideWeekend(){
-//            $(".page").hasClass("weekend") &&
             $(".page").removeClass("weekend");
         }
 
@@ -301,8 +299,8 @@
             var x= 0,y=0;
             return{
                 setLock:function(e){
-                     startTime = e.timeStamp;
-                     x = e.originalEvent && e.originalEvent.touches[0].clientX ||  event.touches[0].clientX;
+                    startTime = e.timeStamp;
+                    x = e.originalEvent && e.originalEvent.touches[0].clientX ||  event.touches[0].clientX;
                     y = e.originalEvent && e.originalEvent.touches[0].clientY ||  event.touches[0].clientY;
                     //console.log("x: "+x+", y: "+y);
                 },
@@ -327,7 +325,7 @@
                 },
                 touchDirection: function(e){
                     if(lock){
-                        var _x = e.originalEvent 
+                        var _x = e.originalEvent
                                 &&
                                 (e.originalEvent.length>0 && e.originalEvent.touches[0].clientX)
                                 ||  (event.touches.length>0 && event.touches[0].clientX);
@@ -335,7 +333,7 @@
                                 &&
                                 (e.originalEvent.length>0 && e.originalEvent.touches[0].clientY)
                                 ||  (event.touches.length>0 && event.touches[0].clientY);
-                       // console.log("_x: "+_x+", _y: "+_y);
+                        // console.log("_x: "+_x+", _y: "+_y);
                         var dx = 0,dy = 0;
                         var mx = Math.abs(_x - x);
                         var my = Math.abs(_y - y);
@@ -361,7 +359,7 @@
         })();
 
         $("#page").on('touchstart',function(e){
-           touchMoveLock.setLock(e);
+            touchMoveLock.setLock(e);
             e.preventDefault();
             //console.log(e);
 
@@ -402,6 +400,20 @@
             e.preventDefault();
             //console.log(e);
         });
+
+        (function(){
+            var i = document.getElementById("page");
+
+            if (i.requestFullscreen) {
+                i.requestFullscreen();
+            } else if (i.webkitRequestFullscreen) {
+                i.webkitRequestFullscreen();
+            } else if (i.mozRequestFullScreen) {
+                i.mozRequestFullScreen();
+            } else if (i.msRequestFullscreen) {
+                i.msRequestFullscreen();
+            }
+        })();
     })(fake);
 
 
