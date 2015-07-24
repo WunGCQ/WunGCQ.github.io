@@ -3,11 +3,21 @@
 <head lang="zh-CN">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <!--safari私有标签，允许全屏浏览-->
+    <meta content=”yes” name=”apple-mobile-web-app-capable” />
+    <!--UC全屏-->
+    <meta name="full-screen" content="yes">
+    <!--UC启用标准排版-->
+    <meta name="layoutmode" content="standard" />
+    <!--UC app模式-->
+    <meta name="browsermode" content="application"/>
+    <!--QQ app模式-->
+    <meta name="x5-page-mode" content="app" />
     <meta/>
     <title>课表</title>
-    <link rel="stylesheet" href="touchtest/static/css/pages/class_table.css"/>
-    <script src="touchtest/static/js/lib/jquery.min.js"></script>
-    <script src="touchtest/static/js/lib/juicer-min.js"></script>
+    <link rel="stylesheet" href="../static/css/pages/class_table.css"/>
+    <script src="../static/js/lib/jquery.min.js"></script>
+    <script src="../static/js/lib/juicer-min.js"></script>
 </head>
 <body class="page" id="page">
 
@@ -165,7 +175,8 @@
     <a class="class-box color-${item.color}"
        data-last="${item.last_time}"
        data-class-num="${item.class_start}"
-       data-day-num="${item.day_num}">
+       data-day-num="${item.day_num}"
+            data-href="js-call://class/${item.id}">
 
         <p class="class-name txt">${item.name}</p>
 
