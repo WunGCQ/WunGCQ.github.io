@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <!--safari私有标签，允许全屏浏览-->
-    <meta content=”yes” name=”apple-mobile-web-app-capable” />
+    <meta content=”yes” name=”apple-mobile-web-app-capable”/>
     <!--UC全屏-->
     <meta name="full-screen" content="yes">
     <!--UC启用标准排版-->
-    <meta name="layoutmode" content="standard" />
+    <meta name="layoutmode" content="standard"/>
     <!--UC app模式-->
     <meta name="browsermode" content="application"/>
     <!--QQ app模式-->
-    <meta name="x5-page-mode" content="app" />
-    <meta/>
+    <meta name="x5-page-mode" content="app"/>
     <title>课表</title>
     <link rel="stylesheet" href="../static/css/pages/class_table.css"/>
     <script src="../static/js/lib/jquery.min.js"></script>
     <script src="../static/js/lib/juicer-min.js"></script>
+    <style>
+        iframe {
+            display: none !important;
+        }
+    </style>
 </head>
 <body class="page" id="page">
 
@@ -176,7 +180,7 @@
        data-last="${item.last_time}"
        data-class-num="${item.class_start}"
        data-day-num="${item.day_num}"
-            data-href="js-call://class/${item.id}">
+       data-href="js-call://class/${item.id}">
 
         <p class="class-name txt">${item.name}</p>
 
@@ -224,7 +228,7 @@
             },
             {
                 "id": 1,
-                "name": "WRFARDM",
+                "name": "WTF打发",
                 "position": "J5-101",
                 "teachers": ["MTMT", 'AHA', 'JUSTIN'],
                 "color": 1,
@@ -234,7 +238,7 @@
             },
             {
                 "id": 1,
-                "name": "WRFARDM",
+                "name": "RDM",
                 "position": "J5-101",
                 "teachers": ["MTMT", 'AHA', 'JUSTIN'],
                 "color": 1,
@@ -244,7 +248,7 @@
             },
             {
                 "id": 1,
-                "name": "WRFARDM",
+                "name": "WFARDM",
                 "position": "J5-101",
                 "teachers": ["MTMT", 'AHA', 'JUSTIN'],
                 "color": 1,
@@ -254,7 +258,7 @@
             },
             {
                 "id": 1,
-                "name": "WRFARDM",
+                "name": "WRFAR",
                 "position": "J5-101",
                 "teachers": ["MTMT", 'AHA', 'JUSTIN'],
                 "color": 1,
@@ -280,20 +284,25 @@
     (function (data) {
 
         function setColor(data) {
-            data.classes.sort(function (a, b) {
-                if (a.name >= b.name) {
-                    return false;
-                }
-            });
+            var courseArr = {};
+            var index = 1;
             for (var i = 0; i < data.classes.length; i++) {
-                data.classes[i].color = (i % 9) + 1;
+                if (courseArr[data.classes[i].name] == undefined) {
+                    courseArr[data.classes[i].name] = (index % 9) + 1;
+                    index++;
+                }
+            }
+
+
+            for (var i = 0; i < data.classes.length; i++) {
+                data.classes[i].color = courseArr[data.classes[i].name];
             }
             return data;
         }
 
         function importClass(data) {
 //        var classes = JSON.parse(arg);
-            data  = setColor(data);
+            data = setColor(data);
             var tmp = $("#tmp-class").html().trim();
             var html = juicer(tmp, data);
             $('.class-wrapper .scroll-view').append(html);
@@ -391,6 +400,7 @@
         })();
 
         $("#page").on('touchstart', function (e) {
+
             touchMoveLock.setLock(e);
             e.preventDefault();
             //console.log(e);
@@ -424,14 +434,31 @@
             }
         });
         $("#page").on('touchend', function (e) {
-            var d = touchMoveLock.touchDirection(e);
-            if (d != false) {
+          var d = touchMoveLock.touchDirection(e);
+          if (d != false) {
 
-            }
-            touchMoveLock.reset();
-            e.preventDefault();
-            //console.log(e);
-        });
+          } else {
+              if (e.target.classList.contains("class-box")) {
+                  createRequest(e.target);
+              } else if (e.target.parentNode.classList.contains("class-box")) {
+                  createRequest(e.target.parentNode);
+              }
+          }
+
+          touchMoveLock.reset();
+          e.preventDefault();
+          //console.log(e);
+      });
+
+        var createRequest = function (classBox) {
+            var url = classBox.getAttribute("data-href");
+            var iframe = document.createElement('iframe');
+            iframe.src = url;
+            document.documentElement.appendChild(iframe);
+            iframe.parentNode.removeChild(iframe);
+            iframe = null;
+        };
+
 
         (function () {
             var i = document.getElementById("page");
