@@ -108,7 +108,6 @@
             周一
         </div>
         <div class="date">
-            6月22日
         </div>
     </div>
     <div class="week-day-wrapper">
@@ -116,7 +115,6 @@
             周二
         </div>
         <div class="date">
-            6月23日
         </div>
     </div>
     <div class="week-day-wrapper">
@@ -124,15 +122,13 @@
             周三
         </div>
         <div class="date">
-            6月24日
         </div>
     </div>
-    <div class="week-day-wrapper today">
+    <div class="week-day-wrapper">
         <div class="week-day">
             周四
         </div>
         <div class="date">
-            6月25日
         </div>
     </div>
     <div class="week-day-wrapper">
@@ -140,7 +136,6 @@
             周五
         </div>
         <div class="date">
-            6月26日
         </div>
     </div>
     <div class="week-day-wrapper weekend">
@@ -148,7 +143,6 @@
             周六
         </div>
         <div class="date">
-            6月27日
         </div>
     </div>
     <div class="week-day-wrapper weekend">
@@ -156,7 +150,6 @@
             周日
         </div>
         <div class="date">
-            6月28日
         </div>
     </div>
 </div>
@@ -194,6 +187,42 @@
     {@/each}
 </script>
 <script>
+    (function (d) {
+
+        var toCNDate = function (D) {
+            return [D.getMonth() + 1, '月', D.getDate(), '日'].join("");
+        };
+
+        var date = d && new Date(d) || new Date();
+        var day = date.getDay();
+        (day == 0) && (day = 7);
+        day -- ;
+
+        console.log(day);
+        var today = new Date();
+        var today_str = toCNDate(today);
+        var day_p = d && new Date(d) || new Date();
+        var day_n = d && new Date(d) || new Date();
+        var arr = [];
+
+
+        for (var i = day; i >= 0; i--) {
+            arr[i] = toCNDate(day_p);
+            day_p.setDate(day_p.getDate() - 1);
+        }
+        for (var j = day; j <= 6; j++) {
+            arr[j] = toCNDate(day_n);
+            day_n.setDate(day_n.getDate() + 1);
+        }
+        $(".day-row .date").each(function (index, elem) {
+            $(elem).html(arr[index]);
+            if (today_str == arr[index]) {
+                $(".day-row .week-day-wrapper").eq(index).addClass("today");
+            }
+        });
+
+
+    })();
     var fake = {
         "classes": [
             {
@@ -288,7 +317,7 @@
             var index = 1;
             for (var i = 0; i < data.classes.length; i++) {
                 if (courseArr[data.classes[i].name] == undefined) {
-                    courseArr[data.classes[i].name] = (index % 9) + 1;
+                    courseArr[data.classes[i].name] = (index % 12) + 1;
                     index++;
                 }
             }
@@ -434,21 +463,21 @@
             }
         });
         $("#page").on('touchend', function (e) {
-          var d = touchMoveLock.touchDirection(e);
-          if (d != false) {
+            var d = touchMoveLock.touchDirection(e);
+            if (d != false) {
 
-          } else {
-              if (e.target.classList.contains("class-box")) {
-                  createRequest(e.target);
-              } else if (e.target.parentNode.classList.contains("class-box")) {
-                  createRequest(e.target.parentNode);
-              }
-          }
+            } else {
+                if (e.target.classList.contains("class-box")) {
+                    createRequest(e.target);
+                } else if (e.target.parentNode.classList.contains("class-box")) {
+                    createRequest(e.target.parentNode);
+                }
+            }
 
-          touchMoveLock.reset();
-          e.preventDefault();
-          //console.log(e);
-      });
+            touchMoveLock.reset();
+            e.preventDefault();
+            //console.log(e);
+        });
 
         var createRequest = function (classBox) {
             var url = classBox.getAttribute("data-href");
@@ -458,13 +487,6 @@
             iframe.parentNode.removeChild(iframe);
             iframe = null;
         };
-        $('.class-wrapper .scroll-view').on('click', function (e) {
-
-            if (e.target.classList[0] == 'class-box') {
-                var href = e.target.getAttribute("data-href");
-
-            }
-        });
 
         (function () {
             var i = document.getElementById("page");
