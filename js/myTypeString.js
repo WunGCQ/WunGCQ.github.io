@@ -92,7 +92,7 @@
                 var s = setTimeout(function () {
                     lock.reset();
                     clearTimeout(s);
-                }, 1000);
+                }, 1500);
 
             } else {
                 console.log('no');
@@ -108,7 +108,7 @@
                 var s = setTimeout(function () {
                     lock.reset();
                     clearTimeout(s);
-                }, 1000);
+                }, 1500);
 
             } else {
                 console.log('no');
