@@ -412,6 +412,7 @@ p {
     transition: all ease .7s .8s;
     -webkit-transition: all ease .7s .8s;
     transform: translateY(50vh) scale(0.1);
+    -webkit-transform: translateY(50vh) scale(0.1);
 }
 
 .red {
