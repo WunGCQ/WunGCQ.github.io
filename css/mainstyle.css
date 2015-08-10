@@ -557,6 +557,8 @@ a {
 .full-screen.animate .content {
     opacity: 1;
     transform: translate(0, 0) scale(1);
+
+    -webkit-transform: translate(0, 0) scale(1);
 }
 
 .full-screen.animate .hr {
