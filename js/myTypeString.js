@@ -1,180 +1,158 @@
-
-function setSealPosition(){
-    var windowHeight=document.documentElement.clientHeight;
-    var HeaderContent=document.getElementById('header-content');
-    var headerContentHeight=HeaderContent.offsetHeight;
-    var headerPadding=Math.floor((windowHeight-headerContentHeight)*0.5);
-    var Header=document.getElementById("header");
-    Header.style.paddingTop=headerPadding+"px";
-    Header.style.height=(windowHeight-headerPadding)+"px";
-}
-function setHeaderSize() {
-    var windowHeight=document.documentElement.clientHeight;
-    var Header=document.getElementById("header");
-    Header.style.height=windowHeight+"px";
-}
-function setNavPosition() {
-    var windowHeight=document.documentElement.clientHeight;
-    var Nav=document.getElementsByClassName("nav")[0];
-    Nav.style.top=Math.floor((windowHeight-350)*0.382)+"px";
-}
-
-function setFullSCreenSize(){
-    var windowHeight=document.documentElement.clientHeight;
-    $(".full-screen").css("height",windowHeight);
-}
-
-function setPositionAndSize(){
-    setFullSCreenSize();
-    setHeaderSize();
-    setSealPosition();
-    setNavPosition();
-    $(".nav li").attr("onclick","NavListener(this)");
-    $("#my-info-trigger").attr("onmouseover","showMyInfo()");
-}
-function NavListener(LiClicked){
-    var LiClicked=$(LiClicked);
-    var LiArr=$(".nav li");
-    var LiNum=LiArr.index(LiClicked);
-    var divArr=["#header","#me","#skills","#exp","#blog","#hobby","#footer"];
-//    $(".nav li").attr("class","");
-//    LiClicked.addClass("nav-active");
-    $.scrollTo(divArr[LiNum],500);
-}
-function showMyInfo(){
-    var MyInfo=$(document.getElementById("my-info"));
-        MyInfo.fadeIn(800);
-
-}
-function hideMyInfo(){
-    var MyInfo=$(document.getElementById("my-info"));
-    MyInfo.css({"display":"none"});
-}
-function showContent(DivNumber){
-
-}
-
-function blockHoverListener() {
-    var top= $(window).scrollTop();
-    var h = $(window).outerHeight();
-    var nowActive=parseInt(top/h+0.5);
-    var LiArr=$(".nav li");
-    LiArr.attr("class","");
-    var JSNav=document.getElementsByClassName('nav')[0];
-    var JSLiArr=JSNav.getElementsByTagName('li');
-    JSLiArr[nowActive].className="nav-active";
-    if(nowActive==0){
-        $(".hr").css({"display":"none"});
-        $(".red-ring-bg").css({"display":"none"});
-        hideMyInfo();
-
-    }
-    else if(nowActive==1){
-        var  StayingBlock=FullScreenArr[nowActive-1];
-        var NextBlock=FullScreenArr[nowActive];
-        var ThisHr=$(StayingBlock.getElementsByClassName("hr")[0]);
-        var ThisRedRing=$(StayingBlock.getElementsByClassName("red-ring-bg")[0]);
-        var ThisContent=$(StayingBlock.getElementsByClassName("content")[0]);
-        ThisHr.fadeIn(500);
-        setTimeout(function(){
-            ThisRedRing.css({"display":"block"});
-        },700);
-        setTimeout(function(){
-            showMyInfo();
-        },700);
-        setTimeout(function(){
-            ThisContent.fadeIn(600);
-        },1200);
+(function () {
+    document.onkeyup = getArrowAndScroll;
 
 
-        var NextHr=$(NextBlock.getElementsByClassName("hr")[0]);
-        var NextRedRing=$(NextBlock.getElementsByClassName("red-ring-bg")[0]);
-        var NextContent=$(NextBlock.getElementsByClassName("content")[0]);
-        NextHr.css({"display":"none"});
-        NextRedRing.css({"display":"none"});
-        NextContent.css({"display":"none"});
-    }
-    else if(nowActive>1 && nowActive<6){
-        hideMyInfo();
-        var StayingBlock=FullScreenArr[nowActive-1];
-        var LastBlock=FullScreenArr[nowActive-2];
-        var NextBlock=FullScreenArr[nowActive];
-        var ThisHr=$(StayingBlock.getElementsByClassName("hr")[0]);
-        var ThisRedRing=$(StayingBlock.getElementsByClassName("red-ring-bg")[0]);
-        var ThisContent=$(StayingBlock.getElementsByClassName("content")[0]);
-        ThisHr.fadeIn(500);
-        setTimeout(function(){
-            ThisRedRing.css({"display":"block"});
-        },700);
-        setTimeout(function(){
-            ThisContent.fadeIn(600);
-        },700);
-
-        var LastRedRing=$(LastBlock.getElementsByClassName("red-ring-bg")[0]);
-        var LastHr=$(LastBlock.getElementsByClassName("hr")[0]);
-        var LastContent=$(LastBlock.getElementsByClassName("content")[0]);
-        LastHr.css({"display":"none"});
-        LastRedRing.css({"display":"none"});
-        LastContent.css({"display":"none"});
-
-        var NextHr=$(NextBlock.getElementsByClassName("hr")[0]);
-        var NextRedRing=$(NextBlock.getElementsByClassName("red-ring-bg")[0]);
-        var NextContent=$(NextBlock.getElementsByClassName("content")[0]);
-        NextHr.css({"display":"none"});
-        NextRedRing.css({"display":"none"});
-        NextContent.css({"display":"none"});
-
-
+    function getArrowAndScroll(event) {
+        var arrowUnicode = event.keyCode;
+        _scroll(arrowUnicode);
     }
 
-    else if(nowActive==6){
-        hideMyInfo();
-        var StayingBlock=FullScreenArr[nowActive-1];
-        var LastBlock=FullScreenArr[nowActive-2];
-        var ThisHr=$(StayingBlock.getElementsByClassName("hr")[0]);
-        var ThisRedRing=$(StayingBlock.getElementsByClassName("red-ring-bg")[0]);
-        var LastRedRing=$(LastBlock.getElementsByClassName("red-ring-bg")[0]);
-        var LastHr=$(LastBlock.getElementsByClassName("hr")[0]);
-        var ThisContent=$(StayingBlock.getElementsByClassName("content")[0]);
-        LastHr.css({"display":"none"});LastRedRing.css({"display":"none"});
-        ThisHr.fadeIn(500);
-        setTimeout(function(){
-            ThisRedRing.css({"display":"block"});
-        },700);
-        setTimeout(function(){
-            ThisContent.fadeIn(600);
-        },700);
-    }
-}
+    function _scroll(arrowUnicode) {
+        var top = $(window).scrollTop();
+        var h = $(window).outerHeight();
+        var nowActive = parseInt(top / h + 0.5);
+        var divArr = ["#header", "#me", "#skills", "#exp", "#blog", "#hobby", "#footer"];
+        if (arrowUnicode == 37 || arrowUnicode == 38) {
+            if (nowActive >= 1) {
+                $('.nav li').eq(nowActive - 1).trigger('click');
+            }
 
-function showElementByOpacity(ElementJQueryObj){
-    ElementJQueryObj.animate({"display":block},"slow");
-}
-function hideElementByOpacity(ElementJQueryObj){
-    ElementJQueryObj.animate({"display":"none"},"slow");
-}
-function getInTouchWithMe(){
-    console.log("我的邮箱是:wangchunqibuaa@gmail.com");
-    console.log("或者人人网查找:王春琪");
-    console.log("微博@WunGCQ");
-}
+            else {
+                $('.nav li').eq(0).trigger('click');
+            }
+        }
+        else if (arrowUnicode == 39 || arrowUnicode == 40) {
+            if (nowActive <= 5) {
+                $('.nav li').eq(nowActive + 1).trigger('click');
+            }
 
-function getArrowAndScroll(event){
-    var arrowUnicode=event.keyCode;
-    var top= $(window).scrollTop();
-    var h = $(window).outerHeight();
-    var nowActive=parseInt(top/h+0.5);
-    var divArr=["#header","#me","#skills","#exp","#blog","#hobby","#footer"];
-    if(arrowUnicode==37||arrowUnicode==38){
-        if(nowActive>=1)
-            $.scrollTo(divArr[nowActive-1],500);
-        else
-            $.scrollTo(divArr[0],500);
+            else {
+                $('.nav li').eq(6).trigger('click');
+            }
+        }
     }
-    else if(arrowUnicode==39||arrowUnicode==40){
-        if(nowActive<=5)
-            $.scrollTo(divArr[nowActive+1],500);
-        else
-            $.scrollTo(divArr[6],500);
-    }
-}
+
+
+    var divArr = ["#header", "#me", "#skills", "#exp", "#blog", "#hobby", "#footer"];
+    var addScrollEvent = (function () {
+
+            if (window.addEventListener) {
+                return function (el, sType, fn, capture) {
+                    el.addEventListener(sType, fn, (capture));
+                };
+            }
+            else if (window.attachEvent) {
+                return function (el, sType, fn, capture) {
+                    el.attachEvent("on" + sType, fn);
+                };
+            }
+            else {
+                return function () {
+                };
+            }
+        })(),
+        stopEvent = function (event) {
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            }
+            else {
+                event.cancelBubble = true;
+            }
+            if (event.preventDefault) {
+                event.preventDefault();
+            }
+            else {
+                event.returnValue = false;
+            }
+        }
+
+        ,
+        lock = (function () {
+            var l = true;
+            return {
+                val: function () {
+                    return (l == true);
+                },
+                change: function () {
+                    l = false;
+                    return (l == true);
+                },
+                reset: function () {
+                    l = true;
+                    return true;
+                }
+            }
+        })()
+        ,
+        scrollUp = function (delta) {
+            if (lock.val()) {
+                console.log('go');
+                _scroll(37);
+                lock.change();
+                var s = setTimeout(function () {
+                    lock.reset();
+                    clearTimeout(s);
+                }, 1000);
+
+            } else {
+                console.log('no');
+                return false;
+            }
+
+        },
+        scrollDown = function (delta) {
+            if (lock.val()) {
+                console.log('go');
+                _scroll(39);
+                lock.change();
+                var s = setTimeout(function () {
+                    lock.reset();
+                    clearTimeout(s);
+                }, 1000);
+
+            } else {
+                console.log('no');
+                return false;
+            }
+        },
+        isFirefox = (window.navigator.userAgent.indexOf('Firefox') != -1)
+        ,
+        mousewheel = isFirefox ? "DOMMouseScroll" : "mousewheel";
+
+
+    addScrollEvent(window, mousewheel, function (event) {
+        //event.preventDefault();
+        var delta = 0;
+        event = window.event || event;
+        stopEvent(event);
+        delta = event.wheelDelta ? (event.wheelDelta / 120) : (-event.detail / 3);
+
+        delta > 0 ? scrollUp(delta) : scrollDown(Math.abs(delta));
+    }, false);
+})();
+
+(function () {
+    $(".nav").on('click', function (e) {
+        if (e.target.nodeName == 'LI') {
+            var index = $('.nav li').index($(e.target));
+            $('.nav li').removeClass('nav-active').eq(index).addClass('nav-active');
+            $.scrollTo(".full-screen:eq(" + index + ")", 500);
+            $(".full-screen").removeClass("animate").eq(index).addClass("animate");
+        }
+
+    }).on('touchstart', function (e) {
+        if (e.target.nodeName == 'LI') {
+            var index = $('.nav li').index($(e.target));
+            $('.nav li').removeClass('nav-active').eq(index).addClass('nav-active');
+            $.scrollTo(".full-screen:eq(" + index + ")", 500);
+            $(".full-screen").removeClass("animate").eq(index).addClass("animate");
+        }
+    });
+
+
+})();
+
+//这个函数一定要放在fundation执行之后
+$("input").each(function(){
+    $(this).unbind('focus');//统一解除默认绑定，
+});
