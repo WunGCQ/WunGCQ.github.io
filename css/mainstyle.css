@@ -58,8 +58,6 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
     cursor: default;
-    transform: translate3d(0,0,0);
-    -webkit-transform: translate3d(0,0,0);
 
 }
 
@@ -91,7 +89,7 @@ p {
     padding: 0px;
     z-index: 200;
     cursor: pointer;
-    top: 50%;
+    top: 50vh;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     z-index: 10086;
