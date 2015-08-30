@@ -187,7 +187,7 @@
     {@/each}
 </script>
 <script>
-    (function (d) {
+    var formatDate = function (d) {
 
         var toCNDate = function (D) {
             return [D.getMonth() + 1, '月', D.getDate(), '日'].join("");
@@ -222,7 +222,8 @@
         });
 
 
-    })();
+    };
+
     var fake = {
         "classes": [
             {
@@ -310,7 +311,7 @@
 
         ]
     };
-    (function (data) {
+    var init = function (data) {
 
         function setColor(data) {
             var courseArr = {};
@@ -501,9 +502,19 @@
                 i.msRequestFullscreen();
             }
         })();
-    })(fake);
+    };
 
+    var setClassTime = function(arr){
+      var arr = arr || ['8:00','9:00','10:00','11:00','13:30','14:30','15:30','16:30','18:20','19:20','20:20','21:20'];
+      $('#class-table-container .time-box .time').each(function(index){
+        $(this).html(arr[index]);
+      })
+    }
 
+    formatDate();
+
+    init(fake);
+    setClassTime();
 </script>
 
 </html>
