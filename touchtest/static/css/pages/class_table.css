@@ -592,7 +592,7 @@ html, body {
     width: 119vw;
     height: 10vh;
     overflow: hidden;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     display: block;
@@ -788,9 +788,11 @@ html, body {
 
   .left-top-block {
     display: block;
-    position: fixed;
+    position: absolute;
     width: 15vw;
     height: 10vh;
+    left:0;
+    top:0;
     background-color: #fff;
     z-index: 10000086;
     zoom: 1;
@@ -883,7 +885,7 @@ html, body {
     width: 119vw;
     height: 16vh;
     overflow: hidden;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     display: block;
@@ -1086,7 +1088,9 @@ html, body {
 
   .left-top-block {
     display: block;
-    position: fixed;
+    position: absolute;
+    left: 0;
+    top:0;
     width: 9vw;
     height: 10vh;
     background-color: #fff;
