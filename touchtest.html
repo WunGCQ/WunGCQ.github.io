@@ -211,6 +211,7 @@
             arr[j] = toCNDate(day_n);
             day_n.setDate(day_n.getDate() + 1);
         }
+        $('.day-row .week-day-wrapper').removeClass('today');
         $(".day-row .date").each(function (index, elem) {
             $(elem).html(arr[index]);
             if (today_str == arr[index]) {
