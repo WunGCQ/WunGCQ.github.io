@@ -1,11 +1,13 @@
 _site/
 
-*.webm
+./*/*.webm
 
-*.webm
+./*/*.webm
 
-*.mp4
+./*/*.mp4
 
-*.xml
+./*/*.xml
 
-*.iml
+./*/*.iml
+
+./idea/
