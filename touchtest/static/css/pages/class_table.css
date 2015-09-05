@@ -592,16 +592,16 @@ html, body {
     width: 119vw;
     height: 10vh;
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    padding: 0;
     display: block;
     z-index: 1000;
     background-color: #fff;
     -webkit-transition: all ease 0.2s;
     transition: all ease 0.2s;
-    margin-left: 15vw;
+    -webkit-transform: translateX(15vw);
+    transform: translateX(15vw);
   }
   .day-row .week-day-wrapper {
     display: block;
@@ -629,7 +629,7 @@ html, body {
   .day-row .week-day-wrapper .week-day {
     width: inherit;
     height: 6vh;
-    line-height: 10vh;
+    line-height: 9vh;
     font-size: 0.8rem;
   }
   .day-row .week-day-wrapper .date {
@@ -667,10 +667,15 @@ html, body {
     padding: 0.125rem;
     text-decoration: none;
     color: #fff;
-    font-size: 0.5rem;
+    font-size: 0.6rem;
+    -webkit-transform: translateY(-0.025rem);
+    transform: translateY(-0.025rem);
   }
   .class-wrapper .class-box .class-name {
     font-size: 0.6rem;
+  }
+  .class-wrapper .class-box .class-postion {
+    font-size: 1rem;
   }
   .class-wrapper .class-box .txt {
     -webkit-transform: scale(0.85);
@@ -706,7 +711,7 @@ html, body {
     background-color: #FD8C40;
   }
   .class-wrapper .class-box.color-7 {
-    background-color: #B3B3B3;
+    background-color: #61C1BE;
   }
   .class-wrapper .class-box.color-8 {
     background-color: #91C506;
@@ -785,7 +790,7 @@ html, body {
     display: block;
     position: fixed;
     width: 15vw;
-    height: 9vh;
+    height: 10vh;
     background-color: #fff;
     z-index: 10000086;
     zoom: 1;
@@ -794,31 +799,36 @@ html, body {
   }
 
   .page.weekend.night .class-wrapper .scroll-view {
-    left: -34vw;
-    top: -18vh;
+    -webkit-transform: translate(-34vw, -18vh);
+    transform: translate(-34vw, -18vh);
   }
   .page.weekend.night .day-row {
-    left: -19vw;
+    -webkit-transform: translateX(-19vw);
+    transform: translateX(-19vw);
   }
   .page.night:not(.weekend) .class-wrapper .scroll-view {
-    left: 0;
-    top: -18vh;
+    -webkit-transform: translate(0, -18vh);
+    transform: translate(0, -18vh);
   }
   .page.night:not(.weekend) .day-row {
-    left: 15vw;
+    -webkit-transform: translateX(15vw);
+    transform: translateX(15vw);
   }
   .page.weekend:not(.night) .class-wrapper .scroll-view {
-    left: -34vw;
-    top: 0;
+    -webkit-transform: translate(-34vw, 0);
+    transform: translate(-34vw, 0);
   }
   .page.weekend:not(.night) .day-row {
-    margin-left: -19vw;
+    -webkit-transform: translateX(-19vw);
+    transform: translateX(-19vw);
   }
   .page.night .class-table-container .scroll-view {
-    top: -18vh;
+    -webkit-transform: translateY(-18vh);
+    transform: translateY(-18vh);
   }
   .page.night .day-row {
-    left: 15vw;
+    -webkit-transform: translateX(15vw);
+    transform: translateX(15vw);
   }
 }
 @media screen and (orientation: landscape) {
@@ -876,14 +886,13 @@ html, body {
     position: fixed;
     top: 0;
     left: 0;
-    margin: 0;
     display: block;
     z-index: 1000;
     background-color: #fff;
     -webkit-transition: all ease 0.2s;
     transition: all ease 0.2s;
-    -webkit-transform: translateX(0vw);
-    transform: translateX(0vw);
+    -webkit-transform: translateX(9vw);
+    transform: translateX(9vw);
   }
   .day-row .week-day-wrapper {
     display: block;
@@ -892,7 +901,6 @@ html, body {
     height: 16vh;
     text-align: center;
     color: #666;
-    background-color: #aaa;
   }
   .day-row .week-day-wrapper.today {
     color: #41D1DD;
@@ -913,7 +921,6 @@ html, body {
     width: inherit;
     height: 9vh;
     line-height: 9vh;
-    background-color: #333;
     font-size: 0.8rem;
   }
   .day-row .week-day-wrapper .date {
@@ -996,7 +1003,7 @@ html, body {
     background-color: #FD8C40;
   }
   .class-wrapper .class-box.color-7 {
-    background-color: #B3B3B3;
+    background-color: #61C1BE;
   }
   .class-wrapper .class-box.color-8 {
     background-color: #91C506;
@@ -1085,7 +1092,6 @@ html, body {
     background-color: #fff;
     z-index: 10000086;
     zoom: 1;
-    opacity: 0;
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
   }
