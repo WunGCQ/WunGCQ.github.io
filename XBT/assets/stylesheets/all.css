@@ -1,0 +1,818 @@
+@charset "UTF-8";
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.g__header {
+  height: 55px;
+  line-height: 55px;
+  background-color: #4DBFE0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  box-shadow: 0 1px 5px 1px #ddd; }
+  .g__header .logo {
+    height: 55px;
+    background-image: url("../../img/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; }
+  .g__header .search-area {
+    height: inherit; }
+    .g__header .search-area .m-input {
+      display: inline-block;
+      vertical-align: middle;
+      width: 300px; }
+    .g__header .search-area .btn {
+      vertical-align: middle; }
+  .g__header .h__user {
+    float: right; }
+    .g__header .h__user .head,
+    .g__header .h__user .username {
+      display: inline-block;
+      vertical-align: top;
+      color: white;
+      cursor: pointer;
+      margin: 0 5px; }
+    .g__header .h__user .head {
+      width: 43px;
+      height: 43px;
+      border-radius: 30px;
+      box-shadow: 0 0 1px white;
+      margin-top: 5px; }
+    .g__header .h__user a {
+      display: inline-block;
+      padding: 0 1.5rem;
+      vertical-align: top;
+      height: inherit;
+      color: white;
+      text-decoration: none; }
+      .g__header .h__user a:hover {
+        background-color: rgba(0, 0, 0, 0.1); }
+    .g__header .h__user .btn_login {
+      display: none; }
+  .g__header.not-login .btn_login {
+    display: inline-block; }
+  .g__header.not-login .head,
+  .g__header.not-login .btn_logout,
+  .g__header.not-login .username {
+    display: none; }
+
+footer {
+  height: 60px;
+  line-height: 60px;
+  color: #848484; }
+
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.g__left-filter {
+  display: block;
+  position: relative;
+  float: left;
+  margin-left: -252px;
+  width: 240px;
+  box-sizing: border-box;
+  padding: 20px;
+  padding-top: 30px;
+  background-color: #fff;
+  box-shadow: 0 0 3px #ccc;
+  transition: .3s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+  .g__left-filter:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+  .g__left-filter .toggle-filter-btn {
+    display: block;
+    position: absolute;
+    vertical-align: middle;
+    left: 20px;
+    top: 12px;
+    cursor: pointer;
+    color: #4DBFE0; }
+    .g__left-filter .toggle-filter-btn:before {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 18px;
+      content: "";
+      padding-right: 3px;
+      cursor: pointer; }
+    .g__left-filter .toggle-filter-btn:hover {
+      text-decoration: underline; }
+  .g__left-filter .m-wrapper {
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 1px solid #dedede; }
+    .g__left-filter .m-wrapper:last-child {
+      border-bottom: none; }
+  .g__left-filter .wen-li {
+    width: 200px;
+    border-radius: 3px;
+    overflow: hidden;
+    height: 32px;
+    line-height: 32px;
+    box-shadow: 0 0 3px 0 #4DBFE0;
+    transition: .4s; }
+    .g__left-filter .wen-li:hover {
+      box-shadow: 0 0 0 1px #4DBFE0; }
+    .g__left-filter .wen-li .item {
+      float: left;
+      width: 50%;
+      height: inherit; }
+      .g__left-filter .wen-li .item label {
+        display: block;
+        width: 100%;
+        height: inherit;
+        cursor: pointer;
+        background-color: #fff;
+        transition: .6s; }
+        .g__left-filter .wen-li .item label em {
+          font-style: normal;
+          color: #4DBFE0; }
+      .g__left-filter .wen-li .item input[type="radio"] {
+        display: none; }
+        .g__left-filter .wen-li .item input[type="radio"]:checked + label {
+          background-color: #4DBFE0; }
+          .g__left-filter .wen-li .item input[type="radio"]:checked + label em {
+            color: #fff; }
+  .g__left-filter .wrapper-1 .province-wrapper {
+    width: 100%;
+    padding-top: 20px;
+    height: 50px; }
+    .g__left-filter .wrapper-1 .province-wrapper select {
+      width: 100%; }
+  .g__left-filter .wrapper-1 .grade-wrapper {
+    width: 100%;
+    padding-top: 20px; }
+  .g__left-filter .wrapper-2,
+  .g__left-filter .wrapper-3 {
+    padding-top: 15px; }
+    .g__left-filter .wrapper-2 h5,
+    .g__left-filter .wrapper-3 h5 {
+      text-align: left;
+      font-size: 14px;
+      color: #3E3A39; }
+    .g__left-filter .wrapper-2 .link-box,
+    .g__left-filter .wrapper-3 .link-box {
+      padding: 5px 0; }
+      .g__left-filter .wrapper-2 .link-box button,
+      .g__left-filter .wrapper-3 .link-box button {
+        width: 100%;
+        height: 35px;
+        line-height: 1;
+        box-sizing: border-box;
+        color: #848484;
+        outline: none;
+        border-radius: 1px;
+        text-align: left;
+        padding-left: 40px;
+        border: 1px solid #848484;
+        background: transparent;
+        transition: all ease-out .3s; }
+        .g__left-filter .wrapper-2 .link-box button:hover, .g__left-filter .wrapper-2 .link-box button.active,
+        .g__left-filter .wrapper-3 .link-box button:hover,
+        .g__left-filter .wrapper-3 .link-box button.active {
+          color: #fff;
+          background-color: #4DBFE0;
+          border-color: #4DBFE0; }
+        .g__left-filter .wrapper-2 .link-box button i,
+        .g__left-filter .wrapper-3 .link-box button i {
+          vertical-align: middle;
+          font-size: 16px;
+          padding-right: 8px; }
+        .g__left-filter .wrapper-2 .link-box button span,
+        .g__left-filter .wrapper-3 .link-box button span {
+          vertical-align: middle; }
+
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.g__left-filter .toggle-filter-btn:before, .g__left-filter .wrapper-2 .link-box button i,
+.g__left-filter .wrapper-3 .link-box button i, .g__top-filter .m-target-wrapper .m-title span::after, .g__filter-result-wrapper .m_major .m_icon {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
+.g__top-filter {
+  display: block;
+  position: relative;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  float: left;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 3px #ccc;
+  transition: .3s; }
+  .g__top-filter:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+  .g__top-filter .m-target-wrapper {
+    padding: 5px 0;
+    border-bottom: 1px solid #dedede;
+    overflow: hidden; }
+    .g__top-filter .m-target-wrapper .m-title {
+      float: left;
+      width: 33.3%;
+      text-align: center;
+      height: 30px;
+      cursor: pointer; }
+      .g__top-filter .m-target-wrapper .m-title span {
+        color: inherit;
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        line-height: 30px; }
+        .g__top-filter .m-target-wrapper .m-title span::after {
+          color: inherit;
+          content: "";
+          margin-left: 5px;
+          transition: all ease .3s 0s; }
+      .g__top-filter .m-target-wrapper .m-title:hover, .g__top-filter .m-target-wrapper .m-title.active {
+        color: #4DBFE0; }
+        .g__top-filter .m-target-wrapper .m-title:hover span::after, .g__top-filter .m-target-wrapper .m-title.active span::after {
+          content: ""; }
+  .g__top-filter .m-tag-wrapper {
+    text-align: left;
+    padding-top: 15px;
+    margin-left: -5px;
+    font-size: 0; }
+    .g__top-filter .m-tag-wrapper .tag {
+      display: inline-block;
+      position: relative;
+      vertical-align: top;
+      font-style: normal;
+      font-size: 14px;
+      text-align: center;
+      padding: 5px 10px;
+      box-sizing: border-box;
+      min-width: 50px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 2px; }
+      .g__top-filter .m-tag-wrapper .tag:hover, .g__top-filter .m-tag-wrapper .tag.active {
+        background-color: #4DBFE0;
+        color: #fff;
+        transition: .3s; }
+
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.g__left-filter .toggle-filter-btn:before, .g__left-filter .wrapper-2 .link-box button i,
+.g__left-filter .wrapper-3 .link-box button i, .g__top-filter .m-target-wrapper .m-title span::after, .g__filter-result-wrapper .m_major .m_icon {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
+.g__filter-result-wrapper {
+  display: block;
+  position: relative;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  float: left;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 3px #ccc;
+  transition: .3s;
+  text-align: left;
+  font-size: 0;
+  /* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+  /* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */ }
+  .g__filter-result-wrapper .g__left-filter .toggle-filter-btn:before, .g__left-filter .g__filter-result-wrapper .toggle-filter-btn:before, .g__filter-result-wrapper .g__left-filter .wrapper-2 .link-box button i, .g__left-filter .wrapper-2 .link-box button .g__filter-result-wrapper i, .g__filter-result-wrapper
+  .g__left-filter .wrapper-3 .link-box button i,
+  .g__left-filter .wrapper-3 .link-box button .g__filter-result-wrapper i, .g__filter-result-wrapper .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .g__filter-result-wrapper span::after, .g__filter-result-wrapper .m_major .m_icon {
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale; }
+  .g__filter-result-wrapper .m__filter-res-school {
+    display: inline-block;
+    vertical-align: top;
+    width: 435px;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 1px;
+    border: 1px solid #ddd;
+    transition: .3s; }
+    .g__filter-result-wrapper .m__filter-res-school:hover {
+      box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.11); }
+    .g__filter-result-wrapper .m__filter-res-school .m__img {
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      width: 80px;
+      height: 80px;
+      background-size: contain;
+      background-position: center; }
+    .g__filter-result-wrapper .m__filter-res-school .m__right-content {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      font-size: 16px;
+      width: 320px;
+      height: 80px;
+      color: #848484; }
+      .g__filter-result-wrapper .m__filter-res-school .m__right-content h4 {
+        height: 30px;
+        line-height: 35px;
+        padding-left: 15px;
+        font-size: 18px;
+        cursor: pointer; }
+      .g__filter-result-wrapper .m__filter-res-school .m__right-content .m__school-tags {
+        display: block;
+        padding-left: 15px;
+        height: 50px;
+        line-height: 20px;
+        width: 250px; }
+        .g__filter-result-wrapper .m__filter-res-school .m__right-content .m__school-tags em {
+          font-size: 14px;
+          font-style: normal; }
+          .g__filter-result-wrapper .m__filter-res-school .m__right-content .m__school-tags em:hover {
+            color: #4DBFE0; }
+      .g__filter-result-wrapper .m__filter-res-school .m__right-content .m__grade {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80px;
+        height: 80px;
+        text-align: center; }
+        .g__filter-result-wrapper .m__filter-res-school .m__right-content .m__grade span {
+          display: block;
+          margin: auto;
+          font-size: 13px;
+          height: 30px;
+          line-height: 30px; }
+        .g__filter-result-wrapper .m__filter-res-school .m__right-content .m__grade em {
+          display: block;
+          margin: auto;
+          width: 45px;
+          height: 45px;
+          line-height: 45px;
+          border-radius: 50px;
+          font-style: normal;
+          color: #fff;
+          background-color: #4DBFE0; }
+  .g__filter-result-wrapper .g__left-filter .toggle-filter-btn:before, .g__left-filter .g__filter-result-wrapper .toggle-filter-btn:before, .g__filter-result-wrapper .g__left-filter .wrapper-2 .link-box button i, .g__left-filter .wrapper-2 .link-box button .g__filter-result-wrapper i, .g__filter-result-wrapper
+  .g__left-filter .wrapper-3 .link-box button i,
+  .g__left-filter .wrapper-3 .link-box button .g__filter-result-wrapper i, .g__filter-result-wrapper .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .g__filter-result-wrapper span::after, .g__filter-result-wrapper .m_major .m_icon {
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale; }
+  .g__filter-result-wrapper a {
+    text-decoration: none; }
+  .g__filter-result-wrapper .m_major {
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    width: auto;
+    min-width: 155px;
+    box-sizing: border-box;
+    padding: 15px;
+    height: 70px;
+    margin: 5px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    color: #848484;
+    transition: .3s;
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+    .g__filter-result-wrapper .m_major:hover {
+      border-color: #ccc;
+      background-color: #f9f9f9;
+      color: #3E3A39;
+      box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.12);
+      -webkit-transform: scale(1.02);
+              transform: scale(1.02); }
+    .g__filter-result-wrapper .m_major .m_icon {
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      height: 40px;
+      width: 40px;
+      margin-right: 14px;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 3px;
+      background: #4DBFE0;
+      font-size: 28px;
+      color: #fff; }
+    .g__filter-result-wrapper .m_major .m_text {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 16px;
+      line-height: 40px;
+      letter-spacing: 2px;
+      color: inherit;
+      text-decoration: none; }
+
+@font-face {
+  font-family: 'iconfont';
+  src: url("//at.alicdn.com/t/font_1450560295_0920155.eot");
+  /* IE9*/
+  src: url("//at.alicdn.com/t/font_1450560295_0920155.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1450560295_0920155.woff") format("woff"), url("//at.alicdn.com/t/font_1450560295_0920155.ttf") format("truetype"), url("//at.alicdn.com/t/font_1450560295_0920155.svg#iconfont") format("svg");
+  /* iOS 4.1- */ }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
+body {
+  background: #f5f5f5; }
+
+.container {
+  transition: .3s;
+  min-width: 1200px; }
+
+.container > .content {
+  padding-top: 30px;
+  padding-left: 250px;
+  min-height: calc(100% - 55px - 42px);
+  padding-right: 2px;
+  transition: .3s;
+  overflow: auto; }
+
+.content.hide-left-filter {
+  overflow: hidden;
+  padding-left: 10px; }
+  .content.hide-left-filter .g__left-filter {
+    left: -250px; }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px; }
+
+::-webkit-scrollbar-track {
+  background: transparent; }
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  cursor: pointer; }
+
+.__index .content {
+  min-height: calc(100% - 55px);
+  padding-top: 25vh;
+  background-image: url(../../img/pic_round_1.jpg);
+  background-position: center;
+  background-size: cover; }
+
+.__index .download {
+  width: 200px;
+  height: 200px;
+  padding-top: 80px;
+  margin: 20px auto; }
+
+.__index .m-center {
+  color: white; }
+  .__index .m-center .logo {
+    width: 150px;
+    height: 150px;
+    margin: 20px auto; }
+  .__index .m-center .btn-wrapper .btn {
+    margin: 7px; }
+
+.__index .m-selector {
+  box-sizing: border-box;
+  margin: 20px auto 0 auto;
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #fff;
+  border-radius: 3px; }
+  .__index .m-selector .item {
+    float: left;
+    width: 50%; }
+    .__index .m-selector .item label {
+      display: block;
+      width: 100%;
+      height: 122px;
+      padding-top: 40px;
+      border: 2px solid transparent;
+      background-color: #fff; }
+      .__index .m-selector .item label em {
+        font-style: normal;
+        color: #4DBFE0; }
+      .__index .m-selector .item label h4:after {
+        display: inline-block;
+        visibility: hidden;
+        vertical-align: top;
+        content: "";
+        position: relative;
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
+        background-color: #4DBFE0;
+        margin-top: -5px 0 0 8px; }
+    .__index .m-selector .item input[type="radio"] {
+      display: none; }
+      .__index .m-selector .item input[type="radio"]:checked + label {
+        border-color: #4DBFE0; }
+        .__index .m-selector .item input[type="radio"]:checked + label h4:after {
+          visibility: visible; }
+  .__index .m-selector .province select {
+    width: 100%; }
+  .__index .m-selector .btn-wrapper {
+    padding-top: 10px; }
+
+.__index footer {
+  position: relative;
+  height: 40px;
+  color: #fff;
+  margin-top: -40px;
+  line-height: 40px; }
+
+.__lines__table .container {
+  min-width: 960px; }
+
+.__lines__table * {
+  outline: none !important; }
+
+.__lines__table h2 {
+  font-size: 20px;
+  text-indent: 5px;
+  padding: 10px 0; }
+  .__lines__table h2:after {
+    content: " : "; }
+
+.__lines__table table {
+  width: 100%;
+  border: 1px solid #dedede;
+  border-collapse: separate; }
+  .__lines__table table thead {
+    background-color: #f1f1f1;
+    text-align: left; }
+    .__lines__table table thead th {
+      font-weight: normal;
+      width: 16.6%;
+      font-size: 14px;
+      line-height: 3em;
+      padding-left: 15px; }
+      .__lines__table table thead th:first-child {
+        width: 50%; }
+  .__lines__table table tbody {
+    color: #848484;
+    border-collapse: collapse; }
+    .__lines__table table tbody tr {
+      transition: ease 0.1s;
+      font-size: 14px; }
+      .__lines__table table tbody tr td {
+        width: 16.6%;
+        height: 45px;
+        transition: ease 0.1s;
+        line-height: 2em;
+        padding-left: 25px;
+        border: none; }
+        .__lines__table table tbody tr td:first-child {
+          width: 50%;
+          border-left: 5px solid transparent; }
+          .__lines__table table tbody tr td:first-child i {
+            color: transparent; }
+      .__lines__table table tbody tr:hover {
+        color: #4DBFE0;
+        background-color: rgba(0, 0, 0, 0.01); }
+        .__lines__table table tbody tr:hover td:first-child {
+          border-color: #4DBFE0; }
+      .__lines__table table tbody tr:nth-child(even) {
+        background-color: #f1f1f1; }
+
+.__video__play .video__frame {
+  display: block; }
+
+.__side__search .title {
+  height: 44px;
+  line-height: 44px;
+  font-size: 20px; }
+
+.__side__search .col {
+  padding-left: 0;
+  padding-right: 0; }
+
+.__side__search .side-selector {
+  box-sizing: border-box;
+  margin: 20px auto 0 auto;
+  padding: 10px 0;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  overflow: auto;
+  text-align: center; }
+  .__side__search .side-selector .item {
+    float: left;
+    width: 50%; }
+    .__side__search .side-selector .item label {
+      display: block;
+      width: 100%;
+      height: 122px;
+      padding-top: 40px;
+      border: 2px solid transparent;
+      background-color: #fff; }
+      .__side__search .side-selector .item label em {
+        font-style: normal;
+        color: #4DBFE0; }
+      .__side__search .side-selector .item label h4:after {
+        display: inline-block;
+        visibility: hidden;
+        vertical-align: top;
+        content: "";
+        position: relative;
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
+        background-color: #4DBFE0;
+        margin-top: -5px 0 0 8px; }
+    .__side__search .side-selector .item input[type="radio"] {
+      display: none; }
+      .__side__search .side-selector .item input[type="radio"]:checked + label {
+        border: 2px solid #4DBFE0; }
+        .__side__search .side-selector .item input[type="radio"]:checked + label h4:after {
+          visibility: visible; }
+  .__side__search .side-selector .province select {
+    width: 100%; }
+  .__side__search .side-selector .btn-wrapper {
+    padding-top: 10px; }
+
+.__side__search .search-type-selector .item,
+.__side__search .target-search .item {
+  display: block;
+  width: 100%;
+  height: 80px;
+  padding-top: 28px;
+  border: 2px solid transparent;
+  background-color: #fff; }
+  .__side__search .search-type-selector .item em,
+  .__side__search .target-search .item em {
+    display: inline-block;
+    vertical-align: middle;
+    font-style: normal;
+    font-size: 16px; }
+    .__side__search .search-type-selector .item em:after,
+    .__side__search .target-search .item em:after {
+      display: inline-block;
+      visibility: hidden;
+      vertical-align: top;
+      content: "";
+      position: relative;
+      width: 5px;
+      height: 5px;
+      border-radius: 5px;
+      background-color: #4DBFE0;
+      margin-top: -5px 0 0 8px; }
+  .__side__search .search-type-selector .item:hover,
+  .__side__search .target-search .item:hover {
+    border: 2px solid #4DBFE0; }
+    .__side__search .search-type-selector .item:hover em:after,
+    .__side__search .target-search .item:hover em:after {
+      visibility: visible; }
+
+.__side__search .search-type-selector > .row:nth-child(2) .item {
+  box-shadow: none; }
+
+.__major__select {
+  /* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */ }
+  .__major__select .g__left-filter .toggle-filter-btn:before, .g__left-filter .__major__select .toggle-filter-btn:before, .__major__select .g__left-filter .wrapper-2 .link-box button i, .g__left-filter .wrapper-2 .link-box button .__major__select i, .__major__select
+  .g__left-filter .wrapper-3 .link-box button i,
+  .g__left-filter .wrapper-3 .link-box button .__major__select i, .__major__select .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .__major__select span::after, .__major__select .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .m_major .__major__select .m_icon {
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale; }
+  .__major__select .major-table {
+    width: 100%; }
+    .__major__select .major-table thead {
+      padding-bottom: 10px; }
+      .__major__select .major-table thead th {
+        cursor: pointer;
+        font-weight: normal;
+        font-style: normal;
+        text-align: center;
+        height: 40px;
+        width: 33.3%;
+        line-height: 40px;
+        color: #3E3A39;
+        box-sizing: border-box;
+        border-bottom: 1px solid #dedede; }
+        .__major__select .major-table thead th.active {
+          color: #4DBFE0;
+          border-color: #4DBFE0; }
+        .__major__select .major-table thead th:hover {
+          color: #4DBFE0; }
+    .__major__select .major-table tbody td {
+      vertical-align: top;
+      padding-top: 10px;
+      text-align: left; }
+    .__major__select .major-table tbody tr.selected-tr td {
+      vertical-align: middle;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #dedede; }
+      .__major__select .major-table tbody tr.selected-tr td em {
+        display: block;
+        color: #848484;
+        font-style: normal;
+        margin-left: 5px; }
+  .__major__select .m__select-title .title-1 {
+    width: 200px; }

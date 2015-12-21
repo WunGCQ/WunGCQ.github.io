@@ -1,0 +1,87 @@
+.title {
+  height: 44px;
+  line-height: 44px;
+  font-size: 20px; }
+
+.col {
+  padding-left: 0;
+  padding-right: 0; }
+
+.side-selector {
+  box-sizing: border-box;
+  margin: 20px auto 0 auto;
+  padding: 10px 0;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  overflow: auto;
+  text-align: center; }
+  .side-selector .item {
+    float: left;
+    width: 50%; }
+    .side-selector .item label {
+      display: block;
+      width: 100%;
+      height: 122px;
+      padding-top: 40px;
+      border: 2px solid transparent;
+      background-color: #fff; }
+      .side-selector .item label em {
+        font-style: normal;
+        color: #4DBFE0; }
+      .side-selector .item label h4:after {
+        display: inline-block;
+        visibility: hidden;
+        vertical-align: top;
+        content: "";
+        position: relative;
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
+        background-color: #4DBFE0;
+        margin-top: -5px 0 0 8px; }
+    .side-selector .item input[type="radio"] {
+      display: none; }
+      .side-selector .item input[type="radio"]:checked + label {
+        border: 2px solid #4DBFE0; }
+        .side-selector .item input[type="radio"]:checked + label h4:after {
+          visibility: visible; }
+  .side-selector .province select {
+    width: 100%; }
+  .side-selector .btn-wrapper {
+    padding-top: 10px; }
+
+.search-type-selector .item,
+.target-search .item {
+  display: block;
+  width: 100%;
+  height: 80px;
+  padding-top: 28px;
+  border: 2px solid transparent;
+  background-color: #fff; }
+  .search-type-selector .item em,
+  .target-search .item em {
+    display: inline-block;
+    vertical-align: middle;
+    font-style: normal;
+    font-size: 16px; }
+    .search-type-selector .item em:after,
+    .target-search .item em:after {
+      display: inline-block;
+      visibility: hidden;
+      vertical-align: top;
+      content: "";
+      position: relative;
+      width: 5px;
+      height: 5px;
+      border-radius: 5px;
+      background-color: #4DBFE0;
+      margin-top: -5px 0 0 8px; }
+  .search-type-selector .item:hover,
+  .target-search .item:hover {
+    border: 2px solid #4DBFE0; }
+    .search-type-selector .item:hover em:after,
+    .target-search .item:hover em:after {
+      visibility: visible; }
+
+.search-type-selector > .row:nth-child(2) .item {
+  box-shadow: none; }

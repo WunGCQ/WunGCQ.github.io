@@ -1,0 +1,68 @@
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.g__header {
+  height: 55px;
+  line-height: 55px;
+  background-color: #4DBFE0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  box-shadow: 0 1px 5px 1px #ddd; }
+  .g__header .logo {
+    height: 55px;
+    background-image: url("../../img/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; }
+  .g__header .search-area {
+    height: inherit; }
+    .g__header .search-area .m-input {
+      display: inline-block;
+      vertical-align: middle;
+      width: 300px; }
+    .g__header .search-area .btn {
+      vertical-align: middle; }
+  .g__header .h__user {
+    float: right; }
+    .g__header .h__user .head,
+    .g__header .h__user .username {
+      display: inline-block;
+      vertical-align: top;
+      color: white;
+      cursor: pointer;
+      margin: 0 5px; }
+    .g__header .h__user .head {
+      width: 43px;
+      height: 43px;
+      border-radius: 30px;
+      box-shadow: 0 0 1px white;
+      margin-top: 5px; }
+    .g__header .h__user a {
+      display: inline-block;
+      padding: 0 1.5rem;
+      vertical-align: top;
+      height: inherit;
+      color: white;
+      text-decoration: none; }
+      .g__header .h__user a:hover {
+        background-color: rgba(0, 0, 0, 0.1); }
+    .g__header .h__user .btn_login {
+      display: none; }
+  .g__header.not-login .btn_login {
+    display: inline-block; }
+  .g__header.not-login .head,
+  .g__header.not-login .btn_logout,
+  .g__header.not-login .username {
+    display: none; }

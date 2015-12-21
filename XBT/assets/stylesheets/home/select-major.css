@@ -1,0 +1,49 @@
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.major-table {
+  width: 100%; }
+  .major-table thead {
+    padding-bottom: 10px; }
+    .major-table thead th {
+      cursor: pointer;
+      font-weight: normal;
+      font-style: normal;
+      text-align: center;
+      height: 40px;
+      width: 33.3%;
+      line-height: 40px;
+      color: #3E3A39;
+      box-sizing: border-box;
+      border-bottom: 1px solid #dedede; }
+      .major-table thead th.active {
+        color: #4DBFE0;
+        border-color: #4DBFE0; }
+      .major-table thead th:hover {
+        color: #4DBFE0; }
+  .major-table tbody td {
+    vertical-align: top;
+    padding-top: 10px;
+    text-align: left; }
+  .major-table tbody tr.selected-tr td {
+    vertical-align: middle;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dedede; }
+    .major-table tbody tr.selected-tr td em {
+      display: block;
+      color: #848484;
+      font-style: normal;
+      margin-left: 5px; }
+
+.m__select-title .title-1 {
+  width: 200px; }

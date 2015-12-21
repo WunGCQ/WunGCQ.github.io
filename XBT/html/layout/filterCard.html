@@ -1,0 +1,219 @@
+<html ng-app>
+
+<head>
+    <link rel="stylesheet" href="../../assets/stylesheets/bootstrap.css"/>
+    <link rel="stylesheet" href="../../assets/stylesheets/all.css"/>
+    <link rel="stylesheet" href="../../select2/dist/css/select2.min.css"/>
+    <script src="../../assets/javascripts/common.js"></script>
+    <script src="../../lib/jquery.min.js"></script>
+    <script src="../../lib/angular.min.js"></script>
+</head>
+
+<body>
+<header class="header g__header">
+    <div class="col-md-3 logo text-center"></div>
+    <div class="col-md-6 search-area text-center">
+        <input type="text" class="form-control m-input" id="search_input"/>
+        <span for="search_input" class="col btn btn-primary cn">搜索</span>
+    </div>
+    <div class="col-md-3 h__user text-right">
+        <div class="head"></div>
+        <a class="username">我</a>
+        <a class="btn_login">登录</a>
+        <a class="btn_logout">登出</a>
+    </div>
+</header>
+
+
+<div class="container  text-center">
+
+    <div class="content" id="g_content">
+        <!-- left-filter -->
+        <div class="g__left-filter">
+            <span class="toggle-filter-btn" onclick="hide_left_filter()">收起左侧筛选</span>
+            <!-- 头部筛选标准 -->
+            <div class="m-wrapper wrapper-1">
+                <div class="wen-li">
+                    <div class="item">
+                        <input type="radio" id="wen" name="wen_li" checked=""/>
+                        <label for="wen">
+                            <em>理科</em>
+                        </label>
+                    </div>
+                    <div class="item">
+                        <input type="radio" id="li" name="wen_li"/>
+                        <label for="li">
+                            <em>文科</em>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="province-wrapper">
+                    <select name="" id="">
+                        <option value="beijing">北京</option>
+                        <option value="beijing">西藏</option>
+                    </select>
+                </div>
+
+                <div class="grade-wrapper">
+                    <input type="text" class="form-control m-input" placeholder="请输入分数段"/>
+                </div>
+            </div>
+            <!-- 头部筛选标准 -->
+            <!-- 志愿检索方式 -->
+            <div class="m-wrapper wrapper-2">
+                <h5>志愿推荐</h5>
+
+                <div class="link-box">
+                    <button><i>&#xe652;</i><span>按专业检索</span></button>
+                </div>
+                <div class="link-box">
+                    <button><i>&#xe650;</i><span>按高校检索</span></button>
+                </div>
+            </div>
+            <!-- 志愿检索方式 -->
+            <!-- 数据资料 -->
+            <div class="m-wrapper wrapper-2">
+                <h5>数据资料</h5>
+
+                <div class="link-box">
+                    <button><i>&#xe653;</i><span>学院排行与查询</span></button>
+                </div>
+                <div class="link-box">
+                    <button><i>&#xe64f;</i><span>专业查询</span></button>
+                </div>
+                <div class="link-box">
+                    <button><i>&#xe64d;</i><span>批次线查询</span></button>
+                </div>
+            </div>
+            <!-- 数据资料 -->
+
+
+        </div>
+
+        <!-- left-filter -->
+
+        <!-- top-filter -->
+
+        <div class="g__top-filter">
+            <div class="m-target-wrapper">
+                <div class="m-title active"><span>地区</span></div>
+                <div class="m-title"><span>类别</span></div>
+                <div class="m-title"><span>标签</span></div>
+            </div>
+            <div class="m-tag-wrapper">
+                <em class="tag"><span>标签一</span><i></i></em>
+                <em class="tag"><span>标签2</span><i></i></em>
+                <em class="tag"><span>长一些的标签三</span><i></i></em>
+                <em class="tag"><span>标签2</span><i></i></em>
+                <em class="tag"><span>长一些的标签三</span><i></i></em>
+                <em class="tag"><span>长一些的标签三</span><i></i></em>
+                <em class="tag"><span>长一些的标签三</span><i></i></em>
+                <em class="tag"><span>长一些的标签三</span><i></i></em>
+            </div>
+        </div>
+
+        <!-- top-filter -->
+
+        <div class="g__filter-result-wrapper">
+            <a class="m__filter-res-school" href="#">
+                <div class="m__img" style="background-image: url('../../img/logo.png')"></div>
+                <div class="m__right-content">
+                    <h4>学校名称</h4>
+
+                    <div class="m__school-tags">
+                        <em>211</em>
+                        <em>985</em>
+                        <em>国防生</em>
+                        <em>预录取</em>
+                        <em>分校区</em>
+                        <em>卓越计划</em>
+                        <em>国防生</em>
+                        <em>预录取</em>
+                        <em>分校区</em>
+                        <em>卓越计划</em>
+                    </div>
+                    <div class="m__grade">
+                        <span>预测分数</span>
+                        <em>680</em>
+                    </div>
+                </div>
+            </a>
+
+            <a class="m__filter-res-school">
+                <div class="m__img" style="background-image: url('../../img/logo.png')"></div>
+                <div class="m__right-content">
+                    <h4>学校名称</h4>
+
+                    <div class="m__school-tags">
+                        <em>211</em>
+                        <em>985</em>
+                        <em>国防生</em>
+                        <em>预录取</em>
+                        <em>分校区</em>
+                        <em>卓越计划</em>
+                        <em>国防生</em>
+                        <em>预录取</em>
+                        <em>分校区</em>
+                        <em>卓越计划</em>
+                    </div>
+                    <div class="m__grade">
+                        <span>预测分数</span>
+                        <em>680</em>
+                    </div>
+                </div>
+            </a>
+
+            <a class="m__filter-res-school">
+                <div class="m__img" style="background-image: url('../../img/logo.png')"></div>
+                <div class="m__right-content">
+                    <h4>学校名称</h4>
+
+                    <div class="m__school-tags">
+                        <em>211</em>
+                        <em>985</em>
+                        <em>国防生</em>
+                        <em>预录取</em>
+                        <em>分校区</em>
+                        <em>卓越计划</em>
+                        <em>国防生</em>
+                        <em>预录取</em>
+                        <em>分校区</em>
+                        <em>卓越计划</em>
+                    </div>
+                    <div class="m__grade">
+                        <span>预测分数</span>
+                        <em>680</em>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="g__filter-result-wrapper">
+            <a class="m_major">
+                <div class="m_icon"></div>
+                <div class="m_text">哲学</div>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+        powered by @Leeche
+    </footer>
+</div>
+
+
+</body>
+<script src="../../select2/dist/js/select2.min.js"></script>
+<script>
+    $('select').select2();
+    function hide_left_filter() {
+        $('#g_content').toggleClass('hide-left-filter');
+    }
+</script>
+
+</html>

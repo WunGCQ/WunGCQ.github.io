@@ -1,0 +1,82 @@
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.m__filter-res-school {
+  display: inline-block;
+  vertical-align: top;
+  width: 435px;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 1px;
+  border: 1px solid #ddd;
+  transition: .3s; }
+  .m__filter-res-school:hover {
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.11); }
+  .m__filter-res-school .m__img {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-position: center; }
+  .m__filter-res-school .m__right-content {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+    width: 320px;
+    height: 80px;
+    color: #848484; }
+    .m__filter-res-school .m__right-content h4 {
+      height: 30px;
+      line-height: 35px;
+      padding-left: 15px;
+      font-size: 18px;
+      cursor: pointer; }
+    .m__filter-res-school .m__right-content .m__school-tags {
+      display: block;
+      padding-left: 15px;
+      height: 50px;
+      line-height: 20px;
+      width: 250px; }
+      .m__filter-res-school .m__right-content .m__school-tags em {
+        font-size: 14px;
+        font-style: normal; }
+        .m__filter-res-school .m__right-content .m__school-tags em:hover {
+          color: #4DBFE0; }
+    .m__filter-res-school .m__right-content .m__grade {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 80px;
+      height: 80px;
+      text-align: center; }
+      .m__filter-res-school .m__right-content .m__grade span {
+        display: block;
+        margin: auto;
+        font-size: 13px;
+        height: 30px;
+        line-height: 30px; }
+      .m__filter-res-school .m__right-content .m__grade em {
+        display: block;
+        margin: auto;
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        border-radius: 50px;
+        font-style: normal;
+        color: #fff;
+        background-color: #4DBFE0; }
