@@ -56,7 +56,7 @@
             <img src="../images/home.jpg" alt=""/>
         </a>
         <!--有新消息时加 bar-have-message 类 -->
-        <a id="bar-search" href="javascript:alert('!!!');">
+        <a id="bar-search">
             <span class="fa fa-search"></span>
         </a>
         <a id="bar-service" class="bar-menu" href="services/">
@@ -813,4 +813,8 @@
 </script>
 <script src="../js/lib/mousewheel.min.js"></script>
 <script type="text/javascript" src="../js/Models/Model.js"></script>
+<script>
+	$('.modal-bg').click(function(){$('.modal-bg').hide();})
+	$('#bar-search').click(function(){$('.modal-bg').show();})
+</script>
 </html>
