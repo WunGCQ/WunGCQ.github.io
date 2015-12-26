@@ -12,6 +12,10 @@
 
 ------------------------------------------------------------- */
 .m__filter-res-school {
+  -webkit-animation: toggleIn ease-in .3s forwards;
+          animation: toggleIn ease-in .3s forwards; }
+
+.m__filter-res-school {
   display: inline-block;
   vertical-align: top;
   width: 435px;

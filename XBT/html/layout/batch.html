@@ -1,4 +1,4 @@
-<html ng-app>
+<html>
 
 <head>
     <link rel="stylesheet" href="../../assets/stylesheets/bootstrap.css"/>
@@ -10,7 +10,7 @@
     <script src="../../lib/underscore.js"></script>
 </head>
 
-<body class=" __major__select">
+<body>
 <header class="header g__header">
     <div class="col-md-3 logo text-center"></div>
     <div class="col-md-6 search-area text-center">
@@ -26,7 +26,7 @@
 </header>
 
 
-<div class="container  text-center">
+<div class="container  text-center __lines__table">
 
     <div class="content" id="g_content">
         <!-- left-filter -->
@@ -37,37 +37,67 @@
 
         <!-- left-filter -->
 
-
         <div class="g__filter-result-wrapper">
-            <table class="major-table">
+
+            <h2>文科</h2>
+            <table>
                 <thead>
-                <tr id="major_thead">
-                    <th class="level_1">学科门类</th>
-                    <th class="level_2">专业类</th>
-                    <th class="level_3">专业</th>
+                <tr>
+                    <th>年份</th>
+                    <th>第一批</th>
+                    <th>第二批</th>
+                    <th>第三批</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr class="selected-tr" id="selected_tr">
+                <tbody id="tbody_1">
+                <tr>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
 
-                    <td class="level_1">
-                        <em>学科门类</em>
-
-                    </td>
-                    <td class="level_2">
-                        <em>专业类</em>
-                    </td>
-                    <td class="level_3">
-                        <em>专业</em>
-                    </td>
                 </tr>
                 <tr>
-                    <td colspan="3" id="majors_wrapper">
-                    </td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
                 </tr>
                 </tbody>
             </table>
         </div>
+
+        <div class="g__filter-result-wrapper">
+            <h2>理科</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>年份</th>
+                    <th>第一批</th>
+                    <th>第二批</th>
+                    <th>第三批</th>
+                </tr>
+                </thead>
+                <tbody id="tbody_2">
+                <tr>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+
     </div>
 
 
@@ -78,19 +108,16 @@
 
 
 </body>
-<script src="../../select2/dist/js/select2.min.js"></script>
-<script>
 
-    function hide_left_filter() {
-        $('#g_content').toggleClass('hide-left-filter');
-    }
+
+
 </script>
-
+<script src="../../select2/dist/js/select2.min.js"></script>
 <script src="../../assets/javascripts/all.js"></script>
 <script>
-    (function(){
-        var c = new com.select_major();
-    })();
+  (function(){
+    var c = new com.batch();
+  })();
 </script>
 
 </html>

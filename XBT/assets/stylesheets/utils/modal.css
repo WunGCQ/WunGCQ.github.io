@@ -1,0 +1,193 @@
+@charset "UTF-8";
+.g__mask.show .g__modal-window, .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > * {
+  -webkit-animation: toggleIn ease-in .3s forwards;
+          animation: toggleIn ease-in .3s forwards; }
+
+.g__mask.hide .g__modal-window {
+  -webkit-animation: toggleOut ease-out .3s forwards;
+          animation: toggleOut ease-out .3s forwards; }
+
+.g__mask {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  transition: all ease-out 1s;
+  background-color: transparent;
+  text-align: center; }
+  .g__mask.show {
+    display: block;
+    -webkit-animation: fadeIn ease .5s forwards;
+            animation: fadeIn ease .5s forwards; }
+  .g__mask.hide {
+    display: block;
+    -webkit-animation: fadeOut ease .4s forwards;
+            animation: fadeOut ease .4s forwards; }
+  .g__mask .g__modal-window {
+    display: block;
+    position: relative;
+    width: 550px;
+    height: 450px;
+    top: 50%;
+    margin: auto;
+    background-color: #f5f5f5;
+    margin-top: -225px;
+    text-align: left;
+    border-radius: 1px;
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1); }
+    .g__mask .g__modal-window .m-modal-title {
+      position: relative;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      width: 100%; }
+      .g__mask .g__modal-window .m-modal-title .m-title-item {
+        display: block;
+        float: left;
+        height: inherit;
+        box-sizing: border-box;
+        border-top: 5px solid transparent;
+        width: 33.33%;
+        font-size: 14px;
+        transition: ease .2s;
+        cursor: pointer; }
+        .g__mask .g__modal-window .m-modal-title .m-title-item.active {
+          border-top-color: #4DBFE0; }
+        .g__mask .g__modal-window .m-modal-title .m-title-item:hover {
+          color: #4DBFE0; }
+    .g__mask .g__modal-window .m-modal-content {
+      position: relative;
+      width: inherit;
+      height: 410px; }
+      .g__mask .g__modal-window .m-modal-content .m-left {
+        float: left;
+        width: 200px;
+        height: inherit;
+        box-sizing: border-box;
+        -webkit-animation: toggleIn ease 0.8s forwards;
+                animation: toggleIn ease 0.8s forwards; }
+        .g__mask .g__modal-window .m-modal-content .m-left .app-download {
+          width: inherit;
+          height: 320px;
+          margin-top: 45px;
+          text-align: center;
+          border-right: 1px solid #dedede; }
+          .g__mask .g__modal-window .m-modal-content .m-left .app-download h5 {
+            display: block;
+            margin: auto;
+            color: #4DBFE0;
+            padding-top: 50px;
+            margin-bottom: 15px; }
+          .g__mask .g__modal-window .m-modal-content .m-left .app-download .m-qr-code {
+            margin: auto;
+            width: 100px;
+            height: 100px; }
+      .g__mask .g__modal-window .m-modal-content .m-right {
+        float: right;
+        width: 350px;
+        height: inherit;
+        text-align: center; }
+        .g__mask .g__modal-window .m-modal-content .m-right .form-area {
+          margin: auto;
+          height: 320px;
+          padding-top: 50px;
+          width: 230px; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area .input-row {
+            width: inherit;
+            margin-bottom: 15px; }
+            .g__mask .g__modal-window .m-modal-content .m-right .form-area .input-row input.verify-code {
+              width: 100px;
+              display: inline-block;
+              vertical-align: middle; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area .verify_code_btn.disable {
+            background-color: #848484;
+            color: #ccc;
+            cursor: not-allowed; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area .err-row {
+            text-align: center;
+            height: 25px;
+            line-height: 25px; }
+            .g__mask .g__modal-window .m-modal-content .m-right .form-area .err-row .warning-tip {
+              color: #ef4f2b; }
+            .g__mask .g__modal-window .m-modal-content .m-right .form-area .err-row .success-tip {
+              color: #4eab74; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            background-color: #4DBFE0;
+            box-shadow: 0 0 0 0 #ccc;
+            transition: ease .3s;
+            color: white;
+            cursor: pointer; }
+            .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before {
+              content: "";
+              font-size: 30px;
+              font-weight: bold; }
+            .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:hover {
+              box-shadow: 0 0 5px 0 #666; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area.login, .g__mask .g__modal-window .m-modal-content .m-right .form-area.register, .g__mask .g__modal-window .m-modal-content .m-right .form-area.forget_password {
+            display: none; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area.register .input-row {
+            margin-bottom: 10px; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area.register .err-row {
+            height: 20px;
+            line-height: 20px; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area.register .submit-btn {
+            margin-top: 15px; }
+        .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login {
+          width: 260px;
+          height: 50px;
+          margin: auto;
+          line-height: 40px;
+          -webkit-animation: toggleIn ease .7s forwards;
+                  animation: toggleIn ease .7s forwards; }
+          .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login em {
+            font-style: normal;
+            padding-right: 20px;
+            font-size: 16px;
+            color: #888; }
+          .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a {
+            display: inline-block;
+            vertical-align: middle;
+            width: 32px;
+            height: 32px;
+            line-height: 30px;
+            font-size: 24px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            background-color: #cecfd0;
+            border-radius: 3px;
+            margin-left: 8px;
+            transition: .3s; }
+            .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a.qq:hover {
+              background-color: #4c96db; }
+            .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a.wechat:hover {
+              background-color: #41990c; }
+            .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a.weibo:hover {
+              background-color: #fa9112; }
+    .g__mask .g__modal-window.login .m-modal-title .m-title-item.tag-login {
+      border-top-color: #4DBFE0;
+      color: #4DBFE0; }
+    .g__mask .g__modal-window.login .m-modal-content .form-area.login {
+      display: block; }
+    .g__mask .g__modal-window.register .m-modal-title .m-title-item.tag-register {
+      border-top-color: #4DBFE0;
+      color: #4DBFE0; }
+    .g__mask .g__modal-window.register .m-modal-content .form-area.register {
+      display: block; }
+    .g__mask .g__modal-window.forget_password .m-modal-title .m-title-item.tag-forget_password {
+      border-top-color: #4DBFE0;
+      color: #4DBFE0; }
+    .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password {
+      display: block; }

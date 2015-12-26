@@ -10,7 +10,7 @@
     <script src="../../lib/underscore.js"></script>
 </head>
 
-<body class=" __major__select">
+<body class="__school_detail">
 <header class="header g__header">
     <div class="col-md-3 logo text-center"></div>
     <div class="col-md-6 search-area text-center">
@@ -31,43 +31,12 @@
     <div class="content" id="g_content">
         <!-- left-filter -->
         <div class="g__left-filter" id="g_left_filter">
-
-
         </div>
-
         <!-- left-filter -->
 
+        <!-- right content -->
+        <!-- right content -->
 
-        <div class="g__filter-result-wrapper">
-            <table class="major-table">
-                <thead>
-                <tr id="major_thead">
-                    <th class="level_1">学科门类</th>
-                    <th class="level_2">专业类</th>
-                    <th class="level_3">专业</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="selected-tr" id="selected_tr">
-
-                    <td class="level_1">
-                        <em>学科门类</em>
-
-                    </td>
-                    <td class="level_2">
-                        <em>专业类</em>
-                    </td>
-                    <td class="level_3">
-                        <em>专业</em>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3" id="majors_wrapper">
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
     </div>
 
 
@@ -79,18 +48,15 @@
 
 </body>
 <script src="../../select2/dist/js/select2.min.js"></script>
-<script>
-
-    function hide_left_filter() {
-        $('#g_content').toggleClass('hide-left-filter');
-    }
-</script>
-
 <script src="../../assets/javascripts/all.js"></script>
 <script>
-    (function(){
-        var c = new com.select_major();
-    })();
+</script>
+
+<script>
+  (function(){
+    var c = new com.school_colleges();
+  })();
+
 </script>
 
 </html>

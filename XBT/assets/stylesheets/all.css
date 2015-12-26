@@ -1,4 +1,9 @@
 @charset "UTF-8";
+button {
+  border-style: none;
+  border: none;
+  outline: none; }
+
 /* -------------------------------------------------------------
   Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
   By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
@@ -12,6 +17,69 @@
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */
+@-webkit-keyframes fadeIn {
+  from {
+    background-color: transparent; }
+  to {
+    background-color: rgba(0, 0, 0, 0.35); } }
+@keyframes fadeIn {
+  from {
+    background-color: transparent; }
+  to {
+    background-color: rgba(0, 0, 0, 0.35); } }
+
+@-webkit-keyframes toggleIn {
+  from {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+    opacity: 0; }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; } }
+
+@keyframes toggleIn {
+  from {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+    opacity: 0; }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; } }
+
+@-webkit-keyframes toggleOut {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; }
+  to {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0; } }
+
+@keyframes toggleOut {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; }
+  to {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0; } }
+
+@-webkit-keyframes fadeOut {
+  from {
+    background-color: rgba(0, 0, 0, 0.35); }
+  to {
+    background-color: transparent; } }
+
+@keyframes fadeOut {
+  from {
+    background-color: rgba(0, 0, 0, 0.35); }
+  to {
+    background-color: transparent; } }
+
 /* -------------------------------------------------------------
   Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
   By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
@@ -61,8 +129,19 @@
       width: 43px;
       height: 43px;
       border-radius: 30px;
-      box-shadow: 0 0 1px white;
-      margin-top: 5px; }
+      overflow: hidden;
+      box-shadow: 0 0 0 1px white;
+      margin-top: 5px;
+      background-color: #fff;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat; }
+      .g__header .h__user .head img {
+        display: block;
+        width: inherit;
+        height: auto;
+        -webkit-animation: hideUserHeadImage 0s 0s forwards;
+                animation: hideUserHeadImage 0s 0s forwards; }
     .g__header .h__user a {
       display: inline-block;
       padding: 0 1.5rem;
@@ -74,12 +153,26 @@
         background-color: rgba(0, 0, 0, 0.1); }
     .g__header .h__user .btn_login {
       display: none; }
+    .g__header .h__user .btn_register {
+      display: none; }
   .g__header.not-login .btn_login {
     display: inline-block; }
-  .g__header.not-login .head,
-  .g__header.not-login .btn_logout,
-  .g__header.not-login .username {
+  .g__header.not-login .btn_register {
+    display: inline-block; }
+  .g__header.not-login .btn_logout {
     display: none; }
+
+@-webkit-keyframes hideUserHeadImage {
+  from {
+    display: block; }
+  to {
+    display: none; } }
+
+@keyframes hideUserHeadImage {
+  from {
+    display: block; }
+  to {
+    display: none; } }
 
 footer {
   height: 60px;
@@ -190,11 +283,12 @@ footer {
     .g__left-filter .wrapper-2 .link-box,
     .g__left-filter .wrapper-3 .link-box {
       padding: 5px 0; }
-      .g__left-filter .wrapper-2 .link-box button,
-      .g__left-filter .wrapper-3 .link-box button {
+      .g__left-filter .wrapper-2 .link-box a,
+      .g__left-filter .wrapper-3 .link-box a {
+        display: block;
         width: 100%;
         height: 35px;
-        line-height: 1;
+        line-height: 35px;
         box-sizing: border-box;
         color: #848484;
         outline: none;
@@ -203,20 +297,21 @@ footer {
         padding-left: 40px;
         border: 1px solid #848484;
         background: transparent;
-        transition: all ease-out .3s; }
-        .g__left-filter .wrapper-2 .link-box button:hover, .g__left-filter .wrapper-2 .link-box button.active,
-        .g__left-filter .wrapper-3 .link-box button:hover,
-        .g__left-filter .wrapper-3 .link-box button.active {
+        transition: all ease-out .3s;
+        text-decoration: none; }
+        .g__left-filter .wrapper-2 .link-box a:hover, .g__left-filter .wrapper-2 .link-box a.active,
+        .g__left-filter .wrapper-3 .link-box a:hover,
+        .g__left-filter .wrapper-3 .link-box a.active {
           color: #fff;
           background-color: #4DBFE0;
           border-color: #4DBFE0; }
-        .g__left-filter .wrapper-2 .link-box button i,
-        .g__left-filter .wrapper-3 .link-box button i {
+        .g__left-filter .wrapper-2 .link-box a i,
+        .g__left-filter .wrapper-3 .link-box a i {
           vertical-align: middle;
           font-size: 16px;
           padding-right: 8px; }
-        .g__left-filter .wrapper-2 .link-box button span,
-        .g__left-filter .wrapper-3 .link-box button span {
+        .g__left-filter .wrapper-2 .link-box a span,
+        .g__left-filter .wrapper-3 .link-box a span {
           vertical-align: middle; }
 
 /* -------------------------------------------------------------
@@ -232,13 +327,21 @@ footer {
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */
-.g__left-filter .toggle-filter-btn:before, .g__left-filter .wrapper-2 .link-box button i,
-.g__left-filter .wrapper-3 .link-box button i, .g__top-filter .m-target-wrapper .m-title span::after, .g__filter-result-wrapper .m_major .m_icon {
+.g__left-filter .toggle-filter-btn:before, .g__left-filter .wrapper-2 .link-box a i,
+.g__left-filter .wrapper-3 .link-box a i, .g__top-filter .m-target-wrapper .m-title span::after, .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__filter-result-wrapper .m_major .m_icon {
   font-family: "iconfont" !important;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale; }
+
+.g__mask.show .g__modal-window, .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__school_detail .school-poster, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content {
+  -webkit-animation: toggleIn ease-in .3s forwards;
+          animation: toggleIn ease-in .3s forwards; }
+
+.g__mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window {
+  -webkit-animation: toggleOut ease-out .3s forwards;
+          animation: toggleOut ease-out .3s forwards; }
 
 .g__top-filter {
   display: block;
@@ -304,6 +407,199 @@ footer {
         color: #fff;
         transition: .3s; }
 
+.g__mask.show .g__modal-window, .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__school_detail .school-poster, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content {
+  -webkit-animation: toggleIn ease-in .3s forwards;
+          animation: toggleIn ease-in .3s forwards; }
+
+.g__mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window {
+  -webkit-animation: toggleOut ease-out .3s forwards;
+          animation: toggleOut ease-out .3s forwards; }
+
+.g__mask {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  transition: all ease-out 1s;
+  background-color: transparent;
+  text-align: center; }
+  .g__mask.show {
+    display: block;
+    -webkit-animation: fadeIn ease .5s forwards;
+            animation: fadeIn ease .5s forwards; }
+  .g__mask.hide {
+    display: block;
+    -webkit-animation: fadeOut ease .4s forwards;
+            animation: fadeOut ease .4s forwards; }
+  .g__mask .g__modal-window {
+    display: block;
+    position: relative;
+    width: 550px;
+    height: 450px;
+    top: 50%;
+    margin: auto;
+    background-color: #f5f5f5;
+    margin-top: -225px;
+    text-align: left;
+    border-radius: 1px;
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1); }
+    .g__mask .g__modal-window .m-modal-title {
+      position: relative;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      width: 100%; }
+      .g__mask .g__modal-window .m-modal-title .m-title-item {
+        display: block;
+        float: left;
+        height: inherit;
+        box-sizing: border-box;
+        border-top: 5px solid transparent;
+        width: 33.33%;
+        font-size: 14px;
+        transition: ease .2s;
+        cursor: pointer; }
+        .g__mask .g__modal-window .m-modal-title .m-title-item.active {
+          border-top-color: #4DBFE0; }
+        .g__mask .g__modal-window .m-modal-title .m-title-item:hover {
+          color: #4DBFE0; }
+    .g__mask .g__modal-window .m-modal-content {
+      position: relative;
+      width: inherit;
+      height: 410px; }
+      .g__mask .g__modal-window .m-modal-content .m-left {
+        float: left;
+        width: 200px;
+        height: inherit;
+        box-sizing: border-box;
+        -webkit-animation: toggleIn ease 0.8s forwards;
+                animation: toggleIn ease 0.8s forwards; }
+        .g__mask .g__modal-window .m-modal-content .m-left .app-download {
+          width: inherit;
+          height: 320px;
+          margin-top: 45px;
+          text-align: center;
+          border-right: 1px solid #dedede; }
+          .g__mask .g__modal-window .m-modal-content .m-left .app-download h5 {
+            display: block;
+            margin: auto;
+            color: #4DBFE0;
+            padding-top: 50px;
+            margin-bottom: 15px; }
+          .g__mask .g__modal-window .m-modal-content .m-left .app-download .m-qr-code {
+            margin: auto;
+            width: 100px;
+            height: 100px; }
+      .g__mask .g__modal-window .m-modal-content .m-right {
+        float: right;
+        width: 350px;
+        height: inherit;
+        text-align: center; }
+        .g__mask .g__modal-window .m-modal-content .m-right .form-area {
+          margin: auto;
+          height: 320px;
+          padding-top: 50px;
+          width: 230px; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area .input-row {
+            width: inherit;
+            margin-bottom: 15px; }
+            .g__mask .g__modal-window .m-modal-content .m-right .form-area .input-row input.verify-code {
+              width: 100px;
+              display: inline-block;
+              vertical-align: middle; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area .verify_code_btn.disable {
+            background-color: #848484;
+            color: #ccc;
+            cursor: not-allowed; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area .err-row {
+            text-align: center;
+            height: 25px;
+            line-height: 25px; }
+            .g__mask .g__modal-window .m-modal-content .m-right .form-area .err-row .warning-tip {
+              color: #ef4f2b; }
+            .g__mask .g__modal-window .m-modal-content .m-right .form-area .err-row .success-tip {
+              color: #4eab74; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            background-color: #4DBFE0;
+            box-shadow: 0 0 0 0 #ccc;
+            transition: ease .3s;
+            color: white;
+            cursor: pointer; }
+            .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before {
+              content: "";
+              font-size: 30px;
+              font-weight: bold; }
+            .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:hover {
+              box-shadow: 0 0 5px 0 #666; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area.login, .g__mask .g__modal-window .m-modal-content .m-right .form-area.register, .g__mask .g__modal-window .m-modal-content .m-right .form-area.forget_password {
+            display: none; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area.register .input-row {
+            margin-bottom: 10px; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area.register .err-row {
+            height: 20px;
+            line-height: 20px; }
+          .g__mask .g__modal-window .m-modal-content .m-right .form-area.register .submit-btn {
+            margin-top: 15px; }
+        .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login {
+          width: 260px;
+          height: 50px;
+          margin: auto;
+          line-height: 40px;
+          -webkit-animation: toggleIn ease .7s forwards;
+                  animation: toggleIn ease .7s forwards; }
+          .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login em {
+            font-style: normal;
+            padding-right: 20px;
+            font-size: 16px;
+            color: #888; }
+          .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a {
+            display: inline-block;
+            vertical-align: middle;
+            width: 32px;
+            height: 32px;
+            line-height: 30px;
+            font-size: 24px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            background-color: #cecfd0;
+            border-radius: 3px;
+            margin-left: 8px;
+            transition: .3s; }
+            .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a.qq:hover {
+              background-color: #4c96db; }
+            .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a.wechat:hover {
+              background-color: #41990c; }
+            .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a.weibo:hover {
+              background-color: #fa9112; }
+    .g__mask .g__modal-window.login .m-modal-title .m-title-item.tag-login {
+      border-top-color: #4DBFE0;
+      color: #4DBFE0; }
+    .g__mask .g__modal-window.login .m-modal-content .form-area.login {
+      display: block; }
+    .g__mask .g__modal-window.register .m-modal-title .m-title-item.tag-register {
+      border-top-color: #4DBFE0;
+      color: #4DBFE0; }
+    .g__mask .g__modal-window.register .m-modal-content .form-area.register {
+      display: block; }
+    .g__mask .g__modal-window.forget_password .m-modal-title .m-title-item.tag-forget_password {
+      border-top-color: #4DBFE0;
+      color: #4DBFE0; }
+    .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password {
+      display: block; }
+
 /* -------------------------------------------------------------
   Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
   By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
@@ -317,13 +613,21 @@ footer {
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */
-.g__left-filter .toggle-filter-btn:before, .g__left-filter .wrapper-2 .link-box button i,
-.g__left-filter .wrapper-3 .link-box button i, .g__top-filter .m-target-wrapper .m-title span::after, .g__filter-result-wrapper .m_major .m_icon {
+.g__left-filter .toggle-filter-btn:before, .g__left-filter .wrapper-2 .link-box a i,
+.g__left-filter .wrapper-3 .link-box a i, .g__top-filter .m-target-wrapper .m-title span::after, .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__filter-result-wrapper .m_major .m_icon {
   font-family: "iconfont" !important;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale; }
+
+.g__mask.show .g__modal-window, .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__school_detail .school-poster, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content {
+  -webkit-animation: toggleIn ease-in .3s forwards;
+          animation: toggleIn ease-in .3s forwards; }
+
+.g__mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window {
+  -webkit-animation: toggleOut ease-out .3s forwards;
+          animation: toggleOut ease-out .3s forwards; }
 
 .g__filter-result-wrapper {
   display: block;
@@ -331,7 +635,7 @@ footer {
   margin: auto;
   width: 100%;
   height: auto;
-  float: left;
+  float: right;
   box-sizing: border-box;
   margin-bottom: 10px;
   padding: 10px;
@@ -366,14 +670,20 @@ footer {
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */ }
-  .g__filter-result-wrapper .g__left-filter .toggle-filter-btn:before, .g__left-filter .g__filter-result-wrapper .toggle-filter-btn:before, .g__filter-result-wrapper .g__left-filter .wrapper-2 .link-box button i, .g__left-filter .wrapper-2 .link-box button .g__filter-result-wrapper i, .g__filter-result-wrapper
-  .g__left-filter .wrapper-3 .link-box button i,
-  .g__left-filter .wrapper-3 .link-box button .g__filter-result-wrapper i, .g__filter-result-wrapper .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .g__filter-result-wrapper span::after, .g__filter-result-wrapper .m_major .m_icon {
+  .g__filter-result-wrapper .g__left-filter .toggle-filter-btn:before, .g__left-filter .g__filter-result-wrapper .toggle-filter-btn:before, .g__filter-result-wrapper .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .g__filter-result-wrapper i, .g__filter-result-wrapper
+  .g__left-filter .wrapper-3 .link-box a i,
+  .g__left-filter .wrapper-3 .link-box a .g__filter-result-wrapper i, .g__filter-result-wrapper .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .g__filter-result-wrapper span::after, .g__filter-result-wrapper .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .g__filter-result-wrapper .submit-btn:before, .g__filter-result-wrapper .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login .g__filter-result-wrapper a, .g__filter-result-wrapper .m_major .m_icon {
     font-family: "iconfont" !important;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale; }
+  .g__filter-result-wrapper .g__mask.show .g__modal-window, .g__mask.show .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .g__filter-result-wrapper .form-area.login > *, .g__filter-result-wrapper .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .g__filter-result-wrapper .form-area.register > *, .g__filter-result-wrapper .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .g__filter-result-wrapper .form-area.forget_password > *, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .g__filter-result-wrapper .user-info-card, .g__filter-result-wrapper .__school_detail .school-poster, .__school_detail .g__filter-result-wrapper .school-poster, .g__filter-result-wrapper .__school_detail .school-header, .__school_detail .g__filter-result-wrapper .school-header, .g__filter-result-wrapper .__school_detail .school-section-link-wrapper, .__school_detail .g__filter-result-wrapper .school-section-link-wrapper, .g__filter-result-wrapper .__school_detail .school-detail-main-content, .__school_detail .g__filter-result-wrapper .school-detail-main-content {
+    -webkit-animation: toggleIn ease-in .3s forwards;
+            animation: toggleIn ease-in .3s forwards; }
+  .g__filter-result-wrapper .g__mask.hide .g__modal-window, .g__mask.hide .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .g__filter-result-wrapper .g__modal-window {
+    -webkit-animation: toggleOut ease-out .3s forwards;
+            animation: toggleOut ease-out .3s forwards; }
   .g__filter-result-wrapper .m__filter-res-school {
     display: inline-block;
     vertical-align: top;
@@ -443,14 +753,20 @@ footer {
           font-style: normal;
           color: #fff;
           background-color: #4DBFE0; }
-  .g__filter-result-wrapper .g__left-filter .toggle-filter-btn:before, .g__left-filter .g__filter-result-wrapper .toggle-filter-btn:before, .g__filter-result-wrapper .g__left-filter .wrapper-2 .link-box button i, .g__left-filter .wrapper-2 .link-box button .g__filter-result-wrapper i, .g__filter-result-wrapper
-  .g__left-filter .wrapper-3 .link-box button i,
-  .g__left-filter .wrapper-3 .link-box button .g__filter-result-wrapper i, .g__filter-result-wrapper .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .g__filter-result-wrapper span::after, .g__filter-result-wrapper .m_major .m_icon {
+  .g__filter-result-wrapper .g__left-filter .toggle-filter-btn:before, .g__left-filter .g__filter-result-wrapper .toggle-filter-btn:before, .g__filter-result-wrapper .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .g__filter-result-wrapper i, .g__filter-result-wrapper
+  .g__left-filter .wrapper-3 .link-box a i,
+  .g__left-filter .wrapper-3 .link-box a .g__filter-result-wrapper i, .g__filter-result-wrapper .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .g__filter-result-wrapper span::after, .g__filter-result-wrapper .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .g__filter-result-wrapper .submit-btn:before, .g__filter-result-wrapper .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login .g__filter-result-wrapper a, .g__filter-result-wrapper .m_major .m_icon {
     font-family: "iconfont" !important;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale; }
+  .g__filter-result-wrapper .g__mask.show .g__modal-window, .g__mask.show .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .g__filter-result-wrapper .form-area.login > *, .g__filter-result-wrapper .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .g__filter-result-wrapper .form-area.register > *, .g__filter-result-wrapper .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .g__filter-result-wrapper .form-area.forget_password > *, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .g__filter-result-wrapper .user-info-card, .g__filter-result-wrapper .__school_detail .school-poster, .__school_detail .g__filter-result-wrapper .school-poster, .g__filter-result-wrapper .__school_detail .school-header, .__school_detail .g__filter-result-wrapper .school-header, .g__filter-result-wrapper .__school_detail .school-section-link-wrapper, .__school_detail .g__filter-result-wrapper .school-section-link-wrapper, .g__filter-result-wrapper .__school_detail .school-detail-main-content, .__school_detail .g__filter-result-wrapper .school-detail-main-content {
+    -webkit-animation: toggleIn ease-in .3s forwards;
+            animation: toggleIn ease-in .3s forwards; }
+  .g__filter-result-wrapper .g__mask.hide .g__modal-window, .g__mask.hide .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .g__filter-result-wrapper .g__modal-window {
+    -webkit-animation: toggleOut ease-out .3s forwards;
+            animation: toggleOut ease-out .3s forwards; }
   .g__filter-result-wrapper a {
     text-decoration: none; }
   .g__filter-result-wrapper .m_major {
@@ -500,9 +816,9 @@ footer {
 
 @font-face {
   font-family: 'iconfont';
-  src: url("//at.alicdn.com/t/font_1450560295_0920155.eot");
+  src: url("//at.alicdn.com/t/font_1450878401_7293286.eot");
   /* IE9*/
-  src: url("//at.alicdn.com/t/font_1450560295_0920155.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1450560295_0920155.woff") format("woff"), url("//at.alicdn.com/t/font_1450560295_0920155.ttf") format("truetype"), url("//at.alicdn.com/t/font_1450560295_0920155.svg#iconfont") format("svg");
+  src: url("//at.alicdn.com/t/font_1450878401_7293286.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1450878401_7293286.woff") format("woff"), url("//at.alicdn.com/t/font_1450878401_7293286.ttf") format("truetype"), url("//at.alicdn.com/t/font_1450878401_7293286.svg#iconfont") format("svg");
   /* iOS 4.1- */ }
 
 html {
@@ -518,6 +834,8 @@ body {
   min-width: 1200px; }
 
 .container > .content {
+  display: inline-block;
+  position: relative;
   padding-top: 30px;
   padding-left: 250px;
   min-height: calc(100% - 55px - 42px);
@@ -773,14 +1091,20 @@ body {
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */ }
-  .__major__select .g__left-filter .toggle-filter-btn:before, .g__left-filter .__major__select .toggle-filter-btn:before, .__major__select .g__left-filter .wrapper-2 .link-box button i, .g__left-filter .wrapper-2 .link-box button .__major__select i, .__major__select
-  .g__left-filter .wrapper-3 .link-box button i,
-  .g__left-filter .wrapper-3 .link-box button .__major__select i, .__major__select .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .__major__select span::after, .__major__select .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .m_major .__major__select .m_icon {
+  .__major__select .g__left-filter .toggle-filter-btn:before, .g__left-filter .__major__select .toggle-filter-btn:before, .__major__select .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .__major__select i, .__major__select
+  .g__left-filter .wrapper-3 .link-box a i,
+  .g__left-filter .wrapper-3 .link-box a .__major__select i, .__major__select .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .__major__select span::after, .__major__select .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .__major__select .submit-btn:before, .__major__select .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login .__major__select a, .__major__select .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .m_major .__major__select .m_icon {
     font-family: "iconfont" !important;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale; }
+  .__major__select .g__mask.show .g__modal-window, .g__mask.show .__major__select .g__modal-window, .__major__select .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__major__select .form-area.login > *, .__major__select .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__major__select .form-area.register > *, .__major__select .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__major__select .form-area.forget_password > *, .__major__select .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__major__select .m__filter-res-school, .__major__select .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__major__select .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .__major__select .user-info-card, .__major__select .__school_detail .school-poster, .__school_detail .__major__select .school-poster, .__major__select .__school_detail .school-header, .__school_detail .__major__select .school-header, .__major__select .__school_detail .school-section-link-wrapper, .__school_detail .__major__select .school-section-link-wrapper, .__major__select .__school_detail .school-detail-main-content, .__school_detail .__major__select .school-detail-main-content {
+    -webkit-animation: toggleIn ease-in .3s forwards;
+            animation: toggleIn ease-in .3s forwards; }
+  .__major__select .g__mask.hide .g__modal-window, .g__mask.hide .__major__select .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window {
+    -webkit-animation: toggleOut ease-out .3s forwards;
+            animation: toggleOut ease-out .3s forwards; }
   .__major__select .major-table {
     width: 100%; }
     .__major__select .major-table thead {
@@ -816,3 +1140,476 @@ body {
         margin-left: 5px; }
   .__major__select .m__select-title .title-1 {
     width: 200px; }
+  .__major__select .g__mask.show .g__modal-window, .g__mask.show .__major__select .g__modal-window, .__major__select .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__major__select .form-area.login > *, .__major__select .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__major__select .form-area.register > *, .__major__select .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__major__select .form-area.forget_password > *, .__major__select .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__major__select .m__filter-res-school, .__major__select .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__major__select .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .__major__select .user-info-card, .__major__select .__school_detail .school-poster, .__school_detail .__major__select .school-poster, .__major__select .__school_detail .school-header, .__school_detail .__major__select .school-header, .__major__select .__school_detail .school-section-link-wrapper, .__school_detail .__major__select .school-section-link-wrapper, .__major__select .__school_detail .school-detail-main-content, .__school_detail .__major__select .school-detail-main-content {
+    -webkit-animation: toggleIn ease-in .3s forwards;
+            animation: toggleIn ease-in .3s forwards; }
+  .__major__select .g__mask.hide .g__modal-window, .g__mask.hide .__major__select .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window {
+    -webkit-animation: toggleOut ease-out .3s forwards;
+            animation: toggleOut ease-out .3s forwards; }
+  .__major__select .g__mask.m__major_modal_mask {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    transition: all ease-out 1s;
+    background-color: transparent;
+    text-align: center; }
+    .__major__select .g__mask.m__major_modal_mask.show {
+      display: block;
+      -webkit-animation: fadeIn ease .5s forwards;
+              animation: fadeIn ease .5s forwards; }
+    .__major__select .g__mask.m__major_modal_mask.hide {
+      display: block;
+      -webkit-animation: fadeOut ease .4s forwards;
+              animation: fadeOut ease .4s forwards; }
+    .__major__select .g__mask.m__major_modal_mask .g__modal-window.m__major_modal_window {
+      display: block;
+      position: relative;
+      width: 550px;
+      height: 450px;
+      top: 50%;
+      margin: auto;
+      background-color: #f5f5f5;
+      margin-top: -225px;
+      text-align: left;
+      border-radius: 1px;
+      box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1); }
+      .__major__select .g__mask.m__major_modal_mask .g__modal-window.m__major_modal_window .m-modal-title {
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        width: 100%;
+        color: #fff;
+        font-size: 16px;
+        background-color: #4DBFE0; }
+      .__major__select .g__mask.m__major_modal_mask .g__modal-window.m__major_modal_window .m-modal-content {
+        position: relative;
+        width: inherit;
+        box-sizing: border-box;
+        overflow: hidden;
+        height: 400px; }
+        .__major__select .g__mask.m__major_modal_mask .g__modal-window.m__major_modal_window .m-modal-content h4 {
+          height: 40px;
+          padding: 0 30px;
+          font-size: 16px;
+          line-height: 48px; }
+        .__major__select .g__mask.m__major_modal_mask .g__modal-window.m__major_modal_window .m-modal-content .m-scroll-view {
+          display: block;
+          overflow-y: auto;
+          height: 360px; }
+          .__major__select .g__mask.m__major_modal_mask .g__modal-window.m__major_modal_window .m-modal-content .m-scroll-view .m-school-list {
+            display: block;
+            padding: 0;
+            list-style: none; }
+            .__major__select .g__mask.m__major_modal_mask .g__modal-window.m__major_modal_window .m-modal-content .m-scroll-view .m-school-list li {
+              display: block;
+              width: 100%;
+              box-sizing: border-box;
+              color: #848484;
+              height: 40px;
+              padding: 0 24px 0 30px;
+              line-height: 40px;
+              transition: all ease .3s; }
+              .__major__select .g__mask.m__major_modal_mask .g__modal-window.m__major_modal_window .m-modal-content .m-scroll-view .m-school-list li a {
+                display: block;
+                padding-left: 5px;
+                overflow: hidden;
+                text-decoration: none;
+                border-bottom: 1px solid #dedede;
+                color: #848484; }
+                .__major__select .g__mask.m__major_modal_mask .g__modal-window.m__major_modal_window .m-modal-content .m-scroll-view .m-school-list li a em {
+                  font-style: normal;
+                  padding-right: 5px; }
+              .__major__select .g__mask.m__major_modal_mask .g__modal-window.m__major_modal_window .m-modal-content .m-scroll-view .m-school-list li:hover {
+                background-color: #eee; }
+              .__major__select .g__mask.m__major_modal_mask .g__modal-window.m__major_modal_window .m-modal-content .m-scroll-view .m-school-list li:nth-child(1) a em, .__major__select .g__mask.m__major_modal_mask .g__modal-window.m__major_modal_window .m-modal-content .m-scroll-view .m-school-list li:nth-child(2) a em, .__major__select .g__mask.m__major_modal_mask .g__modal-window.m__major_modal_window .m-modal-content .m-scroll-view .m-school-list li:nth-child(3) a em {
+                color: #4DBFE0; }
+
+.__user__user_center {
+  background-color: #f1f1f1;
+  /* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */ }
+  .__user__user_center .g__left-filter .toggle-filter-btn:before, .g__left-filter .__user__user_center .toggle-filter-btn:before, .__user__user_center .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .__user__user_center i, .__user__user_center
+  .g__left-filter .wrapper-3 .link-box a i,
+  .g__left-filter .wrapper-3 .link-box a .__user__user_center i, .__user__user_center .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .__user__user_center span::after, .__user__user_center .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .__user__user_center .submit-btn:before, .__user__user_center .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login .__user__user_center a, .__user__user_center .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .m_major .__user__user_center .m_icon {
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale; }
+  .__user__user_center .g__mask.show .g__modal-window, .g__mask.show .__user__user_center .g__modal-window, .__user__user_center .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__user__user_center .form-area.login > *, .__user__user_center .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__user__user_center .form-area.register > *, .__user__user_center .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__user__user_center .form-area.forget_password > *, .__user__user_center .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__user__user_center .m__filter-res-school, .__user__user_center .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__user__user_center .m_major, .__user__user_center .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .__user__user_center .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .__school_detail .school-poster, .__school_detail .__user__user_center .school-poster, .__user__user_center .__school_detail .school-header, .__school_detail .__user__user_center .school-header, .__user__user_center .__school_detail .school-section-link-wrapper, .__school_detail .__user__user_center .school-section-link-wrapper, .__user__user_center .__school_detail .school-detail-main-content, .__school_detail .__user__user_center .school-detail-main-content {
+    -webkit-animation: toggleIn ease-in .3s forwards;
+            animation: toggleIn ease-in .3s forwards; }
+  .__user__user_center .g__mask.hide .g__modal-window, .g__mask.hide .__user__user_center .g__modal-window, .__user__user_center .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .__user__user_center .g__modal-window {
+    -webkit-animation: toggleOut ease-out .3s forwards;
+            animation: toggleOut ease-out .3s forwards; }
+  .__user__user_center .g__mask.show .g__modal-window, .g__mask.show .__user__user_center .g__modal-window, .__user__user_center .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__user__user_center .form-area.login > *, .__user__user_center .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__user__user_center .form-area.register > *, .__user__user_center .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__user__user_center .form-area.forget_password > *, .__user__user_center .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__user__user_center .m__filter-res-school, .__user__user_center .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__user__user_center .m_major, .__user__user_center .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .__user__user_center .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .__school_detail .school-poster, .__school_detail .__user__user_center .school-poster, .__user__user_center .__school_detail .school-header, .__school_detail .__user__user_center .school-header, .__user__user_center .__school_detail .school-section-link-wrapper, .__school_detail .__user__user_center .school-section-link-wrapper, .__user__user_center .__school_detail .school-detail-main-content, .__school_detail .__user__user_center .school-detail-main-content {
+    -webkit-animation: toggleIn ease-in .3s forwards;
+            animation: toggleIn ease-in .3s forwards; }
+  .__user__user_center .g__mask.hide .g__modal-window, .g__mask.hide .__user__user_center .g__modal-window, .__user__user_center .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .__user__user_center .g__modal-window {
+    -webkit-animation: toggleOut ease-out .3s forwards;
+            animation: toggleOut ease-out .3s forwards; }
+  .__user__user_center .m_left_wrapper .user-info-card .user-head-box .user-head-bg {
+    -webkit-filter: blur(8px);
+    -moz-filter: blur(8px);
+    -ms-filter: blur(8px);
+    filter: blur(8px);
+    overflow: hidden; }
+  .__user__user_center .content {
+    width: 960px;
+    margin: auto;
+    background-color: #fff;
+    padding: 30px; }
+  .__user__user_center footer {
+    width: 960px;
+    margin: auto;
+    background-color: #fff; }
+  .__user__user_center .m_left_wrapper {
+    display: block;
+    position: relative;
+    float: left;
+    height: auto;
+    width: 240px; }
+    .__user__user_center .m_left_wrapper .user-info-card {
+      position: relative;
+      box-sizing: border-box;
+      width: inherit;
+      height: 325px;
+      border-radius: 3px;
+      background-color: #fff;
+      border: 1px solid #dedede;
+      box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+      transition: .3s; }
+      .__user__user_center .m_left_wrapper .user-info-card:hover {
+        box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2); }
+      .__user__user_center .m_left_wrapper .user-info-card .user-head-box {
+        position: relative;
+        width: 100%;
+        border-radius: 3px 3px 0 0;
+        height: 160px;
+        overflow: hidden;
+        box-sizing: border-box;
+        text-align: center; }
+        .__user__user_center .m_left_wrapper .user-info-card .user-head-box .user-head-bg {
+          display: block;
+          top: -8px;
+          right: -8px;
+          bottom: -8px;
+          left: -8px;
+          position: absolute;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat; }
+        .__user__user_center .m_left_wrapper .user-info-card .user-head-box .m-avatar {
+          display: block;
+          position: relative;
+          box-sizing: border-box;
+          margin: auto;
+          margin-top: 30px;
+          width: 82px;
+          height: 82px;
+          border-radius: 80px;
+          border: 2px solid #fff;
+          box-shadow: 0 0 3px #fff;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          transition: all ease .3s; }
+          .__user__user_center .m_left_wrapper .user-info-card .user-head-box .m-avatar:hover {
+            box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.3); }
+        .__user__user_center .m_left_wrapper .user-info-card .user-head-box h2 {
+          position: relative;
+          color: #fff;
+          margin: 12px auto 0 auto;
+          font-size: 20px;
+          text-shadow: 0 0 2px #000;
+          transition: ease .3s;
+          cursor: pointer; }
+          .__user__user_center .m_left_wrapper .user-info-card .user-head-box h2:hover {
+            text-shadow: 0 0 0.8em  #000; }
+      .__user__user_center .m_left_wrapper .user-info-card .user-intro-box {
+        position: relative;
+        width: inherit;
+        height: 165px; }
+        .__user__user_center .m_left_wrapper .user-info-card .user-intro-box p.intro {
+          padding-top: 30px;
+          word-break: break-all;
+          line-height: 1.5;
+          font-size: 14px;
+          height: 90px;
+          overflow: hidden;
+          width: 180px;
+          margin: auto;
+          color: #848484; }
+        .__user__user_center .m_left_wrapper .user-info-card .user-intro-box em {
+          display: block;
+          font-style: normal;
+          font-size: 16px;
+          margin-top: 20px;
+          -webkit-user-select: none;
+             -moz-user-select: none;
+              -ms-user-select: none;
+                  user-select: none; }
+          .__user__user_center .m_left_wrapper .user-info-card .user-intro-box em span {
+            font-weight: bold;
+            padding-left: 10px; }
+    .__user__user_center .m_left_wrapper .user-collect-video-card {
+      position: relative;
+      box-sizing: border-box;
+      width: inherit;
+      height: auto;
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 3px;
+      background-color: #fff;
+      border: 1px solid #dedede;
+      box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+      transition: .3s; }
+      .__user__user_center .m_left_wrapper .user-collect-video-card:hover {
+        box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2); }
+      .__user__user_center .m_left_wrapper .user-collect-video-card h2 {
+        text-align: left;
+        padding: 5px 0 10px 0;
+        font-size: 18px;
+        cursor: default;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none; }
+      .__user__user_center .m_left_wrapper .user-collect-video-card .my-video-list {
+        padding: 0;
+        list-style: none; }
+        .__user__user_center .m_left_wrapper .user-collect-video-card .my-video-list .video {
+          position: relative;
+          width: 100%;
+          height: 50px;
+          box-sizing: content-box;
+          margin: 10px 0;
+          text-align: left;
+          overflow: hidden; }
+          .__user__user_center .m_left_wrapper .user-collect-video-card .my-video-list .video .poster {
+            display: block;
+            float: left;
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("../../img/logo.png"); }
+          .__user__user_center .m_left_wrapper .user-collect-video-card .my-video-list .video .link-wrapper {
+            display: block;
+            float: right;
+            text-align: left;
+            width: 130px;
+            height: 50px;
+            background: transparent; }
+            .__user__user_center .m_left_wrapper .user-collect-video-card .my-video-list .video .link-wrapper a {
+              display: inline;
+              vertical-align: middle;
+              line-height: 1.4;
+              color: #848484;
+              font-size: 14px; }
+  .__user__user_center .m_right_wrapper {
+    display: block;
+    position: relative;
+    float: right;
+    height: auto;
+    width: 630px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 30px 30px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid #dedede;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+    transition: .3s; }
+    .__user__user_center .m_right_wrapper:hover {
+      box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2); }
+    .__user__user_center .m_right_wrapper .school-section {
+      display: block;
+      width: 100%;
+      padding: 20px 10px 10px 10px;
+      border-top: 1px solid #dedede;
+      position: relative; }
+      .__user__user_center .m_right_wrapper .school-section .school-avatar {
+        float: left;
+        width: 60px;
+        height: 60px;
+        border-radius: 3px; }
+      .__user__user_center .m_right_wrapper .school-section .school-right {
+        float: left;
+        box-sizing: border-box;
+        padding: 0 15px;
+        width: 480px;
+        text-align: left; }
+        .__user__user_center .m_right_wrapper .school-section .school-right h3 {
+          margin-top: 6px;
+          font-size: 18px; }
+        .__user__user_center .m_right_wrapper .school-section .school-right .tags-wrapper .tag {
+          font-size: 16px;
+          color: #848484;
+          margin-right: 5px;
+          cursor: pointer; }
+          .__user__user_center .m_right_wrapper .school-section .school-right .tags-wrapper .tag:hover {
+            text-decoration: underline; }
+
+.__school_detail {
+  /* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */ }
+  .__school_detail .g__left-filter .toggle-filter-btn:before, .g__left-filter .__school_detail .toggle-filter-btn:before, .__school_detail .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .__school_detail i, .__school_detail
+  .g__left-filter .wrapper-3 .link-box a i,
+  .g__left-filter .wrapper-3 .link-box a .__school_detail i, .__school_detail .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .__school_detail span::after, .__school_detail .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .__school_detail .submit-btn:before, .__school_detail .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login .__school_detail a, .__school_detail .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .m_major .__school_detail .m_icon {
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale; }
+  .__school_detail .g__mask.show .g__modal-window, .g__mask.show .__school_detail .g__modal-window, .__school_detail .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__school_detail .form-area.login > *, .__school_detail .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__school_detail .form-area.register > *, .__school_detail .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__school_detail .form-area.forget_password > *, .__school_detail .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__school_detail .m__filter-res-school, .__school_detail .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__school_detail .m_major, .__school_detail .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .__school_detail .g__modal-window, .__school_detail .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .__school_detail .user-info-card, .__school_detail .school-poster, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content {
+    -webkit-animation: toggleIn ease-in .3s forwards;
+            animation: toggleIn ease-in .3s forwards; }
+  .__school_detail .g__mask.hide .g__modal-window, .g__mask.hide .__school_detail .g__modal-window, .__school_detail .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .__school_detail .g__modal-window {
+    -webkit-animation: toggleOut ease-out .3s forwards;
+            animation: toggleOut ease-out .3s forwards; }
+  .__school_detail .school-poster {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; }
+    .__school_detail .school-poster .school-poster-tip {
+      display: block;
+      position: absolute;
+      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0.5);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 50px;
+      padding: 0 20px;
+      font-size: 15px;
+      opacity: 0.7;
+      color: #fff;
+      line-height: 50px;
+      text-align: left;
+      transition: .3s;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none; }
+    .__school_detail .school-poster:hover .school-poster-tip {
+      opacity: 1; }
+  .__school_detail .school-header {
+    height: 80px;
+    box-sizing: border-box;
+    padding: 10px 20px 10px 70px; }
+    .__school_detail .school-header .school-avatar {
+      float: left;
+      width: 60px;
+      height: 60px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 3px; }
+    .__school_detail .school-header .school-right {
+      float: left;
+      box-sizing: border-box;
+      padding: 0 15px;
+      width: 480px;
+      text-align: left; }
+      .__school_detail .school-header .school-right h3 {
+        margin-top: 6px;
+        font-size: 18px; }
+      .__school_detail .school-header .school-right .tags-wrapper .tag {
+        font-size: 16px;
+        color: #848484;
+        margin-right: 8px;
+        cursor: pointer; }
+        .__school_detail .school-header .school-right .tags-wrapper .tag:hover {
+          text-decoration: underline; }
+    .__school_detail .school-header .unlock-all {
+      vertical-align: middle;
+      width: 200px;
+      height: 32px;
+      float: right;
+      letter-spacing: 1px;
+      text-indent: 1px;
+      line-height: 1;
+      color: #4DBFE0;
+      background: transparent;
+      border: 1px solid #4DBFE0;
+      border-radius: 3px;
+      outline: none;
+      font-size: 14px;
+      margin-top: 15px;
+      transition: .3s; }
+      .__school_detail .school-header .unlock-all:hover {
+        color: #fff;
+        background-color: #4DBFE0; }
+  .__school_detail .school-section-link-wrapper a {
+    display: inline-block;
+    width: 33.3%;
+    padding-bottom: 8px;
+    margin-bottom: -11px;
+    height: 38px;
+    box-sizing: border-box;
+    line-height: 30px;
+    text-align: center;
+    position: relative;
+    font-size: 16px;
+    color: #848484;
+    border-bottom: 2px solid transparent;
+    transition: .3s; }
+    .__school_detail .school-section-link-wrapper a:hover {
+      color: #4DBFE0; }
+    .__school_detail .school-section-link-wrapper a.active {
+      color: #3E3A39;
+      border-bottom-color: #4DBFE0; }
+  .__school_detail .school-detail-main-content {
+    padding: 30px 20px; }
+    .__school_detail .school-detail-main-content h4 {
+      color: #369; }
+    .__school_detail .school-detail-main-content .school-intro {
+      padding: 10px;
+      text-indent: 2em;
+      padding-bottom: 0.5em;
+      color: #3E3A39;
+      font-size: 14px;
+      line-height: 1.8; }
+    .__school_detail .school-detail-main-content .school-intro-wrapper {
+      padding: 10px; }
+      .__school_detail .school-detail-main-content .school-intro-wrapper p {
+        text-indent: 2em;
+        padding-bottom: 0.5em;
+        color: #3E3A39;
+        font-size: 14px;
+        line-height: 1.8; }

@@ -103,11 +103,12 @@
     .g__left-filter .wrapper-2 .link-box,
     .g__left-filter .wrapper-3 .link-box {
       padding: 5px 0; }
-      .g__left-filter .wrapper-2 .link-box button,
-      .g__left-filter .wrapper-3 .link-box button {
+      .g__left-filter .wrapper-2 .link-box a,
+      .g__left-filter .wrapper-3 .link-box a {
+        display: block;
         width: 100%;
         height: 35px;
-        line-height: 1;
+        line-height: 35px;
         box-sizing: border-box;
         color: #848484;
         outline: none;
@@ -116,18 +117,19 @@
         padding-left: 40px;
         border: 1px solid #848484;
         background: transparent;
-        transition: all ease-out .3s; }
-        .g__left-filter .wrapper-2 .link-box button:hover, .g__left-filter .wrapper-2 .link-box button.active,
-        .g__left-filter .wrapper-3 .link-box button:hover,
-        .g__left-filter .wrapper-3 .link-box button.active {
+        transition: all ease-out .3s;
+        text-decoration: none; }
+        .g__left-filter .wrapper-2 .link-box a:hover, .g__left-filter .wrapper-2 .link-box a.active,
+        .g__left-filter .wrapper-3 .link-box a:hover,
+        .g__left-filter .wrapper-3 .link-box a.active {
           color: #fff;
           background-color: #4DBFE0;
           border-color: #4DBFE0; }
-        .g__left-filter .wrapper-2 .link-box button i,
-        .g__left-filter .wrapper-3 .link-box button i {
+        .g__left-filter .wrapper-2 .link-box a i,
+        .g__left-filter .wrapper-3 .link-box a i {
           vertical-align: middle;
           font-size: 16px;
           padding-right: 8px; }
-        .g__left-filter .wrapper-2 .link-box button span,
-        .g__left-filter .wrapper-3 .link-box button span {
+        .g__left-filter .wrapper-2 .link-box a span,
+        .g__left-filter .wrapper-3 .link-box a span {
           vertical-align: middle; }

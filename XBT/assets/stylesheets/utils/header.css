@@ -47,8 +47,19 @@
       width: 43px;
       height: 43px;
       border-radius: 30px;
-      box-shadow: 0 0 1px white;
-      margin-top: 5px; }
+      overflow: hidden;
+      box-shadow: 0 0 0 1px white;
+      margin-top: 5px;
+      background-color: #fff;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat; }
+      .g__header .h__user .head img {
+        display: block;
+        width: inherit;
+        height: auto;
+        -webkit-animation: hideUserHeadImage 0s 0s forwards;
+                animation: hideUserHeadImage 0s 0s forwards; }
     .g__header .h__user a {
       display: inline-block;
       padding: 0 1.5rem;
@@ -60,9 +71,23 @@
         background-color: rgba(0, 0, 0, 0.1); }
     .g__header .h__user .btn_login {
       display: none; }
+    .g__header .h__user .btn_register {
+      display: none; }
   .g__header.not-login .btn_login {
     display: inline-block; }
-  .g__header.not-login .head,
-  .g__header.not-login .btn_logout,
-  .g__header.not-login .username {
+  .g__header.not-login .btn_register {
+    display: inline-block; }
+  .g__header.not-login .btn_logout {
     display: none; }
+
+@-webkit-keyframes hideUserHeadImage {
+  from {
+    display: block; }
+  to {
+    display: none; } }
+
+@keyframes hideUserHeadImage {
+  from {
+    display: block; }
+  to {
+    display: none; } }

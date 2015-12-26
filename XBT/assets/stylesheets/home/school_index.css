@@ -1,0 +1,134 @@
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.school-poster, .school-header, .school-section-link-wrapper, .school-detail-main-content {
+  -webkit-animation: toggleIn ease-in .3s forwards;
+          animation: toggleIn ease-in .3s forwards; }
+
+.school-poster {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+  .school-poster .school-poster-tip {
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50px;
+    padding: 0 20px;
+    font-size: 15px;
+    opacity: 0.7;
+    color: #fff;
+    line-height: 50px;
+    text-align: left;
+    transition: .3s;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; }
+  .school-poster:hover .school-poster-tip {
+    opacity: 1; }
+
+.school-header {
+  height: 80px;
+  box-sizing: border-box;
+  padding: 10px 20px 10px 70px; }
+  .school-header .school-avatar {
+    float: left;
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 3px; }
+  .school-header .school-right {
+    float: left;
+    box-sizing: border-box;
+    padding: 0 15px;
+    width: 480px;
+    text-align: left; }
+    .school-header .school-right h3 {
+      margin-top: 6px;
+      font-size: 18px; }
+    .school-header .school-right .tags-wrapper .tag {
+      font-size: 16px;
+      color: #848484;
+      margin-right: 8px;
+      cursor: pointer; }
+      .school-header .school-right .tags-wrapper .tag:hover {
+        text-decoration: underline; }
+  .school-header .unlock-all {
+    vertical-align: middle;
+    width: 200px;
+    height: 32px;
+    float: right;
+    letter-spacing: 1px;
+    text-indent: 1px;
+    line-height: 1;
+    color: #4DBFE0;
+    background: transparent;
+    border: 1px solid #4DBFE0;
+    border-radius: 3px;
+    outline: none;
+    font-size: 14px;
+    margin-top: 15px;
+    transition: .3s; }
+    .school-header .unlock-all:hover {
+      color: #fff;
+      background-color: #4DBFE0; }
+
+.school-section-link-wrapper a {
+  display: inline-block;
+  width: 33.3%;
+  padding-bottom: 8px;
+  margin-bottom: -11px;
+  height: 38px;
+  box-sizing: border-box;
+  line-height: 30px;
+  text-align: center;
+  position: relative;
+  font-size: 16px;
+  color: #848484;
+  border-bottom: 2px solid transparent;
+  transition: .3s; }
+  .school-section-link-wrapper a:hover {
+    color: #4DBFE0; }
+  .school-section-link-wrapper a.active {
+    color: #3E3A39;
+    border-bottom-color: #4DBFE0; }
+
+.school-detail-main-content {
+  padding: 30px 20px; }
+  .school-detail-main-content h4 {
+    color: #369; }
+  .school-detail-main-content .school-intro {
+    padding: 10px;
+    text-indent: 2em;
+    padding-bottom: 0.5em;
+    color: #3E3A39;
+    font-size: 14px;
+    line-height: 1.8; }
+  .school-detail-main-content .school-intro-wrapper {
+    padding: 10px; }
+    .school-detail-main-content .school-intro-wrapper p {
+      text-indent: 2em;
+      padding-bottom: 0.5em;
+      color: #3E3A39;
+      font-size: 14px;
+      line-height: 1.8; }
