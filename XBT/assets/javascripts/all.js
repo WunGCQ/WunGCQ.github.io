@@ -558,7 +558,7 @@
 	    value: function forget_password() {
 	      var me = this;
 	      var data = {};
-	      _.each(document.forms['register_form'].elements, function (elem) {
+	      _.each(document.forms['forget_password_form'].elements, function (elem) {
 	        // console.log(elem);
 	        data[elem.name] = elem.value;
 	      });

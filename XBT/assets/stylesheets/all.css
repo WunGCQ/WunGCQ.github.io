@@ -131,6 +131,8 @@ button {
 .g__header {
   display: block;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   z-index: 20;
   min-width: 1200px;
@@ -1334,7 +1336,8 @@ html {
 body {
   background: #f5f5f5;
   min-width: 1200px;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  padding-top: 55px; }
 
 .container {
   transition: .3s;

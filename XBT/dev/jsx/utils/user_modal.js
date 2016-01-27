@@ -199,7 +199,7 @@ class user_modal {
   forget_password(){
     var me = this;
     var data = {};
-    _.each(document.forms['register_form'].elements,(elem)=>{
+    _.each(document.forms['forget_password_form'].elements,(elem)=>{
       // console.log(elem);
       data[elem.name] = elem.value;
     })
