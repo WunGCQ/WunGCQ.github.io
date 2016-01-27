@@ -170,6 +170,12 @@ class User {
     };
   }
 
+  logout(){
+    $.cookie('token','',{expires:0,path:'/XBT'});
+    $.cookie('username', '游客',{ expires: 0, path:'/XBT'});
+    window.location.reload();
+  }
+
 }
 
 var user = new User();

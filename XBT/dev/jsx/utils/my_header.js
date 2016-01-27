@@ -1,8 +1,9 @@
 var user_modal =  require('./user_modal');
 var user = require('../service/user');
 var Feedback = require('../utils/feedback');
+var para = require('../common').para;
 
-class header {
+class Header {
   constructor() {
     var me = this;
     this.tmp = require('../templates/header.html');
@@ -26,8 +27,9 @@ class header {
       USER: {
         isLogin:user.isLogin,
         username:user.username,
-        avatar_url: user.avatar_url
-      }
+        avatar_url: user.avatar_url,
+      },
+      search : para('school_name') || ''
     }
     var html = this.renderer(userData); //todo 后续做USER模块替换
     $('header').get(0).outerHTML = html; //替换html
@@ -72,6 +74,10 @@ class header {
 
     });
 
+    $('.btn_logout', this.dom).click(()=>{
+      user.logout();
+    });
+
     //注册弹框
     $('.btn_register', this.dom).click(()=>{
 
@@ -111,4 +117,4 @@ class header {
 
 }
 
-module.exports = header;
+module.exports = Header;
