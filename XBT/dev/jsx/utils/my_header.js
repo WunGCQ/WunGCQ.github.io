@@ -78,6 +78,14 @@ class Header {
       user.logout();
     });
 
+    if(!user.token){
+      $('.username',this.dom).attr('href','javascript:;');
+      $('.username', this.dom).click((ev)=>{
+        $('.btn_login', me.dom).trigger('click');
+        ev.preventDefault();
+      });
+    }
+
     //注册弹框
     $('.btn_register', this.dom).click(()=>{
 

@@ -73,6 +73,7 @@ class User {
   getUserData(isUpdate){
     var me = this;
     if(!this.token){
+      this.setUserInfo();
       // alert('您尚未登录 注册 或 登录已经过期,请您登录/注册~');
     }else{
       $.ajax({
@@ -171,7 +172,7 @@ class User {
   }
 
   logout(){
-    $.cookie('token','',{expires:0,path:'/XBT'});
+    $.removeCookie('token');
     $.cookie('username', '游客',{ expires: 30, path:'/XBT'});
     window.location.reload();
   }
