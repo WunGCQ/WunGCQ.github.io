@@ -24,7 +24,7 @@ class IndexController {
 
     //initialize
     this.getData(); // => this.render() => { this.renderSlider() && this.renderAriticle() }
-
+    this.checkFirstRead();
   }
 
   checkFirstRead(){

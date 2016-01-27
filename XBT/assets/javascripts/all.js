@@ -2661,6 +2661,7 @@
 	
 	    //initialize
 	    this.getData(); // => this.render() => { this.renderSlider() && this.renderAriticle() }
+	    this.checkFirstRead();
 	  }
 	
 	  _createClass(IndexController, [{
