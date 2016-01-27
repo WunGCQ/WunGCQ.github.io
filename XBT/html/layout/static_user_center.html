@@ -7,22 +7,13 @@
     <script src="../../assets/javascripts/common.js"></script>
     <script src="../../lib/jquery.min.js"></script>
     <script type="text/javascript" src="../../lib/cookie.js"></script>
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=2873413329&debug=true"></script>
     <script src="../../lib/underscore.js"></script>
 </head>
 
 <body class="__user__user_center">
 <header class="header g__header">
-    <div class="col-md-3 logo text-center"></div>
-    <div class="col-md-6 search-area text-center">
-        <input type="text" class="form-control m-input" id="search_input"/>
-        <span for="search_input" class="col btn btn-primary cn">搜索</span>
-    </div>
-    <div class="col-md-3 h__user text-right">
-        <div class="head"></div>
-        <a class="username">我</a>
-        <a class="btn_login">登录</a>
-        <a class="btn_logout">登出</a>
-    </div>
+
 </header>
 
 
@@ -31,7 +22,7 @@
     <div class="content" id="g_content">
         <!-- left-filter -->
         <div class="m_left_wrapper">
-          <div class="user-info-card">
+          <div class="user-info-card" id="m_user_info_card">
             <div class="user-head-box">
               <div class="user-head-bg" style="background-image:url('../../img/paojie.jpg')">
               </div>
@@ -39,10 +30,18 @@
               <h2>御坂美琴</h2>
             </div>
             <div class="user-intro-box">
-              <p class="intro">
-                这里是用户的个人介绍,居中文字,不必太多,最多就三行,再多就直接隐藏掉多就直接隐藏掉多就直接隐藏掉
-              </p>
-              <em>我的视频<span>15</span></em>
+              <div class="intro">
+                <div>
+                  <em>省份:</em>
+                  <span>用户省份</span>
+                </div>
+                <div>
+                  <em>文理:</em>
+                  <span>文理科</span>
+                </div>
+                <a href="javascript:;" id="m_modify_user_info">修改资料</a>
+              </div>
+              <em>我的视频<span>0</span></em>
             </div>
           </div>
           <div class="user-collect-video-card">
@@ -109,6 +108,7 @@
 <script src="../../assets/javascripts/all.js"></script>
 <script>
   (function(){
+    var c = new com.user_center();
   })();
 </script>
 

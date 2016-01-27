@@ -12,7 +12,7 @@
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */
-.g__top-filter .m-target-wrapper .m-title span::after {
+.g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:before {
   font-family: "iconfont" !important;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -37,6 +37,7 @@
   .g__top-filter .m-target-wrapper {
     padding: 5px 0;
     border-bottom: 1px solid #dedede;
+    font-size: 14px;
     overflow: hidden; }
     .g__top-filter .m-target-wrapper .m-title {
       float: left;
@@ -82,3 +83,49 @@
         background-color: #4DBFE0;
         color: #fff;
         transition: .3s; }
+  .g__top-filter .m-res-wrapper {
+    text-align: left;
+    font-size: 0; }
+    .g__top-filter .m-res-wrapper .res-title {
+      display: inline-block;
+      position: relative;
+      vertical-align: top;
+      font-style: normal;
+      font-size: 14px;
+      text-align: center;
+      padding: 5px 10px;
+      box-sizing: border-box;
+      min-width: 50px;
+      margin: 5px; }
+    .g__top-filter .m-res-wrapper .m-tag-wrapper {
+      display: inline-block;
+      padding-top: 0;
+      margin-left: 0; }
+      .g__top-filter .m-res-wrapper .m-tag-wrapper .tag {
+        background-color: #4DBFE0;
+        color: #fff;
+        cursor: default; }
+        .g__top-filter .m-res-wrapper .m-tag-wrapper .tag span {
+          vertical-align: middle; }
+        .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i {
+          display: inline-block;
+          vertical-align: middle;
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+          margin-left: 5px;
+          margin-right: -4px;
+          cursor: pointer; }
+          .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:before {
+            display: block;
+            content: "";
+            font-size: 18px;
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+            font-weight: 500;
+            -webkit-transform-origin: center;
+                    transform-origin: center;
+            transition: .3s; }
+          .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:hover {
+            -webkit-transform: scale(1.18);
+                    transform: scale(1.18); }

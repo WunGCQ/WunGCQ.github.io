@@ -1,0 +1,50 @@
+module.exports =
+`<div class="g__filter-result-wrapper">
+  <div class="school-poster" style="background-image:url('../../img/aaa.jpeg')">
+    <span class="school-poster-tip"></span>
+  </div>
+</div>
+
+<div class="g__filter-result-wrapper">
+  <div class="school-header">
+    <div class="school-avatar" style="background-image:url('<%= school.icon_url %>')">
+    </div>
+    <div class="school-right">
+      <h3><%- school.name %></h3>
+      <div class="tags-wrapper">
+        <% _.each(school.tags, function(tag,i){ %>
+          <span class="tag"><%- tag %></span>
+        <% }) %>
+      </div>
+    </div>
+    <button class="unlock-all">
+      解锁全部资料
+    </button>
+  </div>
+</div>
+
+<div class="g__filter-result-wrapper school-section-link-wrapper">
+  <a href="/XBT/html/layout/school_colleges.html?school_id=<%= school.id %>">学院视频</a>
+  <a class="active" href="/XBT/html/layout/school_detail.html?school_id=<%= school.id %>">简介</a>
+  <a href="/XBT/html/layout/school_majors.html?school_id=<%= school.id %>">录取</a>
+</div>
+  <!-- 学校实际内容 -->
+<div class="g__filter-result-wrapper school-detail-main-content">
+
+  <h4>直属机构</h4>
+  <p class="school-intro"><%- school.affiliated_to %></p>
+  <h4>学校类型</h4>
+  <p class="school-intro"><%- school.category %></p>
+  <h4>地址</h4>
+  <p class="school-intro"><%- school.address %></p>
+  <h4>电话号码</h4>
+  <p class="school-intro"><%- school.phone %></p>
+  <h4>排名</h4>
+  <p class="school-intro"><%- school.rank %></p>
+  <h4>学校简介</h4>
+  <div class="school-intro-wrapper">
+    <%= school.introduction %>
+  </div>
+</div>
+  <!-- 学校实际内容 -->
+`;

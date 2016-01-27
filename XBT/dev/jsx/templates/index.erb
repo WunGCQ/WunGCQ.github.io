@@ -1,0 +1,38 @@
+module.exports =
+{
+slider:
+`
+<div class="m-index-slider" id="m_index_slider">
+  <% console.log(_.size(slider_videos)) %>
+  <div class="slider-box" style="width:<%= _.size(slider_videos) * w %>px">
+    <% _.each(slider_videos, function(v){ %>
+      <a class="m-card" href="/XBT/html/layout/video.html?school_id=null&v_id=<%= v.id %>&title=<%= v.title %>&poster=<%= v.poster_url %>" style="width:<%= w %>px;background-image:url(<%- v.poster_url %>)" title="<%-v.title%>"></a>
+    <% }) %>
+  </div>
+  <div class="m-slider-nav" id="m_slider_nav">
+    <% _.each(slider_videos, function(videos, index){ %> <span class="m-slider-nav-item"></span><% }) %>
+  </div>
+</div>
+`,
+articles:
+`
+<div class="m-index-articles">
+  <div class="section-name-wrapper">
+    <h3><%= section.name %></h3>
+    <a href="">查看更多</a>
+  </div>
+  <div class="m-section-articles">
+    <% _.each(section.articles, function(v){ %>
+        <div class="article-view" title="<%=v.title%>">
+           <a class="m-poster"
+           style="background-image:url('<%=v.poster_url%>')"
+              href="/XBT/html/layout/video.html?school_id=null&v_id=<%= v.id %>&title=<%= v.title %>&poster=<%= v.poster_url %>"
+              target="_blank""
+           ><!--<%- v.title%>--></a>
+           <a class="m-title" href="/XBT/html/layout/video.html?school_id=null&v_id=<%= v.id %>&title=<%= v.title %>&poster=<%= v.poster_url %>" target="_blank"><%= v.title %></a>
+        </div>
+    <% }) %>
+  </div>
+</div>
+`
+};

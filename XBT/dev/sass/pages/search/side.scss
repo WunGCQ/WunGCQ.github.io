@@ -1,0 +1,136 @@
+@import "../../settings";
+
+$side-item-height: 122px;
+$side-item-height-short: 80px;
+.title {
+  height: 44px;
+  line-height: 44px;
+  font-size: 20px;
+}
+
+.col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.side-selector {
+  box-sizing: border-box;
+  margin: 20px auto 0 auto;
+
+  padding: 10px 0;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  overflow: auto;
+  text-align: center;
+
+  .item {
+    float: left;
+    width: 50%;
+    label {
+      display: block;
+      width: 100%;
+      height: $side-item-height;
+      padding-top: 40px;
+      border: 2px solid transparent;
+      background-color: #fff;
+      em {
+        font-style: normal;
+        color: $color-main-b;
+      }
+      h4 {
+        &:after {
+          display: inline-block;
+          visibility: hidden;
+          vertical-align: top;
+          content: "";
+          position: relative;
+          width: 5px;
+          height: 5px;
+          border-radius: 5px;
+          background-color: $color-main-b;
+          margin-top: -5px 0 0 8px;
+        }
+      }
+    }
+    input[type="radio"] {
+      display: none;
+      &:checked {
+        + label {
+          border: 2px solid $color-main-b;
+          h4 {
+            &:after {
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  .province {
+    select {
+      width: 100%;
+    }
+  }
+  .btn-wrapper {
+    padding-top: 10px;
+  }
+}
+
+.search-type-selector,
+.target-search {
+  .item {
+    display: block;
+    width: 100%;
+    height: $side-item-height-short;
+    padding-top: $side-item-height-short*0.5 - 12px;
+    border: 2px solid transparent;
+    background-color: #fff;
+
+    em {
+      display: inline-block;
+      vertical-align: middle;
+      font-style: normal;
+      font-size: 16px;
+      &:after {
+        display: inline-block;
+        visibility: hidden;
+        vertical-align: top;
+        content: "";
+        position: relative;
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
+        background-color: $color-main-b;
+        margin-top: -5px 0 0 8px;
+      }
+    }
+    &:hover {
+
+      border: 2px solid $color-main-b;
+      em {
+
+        &:after {
+          visibility: visible;
+        }
+      }
+
+    }
+  }
+}
+
+.search-type-selector {
+  .item {
+    &:hover{
+    }
+  }
+
+  &>.row {
+    &:nth-child(2) {
+      .item {
+        box-shadow: none;
+      }
+    }
+  }
+}

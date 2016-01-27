@@ -1,0 +1,33 @@
+module.exports =
+`<div class="g__mask m-feedback-modal-mask show" id="g__feedback_modal_mask">
+  <div class="g__modal-window m__feedback_modal_window" id="g_feedback_modal_window">
+    <div class="m-modal-title">
+      <h5>用户反馈</h5>
+    </div>
+    <div class="m-modal-content">
+      <div class="m-content-wrapper" >
+        <textarea name="name" class="form-control"
+        id="g_feedback_textarea" placeholder="请在此处写下您宝贵的反馈意见~~"><%- text %></textarea>
+        <div class="m-warning-wrapper m_warning_wrapper" id="m_message_warning">
+          <span class="warning-text hide"></span>
+        </div>
+        <div class="m-feedback-image-upload">
+          <form class="m-user-feedback-form" id="m_user_feedback_form">
+            <input type="hidden" name="token"/>
+            <label class="btn btn-primary" for="upload_feedback">上传图片(选填)</label>
+            <input name="file" class="hide" id="upload_feedback" type="file" accept="image/*"/>
+            <input type="hidden" name="key" value="/feedback/web_feedback_<%- Date.now() %>">
+            <input type="hidden" name="accept" />
+          </form>
+          <img class="feedback-image hide" id="m_feedback_image" />
+
+        </div>
+
+
+
+        <button type="button" name="button" class="btn btn-primary btn-submit" id="g_feedback_button">提交反馈</button>
+
+      </div>
+    </div>
+  </div>
+</div>`

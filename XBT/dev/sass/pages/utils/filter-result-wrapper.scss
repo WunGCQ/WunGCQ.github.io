@@ -1,0 +1,25 @@
+@import "../mixin/css3";
+@import "../../settings";
+@import "../../extends";
+
+.g__filter-result-wrapper{
+  display: block;
+  position: relative;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  float: right;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  // background-color: rgba(0,0,0,0.02);
+  box-shadow: 0 0 3px #ccc;
+  transition: .3s;
+  text-align: left;
+  font-size: 0;
+
+  @import "m__filter-res-school";
+  @import "m__major";
+
+}

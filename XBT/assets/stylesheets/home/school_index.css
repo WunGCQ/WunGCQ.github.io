@@ -11,7 +11,16 @@
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */
-.school-poster, .school-header, .school-section-link-wrapper, .school-detail-main-content {
+.video-info .title-row .should-pay:before, .video-info .title-row .free-play:before, .m-comment .right-content .m-vote-wrapper .upvote-false:before,
+.m-comment .right-content .m-vote-wrapper .downvote-false:before, .m-comment .right-content .m-vote-wrapper .upvote-true:before,
+.m-comment .right-content .m-vote-wrapper .downvote-true:before {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
+.school-poster, .school-video, .school-header, .school-section-link-wrapper, .school-detail-main-content, .m-comment {
   -webkit-animation: toggleIn ease-in .3s forwards;
           animation: toggleIn ease-in .3s forwards; }
 
@@ -44,6 +53,73 @@
             user-select: none; }
   .school-poster:hover .school-poster-tip {
     opacity: 1; }
+
+.school-video {
+  position: relative;
+  width: 100%;
+  height: 640px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+  .school-video h4 {
+    box-sizing: border-box;
+    line-height: 40px;
+    padding-left: 10px;
+    margin: 0; }
+
+.comment-input-wrapper {
+  padding: 20px 30px 10px 20px; }
+  .comment-input-wrapper textarea {
+    resize: none;
+    height: 120px; }
+  .comment-input-wrapper .btn {
+    margin-top: 10px;
+    float: right; }
+
+.video-info .title-row {
+  display: block;
+  height: 30px;
+  line-height: 30px; }
+  .video-info .title-row a {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px; }
+  .video-info .title-row .should-pay {
+    display: inline-block;
+    vertical-align: middle;
+    color: #d35d27;
+    margin-left: 15px; }
+    .video-info .title-row .should-pay:before {
+      content: '\e662';
+      color: inherit;
+      font-size: 18px;
+      padding-right: 4px; }
+  .video-info .title-row .free-play {
+    display: inline-block;
+    vertical-align: middle;
+    color: #4AB579;
+    margin-left: 15px; }
+    .video-info .title-row .free-play:before {
+      content: '\e663';
+      color: inherit;
+      font-size: 18px;
+      padding-right: 4px; }
+
+.video-info .video-other-info {
+  height: 30px;
+  line-height: 30px;
+  color: #848484;
+  font-size: 13px; }
+
+.video-info .video-intro {
+  padding-top: 3px;
+  color: #848484;
+  font-size: 13px;
+  line-height: 1.5;
+  height: auto;
+  max-height: 40px;
+  word-break: break-all;
+  overflow: hidden; }
 
 .school-header {
   height: 80px;
@@ -132,3 +208,112 @@
       color: #3E3A39;
       font-size: 14px;
       line-height: 1.8; }
+
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.video-info .title-row .should-pay:before, .video-info .title-row .free-play:before, .m-comment .right-content .m-vote-wrapper .upvote-false:before,
+.m-comment .right-content .m-vote-wrapper .downvote-false:before, .m-comment .right-content .m-vote-wrapper .upvote-true:before,
+.m-comment .right-content .m-vote-wrapper .downvote-true:before {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
+.school-poster, .school-video, .school-header, .school-section-link-wrapper, .school-detail-main-content, .m-comment {
+  -webkit-animation: toggleIn ease-in .3s forwards;
+          animation: toggleIn ease-in .3s forwards; }
+
+.m-comment {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  text-align: center; }
+  .m-comment::after {
+    display: block;
+    content: "";
+    position: relative;
+    padding-top: 20px;
+    width: 650px;
+    height: 0;
+    margin: auto;
+    border-bottom: 1px solid #dedede; }
+  .m-comment:last-child::after {
+    display: none; }
+  .m-comment .m-user {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    width: 100px;
+    height: 80px; }
+    .m-comment .m-user > span {
+      display: block;
+      padding: 5px 0;
+      font-size: 13px; }
+    .m-comment .m-user .user-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50px;
+      margin: 10px auto;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat; }
+  .m-comment .right-content {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 13px;
+    width: 500px;
+    height: auto;
+    text-align: left; }
+    .m-comment .right-content .username {
+      color: #369; }
+    .m-comment .right-content .m-content {
+      height: auto;
+      margin-top: 10px;
+      font-size: 14px; }
+    .m-comment .right-content .m-vote-wrapper {
+      float: right;
+      height: 40px; }
+      .m-comment .right-content .m-vote-wrapper .vote {
+        display: inline-block;
+        padding-right: 5px;
+        margin: 5px 10px;
+        min-width: 50px;
+        font-size: 16px;
+        color: #848484;
+        font-style: normal; }
+        .m-comment .right-content .m-vote-wrapper .vote:before {
+          padding-right: 5px; }
+      .m-comment .right-content .m-vote-wrapper .upvote-false:before,
+      .m-comment .right-content .m-vote-wrapper .downvote-false:before {
+        display: inline-block;
+        content: '\e665';
+        font-size: 18px;
+        color: #848484; }
+        .m-comment .right-content .m-vote-wrapper .upvote-false:before:hover,
+        .m-comment .right-content .m-vote-wrapper .downvote-false:before:hover {
+          color: #369; }
+      .m-comment .right-content .m-vote-wrapper .upvote-true:before,
+      .m-comment .right-content .m-vote-wrapper .downvote-true:before {
+        display: inline-block;
+        content: '\e664';
+        font-size: 18px;
+        color: #369; }
+      .m-comment .right-content .m-vote-wrapper .downvote-true:before, .m-comment .right-content .m-vote-wrapper .downvote-false:before {
+        -webkit-transform: rotate(180deg);
+                transform: rotate(180deg); }

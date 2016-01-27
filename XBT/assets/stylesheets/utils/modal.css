@@ -144,19 +144,19 @@
             line-height: 20px; }
           .g__mask .g__modal-window .m-modal-content .m-right .form-area.register .submit-btn {
             margin-top: 15px; }
-        .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login {
+        .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login {
           width: 260px;
           height: 50px;
           margin: auto;
           line-height: 40px;
           -webkit-animation: toggleIn ease .7s forwards;
                   animation: toggleIn ease .7s forwards; }
-          .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login em {
+          .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login em {
             font-style: normal;
             padding-right: 20px;
             font-size: 16px;
             color: #888; }
-          .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a {
+          .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a {
             display: inline-block;
             vertical-align: middle;
             width: 32px;
@@ -170,11 +170,11 @@
             border-radius: 3px;
             margin-left: 8px;
             transition: .3s; }
-            .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a.qq:hover {
+            .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a.qq:hover {
               background-color: #4c96db; }
-            .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a.wechat:hover {
+            .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a.wechat:hover {
               background-color: #41990c; }
-            .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a.weibo:hover {
+            .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a.weibo:hover {
               background-color: #fa9112; }
     .g__mask .g__modal-window.login .m-modal-title .m-title-item.tag-login {
       border-top-color: #4DBFE0;

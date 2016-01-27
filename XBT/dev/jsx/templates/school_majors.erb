@@ -1,0 +1,63 @@
+module.exports =
+[
+`<div class="g__filter-result-wrapper">
+  <div class="school-poster" style="background-image:url('../../img/aaa.jpeg')">
+    <span class="school-poster-tip"></span>
+  </div>
+</div>
+
+<div class="g__filter-result-wrapper">
+  <div class="school-header">
+    <div class="school-avatar" style="background-image:url('<%= school.icon_url %>')">
+    </div>
+    <div class="school-right">
+      <h3><%- school.name %></h3>
+      <div class="tags-wrapper">
+        <% _.each(school.tags, function(tag,i){ %>
+          <span class="tag"><%- tag %></span>
+        <% }) %>
+      </div>
+    </div>
+    <button class="unlock-all">
+      解锁全部资料
+    </button>
+  </div>
+</div>
+
+<div class="g__filter-result-wrapper school-section-link-wrapper">
+  <a href="/XBT/html/layout/school_colleges.html?school_id=<%= school.id %>">视频</a>
+  <a href="/XBT/html/layout/school_detail.html?school_id=<%= school.id %>">简介</a>
+  <a class="active" href="/XBT/html/layout/school_majors.html?school_id=<%= school.id %>">录取</a>
+</div>
+
+<div class="g__filter-result-wrapper school-detail-main-content __lines__table" id="m_major_list_wrapper">
+<!-- 学校实际内容 -->
+<!-- 学校实际内容 -->
+</div>
+`,
+
+`
+<!-- 学院列表 -->
+<% console.log() %>
+  <table>
+    <thead>
+      <tr>
+        <th>专业</th>
+        <% _.each(years, function(year){ %>
+          <th><%- year %></th>
+        <% }) %>
+      </tr>
+    </thead>
+    <tbody>
+      <% _.each(majors, function(major){ %>
+        <tr>
+          <td><span><%- major.name %></span></td>
+          <% _.each(major.scores.score, function(s){ %>
+            <td><%= s %></td>
+          <% }) %>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <!-- 学院列表 -->
+`];

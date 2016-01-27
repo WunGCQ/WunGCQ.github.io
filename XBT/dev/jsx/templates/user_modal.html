@@ -1,0 +1,87 @@
+module.exports =
+`<div class="g__mask" id="g__modal_window_mask">
+  <div class="g__modal-window" id="g__modal_window">
+    <div class="m-modal-title">
+      <div class="m-title-item tag-login"><span>登录</span></div>
+      <div class="m-title-item tag-register"><span>注册</span></div>
+      <div class="m-title-item tag-forget_password"><span>找回密码</span></div>
+    </div>
+    <div class="m-modal-content">
+      <div class="m-left">
+        <div class="app-download">
+          <h5>iOS客户端下载</h5>
+          <img class="m-qr-code" src="https://img.alicdn.com/tfscom/TB1yrcfFFXXXXa9aVXXXXXXXXXX.png" alt="">
+        </div>
+      </div>
+
+      <div class="m-right">
+        <!-- 登录表单 -->
+        <form class="form-area login" name="login_form">
+          <div class="input-row">
+            <input type="text" class="form-control" name="phone" placeholder="手机号"/>
+          </div>
+          <div class="input-row">
+            <input type="password" class="form-control" name="password" placeholder="密码"/>
+          </div>
+          <div class="input-row">
+
+          </div>
+          <div class="err-row" id="login_err">
+            <span></span>
+          </div>
+          <div class="submit-btn" type="button"></div>
+        </form>
+        <!-- 登录表单 -->
+
+        <!-- 注册表单 -->
+        <form class="form-area register" name="register_form">
+          <div class="input-row">
+            <input type="text" class="form-control" name="phone" placeholder="手机号"/>
+          </div>
+          <div class="input-row">
+            <input type="text" class="form-control verify-code" name="verify_code" placeholder="验证码"/>
+            <span for="search_input" class="col btn btn-primary cn verify_code_btn">发送验证码</span>
+          </div>
+          <div class="input-row">
+            <input type="password" class="form-control" name="password" placeholder="密码"/>
+          </div>
+          <div class="input-row">
+            <input type="text" class="form-control" name="username" placeholder="昵称"/>
+          </div>
+          <div class="err-row" id="register_err">
+            <span></span>
+          </div>
+          <div class="submit-btn" type="button"></div>
+        </form>
+        <!-- 注册表单 -->
+
+        <!-- 找密表单 -->
+        <form class="form-area forget_password" name="forget_password_form">
+          <div class="input-row">
+            <input type="text" class="form-control" name="phone" placeholder="手机号"/>
+          </div>
+          <div class="input-row">
+            <input type="text" class="form-control verify-code" name="verify_code" placeholder="验证码"/>
+            <span for="search_input" class="col btn btn-primary cn verify_code_btn">发送验证码</span>
+          </div>
+          <div class="input-row">
+            <input type="password" class="form-control" name="password" placeholder="新的密码"/>
+          </div>
+          <div class="err-row" id="forget_password_err">
+            <span></span>
+          </div>
+          <div class="submit-btn" type="button"></div>
+        </form>
+        <!-- 找密表单 -->
+        <div class="other-platform-login">
+          <em>
+            第三方登录
+          </em>
+          <a class="qq" href="">&#xe658;</a>
+          <a class="wechat"  href="">&#xe63c;</a>
+          <a class="weibo" id="weibo_connect_btn" href="javascript:;">&#xe63d;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`

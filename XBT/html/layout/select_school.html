@@ -7,22 +7,13 @@
     <script src="../../assets/javascripts/common.js"></script>
     <script src="../../lib/jquery.min.js"></script>
     <script type="text/javascript" src="../../lib/cookie.js"></script>
+    <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=2873413329&debug=true"></script>
     <script src="../../lib/underscore.js"></script>
 </head>
 
 <body>
 <header class="header g__header">
-    <div class="col-md-3 logo text-center"></div>
-    <div class="col-md-6 search-area text-center">
-        <input type="text" class="form-control m-input" id="search_input"/>
-        <span for="search_input" class="col btn btn-primary cn">搜索</span>
-    </div>
-    <div class="col-md-3 h__user text-right">
-        <div class="head"></div>
-        <a class="username">我</a>
-        <a class="btn_login">登录</a>
-        <a class="btn_logout">登出</a>
-    </div>
+
 </header>
 
 
@@ -40,30 +31,87 @@
 
         <!-- top-filter -->
 
-        <div class="g__top-filter">
+        <div class="g__top-filter" id="g_top_filter">
             <div class="m-target-wrapper">
-                <div class="m-title active"><span>地区</span></div>
-                <div class="m-title"><span>类别</span></div>
-                <div class="m-title"><span>标签</span></div>
+                <div class="m-title active" id="m_tf_province"><span>地区</span></div>
+                <div class="m-title" id="m_tf_category"><span>类别</span></div>
+                <div class="m-title" id="m_tf_tags"><span>标签</span></div>
             </div>
-            <div class="m-tag-wrapper">
-                <em class="tag"><span>标签一</span><i></i></em>
-                <em class="tag"><span>标签2</span><i></i></em>
-                <em class="tag"><span>长一些的标签三</span><i></i></em>
-                <em class="tag"><span>标签2</span><i></i></em>
-                <em class="tag"><span>长一些的标签三</span><i></i></em>
-                <em class="tag"><span>长一些的标签三</span><i></i></em>
-                <em class="tag"><span>长一些的标签三</span><i></i></em>
-                <em class="tag"><span>长一些的标签三</span><i></i></em>
+            <div class="m-tag-wrapper" id="province_tag_wrapper">
+              <em class="tag"><span>北京</span><i></i></em>
+              <em class="tag"><span>天津</span><i></i></em>
+              <em class="tag"><span>重庆</span><i></i></em>
+              <em class="tag"><span>上海</span><i></i></em>
+              <em class="tag"><span>河北</span><i></i></em>
+              <em class="tag"><span>山西</span><i></i></em>
+              <em class="tag"><span>辽宁</span><i></i></em>
+              <em class="tag"><span>吉林</span><i></i></em>
+              <em class="tag"><span>黑龙江</span><i></i></em>
+              <em class="tag"><span>江苏</span><i></i></em>
+              <em class="tag"><span>浙江</span><i></i></em>
+              <em class="tag"><span>安徽</span><i></i></em>
+              <em class="tag"><span>福建</span><i></i></em>
+              <em class="tag"><span>江西</span><i></i></em>
+              <em class="tag"><span>山东</span><i></i></em>
+              <em class="tag"><span>河南</span><i></i></em>
+              <em class="tag"><span>湖北</span><i></i></em>
+              <em class="tag"><span>湖南</span><i></i></em>
+              <em class="tag"><span>广东</span><i></i></em>
+              <em class="tag"><span>海南</span><i></i></em>
+              <em class="tag"><span>四川</span><i></i></em>
+              <em class="tag"><span>贵州</span><i></i></em>
+              <em class="tag"><span>云南</span><i></i></em>
+              <em class="tag"><span>陕西</span><i></i></em>
+              <em class="tag"><span>甘肃</span><i></i></em>
+              <em class="tag"><span>青海</span><i></i></em>
+              <em class="tag"><span>台湾</span><i></i></em>
+              <em class="tag"><span>内蒙古</span><i></i></em>
+              <em class="tag"><span>广西</span><i></i></em>
+              <em class="tag"><span>西藏</span><i></i></em>
+              <em class="tag"><span>宁夏</span><i></i></em>
+              <em class="tag"><span>新疆</span><i></i></em>
+              <em class="tag"><span>香港</span><i></i></em>
+              <em class="tag"><span>澳门</span><i></i></em>
+            </div>
+            <div class="m-tag-wrapper hide" id="category_tag_wrapper">
+
+              <em class="tag"><span>综合类</span><i></i></em>
+              <em class="tag"><span>理工类</span><i></i></em>
+              <em class="tag"><span>财经类</span><i></i></em>
+              <em class="tag"><span>军事类</span><i></i></em>
+              <em class="tag"><span>林业类</span><i></i></em>
+              <em class="tag"><span>民族类</span><i></i></em>
+              <em class="tag"><span>农林类</span><i></i></em>
+              <em class="tag"><span>商学院</span><i></i></em>
+              <em class="tag"><span>师范类</span><i></i></em>
+              <em class="tag"><span>医药类</span><i></i></em>
+              <em class="tag"><span>艺术类</span><i></i></em>
+              <em class="tag"><span>语文类</span><i></i></em>
+              <em class="tag"><span>语言类</span><i></i></em>
+              <em class="tag"><span>政法类</span><i></i></em>
+            </div>
+            <div class="m-tag-wrapper hide" id="tags_tag_wrapper">
+              <em class="tag"><span>211</span><i></i></em>
+              <em class="tag"><span>985</span><i></i></em>
+              <em class="tag"><span>研究生院</span><i></i></em>
+              <em class="tag"><span>国防生</span><i></i></em>
+              <em class="tag"><span>卓越计划</span><i></i></em>
             </div>
         </div>
 
+        <div class="g__top-filter" id="g_top_filter_res">
+          <div class="m-res-wrapper">
+            <span class="res-title">已选择:</span>
+            <div class="m-tag-wrapper" id="top_tag_res">
+
+            </div>
+          </div>
+        </div>
         <!-- top-filter -->
 
         <div class="g__filter-result-wrapper" id="m_schools_wrapper">
 
         </div>
-
 
     </div>
 

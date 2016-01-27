@@ -1,0 +1,32 @@
+.btn{
+    border-radius: 3px;
+    padding: 11px 12px;
+    @extend %fs-s;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    &.f{
+      float: left;
+    }
+    &.fs-n{
+      padding: 10px 12px;
+      @extend %fs-n;
+    }
+    &.i-b{
+      display: inline-block;
+      vertical-align: top;
+    }
+    &.default{
+      color: white;
+      background-color: $color-main;
+      &:hover{
+        background-color: $color-main-hover;
+      }
+    }
+    &.disabled{
+      color: white;
+      background-color: $color-secondary;
+      cursor: no-drop;
+    }
+
+}

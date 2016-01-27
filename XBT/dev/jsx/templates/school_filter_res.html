@@ -1,0 +1,19 @@
+module.exports =
+`<% _.each(data, function(uni,i){%>
+<a href="/XBT/html/layout/school_detail.html?school_id=<%= uni.id %>" class="m__filter-res-school" id="uni_<%- uni.id %>">
+    <div class="m__img" style="background-image: url('<%= uni.icon_url %>')"></div>
+    <div class="m__right-content">
+        <h4><%= uni.name %></h4>
+
+        <div class="m__school-tags">
+          <% _.each(uni.tags,function(tag){ %>
+            <em><%= tag %></em>
+          <% }) %>
+        </div>
+        <div class="m__grade">
+            <span>预测分数</span>
+            <em><%- uni.score %></em>
+        </div>
+    </div>
+</a>
+<% })%>`;

@@ -11,6 +11,13 @@
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */
+.m_left_wrapper .user-info-card .user-intro-box .intro a:before {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
 .m_left_wrapper .user-info-card {
   -webkit-animation: toggleIn ease-in .3s forwards;
           animation: toggleIn ease-in .3s forwards; }
@@ -36,6 +43,21 @@ footer {
   width: 960px;
   margin: auto;
   background-color: #fff; }
+
+.g__modal-window.m_user_info_modal .m-title-item {
+  width: 100%; }
+
+.g__modal-window.m_user_info_modal .m-user-head {
+  display: block;
+  position: relative;
+  margin: auto;
+  margin-top: 20px;
+  width: 100px;
+  max-height: 120px;
+  height: auto; }
+
+.g__modal-window.m_user_info_modal .m-user-avatar-form {
+  margin-top: 20px; }
 
 .m_left_wrapper {
   display: block;
@@ -104,26 +126,37 @@ footer {
       position: relative;
       width: inherit;
       height: 165px; }
-      .m_left_wrapper .user-info-card .user-intro-box p.intro {
+      .m_left_wrapper .user-info-card .user-intro-box .intro {
         padding-top: 30px;
         word-break: break-all;
-        line-height: 1.5;
+        line-height: 1.6;
         font-size: 14px;
-        height: 90px;
+        height: 100px;
         overflow: hidden;
         width: 180px;
         margin: auto;
-        color: #848484; }
-      .m_left_wrapper .user-info-card .user-intro-box em {
+        color: #848484;
+        text-align: center; }
+        .m_left_wrapper .user-info-card .user-intro-box .intro em {
+          display: inline;
+          font-style: normal;
+          color: #3E3A39; }
+        .m_left_wrapper .user-info-card .user-intro-box .intro a {
+          display: block;
+          padding: 5px; }
+          .m_left_wrapper .user-info-card .user-intro-box .intro a:before {
+            content: '\e652';
+            padding-right: 4px; }
+      .m_left_wrapper .user-info-card .user-intro-box > em {
         display: block;
         font-style: normal;
         font-size: 16px;
-        margin-top: 20px;
+        margin-top: 10px;
         -webkit-user-select: none;
            -moz-user-select: none;
             -ms-user-select: none;
                 user-select: none; }
-        .m_left_wrapper .user-info-card .user-intro-box em span {
+        .m_left_wrapper .user-info-card .user-intro-box > em span {
           font-weight: bold;
           padding-left: 10px; }
   .m_left_wrapper .user-collect-video-card {

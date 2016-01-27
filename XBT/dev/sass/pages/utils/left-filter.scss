@@ -1,0 +1,164 @@
+@import "../mixin/css3";
+@import "../../settings";
+
+.g__left-filter {
+  display: block;
+  position: relative;
+  float: left;
+  margin-left: - $left-filter-width - 12;
+  width: 240px;
+  box-sizing: border-box;
+  padding: 20px;
+  padding-top: 30px;
+  background-color: #fff;
+  // background-color: rgba(0,0,0,0.02);
+  box-shadow: 0 0 3px #ccc;
+  transition: .3s;
+  user-select: none;
+  &:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+  }
+
+  .toggle-filter-btn {
+    display: block;
+    position: absolute;
+    vertical-align: middle;
+    left: 20px;
+    top: 12px;
+    cursor: pointer;
+    color: $color-main-b;
+
+    &:before {
+      display: inline-block;
+      vertical-align: middle;
+      @extend %iconfont;
+      font-size: 18px;
+      content: $icon-pullleft;
+      padding-right: 3px;
+      cursor: pointer;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .m-wrapper {
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 1px solid #dedede;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  //start wen-li
+  .wen-li {
+    width: 200px;
+    border-radius: 3px;
+    overflow: hidden;
+    height: 32px;
+    line-height: 32px;
+    box-shadow: 0 0 3px 0 $color-main-b;
+
+    transition: .4s;
+    &:hover {
+      box-shadow: 0 0 0 1px $color-main-b;
+    }
+
+    .item {
+      float: left;
+      width: 50%;
+      height: inherit;
+      label {
+        display: block;
+        width: 100%;
+        height: inherit;
+        cursor: pointer;
+        background-color: #fff;
+        transition: .6s;
+        em {
+          font-style: normal;
+          color: $color-main-b;
+        }
+      }
+      input[type="radio"] {
+        display: none;
+        &:checked {
+          + label {
+            background-color: $color-main-b;
+            em {
+              color: #fff;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  //end wen-li
+
+  //province
+  .wrapper-1 .province-wrapper {
+    width: 100%;
+    padding-top: 20px;
+    height: 50px;
+    select {
+      width: 100%;
+    }
+  }
+
+  //grade
+  .wrapper-1 .grade-wrapper {
+    width: 100%;
+    padding-top: 20px;
+  }
+
+  //wrapper-2
+  .wrapper-2,
+  .wrapper-3 {
+    padding-top: 15px;
+    h5 {
+      text-align: left;
+      font-size: 14px;
+      color: $color-font-main;
+    }
+    .link-box {
+      padding: 5px 0;
+
+      a {
+        display: block;
+        width: 100%;
+        height: 35px;
+        line-height: 35px;
+        box-sizing: border-box;
+        color: $color-secondary;
+        outline: none;
+        border-radius: 1px;
+        text-align: left;
+        padding-left: 40px;
+        border: 1px solid $color-secondary;
+        background: transparent;
+        transition: all ease-out .3s;
+        text-decoration: none;
+        &:hover,
+        &.active {
+          color: #fff;
+          background-color: $color-main-b;
+          border-color: $color-main-b;
+        }
+
+        i {
+          @extend %iconfont;
+          vertical-align: middle;
+          font-size: 16px;
+          padding-right: 8px;
+        }
+        span {
+          vertical-align: middle;
+        }
+
+      }
+    }
+  }
+
+}

@@ -1,0 +1,105 @@
+@import "../mixin/css3";
+@import "../../settings";
+@import "../../extends";
+
+.video-list-item{
+  display: block;
+  position: relative;
+  margin: auto;
+  width: 400px;
+  height: auto;
+  margin: 15px;
+  float: left;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+
+  box-shadow: 0 0 3px #ccc;
+  transition: .3s;
+  text-align: left;
+  font-size: 14px;
+  transition: .3s;
+  @extend %toggleIn;
+
+
+  &:hover{
+    box-shadow: 0 0 7px 1px #ccc;
+  }
+
+  .poster{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-repeat: no-repeat;
+  }
+
+  .right-video-info{
+    display: inline-block;
+    padding-left: 10px;
+    vertical-align: top;
+    .title-row{
+      display: block;
+      height: 30px;
+      line-height: 30px;
+
+      a{
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 16px;
+      }
+
+      .should-pay{
+        display: inline-block;
+        vertical-align: middle;
+        color: #d35d27;
+        margin-left: 15px;
+        &:before{
+          @extend %iconfont;
+          content: '\e662';
+          color: inherit;
+          font-size: 18px;
+          padding-right: 4px;
+        }
+      }
+      .free-play{
+        display: inline-block;
+        vertical-align: middle;
+        color: $color-main-g;
+        margin-left: 15px;
+        &:before{
+          @extend %iconfont;
+          content: '\e663';
+          color: inherit;
+          font-size: 18px;
+          padding-right: 4px;
+        }
+      }
+    }
+
+    .video-other-info{
+      height: 30px;
+      line-height: 30px;
+      color: $color-secondary;
+      font-size: 13px;
+    }
+
+    .video-intro{
+      padding-top: 3px;
+      color: $color-secondary;
+      font-size: 13px;
+      line-height: 1.5;
+      height: auto;
+      max-height: 40px;
+      word-break: break-all;
+      overflow: hidden;
+    }
+  }
+
+
+
+
+}

@@ -530,7 +530,7 @@ textarea:focus {
     color: white;
     background-color: #ed7246; }
     .btn.default:hover {
-      background-color: #ee7144; }
+      background-color: #0275d8; }
   .btn.disabled {
     color: white;
     background-color: #848484;
@@ -564,7 +564,7 @@ textarea:focus {
       padding: 0 10px;
       color: #ed7246; }
       .g-header > .header-right-area a.link:hover {
-        color: #ee7144;
+        color: #0275d8;
         text-decoration: underline; }
     .g-header > .header-right-area .user-head {
       display: inline-block;

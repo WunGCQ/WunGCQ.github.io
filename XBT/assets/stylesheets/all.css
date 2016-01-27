@@ -56,7 +56,8 @@ button {
   to {
     -webkit-transform: scale(0);
             transform: scale(0);
-    opacity: 0; } }
+    opacity: 0;
+    display: none; } }
 
 @keyframes toggleOut {
   from {
@@ -66,7 +67,8 @@ button {
   to {
     -webkit-transform: scale(0);
             transform: scale(0);
-    opacity: 0; } }
+    opacity: 0;
+    display: none; } }
 
 @-webkit-keyframes fadeOut {
   from {
@@ -93,7 +95,45 @@ button {
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */
+@keyframes fadeIn {
+  from {
+    background-color: transparent; }
+  to {
+    background-color: rgba(0, 0, 0, 0.35); } }
+
+@keyframes toggleIn {
+  from {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+    opacity: 0; }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; } }
+
+@keyframes toggleOut {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; }
+  to {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 0;
+    display: none; } }
+
+@keyframes fadeOut {
+  from {
+    background-color: rgba(0, 0, 0, 0.35); }
+  to {
+    background-color: transparent; } }
+
 .g__header {
+  display: block;
+  position: fixed;
+  width: 100%;
+  z-index: 20;
+  min-width: 1200px;
   height: 55px;
   line-height: 55px;
   background-color: #4DBFE0;
@@ -101,23 +141,118 @@ button {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  box-shadow: 0 1px 5px 1px #ddd; }
-  .g__header .logo {
-    height: 55px;
-    background-image: url("../../img/logo.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center; }
+  box-shadow: 0 1px 5px 1px #ddd;
+  text-align: center; }
+  .g__header .header_left {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    width: 450px; }
+    .g__header .header_left .logo {
+      float: left;
+      width: 80px;
+      height: 55px;
+      background-image: url("../../img/logo.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center; }
+    .g__header .header_left .header-nav {
+      float: left;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      line-height: 1;
+      height: 55px; }
+      .g__header .header_left .header-nav .nav-filter {
+        margin: 0;
+        padding: 0;
+        height: inherit;
+        line-height: 55px;
+        padding: 0 25px;
+        display: inline-block;
+        cursor: pointer;
+        color: #fff;
+        font-size: 16px; }
+        .g__header .header_left .header-nav .nav-filter:hover {
+          background-color: #45acca;
+          transition: all ease .2s; }
   .g__header .search-area {
-    height: inherit; }
-    .g__header .search-area .m-input {
-      display: inline-block;
-      vertical-align: middle;
-      width: 300px; }
-    .g__header .search-area .btn {
-      vertical-align: middle; }
+    display: inline-block;
+    vertical-align: top;
+    height: inherit;
+    width: 400px;
+    text-align: right;
+    font-size: 0; }
+    .g__header .search-area .input-content-wrapper {
+      float: right;
+      width: 320px;
+      height: 33px; }
+      .g__header .search-area .input-content-wrapper .m-input {
+        display: inline-block;
+        vertical-align: middle;
+        box-sizing: border-box;
+        width: 240px;
+        height: inherit;
+        border: none;
+        border-radius: 2px 0 0 2px;
+        padding-right: 40px;
+        outline: none;
+        font-size: 14px;
+        line-height: 1;
+        padding-left: 15px;
+        color: #5c3b00;
+        transition: all ease .3s; }
+        .g__header .search-area .input-content-wrapper .m-input::-webkit-input-placeholder {
+          /* WebKit browsers */
+          color: #848484; }
+        .g__header .search-area .input-content-wrapper .m-input:-moz-placeholder {
+          /* Mozilla Firefox 4 to 18 */
+          color: #848484; }
+        .g__header .search-area .input-content-wrapper .m-input::-moz-placeholder {
+          /* Mozilla Firefox 19+ */
+          color: #848484; }
+        .g__header .search-area .input-content-wrapper .m-input:-ms-input-placeholder {
+          /* Internet Explorer 10+ */
+          color: #848484; }
+        .g__header .search-area .input-content-wrapper .m-input:focus {
+          background-color: #fffbe6;
+          box-shadow: inset 0 0 3px 0 #ccc; }
+          .g__header .search-area .input-content-wrapper .m-input:focus + .header-search-btn {
+            color: #3376cb; }
+      .g__header .search-area .input-content-wrapper .header-search-btn {
+        height: inherit;
+        display: inline-block;
+        height: 33px;
+        line-height: 33px;
+        width: 40px;
+        padding: 0;
+        text-align: center;
+        vertical-align: middle;
+        margin: 0;
+        border-radius: 0 2px 2px 0;
+        background-color: #fff;
+        outline: none;
+        color: #5c3b00;
+        transition: all ease .3s; }
+        .g__header .search-area .input-content-wrapper .header-search-btn:before {
+          display: inline-block;
+          font-size: 20px;
+          line-height: 1;
+          color: inherit;
+          -webkit-transform: scale(1);
+                  transform: scale(1);
+          transition: all ease .3s;
+          content: ""; }
+        .g__header .search-area .input-content-wrapper .header-search-btn:hover {
+          color: #3376cb; }
+          .g__header .search-area .input-content-wrapper .header-search-btn:hover:before {
+            -webkit-transform: scale(1.1);
+                    transform: scale(1.1); }
   .g__header .h__user {
-    float: right; }
+    display: inline-block;
+    vertical-align: top;
+    width: 450px;
+    font-size: 0; }
     .g__header .h__user .head,
     .g__header .h__user .username {
       display: inline-block;
@@ -132,6 +267,7 @@ button {
       overflow: hidden;
       box-shadow: 0 0 0 1px white;
       margin-top: 5px;
+      font-size: 14px;
       background-color: #fff;
       background-size: cover;
       background-position: center;
@@ -148,19 +284,177 @@ button {
       vertical-align: top;
       height: inherit;
       color: white;
+      font-size: 14px;
       text-decoration: none; }
       .g__header .h__user a:hover {
-        background-color: rgba(0, 0, 0, 0.1); }
+        background-color: #45acca;
+        transition: all ease .2s; }
     .g__header .h__user .btn_login {
       display: none; }
     .g__header .h__user .btn_register {
       display: none; }
+    .g__header .h__user .btn_APP {
+      border-left: 1px solid #45acca;
+      border-right: 1px solid #45acca; }
+      .g__header .h__user .btn_APP:before {
+        display: inline;
+        vertical-align: middle;
+        line-height: normal;
+        content: "";
+        color: #fff;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 1.1;
+        padding-right: 10px; }
   .g__header.not-login .btn_login {
     display: inline-block; }
   .g__header.not-login .btn_register {
     display: inline-block; }
   .g__header.not-login .btn_logout {
     display: none; }
+
+.header-nav .m-hover-list {
+  display: block;
+  height: auto;
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  right: 0;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.4); }
+  .header-nav .m-hover-list .m-list {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    display: none;
+    font-size: 0; }
+    .header-nav .m-hover-list .m-list:hover {
+      display: block; }
+    .header-nav .m-hover-list .m-list.active {
+      display: block; }
+    .header-nav .m-hover-list .m-list a {
+      display: inline-block;
+      font-size: 14px;
+      text-align: left;
+      margin: 5px;
+      padding: 10px 5px;
+      min-width: 80px;
+      color: #fff; }
+
+.g__header .header-nav .nav-filter.filter_province:hover ~ .m-hover-list .m-list.province {
+  display: block; }
+
+.g__header .header-nav .nav-filter.filter_category:hover ~ .m-hover-list .m-list.category {
+  display: block; }
+
+.g__header .header-nav .nav-filter.filter_tags:hover ~ .m-hover-list .m-list.tags {
+  display: block; }
+
+.g__header .header-nav .nav-filter.filter_major:hover ~ .m-hover-list .m-list.level1 {
+  display: block; }
+
+.g__header .download-app {
+  display: block;
+  position: fixed;
+  z-index: 500;
+  top: 55px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-animation: toggleIn ease 0.5s forwards;
+          animation: toggleIn ease 0.5s forwards; }
+  .g__header .download-app .bg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.95;
+    background-image: url("../../img/bg.jpg");
+    background-position: center;
+    background-size: cover; }
+  .g__header .download-app .intro {
+    display: block;
+    position: relative;
+    margin: auto;
+    width: 1200px;
+    height: 707px;
+    background-image: url("../../img/download.png");
+    background-position: center -50px;
+    background-size: cover; }
+  .g__header .download-app .m-close {
+    top: 30px;
+    right: 30px;
+    display: block;
+    position: absolute;
+    width: 80px;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #4DBFE0;
+    border-radius: 4px;
+    color: #4DBFE0;
+    text-align: center;
+    font-size: 14px;
+    transition: all ease .3s; }
+    .g__header .download-app .m-close:hover {
+      border-color: #fff;
+      background-color: rgba(0, 0, 0, 0.25);
+      color: #fff; }
+  .g__header .download-app._hide {
+    -webkit-animation: toggleOut ease 0.5s forwards;
+            animation: toggleOut ease 0.5s forwards; }
+
+.g__header .m-right-bottom-btns {
+  display: block;
+  position: fixed;
+  right: 30px;
+  bottom: 70px;
+  width: 60px;
+  height: 121px; }
+  .g__header .m-right-bottom-btns > div {
+    display: block;
+    width: 60px;
+    height: 60px;
+    line-height: 1;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.4);
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer; }
+    .g__header .m-right-bottom-btns > div span {
+      display: block;
+      color: #fff;
+      line-height: 1.2;
+      width: inherit;
+      height: inherit;
+      padding: 12px;
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      transition: all ease .3s; }
+    .g__header .m-right-bottom-btns > div i {
+      display: block;
+      width: inherit;
+      height: inherit;
+      padding: 0;
+      color: #fff;
+      text-align: center;
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      transition: all ease .3s; }
+      .g__header .m-right-bottom-btns > div i:before {
+        display: block;
+        width: inherit;
+        height: inherit;
+        font-size: 32px;
+        line-height: 45px; }
+    .g__header .m-right-bottom-btns > div:hover > span, .g__header .m-right-bottom-btns > div:hover > i {
+      -webkit-transform: translateY(-50px);
+              transform: translateY(-50px);
+      background-color: rgba(0, 0, 0, 0.5); }
+    .g__header .m-right-bottom-btns > div.m-back-top {
+      margin-bottom: 1px; }
+      .g__header .m-right-bottom-btns > div.m-back-top i:before {
+        content: ""; }
+    .g__header .m-right-bottom-btns > div.m-feedback i:before {
+      content: ""; }
 
 @-webkit-keyframes hideUserHeadImage {
   from {
@@ -327,15 +621,17 @@ footer {
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */
-.g__left-filter .toggle-filter-btn:before, .g__left-filter .wrapper-2 .link-box a i,
-.g__left-filter .wrapper-3 .link-box a i, .g__top-filter .m-target-wrapper .m-title span::after, .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__filter-result-wrapper .m_major .m_icon {
+.g__header .search-area .input-content-wrapper .header-search-btn:before, .g__header .h__user .btn_APP:before, .g__header .m-right-bottom-btns > div i:before, .g__left-filter .toggle-filter-btn:before, .g__left-filter .wrapper-2 .link-box a i,
+.g__left-filter .wrapper-3 .link-box a i, .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a, .video-list-item .right-video-info .title-row .should-pay:before, .video-list-item .right-video-info .title-row .free-play:before, .g__filter-result-wrapper .m_major .m_icon, .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro a:before, .__school_detail .video-info .title-row .should-pay:before, .__school_detail .video-info .title-row .free-play:before, .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-false:before,
+.__school_detail .m-comment .right-content .m-vote-wrapper .downvote-false:before, .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-true:before,
+.__school_detail .m-comment .right-content .m-vote-wrapper .downvote-true:before {
   font-family: "iconfont" !important;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale; }
 
-.g__mask.show .g__modal-window, .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__school_detail .school-poster, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content {
+.g__mask.show .g__modal-window, .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .video-list-item, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__school_detail .school-poster, .__school_detail .school-video, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content, .__school_detail .m-comment {
   -webkit-animation: toggleIn ease-in .3s forwards;
           animation: toggleIn ease-in .3s forwards; }
 
@@ -361,6 +657,7 @@ footer {
   .g__top-filter .m-target-wrapper {
     padding: 5px 0;
     border-bottom: 1px solid #dedede;
+    font-size: 14px;
     overflow: hidden; }
     .g__top-filter .m-target-wrapper .m-title {
       float: left;
@@ -406,8 +703,54 @@ footer {
         background-color: #4DBFE0;
         color: #fff;
         transition: .3s; }
+  .g__top-filter .m-res-wrapper {
+    text-align: left;
+    font-size: 0; }
+    .g__top-filter .m-res-wrapper .res-title {
+      display: inline-block;
+      position: relative;
+      vertical-align: top;
+      font-style: normal;
+      font-size: 14px;
+      text-align: center;
+      padding: 5px 10px;
+      box-sizing: border-box;
+      min-width: 50px;
+      margin: 5px; }
+    .g__top-filter .m-res-wrapper .m-tag-wrapper {
+      display: inline-block;
+      padding-top: 0;
+      margin-left: 0; }
+      .g__top-filter .m-res-wrapper .m-tag-wrapper .tag {
+        background-color: #4DBFE0;
+        color: #fff;
+        cursor: default; }
+        .g__top-filter .m-res-wrapper .m-tag-wrapper .tag span {
+          vertical-align: middle; }
+        .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i {
+          display: inline-block;
+          vertical-align: middle;
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+          margin-left: 5px;
+          margin-right: -4px;
+          cursor: pointer; }
+          .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:before {
+            display: block;
+            content: "";
+            font-size: 18px;
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+            font-weight: 500;
+            -webkit-transform-origin: center;
+                    transform-origin: center;
+            transition: .3s; }
+          .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:hover {
+            -webkit-transform: scale(1.18);
+                    transform: scale(1.18); }
 
-.g__mask.show .g__modal-window, .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__school_detail .school-poster, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content {
+.g__mask.show .g__modal-window, .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .video-list-item, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__school_detail .school-poster, .__school_detail .school-video, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content, .__school_detail .m-comment {
   -webkit-animation: toggleIn ease-in .3s forwards;
           animation: toggleIn ease-in .3s forwards; }
 
@@ -552,19 +895,19 @@ footer {
             line-height: 20px; }
           .g__mask .g__modal-window .m-modal-content .m-right .form-area.register .submit-btn {
             margin-top: 15px; }
-        .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login {
+        .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login {
           width: 260px;
           height: 50px;
           margin: auto;
           line-height: 40px;
           -webkit-animation: toggleIn ease .7s forwards;
                   animation: toggleIn ease .7s forwards; }
-          .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login em {
+          .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login em {
             font-style: normal;
             padding-right: 20px;
             font-size: 16px;
             color: #888; }
-          .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a {
+          .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a {
             display: inline-block;
             vertical-align: middle;
             width: 32px;
@@ -578,11 +921,11 @@ footer {
             border-radius: 3px;
             margin-left: 8px;
             transition: .3s; }
-            .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a.qq:hover {
+            .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a.qq:hover {
               background-color: #4c96db; }
-            .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a.wechat:hover {
+            .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a.wechat:hover {
               background-color: #41990c; }
-            .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a.weibo:hover {
+            .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a.weibo:hover {
               background-color: #fa9112; }
     .g__mask .g__modal-window.login .m-modal-title .m-title-item.tag-login {
       border-top-color: #4DBFE0;
@@ -613,15 +956,122 @@ footer {
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */
-.g__left-filter .toggle-filter-btn:before, .g__left-filter .wrapper-2 .link-box a i,
-.g__left-filter .wrapper-3 .link-box a i, .g__top-filter .m-target-wrapper .m-title span::after, .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__filter-result-wrapper .m_major .m_icon {
+.g__header .search-area .input-content-wrapper .header-search-btn:before, .g__header .h__user .btn_APP:before, .g__header .m-right-bottom-btns > div i:before, .g__left-filter .toggle-filter-btn:before, .g__left-filter .wrapper-2 .link-box a i,
+.g__left-filter .wrapper-3 .link-box a i, .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a, .video-list-item .right-video-info .title-row .should-pay:before, .video-list-item .right-video-info .title-row .free-play:before, .g__filter-result-wrapper .m_major .m_icon, .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro a:before, .__school_detail .video-info .title-row .should-pay:before, .__school_detail .video-info .title-row .free-play:before, .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-false:before,
+.__school_detail .m-comment .right-content .m-vote-wrapper .downvote-false:before, .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-true:before,
+.__school_detail .m-comment .right-content .m-vote-wrapper .downvote-true:before {
   font-family: "iconfont" !important;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale; }
 
-.g__mask.show .g__modal-window, .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__school_detail .school-poster, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content {
+.g__mask.show .g__modal-window, .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .video-list-item, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__school_detail .school-poster, .__school_detail .school-video, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content, .__school_detail .m-comment {
+  -webkit-animation: toggleIn ease-in .3s forwards;
+          animation: toggleIn ease-in .3s forwards; }
+
+.g__mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window {
+  -webkit-animation: toggleOut ease-out .3s forwards;
+          animation: toggleOut ease-out .3s forwards; }
+
+.video-list-item {
+  display: block;
+  position: relative;
+  margin: auto;
+  width: 400px;
+  height: auto;
+  margin: 15px;
+  float: left;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 3px #ccc;
+  transition: .3s;
+  text-align: left;
+  font-size: 14px;
+  transition: .3s; }
+  .video-list-item:hover {
+    box-shadow: 0 0 7px 1px #ccc; }
+  .video-list-item .poster {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-repeat: no-repeat; }
+  .video-list-item .right-video-info {
+    display: inline-block;
+    padding-left: 10px;
+    vertical-align: top; }
+    .video-list-item .right-video-info .title-row {
+      display: block;
+      height: 30px;
+      line-height: 30px; }
+      .video-list-item .right-video-info .title-row a {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 16px; }
+      .video-list-item .right-video-info .title-row .should-pay {
+        display: inline-block;
+        vertical-align: middle;
+        color: #d35d27;
+        margin-left: 15px; }
+        .video-list-item .right-video-info .title-row .should-pay:before {
+          content: '\e662';
+          color: inherit;
+          font-size: 18px;
+          padding-right: 4px; }
+      .video-list-item .right-video-info .title-row .free-play {
+        display: inline-block;
+        vertical-align: middle;
+        color: #4AB579;
+        margin-left: 15px; }
+        .video-list-item .right-video-info .title-row .free-play:before {
+          content: '\e663';
+          color: inherit;
+          font-size: 18px;
+          padding-right: 4px; }
+    .video-list-item .right-video-info .video-other-info {
+      height: 30px;
+      line-height: 30px;
+      color: #848484;
+      font-size: 13px; }
+    .video-list-item .right-video-info .video-intro {
+      padding-top: 3px;
+      color: #848484;
+      font-size: 13px;
+      line-height: 1.5;
+      height: auto;
+      max-height: 40px;
+      word-break: break-all;
+      overflow: hidden; }
+
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.g__header .search-area .input-content-wrapper .header-search-btn:before, .g__header .h__user .btn_APP:before, .g__header .m-right-bottom-btns > div i:before, .g__left-filter .toggle-filter-btn:before, .g__left-filter .wrapper-2 .link-box a i,
+.g__left-filter .wrapper-3 .link-box a i, .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a, .video-list-item .right-video-info .title-row .should-pay:before, .video-list-item .right-video-info .title-row .free-play:before, .g__filter-result-wrapper .m_major .m_icon, .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro a:before, .__school_detail .video-info .title-row .should-pay:before, .__school_detail .video-info .title-row .free-play:before, .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-false:before,
+.__school_detail .m-comment .right-content .m-vote-wrapper .downvote-false:before, .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-true:before,
+.__school_detail .m-comment .right-content .m-vote-wrapper .downvote-true:before {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
+.g__mask.show .g__modal-window, .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .video-list-item, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__school_detail .school-poster, .__school_detail .school-video, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content, .__school_detail .m-comment {
   -webkit-animation: toggleIn ease-in .3s forwards;
           animation: toggleIn ease-in .3s forwards; }
 
@@ -670,15 +1120,19 @@ footer {
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */ }
-  .g__filter-result-wrapper .g__left-filter .toggle-filter-btn:before, .g__left-filter .g__filter-result-wrapper .toggle-filter-btn:before, .g__filter-result-wrapper .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .g__filter-result-wrapper i, .g__filter-result-wrapper
+  .g__filter-result-wrapper .g__header .search-area .input-content-wrapper .header-search-btn:before, .g__header .search-area .input-content-wrapper .g__filter-result-wrapper .header-search-btn:before, .g__filter-result-wrapper .g__header .h__user .btn_APP:before, .g__header .h__user .g__filter-result-wrapper .btn_APP:before, .g__filter-result-wrapper .g__header .m-right-bottom-btns > div i:before, .g__header .m-right-bottom-btns > div .g__filter-result-wrapper i:before, .g__filter-result-wrapper .g__left-filter .toggle-filter-btn:before, .g__left-filter .g__filter-result-wrapper .toggle-filter-btn:before, .g__filter-result-wrapper .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .g__filter-result-wrapper i, .g__filter-result-wrapper
   .g__left-filter .wrapper-3 .link-box a i,
-  .g__left-filter .wrapper-3 .link-box a .g__filter-result-wrapper i, .g__filter-result-wrapper .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .g__filter-result-wrapper span::after, .g__filter-result-wrapper .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .g__filter-result-wrapper .submit-btn:before, .g__filter-result-wrapper .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login .g__filter-result-wrapper a, .g__filter-result-wrapper .m_major .m_icon {
+  .g__left-filter .wrapper-3 .link-box a .g__filter-result-wrapper i, .g__filter-result-wrapper .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .g__filter-result-wrapper span::after, .g__filter-result-wrapper .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:before, .g__top-filter .m-res-wrapper .m-tag-wrapper .tag .g__filter-result-wrapper i:before, .g__filter-result-wrapper .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .g__filter-result-wrapper .submit-btn:before, .g__filter-result-wrapper .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login .g__filter-result-wrapper a, .g__filter-result-wrapper .video-list-item .right-video-info .title-row .should-pay:before, .video-list-item .right-video-info .title-row .g__filter-result-wrapper .should-pay:before, .g__filter-result-wrapper .video-list-item .right-video-info .title-row .free-play:before, .video-list-item .right-video-info .title-row .g__filter-result-wrapper .free-play:before, .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro a:before, .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro .g__filter-result-wrapper a:before, .g__filter-result-wrapper .__school_detail .video-info .title-row .should-pay:before, .__school_detail .video-info .title-row .g__filter-result-wrapper .should-pay:before, .g__filter-result-wrapper .__school_detail .video-info .title-row .free-play:before, .__school_detail .video-info .title-row .g__filter-result-wrapper .free-play:before, .g__filter-result-wrapper .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-false:before, .__school_detail .m-comment .right-content .m-vote-wrapper .g__filter-result-wrapper .upvote-false:before, .g__filter-result-wrapper
+  .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-false:before,
+  .__school_detail .m-comment .right-content .m-vote-wrapper .g__filter-result-wrapper .downvote-false:before, .g__filter-result-wrapper .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-true:before, .__school_detail .m-comment .right-content .m-vote-wrapper .g__filter-result-wrapper .upvote-true:before, .g__filter-result-wrapper
+  .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-true:before,
+  .__school_detail .m-comment .right-content .m-vote-wrapper .g__filter-result-wrapper .downvote-true:before {
     font-family: "iconfont" !important;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale; }
-  .g__filter-result-wrapper .g__mask.show .g__modal-window, .g__mask.show .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .g__filter-result-wrapper .form-area.login > *, .g__filter-result-wrapper .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .g__filter-result-wrapper .form-area.register > *, .g__filter-result-wrapper .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .g__filter-result-wrapper .form-area.forget_password > *, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .g__filter-result-wrapper .user-info-card, .g__filter-result-wrapper .__school_detail .school-poster, .__school_detail .g__filter-result-wrapper .school-poster, .g__filter-result-wrapper .__school_detail .school-header, .__school_detail .g__filter-result-wrapper .school-header, .g__filter-result-wrapper .__school_detail .school-section-link-wrapper, .__school_detail .g__filter-result-wrapper .school-section-link-wrapper, .g__filter-result-wrapper .__school_detail .school-detail-main-content, .__school_detail .g__filter-result-wrapper .school-detail-main-content {
+  .g__filter-result-wrapper .g__mask.show .g__modal-window, .g__mask.show .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .g__filter-result-wrapper .form-area.login > *, .g__filter-result-wrapper .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .g__filter-result-wrapper .form-area.register > *, .g__filter-result-wrapper .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .g__filter-result-wrapper .form-area.forget_password > *, .g__filter-result-wrapper .video-list-item, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .g__filter-result-wrapper .user-info-card, .g__filter-result-wrapper .__school_detail .school-poster, .__school_detail .g__filter-result-wrapper .school-poster, .g__filter-result-wrapper .__school_detail .school-video, .__school_detail .g__filter-result-wrapper .school-video, .g__filter-result-wrapper .__school_detail .school-header, .__school_detail .g__filter-result-wrapper .school-header, .g__filter-result-wrapper .__school_detail .school-section-link-wrapper, .__school_detail .g__filter-result-wrapper .school-section-link-wrapper, .g__filter-result-wrapper .__school_detail .school-detail-main-content, .__school_detail .g__filter-result-wrapper .school-detail-main-content, .g__filter-result-wrapper .__school_detail .m-comment, .__school_detail .g__filter-result-wrapper .m-comment {
     -webkit-animation: toggleIn ease-in .3s forwards;
             animation: toggleIn ease-in .3s forwards; }
   .g__filter-result-wrapper .g__mask.hide .g__modal-window, .g__mask.hide .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .g__filter-result-wrapper .g__modal-window {
@@ -753,15 +1207,19 @@ footer {
           font-style: normal;
           color: #fff;
           background-color: #4DBFE0; }
-  .g__filter-result-wrapper .g__left-filter .toggle-filter-btn:before, .g__left-filter .g__filter-result-wrapper .toggle-filter-btn:before, .g__filter-result-wrapper .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .g__filter-result-wrapper i, .g__filter-result-wrapper
+  .g__filter-result-wrapper .g__header .search-area .input-content-wrapper .header-search-btn:before, .g__header .search-area .input-content-wrapper .g__filter-result-wrapper .header-search-btn:before, .g__filter-result-wrapper .g__header .h__user .btn_APP:before, .g__header .h__user .g__filter-result-wrapper .btn_APP:before, .g__filter-result-wrapper .g__header .m-right-bottom-btns > div i:before, .g__header .m-right-bottom-btns > div .g__filter-result-wrapper i:before, .g__filter-result-wrapper .g__left-filter .toggle-filter-btn:before, .g__left-filter .g__filter-result-wrapper .toggle-filter-btn:before, .g__filter-result-wrapper .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .g__filter-result-wrapper i, .g__filter-result-wrapper
   .g__left-filter .wrapper-3 .link-box a i,
-  .g__left-filter .wrapper-3 .link-box a .g__filter-result-wrapper i, .g__filter-result-wrapper .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .g__filter-result-wrapper span::after, .g__filter-result-wrapper .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .g__filter-result-wrapper .submit-btn:before, .g__filter-result-wrapper .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login .g__filter-result-wrapper a, .g__filter-result-wrapper .m_major .m_icon {
+  .g__left-filter .wrapper-3 .link-box a .g__filter-result-wrapper i, .g__filter-result-wrapper .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .g__filter-result-wrapper span::after, .g__filter-result-wrapper .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:before, .g__top-filter .m-res-wrapper .m-tag-wrapper .tag .g__filter-result-wrapper i:before, .g__filter-result-wrapper .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .g__filter-result-wrapper .submit-btn:before, .g__filter-result-wrapper .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login .g__filter-result-wrapper a, .g__filter-result-wrapper .video-list-item .right-video-info .title-row .should-pay:before, .video-list-item .right-video-info .title-row .g__filter-result-wrapper .should-pay:before, .g__filter-result-wrapper .video-list-item .right-video-info .title-row .free-play:before, .video-list-item .right-video-info .title-row .g__filter-result-wrapper .free-play:before, .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro a:before, .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro .g__filter-result-wrapper a:before, .g__filter-result-wrapper .__school_detail .video-info .title-row .should-pay:before, .__school_detail .video-info .title-row .g__filter-result-wrapper .should-pay:before, .g__filter-result-wrapper .__school_detail .video-info .title-row .free-play:before, .__school_detail .video-info .title-row .g__filter-result-wrapper .free-play:before, .g__filter-result-wrapper .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-false:before, .__school_detail .m-comment .right-content .m-vote-wrapper .g__filter-result-wrapper .upvote-false:before, .g__filter-result-wrapper
+  .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-false:before,
+  .__school_detail .m-comment .right-content .m-vote-wrapper .g__filter-result-wrapper .downvote-false:before, .g__filter-result-wrapper .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-true:before, .__school_detail .m-comment .right-content .m-vote-wrapper .g__filter-result-wrapper .upvote-true:before, .g__filter-result-wrapper
+  .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-true:before,
+  .__school_detail .m-comment .right-content .m-vote-wrapper .g__filter-result-wrapper .downvote-true:before {
     font-family: "iconfont" !important;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale; }
-  .g__filter-result-wrapper .g__mask.show .g__modal-window, .g__mask.show .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .g__filter-result-wrapper .form-area.login > *, .g__filter-result-wrapper .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .g__filter-result-wrapper .form-area.register > *, .g__filter-result-wrapper .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .g__filter-result-wrapper .form-area.forget_password > *, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .g__filter-result-wrapper .user-info-card, .g__filter-result-wrapper .__school_detail .school-poster, .__school_detail .g__filter-result-wrapper .school-poster, .g__filter-result-wrapper .__school_detail .school-header, .__school_detail .g__filter-result-wrapper .school-header, .g__filter-result-wrapper .__school_detail .school-section-link-wrapper, .__school_detail .g__filter-result-wrapper .school-section-link-wrapper, .g__filter-result-wrapper .__school_detail .school-detail-main-content, .__school_detail .g__filter-result-wrapper .school-detail-main-content {
+  .g__filter-result-wrapper .g__mask.show .g__modal-window, .g__mask.show .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .g__filter-result-wrapper .form-area.login > *, .g__filter-result-wrapper .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .g__filter-result-wrapper .form-area.register > *, .g__filter-result-wrapper .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .g__filter-result-wrapper .form-area.forget_password > *, .g__filter-result-wrapper .video-list-item, .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .g__filter-result-wrapper .user-info-card, .g__filter-result-wrapper .__school_detail .school-poster, .__school_detail .g__filter-result-wrapper .school-poster, .g__filter-result-wrapper .__school_detail .school-video, .__school_detail .g__filter-result-wrapper .school-video, .g__filter-result-wrapper .__school_detail .school-header, .__school_detail .g__filter-result-wrapper .school-header, .g__filter-result-wrapper .__school_detail .school-section-link-wrapper, .__school_detail .g__filter-result-wrapper .school-section-link-wrapper, .g__filter-result-wrapper .__school_detail .school-detail-main-content, .__school_detail .g__filter-result-wrapper .school-detail-main-content, .g__filter-result-wrapper .__school_detail .m-comment, .__school_detail .g__filter-result-wrapper .m-comment {
     -webkit-animation: toggleIn ease-in .3s forwards;
             animation: toggleIn ease-in .3s forwards; }
   .g__filter-result-wrapper .g__mask.hide .g__modal-window, .g__mask.hide .g__filter-result-wrapper .g__modal-window, .g__filter-result-wrapper .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .g__filter-result-wrapper .g__modal-window {
@@ -814,12 +1272,59 @@ footer {
       color: inherit;
       text-decoration: none; }
 
+.g__mask.m-feedback-modal-mask .m-modal-title h5 {
+  height: inherit;
+  line-height: inherit; }
+
+.g__mask.m-feedback-modal-mask .m-modal-content {
+  box-sizing: border-box;
+  padding: 20px 30px; }
+  .g__mask.m-feedback-modal-mask .m-modal-content .m-content-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll; }
+    .g__mask.m-feedback-modal-mask .m-modal-content .m-content-wrapper textarea {
+      float: left;
+      width: 100%;
+      height: 160px;
+      resize: none; }
+    .g__mask.m-feedback-modal-mask .m-modal-content .m-content-wrapper .m-feedback-image-upload {
+      float: left;
+      width: 200px;
+      padding: 5px 0; }
+      .g__mask.m-feedback-modal-mask .m-modal-content .m-content-wrapper .m-feedback-image-upload .btn {
+        margin-left: 0; }
+      .g__mask.m-feedback-modal-mask .m-modal-content .m-content-wrapper .m-feedback-image-upload .m-user-feedback-form {
+        float: left; }
+      .g__mask.m-feedback-modal-mask .m-modal-content .m-content-wrapper .m-feedback-image-upload img.feedback-image {
+        float: left;
+        margin-top: 0px;
+        margin-left: 0px;
+        max-width: 120px;
+        max-height: 120px; }
+    .g__mask.m-feedback-modal-mask .m-modal-content .m-content-wrapper .m-warning-wrapper {
+      float: left;
+      width: 100%;
+      text-align: center;
+      height: 30px;
+      line-height: 30px; }
+      .g__mask.m-feedback-modal-mask .m-modal-content .m-content-wrapper .m-warning-wrapper .warning-text.warning-tip {
+        color: #ef4f2b; }
+      .g__mask.m-feedback-modal-mask .m-modal-content .m-content-wrapper .m-warning-wrapper .warning-text.success-tip {
+        color: #4eab74; }
+    .g__mask.m-feedback-modal-mask .m-modal-content .m-content-wrapper .btn-submit {
+      float: right;
+      margin-top: 5px; }
+
 @font-face {
   font-family: 'iconfont';
-  src: url("//at.alicdn.com/t/font_1450878401_7293286.eot");
+  src: url("//at.alicdn.com/t/font_1453819434_8007889.eot");
   /* IE9*/
-  src: url("//at.alicdn.com/t/font_1450878401_7293286.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1450878401_7293286.woff") format("woff"), url("//at.alicdn.com/t/font_1450878401_7293286.ttf") format("truetype"), url("//at.alicdn.com/t/font_1450878401_7293286.svg#iconfont") format("svg");
+  src: url("//at.alicdn.com/t/font_1453819434_8007889.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1453819434_8007889.woff") format("woff"), url("//at.alicdn.com/t/font_1453819434_8007889.ttf") format("truetype"), url("//at.alicdn.com/t/font_1453819434_8007889.svg#iconfont") format("svg");
   /* iOS 4.1- */ }
+
+*.hide.hide.hide.hide.hide.hide {
+  display: none; }
 
 html {
   -webkit-font-smoothing: antialiased;
@@ -827,7 +1332,9 @@ html {
   -moz-osx-font-smoothing: grayscale; }
 
 body {
-  background: #f5f5f5; }
+  background: #f5f5f5;
+  min-width: 1200px;
+  overflow-y: scroll; }
 
 .container {
   transition: .3s;
@@ -863,8 +1370,6 @@ body {
 
 .__index .content {
   min-height: calc(100% - 55px);
-  padding-top: 25vh;
-  background-image: url(../../img/pic_round_1.jpg);
   background-position: center;
   background-size: cover; }
 
@@ -925,10 +1430,104 @@ body {
   .__index .m-selector .btn-wrapper {
     padding-top: 10px; }
 
+.__index .m-slider-wrapper {
+  width: 100%;
+  height: 500px;
+  position: relative; }
+  .__index .m-slider-wrapper .m-index-slider {
+    display: block;
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    overflow: hidden; }
+    .__index .m-slider-wrapper .m-index-slider .slider-box {
+      display: inline-block;
+      height: inherit;
+      position: absolute;
+      overflow: hidden;
+      left: 0;
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      transition: all ease .3s; }
+      .__index .m-slider-wrapper .m-index-slider .slider-box .m-card {
+        display: block;
+        height: inherit;
+        float: left;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat; }
+    .__index .m-slider-wrapper .m-index-slider .m-slider-nav {
+      display: inline-block;
+      width: auto;
+      position: relative;
+      margin: 420px auto auto auto; }
+      .__index .m-slider-wrapper .m-index-slider .m-slider-nav .m-slider-nav-item {
+        display: inline-block;
+        margin: 5px;
+        opacity: 0.4;
+        transition: all ease .3s;
+        cursor: pointer;
+        padding: 15px 5px; }
+        .__index .m-slider-wrapper .m-index-slider .m-slider-nav .m-slider-nav-item:before {
+          display: block;
+          content: "";
+          width: 60px;
+          height: 6px;
+          background-color: #fff;
+          border-radius: 20px; }
+        .__index .m-slider-wrapper .m-index-slider .m-slider-nav .m-slider-nav-item:hover, .__index .m-slider-wrapper .m-index-slider .m-slider-nav .m-slider-nav-item.active {
+          opacity: 0.8; }
+
+.__index .m-article-wrapper {
+  width: 950px;
+  height: auto;
+  margin: 0 auto 100px auto;
+  text-align: left; }
+  .__index .m-article-wrapper .m-index-articles {
+    border-bottom: 1px solid #dedede; }
+    .__index .m-article-wrapper .m-index-articles .section-name-wrapper {
+      display: block;
+      width: 100%;
+      height: 70px;
+      line-height: 80px; }
+      .__index .m-article-wrapper .m-index-articles .section-name-wrapper h3 {
+        display: block;
+        vertical-align: middle;
+        float: left;
+        margin-top: 30px;
+        border-left: 5px solid #4DBFE0;
+        text-indent: 1em;
+        margin-left: 10px;
+        height: 20px;
+        line-height: 20px; }
+      .__index .m-article-wrapper .m-index-articles .section-name-wrapper a {
+        float: right; }
+    .__index .m-article-wrapper .m-index-articles .m-section-articles {
+      padding-bottom: 20px; }
+      .__index .m-article-wrapper .m-index-articles .m-section-articles .article-view {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 10px;
+        width: 215px;
+        height: 200px; }
+        .__index .m-article-wrapper .m-index-articles .m-section-articles .article-view .m-poster {
+          display: block;
+          width: 100%;
+          height: 140px;
+          margin-bottom: 15px;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat; }
+        .__index .m-article-wrapper .m-index-articles .m-section-articles .article-view .m-title {
+          word-break: break-all;
+          color: #848484; }
+          .__index .m-article-wrapper .m-index-articles .m-section-articles .article-view .m-title:hover {
+            color: #0275d8; }
+
 .__index footer {
   position: relative;
   height: 40px;
-  color: #fff;
+  color: #848484;
   margin-top: -40px;
   line-height: 40px; }
 
@@ -1091,15 +1690,19 @@ body {
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */ }
-  .__major__select .g__left-filter .toggle-filter-btn:before, .g__left-filter .__major__select .toggle-filter-btn:before, .__major__select .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .__major__select i, .__major__select
+  .__major__select .g__header .search-area .input-content-wrapper .header-search-btn:before, .g__header .search-area .input-content-wrapper .__major__select .header-search-btn:before, .__major__select .g__header .h__user .btn_APP:before, .g__header .h__user .__major__select .btn_APP:before, .__major__select .g__header .m-right-bottom-btns > div i:before, .g__header .m-right-bottom-btns > div .__major__select i:before, .__major__select .g__left-filter .toggle-filter-btn:before, .g__left-filter .__major__select .toggle-filter-btn:before, .__major__select .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .__major__select i, .__major__select
   .g__left-filter .wrapper-3 .link-box a i,
-  .g__left-filter .wrapper-3 .link-box a .__major__select i, .__major__select .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .__major__select span::after, .__major__select .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .__major__select .submit-btn:before, .__major__select .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login .__major__select a, .__major__select .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .m_major .__major__select .m_icon {
+  .g__left-filter .wrapper-3 .link-box a .__major__select i, .__major__select .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .__major__select span::after, .__major__select .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:before, .g__top-filter .m-res-wrapper .m-tag-wrapper .tag .__major__select i:before, .__major__select .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .__major__select .submit-btn:before, .__major__select .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login .__major__select a, .__major__select .video-list-item .right-video-info .title-row .should-pay:before, .video-list-item .right-video-info .title-row .__major__select .should-pay:before, .__major__select .video-list-item .right-video-info .title-row .free-play:before, .video-list-item .right-video-info .title-row .__major__select .free-play:before, .__major__select .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .m_major .__major__select .m_icon, .__major__select .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro a:before, .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro .__major__select a:before, .__major__select .__school_detail .video-info .title-row .should-pay:before, .__school_detail .video-info .title-row .__major__select .should-pay:before, .__major__select .__school_detail .video-info .title-row .free-play:before, .__school_detail .video-info .title-row .__major__select .free-play:before, .__major__select .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-false:before, .__school_detail .m-comment .right-content .m-vote-wrapper .__major__select .upvote-false:before, .__major__select
+  .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-false:before,
+  .__school_detail .m-comment .right-content .m-vote-wrapper .__major__select .downvote-false:before, .__major__select .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-true:before, .__school_detail .m-comment .right-content .m-vote-wrapper .__major__select .upvote-true:before, .__major__select
+  .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-true:before,
+  .__school_detail .m-comment .right-content .m-vote-wrapper .__major__select .downvote-true:before {
     font-family: "iconfont" !important;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale; }
-  .__major__select .g__mask.show .g__modal-window, .g__mask.show .__major__select .g__modal-window, .__major__select .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__major__select .form-area.login > *, .__major__select .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__major__select .form-area.register > *, .__major__select .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__major__select .form-area.forget_password > *, .__major__select .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__major__select .m__filter-res-school, .__major__select .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__major__select .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .__major__select .user-info-card, .__major__select .__school_detail .school-poster, .__school_detail .__major__select .school-poster, .__major__select .__school_detail .school-header, .__school_detail .__major__select .school-header, .__major__select .__school_detail .school-section-link-wrapper, .__school_detail .__major__select .school-section-link-wrapper, .__major__select .__school_detail .school-detail-main-content, .__school_detail .__major__select .school-detail-main-content {
+  .__major__select .g__mask.show .g__modal-window, .g__mask.show .__major__select .g__modal-window, .__major__select .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__major__select .form-area.login > *, .__major__select .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__major__select .form-area.register > *, .__major__select .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__major__select .form-area.forget_password > *, .__major__select .video-list-item, .__major__select .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__major__select .m__filter-res-school, .__major__select .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__major__select .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .__major__select .user-info-card, .__major__select .__school_detail .school-poster, .__school_detail .__major__select .school-poster, .__major__select .__school_detail .school-video, .__school_detail .__major__select .school-video, .__major__select .__school_detail .school-header, .__school_detail .__major__select .school-header, .__major__select .__school_detail .school-section-link-wrapper, .__school_detail .__major__select .school-section-link-wrapper, .__major__select .__school_detail .school-detail-main-content, .__school_detail .__major__select .school-detail-main-content, .__major__select .__school_detail .m-comment, .__school_detail .__major__select .m-comment {
     -webkit-animation: toggleIn ease-in .3s forwards;
             animation: toggleIn ease-in .3s forwards; }
   .__major__select .g__mask.hide .g__modal-window, .g__mask.hide .__major__select .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window {
@@ -1140,7 +1743,7 @@ body {
         margin-left: 5px; }
   .__major__select .m__select-title .title-1 {
     width: 200px; }
-  .__major__select .g__mask.show .g__modal-window, .g__mask.show .__major__select .g__modal-window, .__major__select .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__major__select .form-area.login > *, .__major__select .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__major__select .form-area.register > *, .__major__select .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__major__select .form-area.forget_password > *, .__major__select .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__major__select .m__filter-res-school, .__major__select .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__major__select .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .__major__select .user-info-card, .__major__select .__school_detail .school-poster, .__school_detail .__major__select .school-poster, .__major__select .__school_detail .school-header, .__school_detail .__major__select .school-header, .__major__select .__school_detail .school-section-link-wrapper, .__school_detail .__major__select .school-section-link-wrapper, .__major__select .__school_detail .school-detail-main-content, .__school_detail .__major__select .school-detail-main-content {
+  .__major__select .g__mask.show .g__modal-window, .g__mask.show .__major__select .g__modal-window, .__major__select .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__major__select .form-area.login > *, .__major__select .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__major__select .form-area.register > *, .__major__select .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__major__select .form-area.forget_password > *, .__major__select .video-list-item, .__major__select .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__major__select .m__filter-res-school, .__major__select .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__major__select .m_major, .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .__major__select .user-info-card, .__major__select .__school_detail .school-poster, .__school_detail .__major__select .school-poster, .__major__select .__school_detail .school-video, .__school_detail .__major__select .school-video, .__major__select .__school_detail .school-header, .__school_detail .__major__select .school-header, .__major__select .__school_detail .school-section-link-wrapper, .__school_detail .__major__select .school-section-link-wrapper, .__major__select .__school_detail .school-detail-main-content, .__school_detail .__major__select .school-detail-main-content, .__major__select .__school_detail .m-comment, .__school_detail .__major__select .m-comment {
     -webkit-animation: toggleIn ease-in .3s forwards;
             animation: toggleIn ease-in .3s forwards; }
   .__major__select .g__mask.hide .g__modal-window, .g__mask.hide .__major__select .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window {
@@ -1247,21 +1850,25 @@ body {
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */ }
-  .__user__user_center .g__left-filter .toggle-filter-btn:before, .g__left-filter .__user__user_center .toggle-filter-btn:before, .__user__user_center .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .__user__user_center i, .__user__user_center
+  .__user__user_center .g__header .search-area .input-content-wrapper .header-search-btn:before, .g__header .search-area .input-content-wrapper .__user__user_center .header-search-btn:before, .__user__user_center .g__header .h__user .btn_APP:before, .g__header .h__user .__user__user_center .btn_APP:before, .__user__user_center .g__header .m-right-bottom-btns > div i:before, .g__header .m-right-bottom-btns > div .__user__user_center i:before, .__user__user_center .g__left-filter .toggle-filter-btn:before, .g__left-filter .__user__user_center .toggle-filter-btn:before, .__user__user_center .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .__user__user_center i, .__user__user_center
   .g__left-filter .wrapper-3 .link-box a i,
-  .g__left-filter .wrapper-3 .link-box a .__user__user_center i, .__user__user_center .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .__user__user_center span::after, .__user__user_center .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .__user__user_center .submit-btn:before, .__user__user_center .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login .__user__user_center a, .__user__user_center .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .m_major .__user__user_center .m_icon {
+  .g__left-filter .wrapper-3 .link-box a .__user__user_center i, .__user__user_center .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .__user__user_center span::after, .__user__user_center .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:before, .g__top-filter .m-res-wrapper .m-tag-wrapper .tag .__user__user_center i:before, .__user__user_center .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .__user__user_center .submit-btn:before, .__user__user_center .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login .__user__user_center a, .__user__user_center .video-list-item .right-video-info .title-row .should-pay:before, .video-list-item .right-video-info .title-row .__user__user_center .should-pay:before, .__user__user_center .video-list-item .right-video-info .title-row .free-play:before, .video-list-item .right-video-info .title-row .__user__user_center .free-play:before, .__user__user_center .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .m_major .__user__user_center .m_icon, .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro a:before, .__user__user_center .__school_detail .video-info .title-row .should-pay:before, .__school_detail .video-info .title-row .__user__user_center .should-pay:before, .__user__user_center .__school_detail .video-info .title-row .free-play:before, .__school_detail .video-info .title-row .__user__user_center .free-play:before, .__user__user_center .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-false:before, .__school_detail .m-comment .right-content .m-vote-wrapper .__user__user_center .upvote-false:before, .__user__user_center
+  .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-false:before,
+  .__school_detail .m-comment .right-content .m-vote-wrapper .__user__user_center .downvote-false:before, .__user__user_center .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-true:before, .__school_detail .m-comment .right-content .m-vote-wrapper .__user__user_center .upvote-true:before, .__user__user_center
+  .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-true:before,
+  .__school_detail .m-comment .right-content .m-vote-wrapper .__user__user_center .downvote-true:before {
     font-family: "iconfont" !important;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale; }
-  .__user__user_center .g__mask.show .g__modal-window, .g__mask.show .__user__user_center .g__modal-window, .__user__user_center .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__user__user_center .form-area.login > *, .__user__user_center .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__user__user_center .form-area.register > *, .__user__user_center .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__user__user_center .form-area.forget_password > *, .__user__user_center .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__user__user_center .m__filter-res-school, .__user__user_center .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__user__user_center .m_major, .__user__user_center .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .__user__user_center .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .__school_detail .school-poster, .__school_detail .__user__user_center .school-poster, .__user__user_center .__school_detail .school-header, .__school_detail .__user__user_center .school-header, .__user__user_center .__school_detail .school-section-link-wrapper, .__school_detail .__user__user_center .school-section-link-wrapper, .__user__user_center .__school_detail .school-detail-main-content, .__school_detail .__user__user_center .school-detail-main-content {
+  .__user__user_center .g__mask.show .g__modal-window, .g__mask.show .__user__user_center .g__modal-window, .__user__user_center .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__user__user_center .form-area.login > *, .__user__user_center .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__user__user_center .form-area.register > *, .__user__user_center .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__user__user_center .form-area.forget_password > *, .__user__user_center .video-list-item, .__user__user_center .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__user__user_center .m__filter-res-school, .__user__user_center .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__user__user_center .m_major, .__user__user_center .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .__user__user_center .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .__school_detail .school-poster, .__school_detail .__user__user_center .school-poster, .__user__user_center .__school_detail .school-video, .__school_detail .__user__user_center .school-video, .__user__user_center .__school_detail .school-header, .__school_detail .__user__user_center .school-header, .__user__user_center .__school_detail .school-section-link-wrapper, .__school_detail .__user__user_center .school-section-link-wrapper, .__user__user_center .__school_detail .school-detail-main-content, .__school_detail .__user__user_center .school-detail-main-content, .__user__user_center .__school_detail .m-comment, .__school_detail .__user__user_center .m-comment {
     -webkit-animation: toggleIn ease-in .3s forwards;
             animation: toggleIn ease-in .3s forwards; }
   .__user__user_center .g__mask.hide .g__modal-window, .g__mask.hide .__user__user_center .g__modal-window, .__user__user_center .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .__user__user_center .g__modal-window {
     -webkit-animation: toggleOut ease-out .3s forwards;
             animation: toggleOut ease-out .3s forwards; }
-  .__user__user_center .g__mask.show .g__modal-window, .g__mask.show .__user__user_center .g__modal-window, .__user__user_center .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__user__user_center .form-area.login > *, .__user__user_center .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__user__user_center .form-area.register > *, .__user__user_center .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__user__user_center .form-area.forget_password > *, .__user__user_center .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__user__user_center .m__filter-res-school, .__user__user_center .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__user__user_center .m_major, .__user__user_center .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .__user__user_center .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .__school_detail .school-poster, .__school_detail .__user__user_center .school-poster, .__user__user_center .__school_detail .school-header, .__school_detail .__user__user_center .school-header, .__user__user_center .__school_detail .school-section-link-wrapper, .__school_detail .__user__user_center .school-section-link-wrapper, .__user__user_center .__school_detail .school-detail-main-content, .__school_detail .__user__user_center .school-detail-main-content {
+  .__user__user_center .g__mask.show .g__modal-window, .g__mask.show .__user__user_center .g__modal-window, .__user__user_center .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__user__user_center .form-area.login > *, .__user__user_center .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__user__user_center .form-area.register > *, .__user__user_center .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__user__user_center .form-area.forget_password > *, .__user__user_center .video-list-item, .__user__user_center .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__user__user_center .m__filter-res-school, .__user__user_center .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__user__user_center .m_major, .__user__user_center .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .__user__user_center .g__modal-window, .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .__school_detail .school-poster, .__school_detail .__user__user_center .school-poster, .__user__user_center .__school_detail .school-video, .__school_detail .__user__user_center .school-video, .__user__user_center .__school_detail .school-header, .__school_detail .__user__user_center .school-header, .__user__user_center .__school_detail .school-section-link-wrapper, .__school_detail .__user__user_center .school-section-link-wrapper, .__user__user_center .__school_detail .school-detail-main-content, .__school_detail .__user__user_center .school-detail-main-content, .__user__user_center .__school_detail .m-comment, .__school_detail .__user__user_center .m-comment {
     -webkit-animation: toggleIn ease-in .3s forwards;
             animation: toggleIn ease-in .3s forwards; }
   .__user__user_center .g__mask.hide .g__modal-window, .g__mask.hide .__user__user_center .g__modal-window, .__user__user_center .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .__user__user_center .g__modal-window {
@@ -1282,6 +1889,18 @@ body {
     width: 960px;
     margin: auto;
     background-color: #fff; }
+  .__user__user_center .g__modal-window.m_user_info_modal .m-title-item {
+    width: 100%; }
+  .__user__user_center .g__modal-window.m_user_info_modal .m-user-head {
+    display: block;
+    position: relative;
+    margin: auto;
+    margin-top: 20px;
+    width: 100px;
+    max-height: 120px;
+    height: auto; }
+  .__user__user_center .g__modal-window.m_user_info_modal .m-user-avatar-form {
+    margin-top: 20px; }
   .__user__user_center .m_left_wrapper {
     display: block;
     position: relative;
@@ -1349,26 +1968,37 @@ body {
         position: relative;
         width: inherit;
         height: 165px; }
-        .__user__user_center .m_left_wrapper .user-info-card .user-intro-box p.intro {
+        .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro {
           padding-top: 30px;
           word-break: break-all;
-          line-height: 1.5;
+          line-height: 1.6;
           font-size: 14px;
-          height: 90px;
+          height: 100px;
           overflow: hidden;
           width: 180px;
           margin: auto;
-          color: #848484; }
-        .__user__user_center .m_left_wrapper .user-info-card .user-intro-box em {
+          color: #848484;
+          text-align: center; }
+          .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro em {
+            display: inline;
+            font-style: normal;
+            color: #3E3A39; }
+          .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro a {
+            display: block;
+            padding: 5px; }
+            .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro a:before {
+              content: '\e652';
+              padding-right: 4px; }
+        .__user__user_center .m_left_wrapper .user-info-card .user-intro-box > em {
           display: block;
           font-style: normal;
           font-size: 16px;
-          margin-top: 20px;
+          margin-top: 10px;
           -webkit-user-select: none;
              -moz-user-select: none;
               -ms-user-select: none;
                   user-select: none; }
-          .__user__user_center .m_left_wrapper .user-info-card .user-intro-box em span {
+          .__user__user_center .m_left_wrapper .user-info-card .user-intro-box > em span {
             font-weight: bold;
             padding-left: 10px; }
     .__user__user_center .m_left_wrapper .user-collect-video-card {
@@ -1484,16 +2114,31 @@ body {
   note: All CSS3 Properties are being supported by Safari 5
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
+------------------------------------------------------------- */
+  /* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
 ------------------------------------------------------------- */ }
-  .__school_detail .g__left-filter .toggle-filter-btn:before, .g__left-filter .__school_detail .toggle-filter-btn:before, .__school_detail .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .__school_detail i, .__school_detail
+  .__school_detail .g__header .search-area .input-content-wrapper .header-search-btn:before, .g__header .search-area .input-content-wrapper .__school_detail .header-search-btn:before, .__school_detail .g__header .h__user .btn_APP:before, .g__header .h__user .__school_detail .btn_APP:before, .__school_detail .g__header .m-right-bottom-btns > div i:before, .g__header .m-right-bottom-btns > div .__school_detail i:before, .__school_detail .g__left-filter .toggle-filter-btn:before, .g__left-filter .__school_detail .toggle-filter-btn:before, .__school_detail .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .__school_detail i, .__school_detail
   .g__left-filter .wrapper-3 .link-box a i,
-  .g__left-filter .wrapper-3 .link-box a .__school_detail i, .__school_detail .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .__school_detail span::after, .__school_detail .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .__school_detail .submit-btn:before, .__school_detail .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-paltform-login .__school_detail a, .__school_detail .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .m_major .__school_detail .m_icon {
+  .g__left-filter .wrapper-3 .link-box a .__school_detail i, .__school_detail .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .__school_detail span::after, .__school_detail .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:before, .g__top-filter .m-res-wrapper .m-tag-wrapper .tag .__school_detail i:before, .__school_detail .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .__school_detail .submit-btn:before, .__school_detail .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login .__school_detail a, .__school_detail .video-list-item .right-video-info .title-row .should-pay:before, .video-list-item .right-video-info .title-row .__school_detail .should-pay:before, .__school_detail .video-list-item .right-video-info .title-row .free-play:before, .video-list-item .right-video-info .title-row .__school_detail .free-play:before, .__school_detail .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .m_major .__school_detail .m_icon, .__school_detail .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro a:before, .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro .__school_detail a:before, .__school_detail .video-info .title-row .should-pay:before, .__school_detail .video-info .title-row .free-play:before, .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-false:before,
+  .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-false:before, .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-true:before,
+  .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-true:before {
     font-family: "iconfont" !important;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
     -moz-osx-font-smoothing: grayscale; }
-  .__school_detail .g__mask.show .g__modal-window, .g__mask.show .__school_detail .g__modal-window, .__school_detail .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__school_detail .form-area.login > *, .__school_detail .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__school_detail .form-area.register > *, .__school_detail .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__school_detail .form-area.forget_password > *, .__school_detail .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__school_detail .m__filter-res-school, .__school_detail .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__school_detail .m_major, .__school_detail .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .__school_detail .g__modal-window, .__school_detail .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .__school_detail .user-info-card, .__school_detail .school-poster, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content {
+  .__school_detail .g__mask.show .g__modal-window, .g__mask.show .__school_detail .g__modal-window, .__school_detail .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__school_detail .form-area.login > *, .__school_detail .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__school_detail .form-area.register > *, .__school_detail .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__school_detail .form-area.forget_password > *, .__school_detail .video-list-item, .__school_detail .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__school_detail .m__filter-res-school, .__school_detail .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__school_detail .m_major, .__school_detail .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .__school_detail .g__modal-window, .__school_detail .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .__school_detail .user-info-card, .__school_detail .school-poster, .__school_detail .school-video, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content, .__school_detail .m-comment {
     -webkit-animation: toggleIn ease-in .3s forwards;
             animation: toggleIn ease-in .3s forwards; }
   .__school_detail .g__mask.hide .g__modal-window, .g__mask.hide .__school_detail .g__modal-window, .__school_detail .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .__school_detail .g__modal-window {
@@ -1528,6 +2173,68 @@ body {
               user-select: none; }
     .__school_detail .school-poster:hover .school-poster-tip {
       opacity: 1; }
+  .__school_detail .school-video {
+    position: relative;
+    width: 100%;
+    height: 640px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; }
+    .__school_detail .school-video h4 {
+      box-sizing: border-box;
+      line-height: 40px;
+      padding-left: 10px;
+      margin: 0; }
+  .__school_detail .comment-input-wrapper {
+    padding: 20px 30px 10px 20px; }
+    .__school_detail .comment-input-wrapper textarea {
+      resize: none;
+      height: 120px; }
+    .__school_detail .comment-input-wrapper .btn {
+      margin-top: 10px;
+      float: right; }
+  .__school_detail .video-info .title-row {
+    display: block;
+    height: 30px;
+    line-height: 30px; }
+    .__school_detail .video-info .title-row a {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 16px; }
+    .__school_detail .video-info .title-row .should-pay {
+      display: inline-block;
+      vertical-align: middle;
+      color: #d35d27;
+      margin-left: 15px; }
+      .__school_detail .video-info .title-row .should-pay:before {
+        content: '\e662';
+        color: inherit;
+        font-size: 18px;
+        padding-right: 4px; }
+    .__school_detail .video-info .title-row .free-play {
+      display: inline-block;
+      vertical-align: middle;
+      color: #4AB579;
+      margin-left: 15px; }
+      .__school_detail .video-info .title-row .free-play:before {
+        content: '\e663';
+        color: inherit;
+        font-size: 18px;
+        padding-right: 4px; }
+  .__school_detail .video-info .video-other-info {
+    height: 30px;
+    line-height: 30px;
+    color: #848484;
+    font-size: 13px; }
+  .__school_detail .video-info .video-intro {
+    padding-top: 3px;
+    color: #848484;
+    font-size: 13px;
+    line-height: 1.5;
+    height: auto;
+    max-height: 40px;
+    word-break: break-all;
+    overflow: hidden; }
   .__school_detail .school-header {
     height: 80px;
     box-sizing: border-box;
@@ -1613,3 +2320,101 @@ body {
         color: #3E3A39;
         font-size: 14px;
         line-height: 1.8; }
+  .__school_detail .g__header .search-area .input-content-wrapper .header-search-btn:before, .g__header .search-area .input-content-wrapper .__school_detail .header-search-btn:before, .__school_detail .g__header .h__user .btn_APP:before, .g__header .h__user .__school_detail .btn_APP:before, .__school_detail .g__header .m-right-bottom-btns > div i:before, .g__header .m-right-bottom-btns > div .__school_detail i:before, .__school_detail .g__left-filter .toggle-filter-btn:before, .g__left-filter .__school_detail .toggle-filter-btn:before, .__school_detail .g__left-filter .wrapper-2 .link-box a i, .g__left-filter .wrapper-2 .link-box a .__school_detail i, .__school_detail
+  .g__left-filter .wrapper-3 .link-box a i,
+  .g__left-filter .wrapper-3 .link-box a .__school_detail i, .__school_detail .g__top-filter .m-target-wrapper .m-title span::after, .g__top-filter .m-target-wrapper .m-title .__school_detail span::after, .__school_detail .g__top-filter .m-res-wrapper .m-tag-wrapper .tag i:before, .g__top-filter .m-res-wrapper .m-tag-wrapper .tag .__school_detail i:before, .__school_detail .g__mask .g__modal-window .m-modal-content .m-right .form-area .submit-btn:before, .g__mask .g__modal-window .m-modal-content .m-right .form-area .__school_detail .submit-btn:before, .__school_detail .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login a, .g__mask .g__modal-window .m-modal-content .m-right .other-platform-login .__school_detail a, .__school_detail .video-list-item .right-video-info .title-row .should-pay:before, .video-list-item .right-video-info .title-row .__school_detail .should-pay:before, .__school_detail .video-list-item .right-video-info .title-row .free-play:before, .video-list-item .right-video-info .title-row .__school_detail .free-play:before, .__school_detail .g__filter-result-wrapper .m_major .m_icon, .g__filter-result-wrapper .m_major .__school_detail .m_icon, .__school_detail .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro a:before, .__user__user_center .m_left_wrapper .user-info-card .user-intro-box .intro .__school_detail a:before, .__school_detail .video-info .title-row .should-pay:before, .__school_detail .video-info .title-row .free-play:before, .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-false:before,
+  .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-false:before, .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-true:before,
+  .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-true:before {
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale; }
+  .__school_detail .g__mask.show .g__modal-window, .g__mask.show .__school_detail .g__modal-window, .__school_detail .g__mask .g__modal-window.login .m-modal-content .form-area.login > *, .g__mask .g__modal-window.login .m-modal-content .__school_detail .form-area.login > *, .__school_detail .g__mask .g__modal-window.register .m-modal-content .form-area.register > *, .g__mask .g__modal-window.register .m-modal-content .__school_detail .form-area.register > *, .__school_detail .g__mask .g__modal-window.forget_password .m-modal-content .form-area.forget_password > *, .g__mask .g__modal-window.forget_password .m-modal-content .__school_detail .form-area.forget_password > *, .__school_detail .video-list-item, .__school_detail .g__filter-result-wrapper .m__filter-res-school, .g__filter-result-wrapper .__school_detail .m__filter-res-school, .__school_detail .g__filter-result-wrapper .m_major, .g__filter-result-wrapper .__school_detail .m_major, .__school_detail .__major__select .g__mask.m__major_modal_mask.show .g__modal-window, .__major__select .g__mask.m__major_modal_mask.show .__school_detail .g__modal-window, .__school_detail .__user__user_center .m_left_wrapper .user-info-card, .__user__user_center .m_left_wrapper .__school_detail .user-info-card, .__school_detail .school-poster, .__school_detail .school-video, .__school_detail .school-header, .__school_detail .school-section-link-wrapper, .__school_detail .school-detail-main-content, .__school_detail .m-comment {
+    -webkit-animation: toggleIn ease-in .3s forwards;
+            animation: toggleIn ease-in .3s forwards; }
+  .__school_detail .g__mask.hide .g__modal-window, .g__mask.hide .__school_detail .g__modal-window, .__school_detail .__major__select .g__mask.m__major_modal_mask.hide .g__modal-window, .__major__select .g__mask.m__major_modal_mask.hide .__school_detail .g__modal-window {
+    -webkit-animation: toggleOut ease-out .3s forwards;
+            animation: toggleOut ease-out .3s forwards; }
+  .__school_detail .m-comment {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    text-align: center; }
+    .__school_detail .m-comment::after {
+      display: block;
+      content: "";
+      position: relative;
+      padding-top: 20px;
+      width: 650px;
+      height: 0;
+      margin: auto;
+      border-bottom: 1px solid #dedede; }
+    .__school_detail .m-comment:last-child::after {
+      display: none; }
+    .__school_detail .m-comment .m-user {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+      width: 100px;
+      height: 80px; }
+      .__school_detail .m-comment .m-user > span {
+        display: block;
+        padding: 5px 0;
+        font-size: 13px; }
+      .__school_detail .m-comment .m-user .user-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        margin: 10px auto;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat; }
+    .__school_detail .m-comment .right-content {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      font-size: 13px;
+      width: 500px;
+      height: auto;
+      text-align: left; }
+      .__school_detail .m-comment .right-content .username {
+        color: #369; }
+      .__school_detail .m-comment .right-content .m-content {
+        height: auto;
+        margin-top: 10px;
+        font-size: 14px; }
+      .__school_detail .m-comment .right-content .m-vote-wrapper {
+        float: right;
+        height: 40px; }
+        .__school_detail .m-comment .right-content .m-vote-wrapper .vote {
+          display: inline-block;
+          padding-right: 5px;
+          margin: 5px 10px;
+          min-width: 50px;
+          font-size: 16px;
+          color: #848484;
+          font-style: normal; }
+          .__school_detail .m-comment .right-content .m-vote-wrapper .vote:before {
+            padding-right: 5px; }
+        .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-false:before,
+        .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-false:before {
+          display: inline-block;
+          content: '\e665';
+          font-size: 18px;
+          color: #848484; }
+          .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-false:before:hover,
+          .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-false:before:hover {
+            color: #369; }
+        .__school_detail .m-comment .right-content .m-vote-wrapper .upvote-true:before,
+        .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-true:before {
+          display: inline-block;
+          content: '\e664';
+          font-size: 18px;
+          color: #369; }
+        .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-true:before, .__school_detail .m-comment .right-content .m-vote-wrapper .downvote-false:before {
+          -webkit-transform: rotate(180deg);
+                  transform: rotate(180deg); }

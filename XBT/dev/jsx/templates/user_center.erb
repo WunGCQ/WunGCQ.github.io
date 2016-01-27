@@ -1,0 +1,84 @@
+module.exports =
+{
+  'user_head_box':
+  `
+  <div class="user-head-box">
+    <div class="user-head-bg" style="background-image:url('<%= user.avatar_url %>')">
+    </div>
+    <div class="m-avatar" style="background-image:url('<%= user.avatar_url %>')"></div>
+    <h2><span><%= user.username %></span></h2>
+  </div>
+  <div class="user-intro-box">
+    <div class="intro">
+      <div>
+        <em>省份:</em>
+        <span><%= user.province %></span>
+      </div>
+      <div>
+        <em>文理:</em>
+        <span><%= user.subject ? ((user.subject == "science")?"理科":"文科") : "未选择" %></span>
+      </div>
+      <a href="javascript:;" id="m_modify_user_info">修改资料</a>
+    </div>
+    <em>我的视频<span>0</span></em>
+  </div>
+  `,
+
+  'm_modify_user_info':
+  `<div class="g__mask" id="m__modal_window_mask">
+    <div class="g__modal-window m_user_info_modal" id="m__modal_window">
+      <div class="m-modal-title">
+        <div class="m-title-item"><span>修改信息</span></div>
+      </div>
+      <div class="m-modal-content">
+        <div class="m-left">
+          <div class="app-download">
+            <span>修改头像</span>
+            <img class="m-user-head" src="<%= user.avatar_url %>" alt="">
+            <form class="m-user-avatar-form" id="m_user_avatar_form">
+              <input type="hidden" name="token"/>
+              <label class="btn btn-primary" for="upload_avatar">上传图片</label>
+              <input name="file" class="hide" id="upload_avatar" type="file" accept="image/*"/>
+              <input type="hidden" name="key" value="/avatar/<%- user.username +'_'+'avatar'+ Date.now() %>">
+              <input type="hidden" name="accept" />
+            </form>
+          </div>
+        </div>
+
+        <div class="m-right">
+          <!-- 登录表单 -->
+          <form class="form-area" name="info_form" id="m_user_info_form">
+
+            <div class="input-row">
+              <input type="text" class="form-control" name="username" placeholder="用户名"/>
+            </div>
+            <div class="input-row">
+              <input type="number" class="form-control" name="score" placeholder="期望分数"/>
+            </div>
+            <div class="input-row">
+              <select name="province" class="form-control">
+                <% _.each(province_names,function(p){ %>
+                  <option value="<%=p%>"><%=p%></option>
+                <% }) %>
+              </select>
+            </div>
+            <div class="input-row">
+              <select name="subject" class="form-control" placeholder='请选择文理科~'>
+                <option value="science" <% if(user.subject !='art'){%>selected<%}%>>理科</option>
+                <option value="art" <% if(user.subject =='art'){%>selected<%}%>>文科</option>
+              </select>
+            </div>
+            <div class="err-row" id="login_err">
+              <span></span>
+            </div>
+            <div class="submit-btn" id="m_user_info_update_btn" type="button"></div>
+          </form>
+          <!-- 登录表单 -->
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  `
+}

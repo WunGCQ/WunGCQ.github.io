@@ -1,0 +1,60 @@
+module.exports =
+`<div class="g__left-filter <%= is_hide?'hide':'' %>" id="g_left_filter">
+    <span class="toggle-filter-btn" id="toggle_filter_btn">收起左侧筛选</span>
+    <!-- 头部筛选标准 -->
+    <div class="m-wrapper wrapper-1">
+        <div class="wen-li" id="m_left_subject">
+
+            <div class="item">
+                <input type="radio" id="wen" name="subject" value="science" <% if(subject != 'art'){ %> checked="" <%}%>/>
+                <label for="wen">
+                    <em>理科</em>
+                </label>
+            </div>
+            <div class="item">
+                <input type="radio" id="li" name="subject" value="art" <% if(subject == 'art'){ %> checked="" <%}%> />
+                <label for="li">
+                    <em>文科</em>
+                </label>
+            </div>
+        </div>
+
+        <div class="province-wrapper">
+            <select name="" id="m_province_selector">
+                <%= province_list %>
+            </select>
+        </div>
+
+        <div class="grade-wrapper">
+            <input type="number" class="form-control m-input" id="m_left_score" value="<%=score%>" placeholder="请输入期望的最高分"/>
+        </div>
+    </div>
+    <!-- 头部筛选标准 -->
+    <!-- 志愿检索方式 -->
+    <div class="m-wrapper wrapper-2">
+        <h5>志愿推荐</h5>
+
+        <div class="link-box">
+            <a href="/XBT/html/layout/select_major.html"><i>&#xe652;</i><span>按专业检索</span></a>
+        </div>
+        <div class="link-box">
+            <a href="/XBT/html/layout/select_school.html"><i>&#xe650;</i><span>按高校检索</span></a>
+        </div>
+    </div>
+    <!-- 志愿检索方式 -->
+    <!-- 数据资料 -->
+    <div class="m-wrapper wrapper-2">
+        <h5>数据资料</h5>
+
+        <div class="link-box">
+            <a href="/XBT/html/layout/select_school.html"><i>&#xe653;</i><span>学院排行与查询</span></a>
+        </div>
+        <div class="link-box">
+            <a href="/XBT/html/layout/select_school.html"><i>&#xe64f;</i><span>专业查询</span></a>
+        </div>
+        <div class="link-box">
+            <a href="/XBT/html/layout/batch.html"><i>&#xe64d;</i><span>批次线查询</span></a>
+        </div>
+    </div>
+    <!-- 数据资料 -->
+</div>`

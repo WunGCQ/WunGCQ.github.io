@@ -1,0 +1,97 @@
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
+.video-list-item .right-video-info .title-row .should-pay:before, .video-list-item .right-video-info .title-row .free-play:before {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
+.video-list-item {
+  -webkit-animation: toggleIn ease-in .3s forwards;
+          animation: toggleIn ease-in .3s forwards; }
+
+.video-list-item {
+  display: block;
+  position: relative;
+  margin: auto;
+  width: 400px;
+  height: auto;
+  margin: 15px;
+  float: left;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 3px #ccc;
+  transition: .3s;
+  text-align: left;
+  font-size: 14px;
+  transition: .3s; }
+  .video-list-item:hover {
+    box-shadow: 0 0 7px 1px #ccc; }
+  .video-list-item .poster {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-repeat: no-repeat; }
+  .video-list-item .right-video-info {
+    display: inline-block;
+    padding-left: 10px;
+    vertical-align: top; }
+    .video-list-item .right-video-info .title-row {
+      display: block;
+      height: 30px;
+      line-height: 30px; }
+      .video-list-item .right-video-info .title-row a {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 16px; }
+      .video-list-item .right-video-info .title-row .should-pay {
+        display: inline-block;
+        vertical-align: middle;
+        color: #d35d27;
+        margin-left: 15px; }
+        .video-list-item .right-video-info .title-row .should-pay:before {
+          content: '\e662';
+          color: inherit;
+          font-size: 18px;
+          padding-right: 4px; }
+      .video-list-item .right-video-info .title-row .free-play {
+        display: inline-block;
+        vertical-align: middle;
+        color: #4AB579;
+        margin-left: 15px; }
+        .video-list-item .right-video-info .title-row .free-play:before {
+          content: '\e663';
+          color: inherit;
+          font-size: 18px;
+          padding-right: 4px; }
+    .video-list-item .right-video-info .video-other-info {
+      height: 30px;
+      line-height: 30px;
+      color: #848484;
+      font-size: 13px; }
+    .video-list-item .right-video-info .video-intro {
+      padding-top: 3px;
+      color: #848484;
+      font-size: 13px;
+      line-height: 1.5;
+      height: auto;
+      max-height: 40px;
+      word-break: break-all;
+      overflow: hidden; }
