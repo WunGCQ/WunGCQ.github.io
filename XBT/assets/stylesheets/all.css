@@ -149,7 +149,7 @@ button {
     display: inline-block;
     vertical-align: top;
     text-align: left;
-    width: 450px; }
+    width: 350px; }
     .g__header .header_left .logo {
       float: left;
       width: 80px;
@@ -170,7 +170,7 @@ button {
         padding: 0;
         height: inherit;
         line-height: 55px;
-        padding: 0 25px;
+        padding: 0 15px;
         display: inline-block;
         cursor: pointer;
         color: #fff;
@@ -182,7 +182,7 @@ button {
     display: inline-block;
     vertical-align: top;
     height: inherit;
-    width: 400px;
+    width: 350px;
     text-align: right;
     font-size: 0; }
     .g__header .search-area .input-content-wrapper {
