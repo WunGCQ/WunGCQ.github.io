@@ -39,7 +39,12 @@ class controller {
   init() {
 
     var me = this;
-    me.getSchoolData();
+    if(this.school_id){
+      me.getSchoolData();
+    }else{
+      me.renderVideo();
+    }
+
   }
 
 
@@ -101,7 +106,9 @@ class controller {
     }).done((res)=> {
       if (res.code == 0) {
         var data = res.payload;
-        me.getComments();
+        if (user.token) {
+          me.getComments();
+        }
       } else {
 
       }

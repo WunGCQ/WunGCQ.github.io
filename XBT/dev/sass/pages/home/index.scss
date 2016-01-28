@@ -93,7 +93,7 @@
 
 .m-slider-wrapper{
   width: 100%;
-  height: 500px;
+  height: 350px;
   position: relative;
   .m-index-slider{
     display: block;
@@ -123,7 +123,7 @@
       display: inline-block;
       width: auto;
       position: relative;
-      margin: 420px auto auto auto;
+      margin: 280px auto auto auto;
 
       .m-slider-nav-item{
         display: inline-block;
@@ -135,8 +135,8 @@
         &:before{
           display: block;
           content: "";
-          width: 60px;
-          height: 6px;
+          width: 50px;
+          height: 5px;
           background-color: #fff;
           border-radius: 20px;
         }
