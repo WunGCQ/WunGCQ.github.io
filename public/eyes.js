@@ -49,8 +49,6 @@ function init(w,h){
     }
 
     function drawEyeBall(ctx,center,r,t){
-        let xOffset = 0.2 * r * Math.sin(t/500);
-        let yOffset = 0.05 * r * Math.cos(t/800);
         var {x:_x,y:_y} = window.MOUSE;
 
         let xOffset = 0.13*r*Math.atan(_x - center.x);
