@@ -4,31 +4,215 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        canvas{
-            outline: 1px solid #000000;
+        body{
+            padding: 0;
+            margin: 0;
         }
     </style>
 </head>
 <body>
-
 <div style="display: none">
-    <img src="./unnamed.png" id="eye" alt="" />
+    <img src="./eyes.png" alt="" id="eye" />
 </div>
-
-<script>
-    window.addEventListener('load',function (e) {
-        window.MOUSE = {
-          x: e.pageX, y:e.pageY,
-        };
-    })
-</script>
-<script src="./eyes.js">
-</script>
-
 </body>
 <script>
+    'use strict';
 
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+    (function () {
+        window.MOUSE = {
+            x: 0,
+            y: 0
+        };
+        document.body.addEventListener('mousein', function (e) {
+            window.MOUSE = {
+                x: e.pageX,
+                y: e.pageY
+            };
+            document.body.removeEventListener('mousein');
+        });
+        document.body.addEventListener('mousemove', function (e) {
+            window.MOUSE = {
+                x: e.pageX,
+                y: e.pageY
+            };
+        });
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        var canvas = document.createElement('canvas');
+        canvas.setAttribute('width', w);
+        canvas.setAttribute('height', h);
+        canvas.id = 'canvas';
+        document.body.appendChild(canvas);
+        init(w, h);
+    })();
+    function init(w, h) {
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        var img = document.getElementById('eye');
+
+        var Point = function () {
+            function Point(x, y) {
+                _classCallCheck(this, Point);
+
+                this.x = x;
+                this.y = y;
+            }
+
+            _createClass(Point, [{
+                key: 'move',
+                value: function move(ctx) {
+                    ctx.moveTo(this.x - 0, this.y - 0);
+                }
+            }]);
+
+            return Point;
+        }();
+
+        function drawBezier(ctx, start, P0, P1, end) {
+            ctx.beginPath();
+            start.move(ctx);
+            ctx.bezierCurveTo(P0.x, P0.y, P1.x, P1.y, end.x, end.y);
+            ctx.fillStyle = '#333';
+            ctx.fill();
+            ctx.stroke();
+            return ctx;
+        }
+
+        function drawEyeBall(ctx, center, r, t) {
+            var _window$MOUSE = window.MOUSE,
+                    _x = _window$MOUSE.x,
+                    _y = _window$MOUSE.y;
+
+            var xOffset = 0.13 * r * Math.atan(_x - center.x);
+            var yOffset = 0.07 * r * Math.atan(_y - center.y);
+            // let xOffset = 0, yOffset = 0;
+            var x = xOffset + center.x;
+            var y = center.y + yOffset;
+            ctx.restore();
+            ctx.beginPath();
+            // ctx.arc(x, y, r*0.2, 0, 2*Math.PI, false);
+            ctx.save();
+            ctx.fllStyle = 'rgba(0,0,0,0.5)';
+            ctx.drawImage(img, x - r * 0.3 + 0.01 * r * Math.random(), y - r * 0.3 + 0.01 * r * Math.random(), r * 0.6, r * 0.6);
+            ctx.restore();
+            ctx.fillStyle = '#730505';
+
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = '#730505';
+            ctx.stroke();
+        }
+
+        function drawEye() {
+            var pointCenter = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Point(0, 0);
+            var r = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
+            var openPercent = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.6;
+            var rotate = arguments[3];
+            var t = arguments[4];
+            var allRotate = arguments[5];
+
+            var c = pointCenter;
+            pointCenter.move(ctx);
+            // let R = {x: r, y : r* openPercent};
+            //我试图建立一个等六边形，六边形的左右顶点为bezier曲线的起点终点，剩余点为控制点.
+            //按照眼睛六边形建模r为六边形顶点同心圆半径
+            //通过上下scaleY控制闭合程度，通过translate控制眼睛中心偏移。
+            var deltaX = r * 0.5;
+            var deltaY = r * 0.5 * Math.pow(2.5, 0.5);
+            //六个点
+
+            var startPoint = new Point(0 - r, 0);
+
+            var topLeftPoint = new Point(0 - deltaX, 0 - deltaY);
+            var topRightPoint = new Point(0 + deltaX, 0 - deltaY);
+
+            var endPoint = new Point(0 + r, 0);
+
+            var bottomLeftPoint = new Point(0 - deltaX, 0 + deltaY);
+            var bottomRightPoint = new Point(0 + deltaX, 0 + deltaY);
+
+            //设置样式
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = 'black';
+            ctx.save();
+            //transform
+            ctx.translate(c.x, c.y);
+            ctx.rotate(rotate);
+            ctx.scale(1, openPercent);
+
+            //画下半部分线条
+            drawBezier(ctx, startPoint, bottomLeftPoint, bottomRightPoint, endPoint);
+
+            //画上半部分线条
+            drawBezier(ctx, startPoint, topLeftPoint, topRightPoint, endPoint);
+
+            ctx.beginPath();
+            startPoint.move(ctx);
+            ctx.lineTo(endPoint.x, endPoint.y);
+            ctx.strokeStyle = '#333';
+            ctx.stroke();
+
+            //回到中心，画个圆
+            drawEyeBall(ctx, c, r, t);
+
+            ctx.restore();
+            //            ctx.rotate(allRotate);
+
+        }
+
+        var start = null;
+
+        var eyes = function () {
+            var maxRectLen = 100;
+            var minLen = w * h / (maxRectLen * maxRectLen);
+            var len = parseInt(minLen * 0.8 + 0.5 * Math.random() * minLen);
+            var rect = w * h / len;
+            var square_width = Math.pow(rect, 0.5);
+            var horizental_num = w / square_width;
+            return Array.from(new Array(len), function (__, i) {
+                var x = (i + 1) % horizental_num;
+                var y = parseInt((i + 1) / horizental_num);
+                var rotate_seed = Math.cos(Math.random() * 100);
+                var p = Math.PI;
+                return {
+                    center: new Point(x * square_width + 0.1 * (Math.random() - 0.5) * w, y * square_width + 0.1 * (Math.random() - 0.5) * h),
+                    r: 20 + Math.random() * 40,
+                    seed: -0.4 - 0.1 * Math.random(),
+                    rotate: rotate_seed >= 0 ? p + p * rotate_seed : -p + p * rotate_seed
+                };
+            });
+        }();
+        function step(t) {
+            if (!start) start = t;
+            var progress = t - start;
+            // drawEye(new Point(200,100),20,openPercent,t);
+            // ctx.clearRect(0,0,w,h);
+            var newR = 128 + parseInt((progress % 25500)/100);
+
+            var fillStyle = 'rgba('+newR+','+ 0 + ','+ 0+',0.1)';
+            ctx.fillStyle = fillStyle;
+            ctx.fillRect(0, 0, w, h);
+//            if (progress % 10000 > 5000) {
+//                ctx.fillStyle = 'rgba(0,0,0,0.1)';
+//
+//            } else {
+//                ctx.fillStyle = 'rgba(255,100,100,0.1)';
+//                ctx.fillRect(0, 0, w, h);
+//            }
+
+            var newRotate = -0.001;
+            eyes.forEach(function (args, i) {
+                var temp = args.seed * 1000;
+                var openPercent = 0.7 + 0.6 * Math.abs(Math.sin(t / (0.9 * -temp) + temp)) + args.seed + 0.2;
+                drawEye(args.center, args.r, openPercent, args.rotate, t, newRotate);
+            });
+
+            window.requestAnimationFrame(step);
+        }
+        window.requestAnimationFrame(step);
+    }
 </script>
 </html>
