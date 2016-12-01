@@ -12,7 +12,7 @@
 </head>
 <body>
 <div style="display: none">
-    <img src="./unnamed.png" alt="" id="eye" />
+    <img src="./eyes.png" alt="" id="eye" />
 </div>
 </body>
 <script>
@@ -89,7 +89,7 @@
 
             var xOffset = 0.13 * r * Math.atan(_x - center.x);
             var yOffset = 0.07 * r * Math.atan(_y - center.y);
-            // let xOffset = 0, yOffset = 0;
+            var xOffset = 0, yOffset = 0;
             var x = xOffset + center.x;
             var y = center.y + yOffset;
             ctx.restore();
@@ -166,7 +166,8 @@
         var start = null;
 
         var eyes = function () {
-            var maxRectLen = 100;
+            var r = parseInt(40 + Math.random() * 40);
+            var maxRectLen = r*2;
             var minLen = w * h / (maxRectLen * maxRectLen);
             var len = parseInt(minLen * 0.8 + 0.5 * Math.random() * minLen);
             var rect = w * h / len;
@@ -179,8 +180,10 @@
                 var p = Math.PI;
                 return {
                     center: new Point(x * square_width + 0.1 * (Math.random() - 0.5) * w, y * square_width + 0.1 * (Math.random() - 0.5) * h),
-                    r: 20 + Math.random() * 40,
+                    r:r,
                     seed: -0.4 - 0.1 * Math.random(),
+                    seed2: Math.sin(Math.random()) * 20,
+                    seed3: Math.sin(Math.random()) * 20,
                     rotate: rotate_seed >= 0 ? p + p * rotate_seed : -p + p * rotate_seed
                 };
             });
@@ -192,9 +195,10 @@
             // ctx.clearRect(0,0,w,h);
             var newR = 128 + parseInt((progress % 25500)/100);
 
-            var fillStyle = 'rgba('+newR+','+ 0 + ','+ 0+',0.1)';
+            var fillStyle = 'rgba('+newR+','+ 0 + ','+ 0+',0.03)';
             ctx.fillStyle = fillStyle;
             ctx.fillRect(0, 0, w, h);
+//            ctx.clearRect(0,0,w,h);
 //            if (progress % 10000 > 5000) {
 //                ctx.fillStyle = 'rgba(0,0,0,0.1)';
 //
@@ -206,7 +210,20 @@
             var newRotate = -0.001;
             eyes.forEach(function (args, i) {
                 var temp = args.seed * 1000;
-                var openPercent = 0.7 + 0.6 * Math.abs(Math.sin(t / (0.9 * -temp) + temp)) + args.seed + 0.2;
+                var openPercent = 0.7 + 0.6 * Math.abs(Math.sin(t / (0.9 * -temp) + temp)) + args.seed + 0.3;
+                args.center.x = args.center.x + args.seed2 * args.seed * Math.sin(t/(100*args.seed2));
+                args.center.y = args.center.y + args.seed3 * args.seed * Math.cos(t/(100*args.seed3));
+                if(args.center.x < 0) {
+                    args.center.x = w;
+                }else if(args.center.x > w){
+                    args.center.x = 0;
+                }
+                if(args.center.y < 0) {
+                    args.center.y = h;
+                }else if(args.center.y > w){
+                    args.center.y = 0;
+                }
+                args.rotate += (args.seed2 / args.seed3) * 0.001;
                 drawEye(args.center, args.r, openPercent, args.rotate, t, newRotate);
             });
 
