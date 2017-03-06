@@ -14,24 +14,24 @@
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
     <script>
-      window.define = (function () {
-        var module = {};
-        var _module = {};
-        Object.defineProperty( module, 'exports', {
-          get: function () {
-            return _module;
-          }, set: function ( object ) {
-            _module = Object.assign( {}, _module, object );
-          }
-        } );
+        window.define = (function () {
+            var module = {};
+            var _module = {};
+            Object.defineProperty(module, 'exports', {
+                get: function () {
+                    return _module;
+                }, set: function (object) {
+                    _module = Object.assign({}, _module, object);
+                }
+            });
 
-        var require = function ( id ) {
-          return _module[id];
-        };
-        return function ( func ) {
-          func( module, require );
-        };
-      })();
+            var require = function (id) {
+                return _module[id];
+            };
+            return function (func) {
+                func(module, require);
+            };
+        })();
     </script>
     <style>
         html, body {
@@ -39,21 +39,23 @@
             margin: 0;
             background: #000;
         }
+
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
             cursor: pointer;
         }
+
         ::-webkit-scrollbar-thumb {
-            background-color: rgba(0,0,0,0.2);
+            background-color: rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             cursor: pointer;
 
         }
+
         ::-webkit-scrollbar-track {
             background-color: transparent;
             cursor: pointer;
-            background-color: rgba(255,0,0,0.2);
         }
 
         body {
@@ -95,31 +97,65 @@
             color: transparent;
             background: transparent;
             cursor: none;
-            transform: translate3d(0,0,0);
+            transform: translate3d(0, 0, 0);
         }
 
         .card-wrapper .card {
+            max-width: 80%;
             max-height: 70vh;
             overflow: auto;
             display: inline-block;
-            border: 2px solid #900000;
-            box-shadow: 0 0 200px 20px rgba(255, 0, 0, .7), inset 0 0 20px 0px rgba(255, 0, 0, 0.4);
+            border: 3px solid #230000;
+            box-shadow: 0 0 200px 20px rgba(255, 255, 255, .5), inset 0 0 20px 0px rgba(0, 0, 0, 0.4);
             padding: 15px 30px;
-            color: #ffddb0;
+            color: #a2a2a2;
             opacity: 0;
             transition: height ease .4s, width ease .4s;
-            animation: show_card ease 1.5s 0.8s forwards,breath_card ease 3s infinite alternate;
+            animation: show_card ease 1.5s 0.8s forwards, breath_card ease 3s infinite alternate;
             cursor: none;
             text-align: center;
         }
 
+        .card div .row:nth-child(1) {
+            animation-delay: 1s;
+        }
+
+        .card div .row:nth-child(2) {
+            animation-delay: 1.3s;
+        }
+
+        .card div .row:nth-child(3) {
+            animation-delay: 1.6s;
+        }
+
+        .card div .row:nth-child(4) {
+            animation-delay: 1.9s;
+        }
+
+        .card div .row:nth-child(5) {
+            animation-delay: 2.2s;
+        }
+
+        .card div .row:nth-child(6) {
+            animation-delay: 2.5s;
+        }
+
+        .card div .row:nth-child(7) {
+            animation-delay: 2.8s;
+        }
+
+        .card div .row:nth-child(8) {
+            animation-delay: 3.2s;
+        }
 
         @keyframes breath_card {
             from {
-                box-shadow: 0 0 200px 20px rgba(255, 0, 0, .7), inset 0 0 20px 0px rgba(255, 0, 0, 0.4);
+                background: rgba(0, 0, 0, 0);
+                box-shadow: 0 0 200px 20px rgba(0, 0, 0, .9), inset 0 0 20px 5px rgba(0, 0, 0, 0.3);
             }
             to {
-                box-shadow: 0 0 300px 15px rgba(255, 0, 0, .5), inset 0 0 20px 0px rgba(255, 0, 0, 0.4);
+                background: rgba(0, 0, 0, 0.4);
+                box-shadow: 0 0 300px 40px #000, inset 0 0 20px 5px rgba(0, 0, 0, 0.3);
             }
         }
 
@@ -134,23 +170,50 @@
             }
         }
 
+
+
         .card .row {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0 8px;
             text-align: center;
             margin: auto;
             line-height: 2;
             font-size: 18px;
             text-shadow: 0px 1px 1px #000;
-            animation: show_card ease 1.5s 0.8s forwards
+            animation-name: row;
+            overflow: hidden;
+            transition: all ease .3s;
+            animation-timing-function: ease;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            transform: scaleY(0);
         }
+
         .card .row a {
             color: #21b4ff;
-            text-shadow:0 1px 1px #000;
+            text-shadow: 0 1px 1px #000;
         }
+        .card .row:hover{
+            background: rgba(0,0,0,0.4);
+        }
+
         .card .hr {
             width: 100%;
-            border-top: 2px solid #900000;
+            border-top: 1px solid #230000;
+            box-shadow: 0 0 3px 0 #000;
             margin: 10px 0;
         }
+
+        @keyframes row {
+            from {
+                transform: scaleY(0);
+            }
+            to {
+                transform: scaleY(1);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -160,10 +223,15 @@
 </div>
 <button class="card-wrapper">
     <div class="card">
-        <div id="card-1">
+        <div id="card-0">
             <div class="row" style="color: #fff; letter-spacing: 0.4em; text-indent: 0.4em">王春琪</div>
             <div class="row">GitHub <a href="https://github.com/WunGCQ">WunGCQ</a></div>
             <div class="row">邮箱 <a href="mailto:wangchunqibuaa@163.com">wangchunqibuaa@163.com</a></div>
+            <div class="hr"></div>
+        </div>
+
+        <div id="card-1">
+
             <div class="row">毕业于 北京航空航天大学 软件学院</div>
             <div class="row">2015.4至今 任阿里巴巴前端工程师</div>
             <div class="row">toB业务、构建SPA、数据可视化</div>
@@ -173,8 +241,9 @@
             <div class="row">lodash/HighCharts/jQuery</div>
             <div class="row">使用过php/ruby/node.js构建web后台</div>
             <div class="row">能够使用C++/Python/C#等语言</div>
+            <div class="hr"></div>
         </div>
-        <div class="hr"></div>
+
         <div id="card-2">
             <div class="row" style="color: #fff; letter-spacing: 0.4em; text-indent: 0.4em">项目经历 (按先后顺序)</div>
             <div class="row">以下几个项目的主要前端开发</div>
@@ -182,16 +251,24 @@
                 <a href="https://adplus.umeng.com/" target="_blank">友盟+ U-ADplus产品线 </a> 包含
             </div>
             <div class="row">广效宝: 淘宝卖家淘外广告监测</div>
-            <div class="row"><a href="https://adplus.umeng.com/index.php?c=index&a=intro#0" target="_blank">AppTrack</a>: App广告监测</div>
-            <div class="row"><a href="https://adplus.umeng.com/index.php?c=index&a=brandintro" target="_blank">UniTrack</a>: 高端品牌广告监测</div>
+            <div class="row"><a href="https://adplus.umeng.com/index.php?c=index&a=intro#0" target="_blank">AppTrack</a>:
+                App广告监测
+            </div>
+            <div class="row"><a href="https://adplus.umeng.com/index.php?c=index&a=brandintro"
+                                target="_blank">UniTrack</a>: 高端品牌广告监测
+            </div>
+            <div class="hr"></div>
         </div>
-        <div class="hr"></div>
         <div id="card-3">
             <div class="row" style="color: #fff; letter-spacing: 0.4em; text-indent: 0.4em">工作前的成果</div>
-            <div class="row"><a href="http://wungcq.github.io/" target="_blank">旧主页传送门</a> </div>
+            <div class="row"><a href="http://wungcq.github.io/" target="_blank">旧主页传送门</a></div>
             <div class="row">比现在这个三个小时写完的简历</div>
             <div class="row">好多了~</div>
-            <div class="row"><img src="http://wungcq.github.io/img/7f2894f7b7d02f3c4fa703779a0a9336_b.png" alt="手动比心"></div>
+            <div class="row">
+                <a href="http://wungcq.github.io/public/eyes.html" target="_blank">
+                    <img src="http://wungcq.github.io/img/7f2894f7b7d02f3c4fa703779a0a9336_b.png" alt="手动比心">
+                </a>
+            </div>
         </div>
 
 
@@ -199,247 +276,384 @@
 </button>
 </body>
 <script>
-  define( function ( module ) {
-    var throttle = function ( fn, delay, immediate, debounce ) {
-      var curr = new Date(),//当前事件
-        last_call = 0,
-        last_exec = 0,
-        timer = null,
-        diff, //时间差
-        context,//上下文
-        args,
-        exec = function () {
-          last_exec = curr;
-          fn.apply( context, args );
+    define(function (module) {
+        var throttle = function (fn, delay, immediate, debounce) {
+            var curr = new Date(),//当前事件
+                last_call = 0,
+                last_exec = 0,
+                timer = null,
+                diff, //时间差
+                context,//上下文
+                args,
+                exec = function () {
+                    last_exec = curr;
+                    fn.apply(context, args);
+                };
+            return function () {
+                curr = +new Date();
+                context = this,
+                    args = arguments,
+                    diff = curr - (debounce ? last_call : last_exec) - delay;
+                clearTimeout(timer);
+                if (debounce) {
+                    if (immediate) {
+                        timer = setTimeout(exec, delay);
+                    } else if (diff >= 0) {
+                        exec();
+                    }
+                } else {
+                    if (diff >= 0) {
+                        exec();
+                    } else if (immediate) {
+                        timer = setTimeout(exec, -diff);
+                    }
+                }
+                last_call = curr;
+            }
         };
-      return function () {
-        curr = +new Date();
-        context = this,
-          args = arguments,
-          diff = curr - (debounce ? last_call : last_exec) - delay;
-        clearTimeout( timer );
-        if ( debounce ) {
-          if ( immediate ) {
-            timer = setTimeout( exec, delay );
-          } else if ( diff >= 0 ) {
-            exec();
-          }
-        } else {
-          if ( diff >= 0 ) {
-            exec();
-          } else if ( immediate ) {
-            timer = setTimeout( exec, -diff );
-          }
-        }
-        last_call = curr;
-      }
-    };
 
-    module.exports.debounce = function ( fn, delay, immediate ) {
-      return throttle( fn, delay, immediate, true );
-    };
-    module.exports.throttle = throttle;
-  } )
-  /*
-   * 频率控制 返回函数连续调用时，fn 执行频率限定为每多少时间执行一次
-   * @param fn {function}  需要调用的函数
-   * @param delay  {number}    延迟时间，单位毫秒
-   * @param immediate  {bool} 给 immediate参数传递false 绑定的函数先执行，而不是delay后后执行。
-   * @return {function}实际调用函数
-   */
+        module.exports.debounce = function (fn, delay, immediate) {
+            return throttle(fn, delay, immediate, true);
+        };
+        module.exports.throttle = throttle;
+    })
+    /*
+     * 频率控制 返回函数连续调用时，fn 执行频率限定为每多少时间执行一次
+     * @param fn {function}  需要调用的函数
+     * @param delay  {number}    延迟时间，单位毫秒
+     * @param immediate  {bool} 给 immediate参数传递false 绑定的函数先执行，而不是delay后后执行。
+     * @return {function}实际调用函数
+     */
 
 </script>
 <script>
 
-  var defaultRippleSize = 100;
-  function setSize() {
-    var width = document.body.offsetWidth;
-    var height = document.body.offsetHeight;
-    defaultRippleSize = ( width > height ? width : height ) / 3;
-  }
-
-  setSize();
-
-  window.addEventListener( 'resize', setSize );
-  define( function ( module, require ) {
-    function Ripple( ctx ) {
-      var speed = 1;
-      var initialOpacity = 0.7;
-
-      function ret( x, y, isMouse ) {
-        this.ctx = ctx;
-        this.x = x;
-        this.y = y;
-        this.isMouse = !!isMouse;
-
-        this.id = Date.now() + Math.random().toFixed( 4 ) + Math.random().toFixed( 4 );
-        this.r = defaultRippleSize * (Math.random() * 0.5 + 0.5);
-
-        if ( isMouse && this.r > 60 ) {
-          this.r = 60;
-        }
-
-        this.radius = 0;
-        this.opacity = Number( initialOpacity );
-        this.maxFrames = this.r / speed;
-        this.frames = Number( this.maxFrames );
-
-        return this;
-      }
-
-      ret.prototype.go = function () {
-        this.frames--;
-        var rate = this.frames / this.maxFrames;
-        var _rate = (1 - ( 1 - rate ) * (1 - rate));
-        this.opacity = initialOpacity * rate;
-        this.radius = this.r * _rate * _rate;
-        if ( !this.isMouse ) {
-          this.opacity *= 0.6;
-          this.radius = this.r - this.radius;
-        }
-//        this.radius < 5 && (this.radius = 5);
-        this.draw( this.x, this.y, this.radius, this.opacity );
-        return this.frames > 0;
-      };
-
-      ret.prototype.draw = function () {
-        var ctx = this.ctx, x = this.x, y = this.y, radius = this.radius, opacity = this.opacity;
-
-        var color = 'rgba(255,0,0,' + (opacity || 0) + ')';
-        ctx.save();
-        ctx.moveTo( x, y );
-//      ctx.translate(-radius * 0.5, -radius*0.5);
-        ctx.beginPath();
-        ctx.lineWidth = 1;
-
-        var gradient = ctx.createRadialGradient( x, y, radius * 0.2, x, y, radius );
-        gradient.addColorStop( 0, color );
-        gradient.addColorStop( 1, 'rgba(0,0,0,0)' );
-        ctx.fillStyle = gradient;
-        ctx.strokeStyle = color;
-        ctx.arc( x, y, radius, 0, 360 );
-        ctx.fill();
-        if ( !this.isMouse ) {
-          ctx.stroke();
-        }
-        ctx.closePath();
-        ctx.restore();
-      };
-      return ret;
+    var defaultRippleSize = 100;
+    var width = 0;
+    var height = 0;
+    function setSize() {
+        width = document.body.offsetWidth;
+        height = document.body.offsetHeight;
+        defaultRippleSize = ( width > height ? width : height ) / 6;
     }
 
+    setSize();
 
-    function RippleSet( ctx ) {
+    window.addEventListener('resize', setSize);
+    define(function (module, require) {
+        function Ripple(ctx) {
+            var speed = 2;
+            var initialOpacity = 0.4;
+            var lastRGB = ([Math.random(), Math.random(), Math.random()]).map(function (x) {
+                return parseInt(x * 255)
+            });
+            var movePointMaxRadius = defaultRippleSize * 0.15;
+            var count = 0;
+            var maxCount = 65535 - 1;
 
-      var ret = function () {
-        this.ctx = ctx;
-        this.collection = {};
-        this.frames = 0;
-        this.render = this.render.bind( this );
-        return this;
-      };
+            function ret(x, y, isMove, isCreatedByInterval) {
+//                this.id = String.fromCharCode((++count)%maxCount);
+                this.id = ++count;
+                this.ctx = ctx;
+                this.x = x;
+                this.y = y;
 
-      ret.prototype.push = function ( ripple ) {
-        this.collection[ripple.id] = ripple;
-      };
-      ret.prototype.render = function () {
-//        this.frames = (++this.frames) % 10;
-//        if(this.frames){
-        this.ctx.clearRect( 0, 0, 100000, 100000 );
-//        }
-        var c = this.collection;
-        var leftRipples = 0;
-        for ( var rid in c ) {
-          (!c[rid].go()) && (delete c[rid]) || leftRipples++;
+                this.isMove = !!isMove;
+                this.isCreatedByInterval = !!isCreatedByInterval;
+                this.rgb = lastRGB.map(function (x) {
+                    return (x + Math.ceil(Math.random() * 2)) % 255
+                });
+                lastRGB = this.rgb.concat();
+                var me = this;
+
+                Object.defineProperty(this, 'rgba', {
+                    get: function () {
+                        var str = 'rgba(' + me.rgb.join(',') + ',' + me.opacity + ')';
+                        if (me.isMove) {
+                            me.rgb.forEach(function (m, i) {
+                                me.rgb[i] = (++m) % 255;
+                            })
+                        }
+                        return str;
+                    }
+                });
+
+                this.r = defaultRippleSize * (Math.random() * 0.5 + 0.5);
+                var r = this.r;
+                this.box = {left: x - r, top: y - r, right: x + r, bottom: y + r};
+                if (isMove && this.r > movePointMaxRadius) {
+                    this.r = movePointMaxRadius;
+                }
+                this.radius = 0;
+                this.opacity = Number(initialOpacity);
+                this.maxFrames = this.r / speed;
+                if (isMove || isCreatedByInterval) {
+                    this.maxFrames *= 3;
+                }
+                this.frames = Number(this.maxFrames);
+                return this;
+            }
+
+            ret.prototype.go = function () {
+                this.frames--;
+                var rate = this.frames / this.maxFrames; //rate 递增
+                var _rate = rate * rate;
+                this.opacity = initialOpacity * _rate;
+                this.radius = this.r * _rate * _rate * 0.8;
+                if (!this.isCreatedByInterval) {
+                    this.opacity *= 0.5;
+                } else {
+                    this.radius = this.r - this.radius;
+                }
+                this.radius < 5 && (this.radius = 5);
+                if (this.isCreatedByInterval) {
+                    this.boxMoving();
+                }
+                this.draw(this.x, this.y, this.radius, this.opacity);
+                return this.frames > 0;
+            };
+            ret.prototype.boxMoving = function () {
+                if (this.direction === void 0) {
+                    var temp = Math.PI * ((this.id * 5) % 360) / 180;
+                    this.direction = {
+                        sx: Math.cos(temp),
+                        sy: -Math.sin(temp)
+                    };
+                }
+                var d = this.direction;
+                var dx = d.sx, dy = d.sy;
+
+//                var dx = Math.cos(d) * 10, dy = Math.sin(d) * 10;
+                this.x += 0.5 * dx;
+                this.y += 0.5 * dy;
+                if (this.y < this.box.top || this.y > this.box.bottom) {
+                    d.sy = -d.sy;
+                }
+                if (this.x < this.box.left || this.x > this.box.right) {
+                    d.sx = -d.sx;
+                }
+            };
+
+            ret.prototype.draw = function () {
+                var ctx = this.ctx, x = this.x, y = this.y, radius = this.radius, opacity = this.opacity;
+                var color = this.rgba;
+
+                ctx.save();
+                ctx.moveTo(x, y);
+                ctx.beginPath();
+                ctx.lineWidth = 1;
+                var gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+                gradient.addColorStop(0, color);
+                gradient.addColorStop(1, 'rgba(' + this.rgb.join(',') + ',0)');
+                ctx.fillStyle = gradient;
+                ctx.strokeStyle = color;
+                ctx.arc(x, y, radius, 0, 360);
+                ctx.moveTo(x, y);
+                ctx.fill();
+                if (!this.isMove) {
+                    ctx.stroke();
+                }
+
+
+                ctx.closePath();
+                ctx.restore();
+            };
+            ret.prototype.link = function (last) {
+
+                if (last && last !== this) {
+                    var ctx = this.ctx;
+                    ctx.moveTo(this.x, this.y);
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y);
+                    ctx.strokeStyle = this.rgba;
+                    ctx.strokeWidth = 5;
+                    ctx.lineTo(last.x, last.y);
+                    ctx.stroke();
+                    ctx.closePath();
+                    ctx.restore();
+
+                }
+            }
+            return ret;
         }
-        requestAnimationFrame( this.render );
-      };
 
-      ret.prototype.linkNode = function () {
 
-      };
-      return ret;
-    }
+        function RippleSet(ctx) {
 
-    module.exports = {
-      Ripple: Ripple,
-      RippleSet: RippleSet
-    };
-  } );
+            var ret = function () {
+                this.ctx = ctx;
+                this.collection = {};
+                this.frames = 0;
+                this.render = this.render.bind(this);
+                this.isRender = true;
+                return this;
+            };
+
+            ret.prototype.push = function (ripple) {
+                this.collection[ripple.id] = ripple;
+
+            };
+            ret.prototype.render = function () {
+                this.ctx.clearRect(0, 0, 100000, 100000);
+                var c = this.collection;
+                var arr = Object.keys(c);
+                var len = arr.length;
+                var tick = parseInt(len / 10);
+                var links = [];
+                arr.forEach(function (i, j) {
+                    var x = c[i];
+                    if (!x.go()) {
+                        delete c[i];
+                    } else if (x.isCreatedByInterval) {
+                        links.push(x);
+                    }
+                });
+                var _len = links.length;
+                for (var i = 0; i < _len; i++) {
+                    for (var j = i + 1; j < _len; j++) {
+                        links[i].link(links[j]);
+                    }
+                }
+                links = null;
+                if (this.isRender) {
+                    requestAnimationFrame(this.render);
+                }
+            };
+
+            ret.prototype.onVisibilityChange = function (isShow) {
+                if (!isShow) {
+                    this.isRender = false;
+                } else {
+                    this.isRender = true;
+                    requestAnimationFrame(this.render);
+                }
+            };
+            return ret;
+        }
+
+        module.exports = {
+            Ripple: Ripple,
+            RippleSet: RippleSet
+        };
+    });
 </script>
 <script>
 
 </script>
 <script>
 
-  define( function ( module, require ) {
-    var RippleClassGenerator = require( 'Ripple' );
-    var RippleSetClassGenerator = require( 'RippleSet' );
-    var Ripple = null, RippleSet = null;
-    var throttle = require( 'throttle' );
+    define(function (module, require) {
+        var RippleClassGenerator = require('Ripple');
+        var RippleSetClassGenerator = require('RippleSet');
+        var Ripple = null, RippleSet = null;
+        var throttle = require('throttle');
 
-    var rippleColor = 'rgba(255,0,0,1)';
-    var canvas = document.getElementById( 'topCanvas' );
-    var ctx = canvas.getContext( '2d' );
-    Ripple = RippleClassGenerator( ctx );
-    RippleSet = RippleSetClassGenerator( ctx );
-    var ripples = new RippleSet();
-    var lastMouseMove = { x: 0, y: 0 };
+        var rippleColor = 'rgba(255,0,0,1)';
+        var canvas = document.getElementById('topCanvas');
+        var ctx = canvas.getContext('2d');
+        Ripple = RippleClassGenerator(ctx);
+        RippleSet = RippleSetClassGenerator(ctx);
+        var ripples = new RippleSet();
+        var lastMouseMove = {x: 0, y: 0};
+        var lastX = -100, lastY = -100;
 
-    function bind() {
-      var isMouseDown = false;
-      var addFuncMouse = throttle( setRipple, 16 );
-      var addFunc = throttle( setRipple, 100 );
-      var width = canvas.offsetWidth;
-      var height = canvas.offsetHeight;
-      lastMouseMove = { x: width / 2, y: height / 2 };
+        function checkShouldAdd(ev) {
+            var x = ev.pageX;
+            var y = ev.pageY;
+            var res = ((lastX - x) * (lastX - x) + (lastY - y) * (lastY - y) < 16);
+            lastX = x;
+            lastY = y;
+            return res;
+        }
 
-      var body = document.body;
+        function bind() {
+            var isMouseDown = false;
+            var addFuncMouse = throttle(setRipple, 16);
+            var addFunc = throttle(setRipple, 16);
+            var width = canvas.offsetWidth;
+            var height = canvas.offsetHeight;
 
-      body.addEventListener( 'click', addFunc );
-      body.addEventListener( 'touchstart', addFunc );
-      body.addEventListener( 'touchend', addFunc );
-      body.addEventListener( 'mousemove', function ( ev ) {
-        addFuncMouse( ev, true );
-      } );
-      body.addEventListener( 'touchmove', function ( ev ) {
-        addFuncMouse( ev, true );
-      } );
-      window.addEventListener( 'resize', function () {
-        width = canvas.offsetWidth;
-        height = canvas.offsetHeight;
-        canvas.setAttribute( 'width', width );
-        canvas.setAttribute( 'height', height );
-      } );
+            lastMouseMove = {x: width / 2, y: height / 2};
+
+            var body = document.body;
+
+            body.addEventListener('mouseup', function (ev) {
+                isMouseDown = false;
+                addFunc(ev);
+            });
+            body.addEventListener('mousedown', function (ev) {
+                isMouseDown = true;
+                addFunc(ev);
+            });
+            body.addEventListener('touchstart', addFunc);
+            body.addEventListener('touchend', addFunc);
+            body.addEventListener('mousemove', function (ev) {
+//                if(isMouseDown){
+//                    addFunc(ev);
+//                }else {
+//                    addFuncMouse( ev, true );
+//                }
+                addFunc(ev);
 
 
-    }
+            });
+            body.addEventListener('touchmove', function (ev) {
 
-    function init() {
-      bind();
-      var width = canvas.offsetWidth;
-      var height = canvas.offsetHeight;
-      canvas.setAttribute( 'width', width );
-      canvas.setAttribute( 'height', height );
-      requestAnimationFrame( ripples.render );
-      addRipple( Math.random() * width, Math.random() * height );
-      setInterval( function () {
+                addFuncMouse(ev, true);
+            });
+            window.addEventListener('resize', function () {
+                width = canvas.offsetWidth;
+                height = canvas.offsetHeight;
+                canvas.setAttribute('width', width);
+                canvas.setAttribute('height', height);
+            });
+            var hiddenProperty = 'hidden' in document ? 'hidden' :
+                'webkitHidden' in document ? 'webkitHidden' :
+                    'mozHidden' in document ? 'mozHidden' :
+                        null;
+            var visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
+            var onVisibilityChange = function () {
+                if (document[hiddenProperty]) {
+                    document.title = '๑乛◡乛๑ 快来看我';
+                    ripples.onVisibilityChange(false);
+                } else {
+                    document.title = 'WunGCQ';
+                    ripples.onVisibilityChange(true);
+                }
+            }
+            document.addEventListener(visibilityChangeEvent, onVisibilityChange);
 
-        addRipple( Math.random() * width, Math.random() * height );
-      }, 1000 );
-    }
+        }
 
-    function setRipple( ev, isMove ) {
-      lastMouseMove.x = ev.pageX;
-      lastMouseMove.y = ev.pageY;
-      addRipple( ev.pageX, ev.pageY, isMove );
-    }
+        function init() {
+            bind();
+            var width = canvas.offsetWidth;
+            var height = canvas.offsetHeight;
+            canvas.setAttribute('width', width);
+            canvas.setAttribute('height', height);
+            requestAnimationFrame(ripples.render);
+            addRipple(Math.random() * width, Math.random() * height);
+            for (var i = 0; i < 5; i++) {
+                addRipple(Math.random() * width, Math.random() * height, false, true);
+            }
+            setInterval(function () {
+                if (ripples.isRender) {
+                    addRipple(Math.random() * width, Math.random() * height, false, true);
+                }
+            }, 1000);
+        }
 
-    function addRipple( x, y, isMouse ) {
-      ripples.push( new Ripple( x, y, !!isMouse ) );
-    }
+        function setRipple(ev, isMove) {
+            lastMouseMove.x = ev.pageX;
+            lastMouseMove.y = ev.pageY;
+            addRipple(ev.pageX, ev.pageY, isMove);
+        }
 
-    init();
-  } );
+        function addRipple(x, y, isMove, isCreatedByInterval) {
+            ripples.push(new Ripple(x, y, !!isMove, !!isCreatedByInterval));
+        }
+
+        init();
+    });
 </script>
 </html>
