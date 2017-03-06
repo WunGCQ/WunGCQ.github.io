@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WunGCQ</title>
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <meta name="viewport"
+          content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <script>
+      window.define = (function () {
+        var module = {};
+        var _module = {};
+        Object.defineProperty( module, 'exports', {
+          get: function () {
+            return _module;
+          }, set: function ( object ) {
+            _module = Object.assign( {}, _module, object );
+          }
+        } );
+
+        var require = function ( id ) {
+          return _module[id];
+        };
+        return function ( func ) {
+          func( module, require );
+        };
+      })();
+    </script>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            background: #000;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+            cursor: pointer;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            cursor: pointer;
+
+        }
+        ::-webkit-scrollbar-track {
+            background-color: transparent;
+            cursor: pointer;
+            background-color: rgba(255,0,0,0.2);
+        }
+
+        body {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            box-sizing: border-box;
+            padding: 0;
+            font-family: 'Microsoft Yahei', '\5FAE\8F6F\96C5\9ED1', "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .canvas-wrap {
+
+            position: relative;
+            height: 100%;
+        }
+
+        #topCanvas {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            cursor: none;
+        }
+
+        .card-wrapper {
+            display: block;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            border: none;
+            outline: none;
+            color: transparent;
+            background: transparent;
+            cursor: none;
+            transform: translate3d(0,0,0);
+        }
+
+        .card-wrapper .card {
+            max-height: 70vh;
+            overflow: auto;
+            display: inline-block;
+            border: 2px solid #900000;
+            box-shadow: 0 0 200px 20px rgba(255, 0, 0, .7), inset 0 0 20px 0px rgba(255, 0, 0, 0.4);
+            padding: 15px 30px;
+            color: #ffddb0;
+            opacity: 0;
+            transition: height ease .4s, width ease .4s;
+            animation: show_card ease 1.5s 0.8s forwards,breath_card ease 3s infinite alternate;
+            cursor: none;
+            text-align: center;
+        }
+
+
+        @keyframes breath_card {
+            from {
+                box-shadow: 0 0 200px 20px rgba(255, 0, 0, .7), inset 0 0 20px 0px rgba(255, 0, 0, 0.4);
+            }
+            to {
+                box-shadow: 0 0 300px 15px rgba(255, 0, 0, .5), inset 0 0 20px 0px rgba(255, 0, 0, 0.4);
+            }
+        }
+
+        @keyframes show_card {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .card .row {
+            text-align: center;
+            margin: auto;
+            line-height: 2;
+            font-size: 18px;
+            text-shadow: 0px 1px 1px #000;
+            animation: show_card ease 1.5s 0.8s forwards
+        }
+        .card .row a {
+            color: #21b4ff;
+            text-shadow:0 1px 1px #000;
+        }
+        .card .hr {
+            width: 100%;
+            border-top: 2px solid #900000;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="canvas-wrap">
+    <canvas id="topCanvas"></canvas>
+</div>
+<button class="card-wrapper">
+    <div class="card">
+        <div id="card-1">
+            <div class="row" style="color: #fff; letter-spacing: 0.4em; text-indent: 0.4em">王春琪</div>
+            <div class="row">GitHub <a href="https://github.com/WunGCQ">WunGCQ</a></div>
+            <div class="row">邮箱 <a href="mailto:wangchunqibuaa@163.com">wangchunqibuaa@163.com</a></div>
+            <div class="row">毕业于 北京航空航天大学 软件学院</div>
+            <div class="row">2015.4至今 任阿里巴巴前端工程师</div>
+            <div class="row">toB业务、构建SPA、数据可视化</div>
+            <div class="row">熟练使用ES5/ES6/CSS2.1/HTML</div>
+            <div class="row">React/Redux/webpack</div>
+            <div class="row">SVG/Canvas</div>
+            <div class="row">lodash/HighCharts/jQuery</div>
+            <div class="row">使用过php/ruby/node.js构建web后台</div>
+            <div class="row">能够使用C++/Python/C#等语言</div>
+        </div>
+        <div class="hr"></div>
+        <div id="card-2">
+            <div class="row" style="color: #fff; letter-spacing: 0.4em; text-indent: 0.4em">项目经历 (按先后顺序)</div>
+            <div class="row">以下几个项目的主要前端开发</div>
+            <div class="row">
+                <a href="https://adplus.umeng.com/" target="_blank">友盟+ U-ADplus产品线 </a> 包含
+            </div>
+            <div class="row">广效宝: 淘宝卖家淘外广告监测</div>
+            <div class="row"><a href="https://adplus.umeng.com/index.php?c=index&a=intro#0" target="_blank">AppTrack</a>: App广告监测</div>
+            <div class="row"><a href="https://adplus.umeng.com/index.php?c=index&a=brandintro" target="_blank">UniTrack</a>: 高端品牌广告监测</div>
+        </div>
+        <div class="hr"></div>
+        <div id="card-3">
+            <div class="row" style="color: #fff; letter-spacing: 0.4em; text-indent: 0.4em">工作前的成果</div>
+            <div class="row"><a href="http://wungcq.github.io/" target="_blank">旧主页传送门</a> </div>
+            <div class="row">比现在这个三个小时写完的简历</div>
+            <div class="row">好多了~</div>
+            <div class="row"><img src="http://wungcq.github.io/img/7f2894f7b7d02f3c4fa703779a0a9336_b.png" alt="手动比心"></div>
+        </div>
+
+
+    </div>
+</button>
+</body>
+<script>
+  define( function ( module ) {
+    var throttle = function ( fn, delay, immediate, debounce ) {
+      var curr = new Date(),//当前事件
+        last_call = 0,
+        last_exec = 0,
+        timer = null,
+        diff, //时间差
+        context,//上下文
+        args,
+        exec = function () {
+          last_exec = curr;
+          fn.apply( context, args );
+        };
+      return function () {
+        curr = +new Date();
+        context = this,
+          args = arguments,
+          diff = curr - (debounce ? last_call : last_exec) - delay;
+        clearTimeout( timer );
+        if ( debounce ) {
+          if ( immediate ) {
+            timer = setTimeout( exec, delay );
+          } else if ( diff >= 0 ) {
+            exec();
+          }
+        } else {
+          if ( diff >= 0 ) {
+            exec();
+          } else if ( immediate ) {
+            timer = setTimeout( exec, -diff );
+          }
+        }
+        last_call = curr;
+      }
+    };
+
+    module.exports.debounce = function ( fn, delay, immediate ) {
+      return throttle( fn, delay, immediate, true );
+    };
+    module.exports.throttle = throttle;
+  } )
+  /*
+   * 频率控制 返回函数连续调用时，fn 执行频率限定为每多少时间执行一次
+   * @param fn {function}  需要调用的函数
+   * @param delay  {number}    延迟时间，单位毫秒
+   * @param immediate  {bool} 给 immediate参数传递false 绑定的函数先执行，而不是delay后后执行。
+   * @return {function}实际调用函数
+   */
+
+</script>
+<script>
+
+  var defaultRippleSize = 100;
+  function setSize() {
+    var width = document.body.offsetWidth;
+    var height = document.body.offsetHeight;
+    defaultRippleSize = ( width > height ? width : height ) / 3;
+  }
+
+  setSize();
+
+  window.addEventListener( 'resize', setSize );
+  define( function ( module, require ) {
+    function Ripple( ctx ) {
+      var speed = 1;
+      var initialOpacity = 0.7;
+
+      function ret( x, y, isMouse ) {
+        this.ctx = ctx;
+        this.x = x;
+        this.y = y;
+        this.isMouse = !!isMouse;
+
+        this.id = Date.now() + Math.random().toFixed( 4 ) + Math.random().toFixed( 4 );
+        this.r = defaultRippleSize * (Math.random() * 0.5 + 0.5);
+
+        if ( isMouse && this.r > 60 ) {
+          this.r = 60;
+        }
+
+        this.radius = 0;
+        this.opacity = Number( initialOpacity );
+        this.maxFrames = this.r / speed;
+        this.frames = Number( this.maxFrames );
+
+        return this;
+      }
+
+      ret.prototype.go = function () {
+        this.frames--;
+        var rate = this.frames / this.maxFrames;
+        var _rate = (1 - ( 1 - rate ) * (1 - rate));
+        this.opacity = initialOpacity * rate;
+        this.radius = this.r * _rate * _rate;
+        if ( !this.isMouse ) {
+          this.opacity *= 0.6;
+          this.radius = this.r - this.radius;
+        }
+//        this.radius < 5 && (this.radius = 5);
+        this.draw( this.x, this.y, this.radius, this.opacity );
+        return this.frames > 0;
+      };
+
+      ret.prototype.draw = function () {
+        var ctx = this.ctx, x = this.x, y = this.y, radius = this.radius, opacity = this.opacity;
+
+        var color = 'rgba(255,0,0,' + (opacity || 0) + ')';
+        ctx.save();
+        ctx.moveTo( x, y );
+//      ctx.translate(-radius * 0.5, -radius*0.5);
+        ctx.beginPath();
+        ctx.lineWidth = 1;
+
+        var gradient = ctx.createRadialGradient( x, y, radius * 0.2, x, y, radius );
+        gradient.addColorStop( 0, color );
+        gradient.addColorStop( 1, 'rgba(0,0,0,0)' );
+        ctx.fillStyle = gradient;
+        ctx.strokeStyle = color;
+        ctx.arc( x, y, radius, 0, 360 );
+        ctx.fill();
+        if ( !this.isMouse ) {
+          ctx.stroke();
+        }
+        ctx.closePath();
+        ctx.restore();
+      };
+      return ret;
+    }
+
+
+    function RippleSet( ctx ) {
+
+      var ret = function () {
+        this.ctx = ctx;
+        this.collection = {};
+        this.frames = 0;
+        this.render = this.render.bind( this );
+        return this;
+      };
+
+      ret.prototype.push = function ( ripple ) {
+        this.collection[ripple.id] = ripple;
+      };
+      ret.prototype.render = function () {
+//        this.frames = (++this.frames) % 10;
+//        if(this.frames){
+        this.ctx.clearRect( 0, 0, 100000, 100000 );
+//        }
+        var c = this.collection;
+        var leftRipples = 0;
+        for ( var rid in c ) {
+          (!c[rid].go()) && (delete c[rid]) || leftRipples++;
+        }
+        requestAnimationFrame( this.render );
+      };
+
+      ret.prototype.linkNode = function () {
+
+      };
+      return ret;
+    }
+
+    module.exports = {
+      Ripple: Ripple,
+      RippleSet: RippleSet
+    };
+  } );
+</script>
+<script>
+
+</script>
+<script>
+
+  define( function ( module, require ) {
+    var RippleClassGenerator = require( 'Ripple' );
+    var RippleSetClassGenerator = require( 'RippleSet' );
+    var Ripple = null, RippleSet = null;
+    var throttle = require( 'throttle' );
+
+    var rippleColor = 'rgba(255,0,0,1)';
+    var canvas = document.getElementById( 'topCanvas' );
+    var ctx = canvas.getContext( '2d' );
+    Ripple = RippleClassGenerator( ctx );
+    RippleSet = RippleSetClassGenerator( ctx );
+    var ripples = new RippleSet();
+    var lastMouseMove = { x: 0, y: 0 };
+
+    function bind() {
+      var isMouseDown = false;
+      var addFuncMouse = throttle( setRipple, 16 );
+      var addFunc = throttle( setRipple, 100 );
+      var width = canvas.offsetWidth;
+      var height = canvas.offsetHeight;
+      lastMouseMove = { x: width / 2, y: height / 2 };
+
+      var body = document.body;
+
+      body.addEventListener( 'click', addFunc );
+      body.addEventListener( 'touchstart', addFunc );
+      body.addEventListener( 'touchend', addFunc );
+      body.addEventListener( 'mousemove', function ( ev ) {
+        addFuncMouse( ev, true );
+      } );
+      body.addEventListener( 'touchmove', function ( ev ) {
+        addFuncMouse( ev, true );
+      } );
+      window.addEventListener( 'resize', function () {
+        width = canvas.offsetWidth;
+        height = canvas.offsetHeight;
+        canvas.setAttribute( 'width', width );
+        canvas.setAttribute( 'height', height );
+      } );
+
+
+    }
+
+    function init() {
+      bind();
+      var width = canvas.offsetWidth;
+      var height = canvas.offsetHeight;
+      canvas.setAttribute( 'width', width );
+      canvas.setAttribute( 'height', height );
+      requestAnimationFrame( ripples.render );
+      addRipple( Math.random() * width, Math.random() * height );
+      setInterval( function () {
+
+        addRipple( Math.random() * width, Math.random() * height );
+      }, 1000 );
+    }
+
+    function setRipple( ev, isMove ) {
+      lastMouseMove.x = ev.pageX;
+      lastMouseMove.y = ev.pageY;
+      addRipple( ev.pageX, ev.pageY, isMove );
+    }
+
+    function addRipple( x, y, isMouse ) {
+      ripples.push( new Ripple( x, y, !!isMouse ) );
+    }
+
+    init();
+  } );
+</script>
+</html>
