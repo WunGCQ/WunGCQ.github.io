@@ -505,7 +505,7 @@
                     var x = c[i];
                     if (!x.go()) {
                         delete c[i];
-                    } else if (x.isCreatedByInterval || (j % tick == 0)) {
+                    } else if (x.isCreatedByInterval ) {
                         links.push(x);
                     }
                 });
@@ -593,11 +593,11 @@
 //                }else {
 //                    addFuncMouse( ev, true );
 //                }
-                addFunc(ev,true);
+                addFunc(ev,false);
             });
             body.addEventListener('touchmove', function (ev) {
 
-                addFunc({pageX:ev.touches[0].pageX,pageY:ev.touches[0].pageY},true);
+                addFunc({pageX:ev.touches[0].pageX,pageY:ev.touches[0].pageY},false);
             });
             window.addEventListener('resize', function () {
                 width = canvas.offsetWidth;
