@@ -154,7 +154,7 @@
                 box-shadow: 0 0 200px 20px rgba(0, 0, 0, .9), inset 0 0 20px 5px rgba(0, 0, 0, 0.3);
             }
             to {
-                background: rgba(0, 0, 0, 0.4);
+                background: rgba(0, 0, 0, 0.2);
                 box-shadow: 0 0 300px 40px #000, inset 0 0 20px 5px rgba(0, 0, 0, 0.3);
             }
         }
@@ -195,7 +195,7 @@
             text-shadow: 0 1px 1px #000;
         }
         .card .row:hover{
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.2);
         }
 
         .card .hr {
@@ -343,7 +343,7 @@
     define(function (module, require) {
         function Ripple(ctx) {
             var speed = 2;
-            var initialOpacity = 0.4;
+            var initialOpacity = 0.6;
             var lastRGB = ([Math.random(), Math.random(), Math.random()]).map(function (x) {
                 return parseInt(x * 255)
             });
@@ -496,7 +496,8 @@
             ret.prototype.render = function () {
                 this.ctx.clearRect(0, 0, 100000, 100000);
                 var c = this.collection;
-                var arr = Object.keys(c);
+                var arr = [];
+                for(var i in c){arr.push(i);}
                 var len = arr.length;
                 var tick = parseInt(len / 10);
                 var links = [];
@@ -504,7 +505,7 @@
                     var x = c[i];
                     if (!x.go()) {
                         delete c[i];
-                    } else if (x.isCreatedByInterval) {
+                    } else if (x.isCreatedByInterval || (j % tick == 0)) {
                         links.push(x);
                     }
                 });
@@ -585,21 +586,18 @@
                 isMouseDown = true;
                 addFunc(ev);
             });
-            body.addEventListener('touchstart', addFunc);
-            body.addEventListener('touchend', addFunc);
+
             body.addEventListener('mousemove', function (ev) {
 //                if(isMouseDown){
 //                    addFunc(ev);
 //                }else {
 //                    addFuncMouse( ev, true );
 //                }
-                addFunc(ev);
-
-
+                addFunc(ev,true);
             });
             body.addEventListener('touchmove', function (ev) {
 
-                addFuncMouse(ev, true);
+                addFunc({pageX:ev.touches[0].pageX,pageY:ev.touches[0].pageY},true);
             });
             window.addEventListener('resize', function () {
                 width = canvas.offsetWidth;
@@ -650,6 +648,9 @@
         }
 
         function addRipple(x, y, isMove, isCreatedByInterval) {
+            if(!x || !y){
+                console.error();
+            }
             ripples.push(new Ripple(x, y, !!isMove, !!isCreatedByInterval));
         }
 
