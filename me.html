@@ -384,7 +384,7 @@
 
         Object.defineProperty( this, 'rgba', {
           get: function () {
-            var str = 'rgba(' + me.rgb.join( ',' ) + ',' + me.opacity + ')';
+            var str = 'rgba(' + me.rgb.join( ',' ) + ',' + me.opacity.toFixed(6) + ')';
             if ( me.isMove ) {
               me.rgb.forEach( function ( m, i ) {
                 me.rgb[i] = (++m) % 255;
@@ -458,6 +458,7 @@
         ctx.moveTo( x, y );
         ctx.beginPath();
         var gradient = ctx.createRadialGradient( x, y, 0, x, y, radius );
+        console.log(color);
         gradient.addColorStop( 0, color );
         gradient.addColorStop( 1, 'rgba(' + this.rgb.join( ',' ) + ',0)' );
         ctx.fillStyle = gradient;
@@ -493,7 +494,7 @@
 
       };
       ret.prototype.render = function () {
-        this.ctx.clearRect( 0, 0, 100000, 100000 );
+        this.ctx.clearRect( 0, 0, width, height );
         var c = this.collection;
         var links = [];
         for ( var i in c ) {
