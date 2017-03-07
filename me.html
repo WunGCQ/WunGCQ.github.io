@@ -228,7 +228,7 @@
             <div class="row">GitHub <a href="https://github.com/WunGCQ">WunGCQ</a></div>
             <div class="row">邮箱 <a href="mailto:wangchunqibuaa@163.com">wangchunqibuaa@163.com</a>
             </div>
-            <div class="row" >手机号: <span id="object"></span></div>
+            <div class="row">手机号: <span id="object"></span></div>
             <div class="hr"></div>
         </div>
 
@@ -384,7 +384,7 @@
 
         Object.defineProperty( this, 'rgba', {
           get: function () {
-            var str = 'rgba(' + me.rgb.join( ',' ) + ',' + me.opacity.toFixed(6) + ')';
+            var str = 'rgba(' + me.rgb.join( ',' ) + ',' + me.opacity.toFixed( 6 ) + ')';
             if ( me.isMove ) {
               me.rgb.forEach( function ( m, i ) {
                 me.rgb[i] = (++m) % 255;
@@ -458,7 +458,6 @@
         ctx.moveTo( x, y );
         ctx.beginPath();
         var gradient = ctx.createRadialGradient( x, y, 0, x, y, radius );
-        console.log(color);
         gradient.addColorStop( 0, color );
         gradient.addColorStop( 1, 'rgba(' + this.rgb.join( ',' ) + ',0)' );
         ctx.fillStyle = gradient;
@@ -518,7 +517,7 @@
         var len = arr.length;
         var ctx = this.ctx;
         ctx.beginPath();
-        ctx.strokeStyle = 'rgb(' + arr[len - 1].rgb.join( ',' ) + ')';
+        ctx.strokeStyle = 'rgba(' + arr[len - 1].rgb.join( ',' ) + ',0.6)';
         for ( var i = 0; i < len; i++ ) {
           for ( var j = i + 1; j < len; j++ ) {
             ctx.moveTo( arr[i].x, arr[i].y );
@@ -567,6 +566,19 @@
     var ripples = new RippleSet();
     var lastMouseMove = { x: 0, y: 0 };
     var lastX = -100, lastY = -100;
+    // 屏幕的设备像素比
+    var devicePixelRatio = window.devicePixelRatio || 1;
+
+// 浏览器在渲染canvas之前存储画布信息的像素比
+    var backingStoreRatio = ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio || 1;
+
+// canvas的实际渲染倍率
+    var ratio = devicePixelRatio / backingStoreRatio;
+
 
     function checkShouldAdd( ev ) {
       var x = ev.pageX;
@@ -583,6 +595,7 @@
       var addFunc = throttle( setRipple, 16 );
       var width = canvas.offsetWidth;
       var height = canvas.offsetHeight;
+
 
       lastMouseMove = { x: width / 2, y: height / 2 };
 
@@ -601,8 +614,8 @@
       window.addEventListener( 'resize', function () {
         width = canvas.offsetWidth;
         height = canvas.offsetHeight;
-        canvas.setAttribute( 'width', width );
-        canvas.setAttribute( 'height', height );
+        canvas.setAttribute( 'width', width * ratio );
+        canvas.setAttribute( 'height', height * ratio );
       } );
       var hiddenProperty = 'hidden' in document ? 'hidden' :
         'webkitHidden' in document ? 'webkitHidden' :
@@ -626,8 +639,8 @@
       bind();
       var width = canvas.offsetWidth;
       var height = canvas.offsetHeight;
-      canvas.setAttribute( 'width', width );
-      canvas.setAttribute( 'height', height );
+      canvas.setAttribute( 'width', width*ratio );
+      canvas.setAttribute( 'height', height*ratio );
       requestAnimationFrame( ripples.render );
       addRipple( Math.random() * width, Math.random() * height );
       for ( var i = 0; i < 5; i++ ) {
@@ -659,10 +672,10 @@
 <script>
   define( function ( module ) {
     var $ = (+[]);
-    var mPhoneNum = [(++$),(($++,$*=$*$,$)),(--$,--$,$),($+=~$,$=-$,$),(++$),($-=~$),(++$),(($+($<<1)>>1)),(--$),($-($>>1)),($+($>>1))].join('');
-    setTimeout(function(){
-      document.getElementById(typeof null).innerHTML = mPhoneNum;
-    },5000);
+//    [(++$), (($++, $ *= $ * $, $)), (--$, --$, $), ($ += ~$, $ = -$, $), (++$), ($ -= ~$), (++$), (($ + ($ << 1) >> 1)), (--$), ($ - ($ >> 1)), ($ + ($ >> 1))].join( '' );
+    setTimeout( function () {
+      document.getElementById( typeof null ).innerHTML = '$=(+[]),[(++$), (($++, $ *= $ * $, $)), (--$, --$, $), ($ += ~$, $ = -$, $), (++$), ($ -= ~$), (++$), (($ + ($ << 1) >> 1)), (--$), ($ - ($ >> 1)), ($ + ($ >> 1))]';
+    }, 5000 );
   } )
 </script>
 </html>
