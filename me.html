@@ -8,8 +8,7 @@
     <meta name="x5-orientation" content="portrait">
     <meta name="x5-fullscreen" content="true">
     <meta name="x5-page-mode" content="app">
-    <meta name="viewport"
-          content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -579,7 +578,8 @@
 
 // canvas的实际渲染倍率
     var ratio = devicePixelRatio / backingStoreRatio;
-
+    ratio = 1;
+    console.log(ratio,devicePixelRatio,backingStoreRatio)
 
     function checkShouldAdd( ev ) {
       var x = ev.pageX;
@@ -625,10 +625,10 @@
         }
       } );
       window.addEventListener( 'resize', function () {
-        width = canvas.offsetWidth;
-        height = canvas.offsetHeight;
-        canvas.setAttribute( 'width', width / ratio );
-        canvas.setAttribute( 'height', height / ratio );
+        width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+        height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+        canvas.setAttribute( 'width', width * ratio );
+        canvas.setAttribute( 'height', height * ratio );
       } );
       var hiddenProperty = 'hidden' in document ? 'hidden' :
         'webkitHidden' in document ? 'webkitHidden' :
@@ -650,10 +650,10 @@
 
     function init() {
       bind();
-      var width = canvas.offsetWidth;
-      var height = canvas.offsetHeight;
-      canvas.setAttribute( 'width', width /ratio );
-      canvas.setAttribute( 'height', height /ratio );
+      width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+      height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+      canvas.setAttribute( 'width', width * ratio );
+      canvas.setAttribute( 'height', height * ratio );
       canvas.style.width = width;
       canvas.style.height = height;
       requestAnimationFrame( ripples.render );
