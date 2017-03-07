@@ -101,10 +101,11 @@
         }
 
         .card-wrapper .card {
+            display: none;
             max-width: 80%;
             max-height: 70vh;
             overflow: auto;
-            display: inline-block;
+            /*display: inline-block;*/
             border: 3px solid #230000;
             box-shadow: 0 0 200px 20px rgba(255, 255, 255, .5), inset 0 0 20px 0px rgba(0, 0, 0, 0.4);
             padding: 15px 30px;
@@ -593,6 +594,7 @@
       var isMouseDown = false;
       var addFuncMouse = throttle( setRipple, 16 );
       var addFunc = throttle( setRipple, 16 );
+      var addNewFuncMouse = throttle(setRipple, 400);
       var width = canvas.offsetWidth;
       var height = canvas.offsetHeight;
 
@@ -601,21 +603,32 @@
 
       var body = document.body;
 
-      body.addEventListener( 'click', function ( ev ) {
+      body.addEventListener( 'mouseup', function ( ev ) {
+        isMouseDown = false;
         addFunc( ev, false, true );
+      } );
+      body.addEventListener( 'mousedown', function ( ev ) {
+        isMouseDown = true;
+//        addFunc( ev, false, true );
       } );
 
       body.addEventListener( 'mousemove', function ( ev ) {
         addFunc( ev, false );
+        if(isMouseDown){
+          addNewFuncMouse( ev, false ,true);
+        }
       } );
       body.addEventListener( 'touchmove', function ( ev ) {
         addFunc( { pageX: ev.touches[0].pageX, pageY: ev.touches[0].pageY }, false );
+        if(isMouseDown){
+          addNewFuncMouse( { pageX: ev.touches[0].pageX, pageY: ev.touches[0].pageY }, false );
+        }
       } );
       window.addEventListener( 'resize', function () {
         width = canvas.offsetWidth;
         height = canvas.offsetHeight;
-        canvas.setAttribute( 'width', width * ratio );
-        canvas.setAttribute( 'height', height * ratio );
+        canvas.setAttribute( 'width', width / ratio );
+        canvas.setAttribute( 'height', height / ratio );
       } );
       var hiddenProperty = 'hidden' in document ? 'hidden' :
         'webkitHidden' in document ? 'webkitHidden' :
@@ -639,8 +652,10 @@
       bind();
       var width = canvas.offsetWidth;
       var height = canvas.offsetHeight;
-      canvas.setAttribute( 'width', width*ratio );
-      canvas.setAttribute( 'height', height*ratio );
+      canvas.setAttribute( 'width', width /ratio );
+      canvas.setAttribute( 'height', height /ratio );
+      canvas.style.width = width;
+      canvas.style.height = height;
       requestAnimationFrame( ripples.render );
       addRipple( Math.random() * width, Math.random() * height );
       for ( var i = 0; i < 5; i++ ) {
