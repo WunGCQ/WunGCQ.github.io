@@ -136,7 +136,7 @@
         if (e.target.nodeName == 'LI') {
             var index = $('.nav li').index($(e.target));
             $('.nav li').removeClass('nav-active').eq(index).addClass('nav-active');
-            $.scrollTo(".full-screen:eq(" + index + ")", 500);
+            setTimeout(function(){$.scrollTo(".full-screen:eq(" + index + ")", 500)},10);
             $(".full-screen").removeClass("animate").eq(index).addClass("animate");
         }
 
@@ -144,7 +144,7 @@
         if (e.target.nodeName == 'LI') {
             var index = $('.nav li').index($(e.target));
             $('.nav li').removeClass('nav-active').eq(index).addClass('nav-active');
-            $.scrollTo(".full-screen:eq(" + index + ")", 500);
+            setTimeout(function(){$.scrollTo(".full-screen:eq(" + index + ")", 500)},10);
             $(".full-screen").removeClass("animate").eq(index).addClass("animate");
         }
     });
